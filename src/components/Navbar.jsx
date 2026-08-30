@@ -125,10 +125,10 @@ export const Navbar = () => {
             color: '#10b981'
           }} />
           <div
-            className="input-control"
+            className="input-control nav-search-input"
             style={{
               paddingLeft: '38px',
-              paddingRight: '68px',
+              paddingRight: '14px',
               height: '38px',
               fontSize: '0.82rem',
               borderRadius: '9999px',
@@ -143,9 +143,9 @@ export const Navbar = () => {
               width: '100%'
             }}
           >
-            Search machines, exercises, workouts...
+            Search exercises, machines...
           </div>
-          <span style={{
+          <span className="ctrl-k-badge" style={{
             position: 'absolute',
             right: '10px',
             top: '50%',
@@ -156,7 +156,8 @@ export const Navbar = () => {
             padding: '2px 6px',
             borderRadius: '6px',
             color: 'var(--text-muted)',
-            fontWeight: 700
+            fontWeight: 700,
+            display: 'none'
           }}>
             Ctrl + K
           </span>
@@ -231,6 +232,14 @@ export const Navbar = () => {
           }
           .brand-sub {
             display: block !important;
+          }
+        }
+        @media (min-width: 1280px) {
+          .ctrl-k-badge {
+            display: block !important;
+          }
+          .nav-search-input {
+            padding-right: 68px !important;
           }
         }
         @media (max-width: 640px) {

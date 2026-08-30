@@ -184,23 +184,25 @@ export const HomeSection = () => {
                 background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(9, 13, 22, 0.9) 100%)'
               }} />
 
-              {/* Top Trending Badge - Positioned clearly ABOVE the head */}
+              {/* Top Trending Badge - Positioned clearly CENTERED above the head */}
               <div style={{
                 position: 'absolute',
                 top: '12px',
-                left: '12px',
+                left: '50%',
+                transform: 'translateX(-50%)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.4rem',
                 background: 'rgba(0, 0, 0, 0.85)',
                 backdropFilter: 'blur(10px)',
-                padding: '0.35rem 0.75rem',
+                padding: '0.35rem 0.85rem',
                 borderRadius: '9999px',
                 border: '1px solid rgba(245, 158, 11, 0.6)',
                 color: '#f59e0b',
                 fontSize: '0.75rem',
                 fontWeight: 800,
                 boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
+                whiteSpace: 'nowrap',
                 zIndex: 3
               }}>
                 <Flame size={14} fill="#f59e0b" color="#f59e0b" />
