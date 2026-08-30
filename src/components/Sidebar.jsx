@@ -22,6 +22,8 @@ import {
 const NAV_ITEMS = [
   {
     category: 'Start Here',
+    symbol: '🚀',
+    color: '#10b981',
     items: [
       { id: 'home', num: '01', label: '1. Home Dashboard', icon: Home, badge: 'Home' },
       { id: 'guided-flow', num: '02', label: '2. Guided Day-1 Flow', icon: Sparkles, badge: 'Wizard', highlight: true },
@@ -30,6 +32,8 @@ const NAV_ITEMS = [
   },
   {
     category: 'Knowledge & Safety',
+    symbol: '🛡️',
+    color: '#06b6d4',
     items: [
       { id: 'roadmap', num: '04', label: '4. Beginner Roadmap', icon: Milestone, badge: 'Milestones' },
       { id: 'safety', num: '05', label: '5. Gym Safety & DOs/DON\'Ts', icon: ShieldCheck, badge: 'Crucial' },
@@ -39,6 +43,8 @@ const NAV_ITEMS = [
   },
   {
     category: 'Workouts & Recovery',
+    symbol: '💪',
+    color: '#f59e0b',
     items: [
       { id: 'workout', num: '08', label: '8. Beginner Workouts', icon: Dumbbell, badge: '4 Routines' },
       { id: 'nutrition', num: '09', label: '9. Nutrition & Hydration', icon: Apple, badge: 'Fuel' },
@@ -47,6 +53,8 @@ const NAV_ITEMS = [
   },
   {
     category: 'Tracking & Community',
+    symbol: '📊',
+    color: '#8b5cf6',
     items: [
       { id: 'tracker', num: '11', label: '11. Workout Tracker', icon: ClipboardList, badge: '10 Points' },
       { id: 'checklist', num: '12', label: '12. Beginner Checklist', icon: CheckCircle2, badge: 'Interactive' },
@@ -176,34 +184,37 @@ export const Sidebar = () => {
         <nav style={{ flex: 1, padding: '0.75rem 0.85rem' }}>
           {NAV_ITEMS.map((group, gIdx) => (
             <div key={gIdx} style={{ marginBottom: '1.25rem' }}>
-              {/* Prominent, Dark & Crisp Category Header */}
+              {/* Prominent, Dark & Crisp Category Header with Symbol */}
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.4rem 0.75rem',
+                justifyContent: 'space-between',
+                padding: '0.38rem 0.75rem',
                 marginBottom: '0.45rem',
                 borderRadius: '8px',
                 background: 'var(--bg-card-secondary)',
                 border: '1px solid var(--border-card)'
               }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                  <span style={{ fontSize: '0.9rem', lineHeight: 1 }}>{group.symbol}</span>
+                  <span style={{
+                    fontSize: '0.72rem',
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--text-main)'
+                  }}>
+                    {group.category}
+                  </span>
+                </div>
                 <span style={{
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
                   flexShrink: 0,
-                  background: gIdx === 0 ? '#10b981' : gIdx === 1 ? '#06b6d4' : gIdx === 2 ? '#f59e0b' : '#8b5cf6',
-                  boxShadow: `0 0 8px ${gIdx === 0 ? '#10b981' : gIdx === 1 ? '#06b6d4' : gIdx === 2 ? '#f59e0b' : '#8b5cf6'}`
+                  background: group.color,
+                  boxShadow: `0 0 8px ${group.color}`
                 }} />
-                <span style={{
-                  fontSize: '0.72rem',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.08em',
-                  color: 'var(--text-main)'
-                }}>
-                  {group.category}
-                </span>
               </div>
 
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
