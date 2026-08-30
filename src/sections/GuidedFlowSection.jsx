@@ -63,7 +63,7 @@ export const GuidedFlowSection = () => {
         </p>
 
         {/* Step Progress Bar */}
-        <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+        <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
           {GUIDED_WIZARD_STEPS.map((s, idx) => {
             const isDone = idx < currentStepIndex || (idx === currentStepIndex && wizardCompleted);
             const isCurrent = idx === currentStepIndex;
@@ -74,8 +74,8 @@ export const GuidedFlowSection = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.5rem 0.85rem',
+                  gap: '0.35rem',
+                  padding: '0.4rem 0.75rem',
                   borderRadius: '9999px',
                   background: isCurrent
                     ? '#10b981'
@@ -85,7 +85,7 @@ export const GuidedFlowSection = () => {
                   color: isCurrent ? '#ffffff' : isDone ? '#10b981' : 'var(--text-muted)',
                   border: isCurrent ? '1px solid #10b981' : '1px solid transparent',
                   cursor: 'pointer',
-                  fontSize: '0.8125rem',
+                  fontSize: '0.78rem',
                   fontWeight: 600,
                   transition: 'all 0.2s'
                 }}

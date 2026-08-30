@@ -532,8 +532,13 @@ export const HomeSection = () => {
         }
         @media (max-width: 640px) {
           .hero-physique-blink {
-            height: 380px !important;
+            height: 360px !important;
             max-width: 100% !important;
+          }
+        }
+        @media (max-width: 420px) {
+          .hero-physique-blink {
+            height: 300px !important;
           }
         }
       `}</style>

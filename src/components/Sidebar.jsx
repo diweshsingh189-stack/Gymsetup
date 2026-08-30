@@ -69,6 +69,11 @@ export const Sidebar = () => {
 
   const completedChecks = Object.values(checklist).filter(Boolean).length;
 
+  const handleNav = (tabId) => {
+    navigateTo(tabId);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <>
       {/* Mobile Backdrop Overlay */}
@@ -80,7 +85,8 @@ export const Sidebar = () => {
             inset: 0,
             background: 'rgba(0, 0, 0, 0.65)',
             zIndex: 45,
-            backdropFilter: 'blur(4px)'
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)'
           }}
         />
       )}
@@ -89,7 +95,8 @@ export const Sidebar = () => {
       <aside
         className={`sidebar ${mobileMenuOpen ? 'open' : ''}`}
         style={{
-          width: 'var(--sidebar-width)',
+          width: 'min(var(--sidebar-width), 85vw)',
+          maxWidth: '320px',
           background: 'var(--bg-sidebar)',
           borderRight: '1px solid var(--border-subtle)',
           height: '100vh',
@@ -105,7 +112,7 @@ export const Sidebar = () => {
       >
         {/* Sidebar Header with Gentle Moving/Floating Logo */}
         <div
-          onClick={() => navigateTo('home')}
+          onClick={() => handleNav('home')}
           style={{
             padding: '1.4rem 1.25rem 1rem 1.25rem',
             borderBottom: '1px solid var(--border-subtle)',
@@ -163,7 +170,7 @@ export const Sidebar = () => {
               </div>
             </div>
             <button
-              onClick={() => navigateTo('checklist')}
+              onClick={() => handleNav('checklist')}
               style={{
                 background: '#10b981',
                 color: '#fff',
@@ -224,7 +231,7 @@ export const Sidebar = () => {
                   return (
                     <li key={item.id}>
                       <button
-                        onClick={() => navigateTo(item.id)}
+                        onClick={() => handleNav(item.id)}
                         style={{
                           width: '100%',
                           display: 'flex',

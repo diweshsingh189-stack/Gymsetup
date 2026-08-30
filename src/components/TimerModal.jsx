@@ -82,36 +82,38 @@ export const TimerModal = () => {
       inset: 0,
       background: 'rgba(0, 0, 0, 0.75)',
       backdropFilter: 'blur(8px)',
+      WebkitBackdropFilter: 'blur(8px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       zIndex: 100,
-      padding: '1rem'
+      padding: '0.75rem'
     }}>
       <div className="card card-glow-emerald" style={{
         maxWidth: '440px',
-        width: '100%',
+        width: 'min(440px, 94vw)',
         background: 'var(--bg-card)',
-        borderRadius: '24px',
-        padding: '2rem',
+        borderRadius: '20px',
+        padding: '1.75rem 1.25rem',
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        boxSizing: 'border-box'
       }}>
         {/* Close Button */}
         <button
           onClick={closeTimer}
           className="btn btn-secondary btn-icon"
-          style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', width: '36px', height: '36px' }}
+          style={{ position: 'absolute', top: '1rem', right: '1rem', width: '36px', height: '36px' }}
         >
           <X size={18} />
         </button>
 
         {/* Title & Sound toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.25rem', paddingRight: '2rem', paddingLeft: '2rem' }}>
           <Flame size={20} color="#10b981" />
-          <h3 style={{ fontSize: '1.25rem' }}>{timerTitle}</h3>
+          <h3 style={{ fontSize: '1.2rem', wordBreak: 'break-word' }}>{timerTitle}</h3>
         </div>
-        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+        <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
           Catch your breath & let your nervous system recover
         </p>
 

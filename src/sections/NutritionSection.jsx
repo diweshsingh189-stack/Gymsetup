@@ -77,7 +77,7 @@ export const NutritionSection = () => {
                     key={g.id}
                     onClick={() => setGoal(g.id)}
                     className={`btn btn-sm ${goal === g.id ? 'btn-primary' : 'btn-secondary'}`}
-                    style={{ flex: 1, minWidth: '95px', fontSize: '0.8rem', borderRadius: 'var(--radius-sm)' }}
+                    style={{ flex: 1, minWidth: 'min(100%, 80px)', fontSize: '0.8rem', borderRadius: 'var(--radius-sm)' }}
                   >
                     {g.label}
                   </button>

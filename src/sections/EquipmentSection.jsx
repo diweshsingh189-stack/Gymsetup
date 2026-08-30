@@ -465,11 +465,12 @@ export const EquipmentSection = () => {
             height: '100vh',
             background: 'rgba(0, 0, 0, 0.85)',
             backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             zIndex: 999999,
-            padding: '1.25rem',
+            padding: '0.75rem',
             boxSizing: 'border-box'
           }}
         >
@@ -478,11 +479,11 @@ export const EquipmentSection = () => {
             className="animate-fade-in"
             style={{
               maxWidth: '680px',
-              width: '100%',
-              maxHeight: '86vh',
+              width: 'min(680px, 94vw)',
+              maxHeight: '88vh',
               display: 'flex',
               flexDirection: 'column',
-              borderRadius: '24px',
+              borderRadius: '20px',
               padding: 0,
               overflow: 'hidden',
               background: 'var(--bg-card)',
@@ -494,13 +495,13 @@ export const EquipmentSection = () => {
             {/* Modal Header */}
             <div
               style={{
-                padding: '1.25rem 1.75rem',
+                padding: '1rem 1.25rem',
                 borderBottom: '1px solid var(--border-subtle)',
                 background: 'var(--bg-sidebar)',
                 display: 'flex',
                 alignItems: 'flex-start',
                 justifyContent: 'space-between',
-                gap: '1rem',
+                gap: '0.75rem',
                 flexShrink: 0
               }}
             >

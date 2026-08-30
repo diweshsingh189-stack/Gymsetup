@@ -392,11 +392,11 @@ export const GymPricingSection = () => {
             onClick={(e) => e.stopPropagation()}
             style={{
               maxWidth: '680px',
-              width: '100%',
+              width: 'min(680px, 94vw)',
               maxHeight: '90vh',
               overflowY: 'auto',
-              borderRadius: '24px',
-              padding: '2rem',
+              borderRadius: '20px',
+              padding: '1.5rem 1.25rem',
               position: 'relative',
               background: '#0f172a',
               border: '1.5px solid rgba(16, 185, 129, 0.45)',
@@ -408,7 +408,7 @@ export const GymPricingSection = () => {
             <button
               onClick={() => setSelectedGymModal(null)}
               className="btn btn-secondary btn-icon"
-              style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', width: '38px', height: '38px', borderRadius: '12px', zIndex: 10 }}
+              style={{ position: 'absolute', top: '1rem', right: '1rem', width: '36px', height: '36px', borderRadius: '10px', zIndex: 10 }}
               title="Close"
             >
               <X size={18} />
@@ -416,7 +416,7 @@ export const GymPricingSection = () => {
 
             {/* Header: Title & Badges Centered */}
             <div style={{ textAlign: 'center', marginBottom: '1.25rem', paddingRight: '2rem', paddingLeft: '2rem' }}>
-              <div style={{ display: 'inline-flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <div style={{ display: 'inline-flex', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <span
                   style={{
                     fontSize: '0.72rem',
@@ -434,7 +434,7 @@ export const GymPricingSection = () => {
                 </span>
               </div>
 
-              <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#f8fafc', marginBottom: '4px' }}>
+              <h2 style={{ fontSize: 'clamp(1.35rem, 3vw, 2rem)', fontWeight: 900, color: '#f8fafc', marginBottom: '4px' }}>
                 {selectedGymModal.name}
               </h2>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#10b981', fontWeight: 700, fontSize: '0.92rem' }}>
@@ -446,8 +446,8 @@ export const GymPricingSection = () => {
             {/* Centered High-Res Gym Photo */}
             <div style={{
               width: '100%',
-              height: '260px',
-              borderRadius: '16px',
+              height: 'clamp(180px, 32vh, 260px)',
+              borderRadius: '14px',
               overflow: 'hidden',
               marginBottom: '1.5rem',
               boxShadow: '0 8px 25px rgba(0,0,0,0.5)',

@@ -84,18 +84,19 @@ export const Navbar = () => {
             <Dumbbell size={22} strokeWidth={2.5} />
           </div>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <span className="logo-text-shimmer" style={{
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 800,
-                fontSize: '1.25rem',
+                fontSize: 'clamp(1.05rem, 2.5vw, 1.25rem)',
                 letterSpacing: '-0.02em',
-                color: 'var(--text-main)'
+                color: 'var(--text-main)',
+                whiteSpace: 'nowrap'
               }}>
                 Gym<span style={{ color: '#10b981' }}>Setup</span>
               </span>
-              <span className="badge badge-emerald" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem' }}>
-                Beginner Edition
+              <span className="badge badge-emerald nav-badge-edition" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', whiteSpace: 'nowrap' }}>
+                Beginner
               </span>
             </div>
             <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'none' }} className="brand-sub">
@@ -149,7 +150,7 @@ export const Navbar = () => {
       </div>
 
       {/* Right: Quick Action Tools */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
         {/* Mobile Search Button (Phone & Tablet) */}
         <button
           onClick={() => openSearchModal()}
@@ -164,11 +165,11 @@ export const Navbar = () => {
         {/* Onboarding Quick Jump */}
         <button
           onClick={() => navigateTo('guided-flow')}
-          className="btn btn-outline-emerald btn-sm"
-          style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', borderRadius: '9999px', fontSize: '0.8rem' }}
+          className="btn btn-outline-emerald btn-sm nav-start-btn"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderRadius: '9999px', fontSize: '0.8rem', padding: '0.35rem 0.65rem' }}
         >
           <Sparkles size={14} />
-          <span className="desktop-only-text">I'm New: Start Here</span>
+          <span className="desktop-only-text">Start Here</span>
         </button>
 
         {/* Built-in Timer Button */}
@@ -223,7 +224,19 @@ export const Navbar = () => {
             display: none !important;
           }
           .navbar-container {
-            padding: 0 1rem !important;
+            padding: 0 0.75rem !important;
+          }
+          .btn-icon {
+            width: 36px !important;
+            height: 36px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .nav-badge-edition {
+            display: none !important;
+          }
+          .nav-start-btn {
+            padding: 0.35rem 0.5rem !important;
           }
         }
       `}</style>

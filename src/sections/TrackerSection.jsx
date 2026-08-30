@@ -387,8 +387,8 @@ export const TrackerSection = () => {
       </div>
 
       {/* Action Toolbar */}
-      <div className="card" style={{ padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <div style={{ position: 'relative', flex: 1, minWidth: '220px', maxWidth: '350px' }}>
+      <div className="card" style={{ padding: '1.25rem 1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem' }}>
+        <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 200px)', maxWidth: '400px' }}>
           <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
           <input
             type="text"
@@ -400,7 +400,7 @@ export const TrackerSection = () => {
           />
         </div>
 
-        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <button
             onClick={() => openTimer(60, 'Workout Rest Interval')}
             className="btn btn-secondary btn-sm"
@@ -431,7 +431,7 @@ export const TrackerSection = () => {
             className="btn btn-primary btn-sm"
           >
             <Plus size={16} />
-            <span>{showLogForm ? 'Close Form' : '+ Custom Exercise Entry'}</span>
+            <span>{showLogForm ? 'Close Form' : '+ Custom Entry'}</span>
           </button>
         </div>
       </div>

@@ -25,23 +25,23 @@ export const WarmupSection = () => {
       </div>
 
       {/* Mode Switcher */}
-      <div style={{ display: 'flex', gap: '0.75rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.75rem' }}>
+      <div style={{ display: 'flex', gap: '0.5rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.75rem', flexWrap: 'wrap' }}>
         <button
           onClick={() => setActiveTab('warmup')}
           className={`btn ${activeTab === 'warmup' ? 'btn-primary' : 'btn-secondary'}`}
-          style={{ borderRadius: '9999px', fontSize: '0.9rem' }}
+          style={{ borderRadius: '9999px', fontSize: '0.85rem' }}
         >
           <Flame size={16} />
-          <span>Pre-Workout Dynamic Warm-up (5 Mins)</span>
+          <span>Pre-Workout Warm-up (5 Mins)</span>
         </button>
 
         <button
           onClick={() => setActiveTab('cooldown')}
           className={`btn ${activeTab === 'cooldown' ? 'btn-primary' : 'btn-secondary'}`}
-          style={{ borderRadius: '9999px', fontSize: '0.9rem' }}
+          style={{ borderRadius: '9999px', fontSize: '0.85rem' }}
         >
           <MoonStar size={16} />
-          <span>Post-Workout Static Cool-down (5 Mins)</span>
+          <span>Post-Workout Cool-down (5 Mins)</span>
         </button>
       </div>
 

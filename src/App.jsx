@@ -124,14 +124,18 @@ const MainView = () => {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 64px;
+          height: calc(60px + env(safe-area-inset-bottom, 0px));
+          padding-bottom: env(safe-area-inset-bottom, 0px);
           background: var(--bg-sidebar);
           border-top: 1px solid var(--border-subtle);
           z-index: 40;
           align-items: center;
           justify-content: space-around;
-          padding: 0 0.5rem;
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
           backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .mobile-nav-btn {
@@ -139,13 +143,16 @@ const MainView = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 3px;
+          gap: 2px;
           background: none;
           border: none;
           cursor: pointer;
-          padding: 6px 12px;
+          padding: 4px 6px;
           border-radius: 8px;
           transition: all 0.15s;
+          flex: 1;
+          min-width: 0;
+          touch-action: manipulation;
         }
 
         .mobile-nav-btn.active {
