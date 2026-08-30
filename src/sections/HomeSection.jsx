@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
+import { playClickBeep } from '../utils/soundEffects';
 import {
   Sparkles,
   ArrowRight,
@@ -21,6 +22,14 @@ import {
   TrendingUp
 } from 'lucide-react';
 
+const MOTIVATIONAL_QUOTES = [
+  { left: '🔥', text: 'Consistency beats motivation every single day. Just show up and give your best!', right: '🏆' },
+  { left: '⚡', text: 'Every expert was once a beginner. Step in with confidence, lift with purpose!', right: '💪' },
+  { left: '🌟', text: 'Your only competition is who you were yesterday. Keep building, champion!', right: '🚀' },
+  { left: '🎯', text: 'Small daily disciplines repeated over time lead to monumental fitness transformations.', right: '🔥' },
+  { left: '🛡️', text: 'Form first, ego never. Train smart, stay safe, and enjoy every rep!', right: '⚡' }
+];
+
 export const HomeSection = () => {
   const {
     navigateTo,
@@ -32,6 +41,13 @@ export const HomeSection = () => {
     openSearchModal
   } = useApp();
 
+  const [quoteIndex, setQuoteIndex] = useState(0);
+
+  const nextQuote = () => {
+    setQuoteIndex((prev) => (prev + 1) % MOTIVATIONAL_QUOTES.length);
+    playClickBeep();
+  };
+
   // Metrics
   const completedChecklistCount = Object.values(checklist).filter(Boolean).length;
   const checklistPercent = Math.round((completedChecklistCount / 20) * 100);
@@ -42,7 +58,45 @@ export const HomeSection = () => {
   const totalLogs = workoutLogs.length;
 
   return (
-    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
+      {/* Top Motivational Daily Fuel Ribbon - Slim, Glassmorphism, Zero Overlap with Emojis */}
+      <div
+        onClick={nextQuote}
+        className="card card-hover"
+        style={{
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(6, 182, 212, 0.10) 50%, rgba(245, 158, 11, 0.08) 100%)',
+          border: '1px solid rgba(16, 185, 129, 0.4)',
+          borderRadius: '16px',
+          padding: '0.75rem 1.25rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '0.75rem',
+          cursor: 'pointer',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+          overflow: 'hidden'
+        }}
+        title="Click to shuffle daily fitness motivation!"
+      >
+        <span style={{ fontSize: '1.35rem', flexShrink: 0, lineHeight: 1 }}>
+          {MOTIVATIONAL_QUOTES[quoteIndex].left}
+        </span>
+        <span style={{
+          fontSize: '0.94rem',
+          fontWeight: 700,
+          color: 'var(--text-main)',
+          letterSpacing: '0.015em',
+          lineHeight: 1.45,
+          textAlign: 'center',
+          minWidth: 0,
+          wordBreak: 'break-word'
+        }}>
+          "{MOTIVATIONAL_QUOTES[quoteIndex].text}"
+        </span>
+        <span style={{ fontSize: '1.35rem', flexShrink: 0, lineHeight: 1 }}>
+          {MOTIVATIONAL_QUOTES[quoteIndex].right}
+        </span>
+      </div>
       {/* Hero Banner with Modern Gradient & Trending Bodybuilding Image */}
       <div
         className="card card-glow-emerald gradient-hero-bg"
