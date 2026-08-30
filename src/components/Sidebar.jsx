@@ -176,15 +176,34 @@ export const Sidebar = () => {
         <nav style={{ flex: 1, padding: '0.75rem 0.85rem' }}>
           {NAV_ITEMS.map((group, gIdx) => (
             <div key={gIdx} style={{ marginBottom: '1.25rem' }}>
+              {/* Prominent, Dark & Crisp Category Header */}
               <div style={{
-                fontSize: '0.6875rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: 'var(--text-subtle)',
-                padding: '0 0.75rem 0.4rem 0.75rem'
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.4rem 0.75rem',
+                marginBottom: '0.45rem',
+                borderRadius: '8px',
+                background: 'var(--bg-card-secondary)',
+                border: '1px solid var(--border-card)'
               }}>
-                {group.category}
+                <span style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  flexShrink: 0,
+                  background: gIdx === 0 ? '#10b981' : gIdx === 1 ? '#06b6d4' : gIdx === 2 ? '#f59e0b' : '#8b5cf6',
+                  boxShadow: `0 0 8px ${gIdx === 0 ? '#10b981' : gIdx === 1 ? '#06b6d4' : gIdx === 2 ? '#f59e0b' : '#8b5cf6'}`
+                }} />
+                <span style={{
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--text-main)'
+                }}>
+                  {group.category}
+                </span>
               </div>
 
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
