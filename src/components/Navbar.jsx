@@ -106,7 +106,7 @@ export const Navbar = () => {
       </div>
 
       {/* Middle: Interactive Quick Search with Explorer Trigger (Desktop Only) */}
-      <div style={{ flex: 1, maxWidth: '380px', margin: '0 1rem', display: 'none', minWidth: 0 }} className="nav-search-bar">
+      <div style={{ flex: 1, maxWidth: '360px', margin: '0 1rem', display: 'none', minWidth: 0 }} className="nav-search-bar">
         <div
           onClick={() => openSearchModal()}
           style={{
@@ -145,22 +145,6 @@ export const Navbar = () => {
           >
             Search exercises, machines...
           </div>
-          <span className="ctrl-k-badge" style={{
-            position: 'absolute',
-            right: '10px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            fontSize: '0.68rem',
-            background: 'var(--bg-card-secondary)',
-            border: '1px solid var(--border-card)',
-            padding: '2px 6px',
-            borderRadius: '6px',
-            color: 'var(--text-muted)',
-            fontWeight: 700,
-            display: 'none'
-          }}>
-            Ctrl + K
-          </span>
         </div>
       </div>
 
@@ -232,14 +216,6 @@ export const Navbar = () => {
           }
           .brand-sub {
             display: block !important;
-          }
-        }
-        @media (min-width: 1280px) {
-          .ctrl-k-badge {
-            display: block !important;
-          }
-          .nav-search-input {
-            padding-right: 68px !important;
           }
         }
         @media (max-width: 640px) {
