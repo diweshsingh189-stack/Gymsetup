@@ -179,6 +179,16 @@ export const EquipmentSection = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 370px', gap: '1.5rem', alignItems: 'start' }} className="equipment-layout-grid">
         {/* Left Column: Primary Equipment Cards Grid */}
         <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Cpu size={20} color="#10b981" />
+              <span>Gym Machines & Stations</span>
+            </h2>
+            <span className="badge badge-emerald" style={{ fontSize: '0.8rem', fontWeight: 700 }}>
+              Showing {filteredEquipment.length} of {EQUIPMENT_DATA.length} Machines
+            </span>
+          </div>
+
           {filteredEquipment.length === 0 ? (
             <div className="card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
               <Cpu size={40} color="var(--text-muted)" style={{ margin: '0 auto 1rem auto' }} />
