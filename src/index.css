@@ -78,6 +78,7 @@
   margin: 0;
   padding: 0;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
@@ -88,6 +89,8 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -104,8 +107,8 @@ button, input, select, textarea {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-app);
@@ -123,6 +126,8 @@ button, input, select, textarea {
   display: flex;
   min-height: 100vh;
   position: relative;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .main-wrapper {
@@ -130,13 +135,15 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  width: 100%;
   margin-left: var(--sidebar-width);
+  transition: margin-left 0.3s ease;
 }
 
 @media (max-width: 1024px) {
   .main-wrapper {
     margin-left: 0;
-    padding-bottom: 70px; /* space for mobile bottom bar */
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px)); /* space for mobile bottom bar */
   }
 }
 
@@ -148,9 +155,15 @@ button, input, select, textarea {
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .main-content {
-    padding: 1.25rem 1rem 3rem 1rem;
+    padding: 1.5rem 1.5rem 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-content {
+    padding: 1rem 0.85rem 2.5rem 0.85rem;
   }
 }
 
@@ -163,6 +176,13 @@ button, input, select, textarea {
   box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
 }
 
 .card-hover {
