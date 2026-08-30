@@ -36,6 +36,7 @@ export const EquipmentSection = () => {
 
   const [selectedMachine, setSelectedMachine] = useState(null);
   const [rightPanelCategory, setRightPanelCategory] = useState('All');
+  const [directorySearchQuery, setDirectorySearchQuery] = useState('');
 
   // Filter machines based on category and query
   const filteredEquipment = EQUIPMENT_DATA.filter((item) => {
@@ -49,8 +50,13 @@ export const EquipmentSection = () => {
 
   // Filter right side all exercises directory
   const filteredDirectory = ALL_EXERCISES_DIRECTORY.filter((ex) => {
-    if (rightPanelCategory === 'All') return true;
-    return ex.category.toLowerCase().includes(rightPanelCategory.toLowerCase());
+    const matchesCat = rightPanelCategory === 'All' || ex.category.toLowerCase().includes(rightPanelCategory.toLowerCase());
+    const query = directorySearchQuery.toLowerCase().trim();
+    const matchesSearch = !query ||
+      ex.name.toLowerCase().includes(query) ||
+      ex.category.toLowerCase().includes(query) ||
+      ex.muscleGroup.toLowerCase().includes(query);
+    return matchesCat && matchesSearch;
   });
 
   const handleQuickLog = (machine) => {
@@ -152,7 +158,7 @@ export const EquipmentSection = () => {
       </div>
 
       {/* 2-Column Main Layout: Left Machine Cards + Right All Exercises Directory Panel */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '1.5rem', alignItems: 'start' }} className="equipment-layout-grid">
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 370px', gap: '1.5rem', alignItems: 'start' }} className="equipment-layout-grid">
         {/* Left Column: Primary Equipment Cards Grid */}
         <div>
           {filteredEquipment.length === 0 ? (
@@ -222,23 +228,82 @@ export const EquipmentSection = () => {
         </div>
 
         {/* Right Side: All Exercises Quick Directory Panel */}
-        <div className="card card-glow-emerald" style={{ padding: '1.5rem', position: 'sticky', top: '90px', maxHeight: '82vh', display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <BookOpen size={20} color="#10b981" />
-            <h3 style={{ fontSize: '1.15rem', fontWeight: 800 }}>All Exercises Directory</h3>
+        <div
+          className="card card-glow-emerald"
+          style={{
+            padding: '1.25rem',
+            position: 'sticky',
+            top: '90px',
+            maxHeight: 'calc(100vh - 110px)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.75rem'
+          }}
+        >
+          {/* Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <BookOpen size={20} color="#10b981" />
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 800 }}>All Exercises Directory</h3>
+            </div>
+            <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>
+              {filteredDirectory.length} items
+            </span>
           </div>
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
-            Click any exercise for complete step-by-step knowledge & starting weights:
+
+          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
+            Click any exercise for complete step-by-step setup, starting weights & form:
           </p>
 
+          {/* Directory Quick Search Input */}
+          <div style={{ position: 'relative' }}>
+            <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+            <input
+              type="text"
+              placeholder="Filter directory (e.g. chest, row, squat)..."
+              value={directorySearchQuery}
+              onChange={(e) => setDirectorySearchQuery(e.target.value)}
+              className="input-control"
+              style={{
+                paddingLeft: '32px',
+                height: '36px',
+                fontSize: '0.8rem',
+                borderRadius: '8px',
+                background: 'var(--bg-app)'
+              }}
+            />
+            {directorySearchQuery && (
+              <button
+                onClick={() => setDirectorySearchQuery('')}
+                style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
+              >
+                <X size={14} />
+              </button>
+            )}
+          </div>
+
           {/* Mini Filter Pills for Directory */}
-          <div style={{ display: 'flex', gap: '0.35rem', overflowX: 'auto', paddingBottom: '0.5rem', marginBottom: '0.75rem' }}>
+          <div
+            style={{
+              display: 'flex',
+              gap: '0.35rem',
+              overflowX: 'auto',
+              paddingBottom: '0.4rem',
+              scrollbarWidth: 'thin'
+            }}
+          >
             {['All', 'Chest', 'Back', 'Legs', 'Shoulders', 'Arms', 'Core', 'Cardio'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setRightPanelCategory(cat)}
                 className={`btn btn-sm ${rightPanelCategory === cat ? 'btn-primary' : 'btn-secondary'}`}
-                style={{ fontSize: '0.7rem', padding: '0.2rem 0.55rem', whiteSpace: 'nowrap' }}
+                style={{
+                  fontSize: '0.72rem',
+                  padding: '0.25rem 0.6rem',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                  borderRadius: '9999px'
+                }}
               >
                 {cat}
               </button>
@@ -246,37 +311,74 @@ export const EquipmentSection = () => {
           </div>
 
           {/* Scrollable List of All Exercises */}
-          <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingRight: '4px' }}>
-            {filteredDirectory.map((ex) => (
-              <div
-                key={ex.id}
-                onClick={() => handleSelectFromDirectory(ex)}
-                className="card card-hover"
-                style={{
-                  padding: '0.85rem 1rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                  cursor: 'pointer',
-                  background: 'var(--bg-card-secondary)',
-                  border: '1px solid var(--border-card)',
-                  borderRadius: '12px'
-                }}
-              >
-                <span style={{ fontSize: '1.35rem', flexShrink: 0 }}>{ex.symbol}</span>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 700, lineHeight: 1.3, marginBottom: '2px', color: 'var(--text-main)' }}>
-                    {ex.name}
-                  </div>
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
-                    <span style={{ color: '#10b981', fontWeight: 600 }}>{ex.category}</span>
-                    <span>•</span>
-                    <span>{ex.startingWeight.split('|')[0].trim()}</span>
-                  </div>
-                </div>
-                <ChevronRight size={16} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+          <div
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              paddingRight: '4px',
+              minHeight: '200px'
+            }}
+          >
+            {filteredDirectory.length === 0 ? (
+              <div style={{ textAlign: 'center', padding: '2rem 1rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                No exercises found in directory.
               </div>
-            ))}
+            ) : (
+              filteredDirectory.map((ex) => (
+                <div
+                  key={ex.id}
+                  onClick={() => handleSelectFromDirectory(ex)}
+                  className="card-hover"
+                  style={{
+                    padding: '0.75rem 0.85rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.75rem',
+                    cursor: 'pointer',
+                    background: 'var(--bg-card-secondary)',
+                    border: '1px solid var(--border-card)',
+                    borderRadius: '12px',
+                    flexShrink: 0,
+                    minWidth: 0,
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <span style={{ fontSize: '1.4rem', flexShrink: 0, lineHeight: 1 }}>{ex.symbol}</span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontSize: '0.86rem',
+                        fontWeight: 700,
+                        lineHeight: 1.35,
+                        color: 'var(--text-main)',
+                        marginBottom: '3px',
+                        wordBreak: 'break-word'
+                      }}
+                    >
+                      {ex.name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '0.72rem',
+                        color: 'var(--text-muted)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.35rem',
+                        flexWrap: 'wrap'
+                      }}
+                    >
+                      <span style={{ color: '#10b981', fontWeight: 600 }}>{ex.category}</span>
+                      <span>•</span>
+                      <span>{ex.startingWeight.split('|')[0].trim()}</span>
+                    </div>
+                  </div>
+                  <ChevronRight size={16} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
