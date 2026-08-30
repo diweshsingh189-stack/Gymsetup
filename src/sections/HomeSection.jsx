@@ -473,6 +473,13 @@ export const HomeSection = () => {
         @media (max-width: 992px) {
           .hero-banner-grid {
             grid-template-columns: 1fr !important;
+            gap: 1.75rem !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .hero-physique-blink {
+            height: 380px !important;
+            max-width: 100% !important;
           }
         }
       `}</style>

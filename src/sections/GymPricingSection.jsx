@@ -84,7 +84,7 @@ export const GymPricingSection = () => {
       <div className="card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Search Box */}
-          <div style={{ position: 'relative', flex: 1, minWidth: '260px' }}>
+          <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 240px)' }}>
             <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#10b981' }} />
             <input
               type="text"
@@ -144,7 +144,7 @@ export const GymPricingSection = () => {
         </div>
 
         {/* Filter Status Badge */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.75rem', fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.75rem', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap', gap: '0.5rem' }}>
           <span>
             Showing <strong>{filteredGyms.length}</strong> {selectedCity === 'All' ? 'gyms across India' : `gyms in ${selectedCity}`}
           </span>
@@ -160,7 +160,7 @@ export const GymPricingSection = () => {
       </div>
 
       {/* Gym Cards Grid with Real Photos */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.75rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 290px), 1fr))', gap: '1.5rem' }} className="gym-cards-grid">
         {filteredGyms.map((gym) => (
           <div
             key={gym.id}

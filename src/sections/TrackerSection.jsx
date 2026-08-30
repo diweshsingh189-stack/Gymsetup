@@ -318,7 +318,7 @@ export const TrackerSection = () => {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 155px), 1fr))', gap: '0.75rem' }}>
           {QUICK_PRESETS.map((p, idx) => (
             <button
               key={idx}

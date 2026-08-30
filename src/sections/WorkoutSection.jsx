@@ -122,7 +122,7 @@ export const WorkoutSection = () => {
                 border: '1px solid var(--border-card)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', flex: 1, minWidth: '260px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', flex: 1, minWidth: 'min(100%, 240px)' }}>
                 <div style={{
                   width: '42px',
                   height: '42px',

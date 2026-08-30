@@ -67,7 +67,7 @@ export const NutritionSection = () => {
               <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.4rem' }}>
                 Your Primary Goal:
               </label>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {[
                   { id: 'maintain', label: 'Overall Fitness' },
                   { id: 'muscle', label: 'Build Muscle' },
@@ -77,7 +77,7 @@ export const NutritionSection = () => {
                     key={g.id}
                     onClick={() => setGoal(g.id)}
                     className={`btn btn-sm ${goal === g.id ? 'btn-primary' : 'btn-secondary'}`}
-                    style={{ flex: 1, fontSize: '0.8rem', borderRadius: 'var(--radius-sm)' }}
+                    style={{ flex: 1, minWidth: '95px', fontSize: '0.8rem', borderRadius: 'var(--radius-sm)' }}
                   >
                     {g.label}
                   </button>
