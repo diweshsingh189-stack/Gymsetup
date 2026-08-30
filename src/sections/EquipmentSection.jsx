@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { useApp } from '../context/AppContext';
 import { EQUIPMENT_CATEGORIES, EQUIPMENT_DATA } from '../data/equipmentData';
 import { ALL_EXERCISES_DIRECTORY } from '../data/allExercisesData';
@@ -403,43 +404,50 @@ export const EquipmentSection = () => {
         </div>
       </div>
 
-      {/* Machine Detail Modal */}
-      {selectedMachine && (
+      {/* Machine Detail Modal - Direct Body Portal for 100% Viewport Centering */}
+      {selectedMachine && ReactDOM.createPortal(
         <div
           onClick={() => setSelectedMachine(null)}
           style={{
             position: 'fixed',
-            inset: 0,
-            background: 'rgba(0, 0, 0, 0.82)',
-            backdropFilter: 'blur(10px)',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0, 0, 0, 0.85)',
+            backdropFilter: 'blur(12px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            zIndex: 200,
-            padding: '1.25rem'
+            zIndex: 999999,
+            padding: '1.25rem',
+            boxSizing: 'border-box'
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="card card-glow-emerald animate-fade-in"
+            className="animate-fade-in"
             style={{
-              maxWidth: '720px',
+              maxWidth: '680px',
               width: '100%',
-              maxHeight: '88vh',
+              maxHeight: '86vh',
               display: 'flex',
               flexDirection: 'column',
               borderRadius: '24px',
               padding: 0,
               overflow: 'hidden',
               background: 'var(--bg-card)',
-              border: '1px solid rgba(16, 185, 129, 0.35)',
-              boxShadow: '0 25px 60px rgba(0, 0, 0, 0.6)'
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              boxShadow: '0 25px 70px rgba(0, 0, 0, 0.85)',
+              margin: 'auto'
             }}
           >
             {/* Modal Header */}
             <div
               style={{
-                padding: '1.5rem 1.75rem',
+                padding: '1.25rem 1.75rem',
                 borderBottom: '1px solid var(--border-subtle)',
                 background: 'var(--bg-sidebar)',
                 display: 'flex',
@@ -456,7 +464,7 @@ export const EquipmentSection = () => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                   <span style={{ fontSize: '1.8rem' }}>{selectedMachine.symbol || '🏋️'}</span>
-                  <h2 style={{ fontSize: '1.45rem', fontWeight: 800 }}>{selectedMachine.name}</h2>
+                  <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>{selectedMachine.name}</h2>
                 </div>
               </div>
 
@@ -464,7 +472,7 @@ export const EquipmentSection = () => {
                 onClick={() => setSelectedMachine(null)}
                 className="btn btn-secondary btn-icon"
                 style={{ width: '38px', height: '38px', flexShrink: 0, borderRadius: '50%' }}
-                title="Close"
+                title="Close (Esc)"
               >
                 <X size={18} />
               </button>
@@ -585,7 +593,8 @@ export const EquipmentSection = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <style>{`
