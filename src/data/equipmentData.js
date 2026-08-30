@@ -255,5 +255,158 @@ export const EQUIPMENT_DATA = [
       'Note that the bar path is fixed vertically, so adjust your foot placement slightly forward on squats.'
     ],
     startingWeight: 'Bar alone (counterbalanced to ~7–10 kg / 15–20 lbs)'
+  },
+  {
+    id: 'pec-deck-fly',
+    name: 'Pec Deck / Butterfly Fly Machine',
+    symbol: '🦋',
+    category: 'upper',
+    primaryMuscle: 'Chest (Pectorals Isolation)',
+    secondaryMuscles: ['Front Shoulders', 'Serratus'],
+    difficulty: 'Very Beginner Friendly',
+    iconName: 'Activity',
+    imageType: 'pec-deck',
+    shortDesc: 'Pure chest isolation that builds inner and outer chest definition with zero wrist strain.',
+    adjustment: 'Adjust seat height so handles/pads align with mid-chest. Set starting arm levers to a comfortable chest stretch.',
+    steps: [
+      'Sit tall with your back and head firmly pressed against the backrest.',
+      'Place forearms against the vertical pads or grip the handles with elbows slightly bent.',
+      'Exhale and bring your arms together in a smooth hugging arc in front of your chest.',
+      'Squeeze your chest muscles hard at the peak for 1 second.',
+      'Inhale as you slowly let your arms return until you feel a gentle, safe stretch in the chest.'
+    ],
+    safetyTips: [
+      'Do not set the starting lever angle too far back to prevent shoulder strain.',
+      'Keep your elbows slightly bent throughout the movement; never lock them straight.',
+      'Keep your shoulder blades pinched back against the seat pad.'
+    ],
+    startingWeight: 'Women: 10–20 kg (20–45 lbs) | Men: 20–35 kg (45–75 lbs)'
+  },
+  {
+    id: 'seated-shoulder-press-machine',
+    name: 'Seated Overhead Shoulder Press Machine',
+    symbol: '🥥',
+    category: 'upper',
+    primaryMuscle: 'Shoulders (Deltoids)',
+    secondaryMuscles: ['Triceps', 'Upper Trapezius'],
+    difficulty: 'Beginner Friendly',
+    iconName: 'ChevronUp',
+    imageType: 'shoulder-press',
+    shortDesc: 'Safely develops broad shoulders and overhead pressing strength on a guided track.',
+    adjustment: 'Adjust seat height so the handles start roughly level with your ears or chin.',
+    steps: [
+      'Sit back against the pad with feet planted firmly on the floor for solid balance.',
+      'Grip the handles with an overhand or neutral grip, keeping elbows angled 45° forward.',
+      'Press upward in a smooth, continuous motion until arms are almost straight overhead.',
+      'Pause for 1 second at the top without locking out your elbows.',
+      'Lower the weight with a 2-second controlled descent back to ear level.'
+    ],
+    safetyTips: [
+      'Do not arch your lower back off the pad to press the weight.',
+      'Keep your head resting against the back cushion rather than poking your neck forward.',
+      'Avoid pressing with elbows flared straight out sideways at 90 degrees.'
+    ],
+    startingWeight: 'Women: 10–18 kg (20–40 lbs) | Men: 15–30 kg (30–65 lbs)'
+  },
+  {
+    id: 'assisted-pullup-dip',
+    name: 'Assisted Pull-Up & Dip Machine',
+    symbol: '🪜',
+    category: 'upper',
+    primaryMuscle: 'Upper Back / Lats & Triceps',
+    secondaryMuscles: ['Biceps', 'Chest', 'Shoulders'],
+    difficulty: 'Counterweighted Progression',
+    iconName: 'ArrowUpCircle',
+    imageType: 'assisted-pullup',
+    shortDesc: 'Uses a counterbalanced weight pad to help beginners master full pull-ups and dips.',
+    adjustment: 'Select weight on pin stack. CRITICAL: HEAVIER pin weight provides MORE assistance (easier).',
+    steps: [
+      'Set the pin to about 60–70% of your body weight for your first trial.',
+      'Step up onto the foot peg, grip the pull-up or dip handles firmly.',
+      'Place one knee at a time onto the cushioned assistance pad.',
+      'Pull your chest upward to the bar or press down to lock out dips smoothly.',
+      'Step off carefully one foot at a time when finished before releasing the pad.'
+    ],
+    safetyTips: [
+      'Remember: more pin weight = easier assistance. Less pin weight = harder.',
+      'Never let the assistance pad slam up when stepping off.',
+      'Keep your core braced so your body stays stable and upright.'
+    ],
+    startingWeight: 'Pin setting: 30–50 kg of assistance (reduces your effective body weight)'
+  },
+  {
+    id: 'elliptical-cross-trainer',
+    name: 'Elliptical Cross Trainer',
+    symbol: '🏃‍♀️',
+    category: 'cardio',
+    primaryMuscle: 'Cardiovascular & Full Body',
+    secondaryMuscles: ['Quads', 'Glutes', 'Hamstrings', 'Arms'],
+    difficulty: 'Zero Impact Cardio',
+    iconName: 'Flame',
+    imageType: 'elliptical',
+    shortDesc: 'Smooth gliding cardio that burns calories and warms up joints with zero foot impact.',
+    adjustment: 'Step onto the wide pedals, hold the moving handles, and press "Quick Start".',
+    steps: [
+      'Step onto the pedals and take hold of the dual action moving arm handles.',
+      'Begin pedaling in an elliptical oval motion to power on the digital display.',
+      'Press "Quick Start" and set resistance level to 4–7.',
+      'Push and pull the hand levers actively to engage upper back and arm muscles simultaneously.',
+      'Maintain an upright posture without leaning your body weight forward onto the console.'
+    ],
+    safetyTips: [
+      'Keep your heels flat on the pedals instead of standing on your tiptoes.',
+      'Look straight ahead with shoulders relaxed to protect neck alignment.'
+    ],
+    startingWeight: 'Resistance: Level 4–6 | RPM: 55–70 (10–15 mins cardio)'
+  },
+  {
+    id: 'preacher-curl-machine',
+    name: 'Seated Preacher Arm Curl Machine',
+    symbol: '💪',
+    category: 'cables',
+    primaryMuscle: 'Biceps (Biceps Brachii)',
+    secondaryMuscles: ['Brachialis', 'Forearms'],
+    difficulty: 'Strict Bicep Isolation',
+    iconName: 'Zap',
+    imageType: 'preacher-curl',
+    shortDesc: 'Locks upper arms against a slanted cushion to prevent swinging and build peak biceps.',
+    adjustment: 'Adjust seat height so your armpits rest comfortably at the top edge of the slanted arm pad.',
+    steps: [
+      'Sit down and place your upper arms flat against the angled preacher pad.',
+      'Grip the revolving handles with palms facing upward (underhand grip).',
+      'Curl the handles up toward your face by flexing your biceps only.',
+      'Hold the peak contraction at the top for 1 full second.',
+      'Slowly lower the weight with a 3-second negative descent until arms are almost fully extended.'
+    ],
+    safetyTips: [
+      'Do not hyperextend or snap your elbows at the very bottom of the rep.',
+      'Keep your chest against the top cushion so your body cannot swing back.'
+    ],
+    startingWeight: 'Women: 7.5–15 kg (15–30 lbs) | Men: 12.5–25 kg (25–55 lbs)'
+  },
+  {
+    id: 'cable-tricep-pushdown',
+    name: 'Cable Tricep Pushdown Station',
+    symbol: '⚡',
+    category: 'cables',
+    primaryMuscle: 'Triceps (All 3 Heads)',
+    secondaryMuscles: ['Forearms', 'Core Stabilizers'],
+    difficulty: 'Zero Intimidation',
+    iconName: 'GitCommit',
+    imageType: 'tricep-pushdown',
+    shortDesc: 'The #1 exercise to tone and strengthen the back of your arms with smooth cable resistance.',
+    adjustment: 'Set the cable pulley to the topmost height pin and clip a Rope or V-Bar attachment.',
+    steps: [
+      'Stand facing the cable machine with a slight forward lean from the hips.',
+      'Grip the rope or bar and tuck your elbows tightly against your ribcage at a 90° angle.',
+      'Press downward by extending your elbows until your arms are locked straight down.',
+      'If using a rope, spread the ends outward at the bottom for an intense tricep squeeze.',
+      'Slowly allow the handle to rise back up to chest level while keeping your elbows stationary.'
+    ],
+    safetyTips: [
+      'Do not let your elbows flare outward or swing forward and backward.',
+      'Keep your shoulders down away from your ears; press only with your triceps.'
+    ],
+    startingWeight: 'Women: 7.5–15 kg (15–30 lbs) | Men: 15–25 kg (30–55 lbs)'
   }
 ];

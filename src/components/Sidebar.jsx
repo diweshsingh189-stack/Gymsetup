@@ -33,7 +33,7 @@ const NAV_ITEMS = [
     items: [
       { id: 'roadmap', num: '04', label: '4. Beginner Roadmap', icon: Milestone, badge: 'Milestones' },
       { id: 'safety', num: '05', label: '5. Gym Safety & DOs/DON\'Ts', icon: ShieldCheck, badge: 'Crucial' },
-      { id: 'equipment', num: '06', label: '6. Equipment Guide', icon: Cpu, badge: '10+ Machines' },
+      { id: 'equipment', num: '06', label: '6. Equipment Guide', icon: Cpu, badge: '16+ Machines' },
       { id: 'warmup', num: '07', label: '7. Warm-up & Cool-down', icon: Flame, badge: 'Mobility' }
     ]
   },
