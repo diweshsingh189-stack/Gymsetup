@@ -113,14 +113,23 @@ export const EquipmentSection = () => {
       <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1.5rem' }}>
           <div style={{ maxWidth: '750px' }}>
-            <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
-              <Cpu size={14} /> Section 6 of 13 — Complete Knowledge Hub
-            </span>
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+              <span className="badge badge-emerald">
+                <Cpu size={14} /> Section 6 of 14 — Complete Knowledge Hub
+              </span>
+              <span className="badge badge-cyan">
+                <Flame size={14} /> 16 Complete Gym Machines
+              </span>
+              <span className="badge badge-amber">
+                <BookOpen size={14} /> 25+ Exercise Directory
+              </span>
+            </div>
+
             <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
               Gym Equipment, Machines & Exercise Explorer
             </h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-              Har machine aur exercise ki poori knowledge: seat height, pin adjustment, starting weight, aur form ka sahi tareeqa. Niche kisi bhi exercise par click karein ya Search use karein!
+              Total <strong>16 gym machines</strong> aur <strong>25+ exercises</strong> ki complete knowledge: seat height, pin adjustment, starting weight, aur step-by-step form ka sahi tareeqa!
             </p>
           </div>
 
@@ -157,18 +166,46 @@ export const EquipmentSection = () => {
           )}
         </div>
 
-        {/* Category Pills */}
-        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+        {/* Category Pills with Live Dynamic Count Badges */}
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
           {EQUIPMENT_CATEGORIES.map((cat) => {
             const isSelected = equipmentCategoryFilter === cat.id;
+            const count = cat.id === 'all'
+              ? EQUIPMENT_DATA.length
+              : EQUIPMENT_DATA.filter((i) => i.category === cat.id).length;
+
             return (
               <button
                 key={cat.id}
-                onClick={() => setEquipmentCategoryFilter(cat.id)}
+                onClick={() => {
+                  setEquipmentCategoryFilter(cat.id);
+                  playClickBeep();
+                }}
                 className={`btn btn-sm ${isSelected ? 'btn-primary' : 'btn-secondary'}`}
-                style={{ borderRadius: '9999px', fontSize: '0.85rem' }}
+                style={{
+                  borderRadius: '9999px',
+                  fontSize: '0.84rem',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.38rem 0.85rem',
+                  fontWeight: isSelected ? 800 : 500
+                }}
               >
-                {cat.label}
+                <span>{cat.label}</span>
+                <span
+                  style={{
+                    fontSize: '0.72rem',
+                    background: isSelected ? 'rgba(255,255,255,0.28)' : 'var(--bg-card)',
+                    border: isSelected ? 'none' : '1px solid var(--border-card)',
+                    padding: '1px 7px',
+                    borderRadius: '9999px',
+                    fontWeight: 800,
+                    color: isSelected ? '#ffffff' : '#10b981'
+                  }}
+                >
+                  {count}
+                </span>
               </button>
             );
           })}
