@@ -131,22 +131,24 @@ export const HomeSection = () => {
                 justifyContent: 'space-between',
                 boxShadow: '0 8px 30px rgba(0, 0, 0, 0.35)',
                 backdropFilter: 'blur(8px)',
-                transition: 'all 0.2s ease'
+                transition: 'all 0.2s ease',
+                gap: '0.75rem',
+                minWidth: 0
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <Search size={20} color="#10b981" />
-                <span style={{ fontSize: '0.92rem', color: 'var(--text-muted)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0, flex: 1 }}>
+                <Search size={20} color="#10b981" style={{ flexShrink: 0 }} />
+                <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   Search any gym machine, dumbbell exercise, or stretch...
                 </span>
               </div>
-              <span className="badge badge-emerald" style={{ fontSize: '0.72rem', padding: '0.2rem 0.6rem' }}>
+              <span className="badge badge-emerald" style={{ fontSize: '0.72rem', padding: '0.2rem 0.6rem', flexShrink: 0 }}>
                 🔍 All Exercises
               </span>
             </div>
           </div>
 
-          {/* Right Column: Trending Full Physique (Biceps, Forearms & Shoulders) Image Frame with Subtle Glow Blink */}
+          {/* Right Column: Trending Full Physique (Biceps, Forearms & Shoulders) Image Frame */}
           <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div
               className="hero-physique-blink"
@@ -154,10 +156,11 @@ export const HomeSection = () => {
                 position: 'relative',
                 width: '100%',
                 maxWidth: '430px',
-                height: '480px',
+                height: '520px',
                 borderRadius: '24px',
                 overflow: 'hidden',
                 border: '2px solid rgba(16, 185, 129, 0.55)',
+                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
                 transition: 'transform 0.3s ease'
               }}
             >
@@ -169,7 +172,7 @@ export const HomeSection = () => {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  objectPosition: 'center 8%',
+                  objectPosition: 'center 16%',
                   display: 'block'
                 }}
               />
@@ -178,70 +181,74 @@ export const HomeSection = () => {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 50%, rgba(9, 13, 22, 0.85) 100%)'
+                background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(9, 13, 22, 0.9) 100%)'
               }} />
 
-              {/* Top Trending Badge */}
+              {/* Top Trending Badge - Positioned clearly ABOVE the head */}
               <div style={{
                 position: 'absolute',
-                top: '16px',
-                left: '16px',
+                top: '12px',
+                left: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.4rem',
-                background: 'rgba(0, 0, 0, 0.8)',
-                backdropFilter: 'blur(8px)',
+                background: 'rgba(0, 0, 0, 0.85)',
+                backdropFilter: 'blur(10px)',
                 padding: '0.35rem 0.75rem',
                 borderRadius: '9999px',
-                border: '1px solid rgba(245, 158, 11, 0.5)',
+                border: '1px solid rgba(245, 158, 11, 0.6)',
                 color: '#f59e0b',
-                fontSize: '0.78rem',
-                fontWeight: 800
+                fontSize: '0.75rem',
+                fontWeight: 800,
+                boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
+                zIndex: 3
               }}>
-                <Flame size={15} fill="#f59e0b" color="#f59e0b" />
+                <Flame size={14} fill="#f59e0b" color="#f59e0b" />
                 <span>BICEPS • FOREARMS • SHOULDERS</span>
               </div>
 
-              {/* Bottom Stat Card Floating Pill */}
+              {/* Bottom Stat Card Floating Pill - Positioned lower down so entire torso/chest/arms are visible */}
               <div style={{
                 position: 'absolute',
-                bottom: '16px',
-                left: '16px',
-                right: '16px',
-                background: 'rgba(15, 23, 42, 0.88)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(16, 185, 129, 0.4)',
+                bottom: '10px',
+                left: '10px',
+                right: '10px',
+                background: 'rgba(15, 23, 42, 0.92)',
+                backdropFilter: 'blur(14px)',
+                border: '1px solid rgba(16, 185, 129, 0.45)',
                 borderRadius: '14px',
-                padding: '0.85rem 1rem',
+                padding: '0.65rem 0.85rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                boxShadow: '0 8px 25px rgba(0,0,0,0.6)'
+                boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
+                zIndex: 3
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
                   <div style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '10px',
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '8px',
                     background: 'rgba(16, 185, 129, 0.25)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#10b981'
+                    color: '#10b981',
+                    flexShrink: 0
                   }}>
-                    <Dumbbell size={18} />
+                    <Dumbbell size={16} />
                   </div>
-                  <div>
-                    <div style={{ fontSize: '0.85rem', fontWeight: 800, color: '#ffffff' }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       Full Body Muscular Definition
                     </div>
-                    <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 600 }}>
+                    <div style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       Delts, Biceps & Vascular Forearms
                     </div>
                   </div>
                 </div>
 
-                <span className="badge badge-emerald" style={{ fontSize: '0.7rem' }}>
+                <span className="badge badge-emerald" style={{ fontSize: '0.68rem', padding: '0.2rem 0.5rem', flexShrink: 0 }}>
                   🔥 Peak Form
                 </span>
               </div>

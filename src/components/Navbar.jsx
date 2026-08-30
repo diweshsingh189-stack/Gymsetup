@@ -105,15 +105,16 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Middle: Interactive Quick Search with Explorer Trigger */}
-      <div style={{ flex: 1, maxWidth: '420px', margin: '0 1.5rem', display: 'none' }} className="nav-search-bar">
+      {/* Middle: Interactive Quick Search with Explorer Trigger (Desktop Only) */}
+      <div style={{ flex: 1, maxWidth: '380px', margin: '0 1rem', display: 'none', minWidth: 0 }} className="nav-search-bar">
         <div
           onClick={() => openSearchModal()}
           style={{
             position: 'relative',
             cursor: 'pointer',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            minWidth: 0
           }}
         >
           <Search size={16} style={{
@@ -126,16 +127,20 @@ export const Navbar = () => {
           <div
             className="input-control"
             style={{
-              paddingLeft: '40px',
-              paddingRight: '70px',
+              paddingLeft: '38px',
+              paddingRight: '68px',
               height: '38px',
-              fontSize: '0.85rem',
+              fontSize: '0.82rem',
               borderRadius: '9999px',
               background: 'var(--bg-app)',
               display: 'flex',
               alignItems: 'center',
               color: 'var(--text-muted)',
-              border: '1px solid var(--border-card)'
+              border: '1px solid var(--border-card)',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              width: '100%'
             }}
           >
             Search machines, exercises, workouts...
@@ -145,7 +150,7 @@ export const Navbar = () => {
             right: '10px',
             top: '50%',
             transform: 'translateY(-50%)',
-            fontSize: '0.7rem',
+            fontSize: '0.68rem',
             background: 'var(--bg-card-secondary)',
             border: '1px solid var(--border-card)',
             padding: '2px 6px',
@@ -159,8 +164,8 @@ export const Navbar = () => {
       </div>
 
       {/* Right: Quick Action Tools */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-        {/* Mobile Search Button */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
+        {/* Mobile Search Button (Phone & Tablet) */}
         <button
           onClick={() => openSearchModal()}
           className="btn btn-secondary btn-icon mobile-search-btn"
@@ -168,16 +173,16 @@ export const Navbar = () => {
           aria-label="Search"
           style={{ display: 'none' }}
         >
-          <Search size={19} color="#10b981" />
+          <Search size={18} color="#10b981" />
         </button>
 
         {/* Onboarding Quick Jump */}
         <button
           onClick={() => navigateTo('guided-flow')}
           className="btn btn-outline-emerald btn-sm"
-          style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', borderRadius: '9999px' }}
+          style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', borderRadius: '9999px', fontSize: '0.8rem' }}
         >
-          <Sparkles size={15} />
+          <Sparkles size={14} />
           <span className="desktop-only-text">I'm New: Start Here</span>
         </button>
 
@@ -188,7 +193,7 @@ export const Navbar = () => {
           title="Open Rest / Interval Timer"
           aria-label="Open Timer"
         >
-          <Timer size={19} color="#10b981" />
+          <Timer size={18} color="#10b981" />
         </button>
 
         {/* Theme Toggle */}
@@ -198,7 +203,7 @@ export const Navbar = () => {
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           aria-label="Toggle Theme"
         >
-          {theme === 'dark' ? <Sun size={19} color="#f59e0b" /> : <Moon size={19} color="#64748b" />}
+          {theme === 'dark' ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#64748b" />}
         </button>
       </div>
 
@@ -207,23 +212,33 @@ export const Navbar = () => {
           .mobile-menu-btn {
             display: flex !important;
           }
-        }
-        @media (max-width: 767px) {
+          .nav-search-bar {
+            display: none !important;
+          }
           .mobile-search-btn {
             display: flex !important;
           }
+          .brand-sub {
+            display: none !important;
+          }
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1025px) {
           .nav-search-bar {
             display: block !important;
+          }
+          .mobile-search-btn {
+            display: none !important;
           }
           .brand-sub {
             display: block !important;
           }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
           .desktop-only-text {
-            display: none;
+            display: none !important;
+          }
+          .navbar-container {
+            padding: 0 1rem !important;
           }
         }
       `}</style>
