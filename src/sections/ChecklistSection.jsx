@@ -171,7 +171,7 @@ export const ChecklistSection = () => {
                       </div>
 
                       {item.essential && (
-                        <span className="badge badge-amber" style={{ fontSize: '0.68rem', flexShrink: 0 }}>
+                        <span className="badge badge-emerald" style={{ fontSize: '0.68rem', flexShrink: 0 }}>
                           Essential
                         </span>
                       )}
