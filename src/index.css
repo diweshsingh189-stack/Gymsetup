@@ -1,49 +1,13 @@
 /* ==========================================================================
-   GymSetup — Clean, Professional 2-Color Design System
-   Color 1: Emerald Green (#10b981 / #059669) [Accent / Action]
-   Color 2: Slate / Charcoal (#0f172a / #f8fafc) [Neutral Base]
+   GymSetup — Strict 2-Color Design System
+   Color 1: Deep Navy (#0F172A) [Main Background & Primary UI Base]
+   Color 2: Emerald Green (#10B981) [Buttons, Highlights, Active States & Accents]
    ========================================================================== */
 
 :root {
-  /* Light Theme Palette */
-  --bg-app: #f8fafc;
-  --bg-sidebar: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --bg-card-secondary: #f1f5f9;
-  --bg-input: #ffffff;
-  
-  --border-subtle: #e2e8f0;
-  --border-card: #e2e8f0;
-  --border-focus: #10b981;
-
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-subtle: #94a3b8;
-  
-  --primary-emerald: #059669;
-  --primary-emerald-hover: #047857;
-  --primary-emerald-glow: rgba(16, 185, 129, 0.12);
-
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-  
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
-  --sidebar-width: 300px;
-  --navbar-height: 68px;
-  --radius-lg: 16px;
-  --radius-md: 12px;
-  --radius-sm: 8px;
-  --radius-full: 9999px;
-}
-
-.dark {
-  /* Dark Theme Palette (Obsidian & Crisp Slate) */
-  --bg-app: #0b0f19;
-  --bg-sidebar: #0f172a;
+  /* Strict 2-Color Theme Palette (Deep Navy #0F172A & Emerald #10B981) */
+  --bg-app: #0f172a;
+  --bg-sidebar: #0b1120;
   --bg-card: #131d31;
   --bg-card-hover: #1a2742;
   --bg-card-secondary: #1a243b;
@@ -64,6 +28,37 @@
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.45);
+  
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --sidebar-width: 300px;
+  --navbar-height: 68px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-full: 9999px;
+}
+
+.dark {
+  --bg-app: #0f172a;
+  --bg-sidebar: #0b1120;
+  --bg-card: #131d31;
+  --bg-card-hover: #1a2742;
+  --bg-card-secondary: #1a243b;
+  --bg-input: #0b1120;
+  
+  --border-subtle: #1e293b;
+  --border-card: #1e2e4a;
+  --border-focus: #10b981;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  
+  --primary-emerald: #10b981;
+  --primary-emerald-hover: #059669;
+  --primary-emerald-glow: rgba(16, 185, 129, 0.15);
 }
 
 /* Base Styles */
