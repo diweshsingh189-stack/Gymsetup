@@ -5,21 +5,16 @@ import {
   Search,
   X,
   Dumbbell,
-  Shield,
-  Clock,
-  PlusCircle,
   Timer,
   ChevronRight,
-  Sparkles,
-  CheckCircle2,
-  AlertTriangle,
-  Layers,
-  ArrowRight,
+  ArrowLeft,
   Flame,
-  Info,
-  BookOpen
+  Shield,
+  Layers,
+  PlusCircle,
+  Sparkles
 } from 'lucide-react';
-import { playSuccessChime, playClickBeep } from '../utils/soundEffects';
+import { playClickBeep } from '../utils/soundEffects';
 
 export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
   const { openTimer, addWorkoutLog } = useApp();
@@ -38,13 +33,18 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
       setMobileView('list');
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') onClose();
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -100,62 +100,66 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
       style={{
         position: 'fixed',
         inset: 0,
-        background: 'rgba(0, 0, 0, 0.85)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        zIndex: 150,
+        background: 'rgba(11, 17, 32, 0.85)',
+        backdropFilter: 'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0.75rem'
+        zIndex: 100,
+        padding: '1rem'
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="card"
         style={{
-          maxWidth: '1280px',
-          width: '96vw',
-          maxHeight: '92vh',
-          height: 'min(860px, 92vh)',
+          width: 'min(960px, 96vw)',
+          height: 'min(82vh, 680px)',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--border-card)',
+          borderRadius: 'var(--radius-lg)',
           display: 'flex',
           flexDirection: 'column',
-          borderRadius: '20px',
-          padding: '0',
-          overflow: 'hidden',
-          background: 'var(--bg-sidebar)',
-          border: '1px solid rgba(6, 182, 212, 0.4)',
-          boxShadow: '0 25px 70px rgba(0, 0, 0, 0.75)'
+          padding: 0,
+          boxShadow: 'var(--shadow-modal)',
+          overflow: 'hidden'
         }}
       >
-        {/* Top Header Search Bar */}
+        {/* Search Modal Header */}
         <div style={{
           padding: '1rem 1.25rem',
           borderBottom: '1px solid var(--border-subtle)',
-          background: 'var(--bg-card)',
           display: 'flex',
           alignItems: 'center',
           gap: '0.75rem',
-          flexShrink: 0
+          background: 'var(--bg-card-secondary)'
         }}>
-          <div style={{ position: 'relative', flex: 1, minWidth: 0 }}>
-            <Search size={20} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#06B6D4' }} />
+          {mobileView === 'detail' && (
+            <button
+              onClick={() => setMobileView('list')}
+              className="btn btn-ghost btn-icon mobile-back-btn"
+              style={{ display: 'none' }}
+            >
+              <ArrowLeft size={18} />
+            </button>
+          )}
+
+          <div style={{ position: 'relative', flex: 1 }}>
+            <Search size={17} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#06B6D4' }} />
             <input
               type="text"
               autoFocus
-              placeholder="Search machines & exercises..."
+              placeholder="Search exercise, muscle (chest, lats, quads, bicep), machine..."
               className="input-control"
               value={searchQuery}
-              onChange={(e) => {
-                setSearchQuery(e.target.value);
-                setMobileView('list');
-              }}
+              onChange={(e) => setSearchQuery(e.target.value)}
               style={{
-                paddingLeft: '44px',
+                paddingLeft: '38px',
                 paddingRight: '36px',
-                height: '44px',
-                fontSize: '0.95rem',
-                borderRadius: '12px',
-                background: 'var(--bg-input)'
+                height: '42px',
+                fontSize: '0.92rem',
+                borderRadius: 'var(--radius-md)'
               }}
             />
             {searchQuery && (
@@ -163,14 +167,13 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                 onClick={() => setSearchQuery('')}
                 style={{
                   position: 'absolute',
-                  right: '12px',
+                  right: '10px',
                   top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'none',
                   border: 'none',
-                  color: 'var(--text-muted)',
                   cursor: 'pointer',
-                  padding: '4px'
+                  color: 'var(--text-muted)'
                 }}
               >
                 <X size={16} />
@@ -178,50 +181,38 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
             )}
           </div>
 
-          {/* Close button */}
           <button
             onClick={onClose}
             className="btn btn-secondary btn-icon"
-            style={{ width: '40px', height: '40px', borderRadius: '10px', flexShrink: 0 }}
-            title="Close Search (Esc)"
+            style={{ width: '38px', height: '38px' }}
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
-        {/* Categories Bar */}
+        {/* Category Pills Filter */}
         <div style={{
           padding: '0.65rem 1.25rem',
-          background: 'var(--bg-card-secondary)',
           borderBottom: '1px solid var(--border-subtle)',
           display: 'flex',
           gap: '0.4rem',
           overflowX: 'auto',
-          alignItems: 'center',
-          flexShrink: 0,
-          WebkitOverflowScrolling: 'touch'
+          background: 'var(--bg-app)',
+          scrollbarWidth: 'none'
         }}>
-          <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', whiteSpace: 'nowrap', marginRight: '0.3rem', letterSpacing: '0.04em' }}>
-            CATEGORIES:
-          </span>
           {categories.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
               <button
                 key={cat}
-                onClick={() => {
-                  setSelectedCategory(cat);
-                  setMobileView('list');
-                  playClickBeep();
-                }}
+                onClick={() => setSelectedCategory(cat)}
                 className={`btn btn-sm ${isSelected ? 'btn-primary' : 'btn-secondary'}`}
                 style={{
-                  fontSize: '0.78rem',
-                  padding: '0.28rem 0.75rem',
                   borderRadius: '9999px',
+                  fontSize: '0.78rem',
+                  padding: '0.25rem 0.75rem',
                   whiteSpace: 'nowrap',
-                  fontWeight: isSelected ? 700 : 500,
-                  flexShrink: 0
+                  height: '30px'
                 }}
               >
                 {cat}
@@ -230,296 +221,199 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
           })}
         </div>
 
-        {/* 2-Column Body Content: Left Search Results + Right Full Details Panel */}
-        <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '380px 1fr', overflow: 'hidden', minHeight: 0 }} className="search-modal-grid">
-          {/* Left Column: All Exercises & Matching Search Results List */}
+        {/* 2-Pane Content View */}
+        <div style={{ flex: 1, display: 'flex', minHeight: 0, position: 'relative' }}>
+          {/* Left Pane: Exercise List */}
           <div
-            className={`search-list-column ${mobileView === 'detail' ? 'mobile-hidden' : ''}`}
+            className={`search-list-pane ${mobileView === 'detail' ? 'hide-mobile' : ''}`}
             style={{
+              width: '42%',
               borderRight: '1px solid var(--border-subtle)',
-              background: 'var(--bg-app)',
               overflowY: 'auto',
-              padding: '1rem',
+              padding: '0.5rem',
               display: 'flex',
               flexDirection: 'column',
-              gap: '0.65rem'
+              gap: '0.35rem'
             }}
           >
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '0 0.25rem 0.4rem 0.25rem',
-              borderBottom: '1px solid var(--border-subtle)',
-              marginBottom: '0.25rem',
-              flexShrink: 0
-            }}>
-              <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                <BookOpen size={14} color="#06B6D4" />
-                EXERCISES ({filteredList.length})
-              </span>
-              <span style={{ fontSize: '0.74rem', color: '#06B6D4', fontWeight: 700 }}>
-                Tap to view
-              </span>
+            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', padding: '0.35rem 0.5rem', fontWeight: 600 }}>
+              {filteredList.length} Exercises Available
             </div>
 
             {filteredList.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '3rem 1rem', color: 'var(--text-muted)' }}>
-                <Search size={32} style={{ margin: '0 auto 0.75rem auto', opacity: 0.5 }} />
-                <p style={{ fontSize: '0.92rem', fontWeight: 700 }}>No exercises found</p>
-                <p style={{ fontSize: '0.8rem', marginTop: '0.25rem' }}>Try searching by muscle name like "chest" or "bicep".</p>
+              <div style={{ textAlign: 'center', padding: '2.5rem 1rem', color: 'var(--text-muted)' }}>
+                <Dumbbell size={32} style={{ margin: '0 auto 0.75rem auto', opacity: 0.4 }} />
+                <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>No exercises found</div>
+                <div style={{ fontSize: '0.78rem', marginTop: '0.25rem' }}>Try searching by muscle or machine name.</div>
               </div>
             ) : (
-              filteredList.map((item) => {
-                const isSelected = selectedExercise?.id === item.id;
+              filteredList.map((ex) => {
+                const isSelected = selectedExercise?.id === ex.id;
                 return (
                   <div
-                    key={item.id}
-                    onClick={() => handleSelectExercise(item)}
+                    key={ex.id}
+                    onClick={() => handleSelectExercise(ex)}
                     style={{
-                      flexShrink: 0,
-                      width: '100%',
-                      padding: '0.75rem 0.95rem',
+                      padding: '0.65rem 0.75rem',
+                      borderRadius: 'var(--radius-md)',
+                      background: isSelected ? 'rgba(6, 182, 212, 0.12)' : 'transparent',
+                      border: isSelected ? '1px solid var(--primary-cyan-border)' : '1px solid transparent',
+                      cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
-                      gap: '0.75rem',
-                      borderRadius: '12px',
-                      cursor: 'pointer',
-                      background: isSelected
-                        ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.22) 0%, rgba(6, 182, 212, 0.14) 100%)'
-                        : 'var(--bg-card)',
-                      border: isSelected ? '1.5px solid #06B6D4' : '1px solid var(--border-card)',
-                      boxShadow: isSelected ? '0 4px 18px rgba(6, 182, 212, 0.25)' : 'none',
-                      transition: 'all 0.15s ease',
-                      boxSizing: 'border-box'
+                      justifyContent: 'space-between',
+                      transition: 'background var(--transition-fast)'
                     }}
                   >
-                    {/* Emoji Symbol Box */}
-                    <div style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: isSelected ? 'rgba(6, 182, 212, 0.2)' : 'var(--bg-card-secondary)',
-                      border: isSelected ? '1px solid #06B6D4' : '1px solid var(--border-card)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.35rem',
-                      flexShrink: 0
-                    }}>
-                      {item.symbol}
-                    </div>
-
-                    {/* Exercise Name */}
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{
-                        fontSize: '0.88rem',
-                        fontWeight: 700,
-                        lineHeight: 1.35,
-                        color: isSelected ? '#06B6D4' : 'var(--text-main)',
-                        marginBottom: '2px',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap'
-                      }}>
-                        {item.name}
-                      </div>
-
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-                        <span style={{ color: '#06B6D4', fontWeight: 600 }}>{item.category}</span>
-                        <span>•</span>
-                        <span>{item.equipmentType}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
+                      <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>{ex.symbol}</span>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{
+                          fontSize: '0.86rem',
+                          fontWeight: 700,
+                          color: isSelected ? '#06B6D4' : 'var(--text-main)',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap'
+                        }}>
+                          {ex.name}
+                        </div>
+                        <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                          <span>{ex.muscleGroup}</span>
+                          <span>•</span>
+                          <span>{ex.equipmentType}</span>
+                        </div>
                       </div>
                     </div>
-
-                    <ChevronRight size={16} color={isSelected ? '#06B6D4' : 'var(--text-muted)'} style={{ flexShrink: 0 }} />
+                    <ChevronRight size={15} color={isSelected ? '#06B6D4' : 'var(--text-subtle)'} />
                   </div>
                 );
               })
             )}
           </div>
 
-          {/* Right Column: Full Complete Details & Step-by-Step Knowledge */}
-          {selectedExercise ? (
-            <div
-              className={`search-detail-column ${mobileView === 'list' ? 'mobile-hidden' : ''}`}
-              style={{ overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', background: 'var(--bg-sidebar)' }}
-            >
-              {/* Mobile Back to List Button */}
-              <div className="mobile-back-row" style={{ display: 'none' }}>
-                <button
-                  onClick={() => setMobileView('list')}
-                  className="btn btn-secondary btn-sm"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', borderRadius: '9999px', fontSize: '0.82rem' }}
-                >
-                  <span>← Back to all exercises</span>
-                </button>
-              </div>
-
-              {/* Exercise Header */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', minWidth: 0, flex: 1 }}>
-                  <div style={{
-                    width: '52px',
-                    height: '52px',
-                    borderRadius: '16px',
-                    background: 'rgba(6, 182, 212, 0.15)',
-                    border: '1px solid rgba(6, 182, 212, 0.45)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.75rem',
-                    flexShrink: 0
-                  }}>
-                    {selectedExercise.symbol}
-                  </div>
-
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
-                      <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>{selectedExercise.category}</span>
-                      <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{selectedExercise.equipmentType}</span>
-                      <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{selectedExercise.difficulty}</span>
+          {/* Right Pane: Exercise Detail */}
+          <div
+            className={`search-detail-pane ${mobileView === 'list' ? 'hide-mobile' : ''}`}
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '1.25rem 1.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.15rem'
+            }}
+          >
+            {selectedExercise ? (
+              <>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.75rem' }}>
+                  <div>
+                    <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                      <span className="badge badge-cyan">{selectedExercise.category}</span>
+                      <span className="badge badge-neutral">{selectedExercise.difficulty}</span>
                     </div>
-                    <h2 style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)', fontWeight: 800 }}>{selectedExercise.name}</h2>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '0.2rem', lineHeight: 1.5 }}>{selectedExercise.shortDesc}</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <span style={{ fontSize: '1.6rem' }}>{selectedExercise.symbol}</span>
+                      <h3 style={{ fontSize: '1.35rem', fontWeight: 800 }}>{selectedExercise.name}</h3>
+                    </div>
                   </div>
-                </div>
 
-                {/* Quick Action Buttons */}
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', width: '100%' }}>
-                  <button
-                    onClick={() => openTimer(60, `${selectedExercise.name} Rest Timer`)}
-                    className="btn btn-secondary btn-sm"
-                    style={{ flex: 1, minWidth: '130px' }}
-                  >
-                    <Timer size={15} color="#06B6D4" />
-                    <span>Rest Timer (60s)</span>
-                  </button>
-
-                  <button
-                    onClick={() => handleQuickLog(selectedExercise)}
-                    className="btn btn-primary btn-sm"
-                    style={{ flex: 1, minWidth: '130px' }}
-                  >
-                    <PlusCircle size={15} />
-                    <span>Log to Tracker</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Starting Weight & Muscle Target Banner */}
-              <div className="grid-2" style={{ gap: '1rem' }}>
-                <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#06B6D4', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
-                    🎯 PRIMARY TARGET MUSCLE
-                  </div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 700 }}>
-                    {selectedExercise.muscleGroup}
-                  </div>
-                </div>
-
-                <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#06B6D4', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
-                    ⚖️ RECOMMENDED STARTING WEIGHT
-                  </div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#06B6D4' }}>
-                    {selectedExercise.startingWeight}
-                  </div>
-                </div>
-              </div>
-
-              {/* Machine Seat & Pin Setup */}
-              <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1.15rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#06B6D4', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <Layers size={18} /> Machine / Seat & Pin Setup (सीट व पिन सेटिंग):
-                </h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-main)', lineHeight: 1.55 }}>
-                  {selectedExercise.seatSetup}
-                </p>
-              </div>
-
-              {/* Step-by-Step Execution Guide */}
-              <div>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <CheckCircle2 size={18} color="#06B6D4" /> How to Perform with Perfect Form (सही तरीका):
-                </h4>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                  {selectedExercise.steps.map((step, sIdx) => (
-                    <div
-                      key={sIdx}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '0.75rem',
-                        background: 'var(--bg-card)',
-                        padding: '0.85rem 1rem',
-                        borderRadius: 'var(--radius-sm)',
-                        border: '1px solid var(--border-card)',
-                        fontSize: '0.88rem'
-                      }}
+                  <div style={{ display: 'flex', gap: '0.45rem' }}>
+                    <button
+                      onClick={() => handleQuickLog(selectedExercise)}
+                      className="btn btn-primary btn-sm"
                     >
-                      <div style={{
-                        width: '24px',
-                        height: '24px',
-                        borderRadius: '50%',
-                        background: '#06B6D4',
-                        color: '#fff',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '0.75rem',
-                        fontWeight: 800,
-                        flexShrink: 0,
-                        marginTop: '1px'
-                      }}>
-                        {sIdx + 1}
-                      </div>
-                      <span style={{ color: 'var(--text-main)', lineHeight: 1.5 }}>{step}</span>
+                      <PlusCircle size={15} />
+                      <span>Log to Tracker</span>
+                    </button>
+                    <button
+                      onClick={() => openTimer(60, `${selectedExercise.name} Rest`)}
+                      className="btn btn-secondary btn-sm"
+                    >
+                      <Timer size={15} color="#06B6D4" />
+                      <span>Rest</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div style={{
+                  background: 'var(--bg-card-secondary)',
+                  padding: '0.85rem 1rem',
+                  borderRadius: 'var(--radius-md)',
+                  border: '1px solid var(--border-card)',
+                  fontSize: '0.88rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.5
+                }}>
+                  {selectedExercise.shortDesc}
+                </div>
+
+                {/* Quick Specs Grid */}
+                <div className="grid-2">
+                  <div style={{ background: 'var(--bg-app)', padding: '0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
+                    <div style={{ fontSize: '0.72rem', color: '#06B6D4', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.2rem' }}>
+                      Starting Recommendation
                     </div>
-                  ))}
+                    <div style={{ fontSize: '0.86rem', fontWeight: 600 }}>{selectedExercise.startingWeight}</div>
+                  </div>
+                  <div style={{ background: 'var(--bg-app)', padding: '0.85rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
+                    <div style={{ fontSize: '0.72rem', color: '#06B6D4', fontWeight: 700, textTransform: 'uppercase', marginBottom: '0.2rem' }}>
+                      Machine / Seat Setup
+                    </div>
+                    <div style={{ fontSize: '0.86rem', fontWeight: 600 }}>{selectedExercise.seatSetup}</div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Safety Rules & Common Mistakes */}
-              <div className="grid-2" style={{ gap: '1rem' }}>
-                <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                  <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Shield size={16} color="#06B6D4" /> Safety DOs & DON'Ts:
-                  </h5>
-                  <ul style={{ listStyle: 'disc', paddingLeft: '1.15rem', fontSize: '0.84rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.3rem', lineHeight: 1.45 }}>
-                    {selectedExercise.safetyTips.map((st, stIdx) => (
-                      <li key={stIdx}>{st}</li>
+                {/* Execution Steps */}
+                <div>
+                  <h4 style={{ fontSize: '0.92rem', fontWeight: 700, marginBottom: '0.5rem', color: '#06B6D4' }}>
+                    Step-by-Step Execution:
+                  </h4>
+                  <ol style={{ paddingLeft: '1.15rem', display: 'flex', flexDirection: 'column', gap: '0.35rem', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                    {selectedExercise.steps.map((step, sIdx) => (
+                      <li key={sIdx}>{step}</li>
                     ))}
-                  </ul>
+                  </ol>
                 </div>
 
-                <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                  <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <AlertTriangle size={16} color="#06B6D4" /> Common Rookie Mistakes:
-                  </h5>
-                  <p style={{ fontSize: '0.84rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
-                    {selectedExercise.commonMistakes}
-                  </p>
+                {/* Safety & Form Tips */}
+                <div style={{
+                  background: 'var(--bg-card-secondary)',
+                  borderLeft: '3px solid #06B6D4',
+                  padding: '0.75rem 0.9rem',
+                  borderRadius: '0 var(--radius-md) var(--radius-md) 0',
+                  fontSize: '0.82rem',
+                  color: 'var(--text-muted)'
+                }}>
+                  <div style={{ fontWeight: 700, color: 'var(--text-main)', marginBottom: '0.2rem' }}>Golden Form Cue:</div>
+                  {selectedExercise.safetyTips}
                 </div>
+              </>
+            ) : (
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--text-muted)' }}>
+                Select an exercise to view full form guide.
               </div>
-            </div>
-          ) : (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '3rem', color: 'var(--text-muted)' }}>
-              Select an exercise from the list to view complete step-by-step details.
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 860px) {
-          .search-modal-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .mobile-hidden {
+        @media (max-width: 768px) {
+          .search-list-pane.hide-mobile {
             display: none !important;
           }
-          .mobile-back-row {
+          .search-detail-pane.hide-mobile {
+            display: none !important;
+          }
+          .search-list-pane {
+            width: 100% !important;
+            border-right: none !important;
+          }
+          .search-detail-pane {
+            width: 100% !important;
+          }
+          .mobile-back-btn {
             display: flex !important;
           }
         }

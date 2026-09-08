@@ -11,8 +11,7 @@ import {
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
-  Sparkles,
-  RotateCcw
+  Sparkles
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -49,17 +48,17 @@ export const GuidedFlowSection = () => {
   };
 
   return (
-    <div className="animate-fade-in" style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+    <div className="animate-fade-in" style={{ maxWidth: '880px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-cyan" style={{ padding: '1.75rem 1.25rem', textAlign: 'center', background: 'var(--bg-card)' }}>
+      <div className="card card-glow-cyan" style={{ padding: '1.75rem 1.5rem', textAlign: 'center' }}>
         <span className="badge badge-cyan" style={{ marginBottom: '0.65rem' }}>
-          <Sparkles size={14} /> Guided Onboarding Wizard
+          <Sparkles size={13} /> Guided Onboarding Wizard
         </span>
         <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.2rem)', fontWeight: 800, marginBottom: '0.45rem' }}>
           "I'm New — Where Do I Start?"
         </h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.55 }}>
-          A 6-step guided roadmap to eliminate uncertainty and make you feel 100% prepared before you step onto the gym floor.
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.92rem', maxWidth: '620px', margin: '0 auto', lineHeight: 1.55 }}>
+          A 6-step guided roadmap to eliminate uncertainty and prepare you with 100% confidence before stepping onto the gym floor.
         </p>
 
         {/* Step Progress Bar */}
@@ -76,18 +75,18 @@ export const GuidedFlowSection = () => {
                   alignItems: 'center',
                   gap: '0.35rem',
                   padding: '0.35rem 0.65rem',
-                  borderRadius: '9999px',
+                  borderRadius: 'var(--radius-full)',
                   background: isCurrent
-                    ? '#06B6D4'
+                    ? 'var(--primary-cyan)'
                     : isDone
-                    ? 'rgba(6, 182, 212, 0.2)'
+                    ? 'var(--primary-cyan-tint)'
                     : 'var(--bg-card-secondary)',
-                  color: isCurrent ? '#ffffff' : isDone ? '#06B6D4' : 'var(--text-muted)',
-                  border: isCurrent ? '1px solid #06B6D4' : '1px solid var(--border-subtle)',
+                  color: isCurrent ? '#ffffff' : isDone ? 'var(--primary-cyan)' : 'var(--text-muted)',
+                  border: isCurrent ? '1px solid var(--primary-cyan)' : '1px solid var(--border-subtle)',
                   cursor: 'pointer',
                   fontSize: '0.76rem',
                   fontWeight: 700,
-                  transition: 'all 0.2s'
+                  transition: 'all var(--transition-fast)'
                 }}
               >
                 <span>{s.stepNumber}</span>
@@ -101,28 +100,28 @@ export const GuidedFlowSection = () => {
       </div>
 
       {/* Main Step Content Card */}
-      <div className="card" style={{ padding: '1.75rem 1.25rem', position: 'relative' }}>
+      <div className="card" style={{ padding: '1.75rem 1.5rem', position: 'relative' }}>
         {/* Step Header */}
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0, flex: 1 }}>
             <div style={{
-              width: '46px',
-              height: '46px',
-              borderRadius: '14px',
-              background: '#06B6D4',
+              width: '44px',
+              height: '44px',
+              borderRadius: 'var(--radius-md)',
+              background: 'var(--primary-cyan-tint)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#ffffff',
+              color: 'var(--primary-cyan)',
               flexShrink: 0
             }}>
-              <StepIcon size={24} />
+              <StepIcon size={22} />
             </div>
             <div style={{ minWidth: 0 }}>
               <span className="badge badge-cyan" style={{ marginBottom: '0.2rem', fontSize: '0.7rem' }}>
                 {step.tagline}
               </span>
-              <h2 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.55rem)', fontWeight: 800, wordBreak: 'break-word' }}>{step.title}</h2>
+              <h2 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', fontWeight: 800 }}>{step.title}</h2>
             </div>
           </div>
 
@@ -134,19 +133,19 @@ export const GuidedFlowSection = () => {
         {/* Step Summary */}
         <div style={{
           background: 'var(--bg-card-secondary)',
-          padding: '1rem 1.15rem',
+          padding: '0.9rem 1.15rem',
           borderRadius: 'var(--radius-md)',
           marginBottom: '1.5rem',
-          fontSize: '0.94rem',
+          fontSize: '0.92rem',
           color: 'var(--text-main)',
-          borderLeft: '4px solid #06B6D4',
+          borderLeft: '3px solid var(--primary-cyan)',
           lineHeight: 1.55
         }}>
           {step.summary}
         </div>
 
         {/* Bullet Points Grid */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginBottom: '1.75rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.75rem' }}>
           {step.points.map((pt, pIdx) => (
             <div
               key={pIdx}
@@ -154,30 +153,30 @@ export const GuidedFlowSection = () => {
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: '0.75rem',
-                padding: '1rem',
-                background: 'var(--bg-card)',
+                padding: '0.95rem 1.15rem',
+                background: 'var(--bg-app)',
                 border: '1px solid var(--border-card)',
                 borderRadius: 'var(--radius-md)'
               }}
             >
               <div style={{
-                width: '32px',
-                height: '32px',
-                borderRadius: '8px',
-                background: 'rgba(6, 182, 212, 0.15)',
-                color: '#06B6D4',
+                width: '28px',
+                height: '28px',
+                borderRadius: '6px',
+                background: 'var(--primary-cyan-tint)',
+                color: 'var(--primary-cyan)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '1.1rem',
+                fontSize: '0.95rem',
                 flexShrink: 0,
                 marginTop: '1px'
               }}>
                 {pt.symbol || '✓'}
               </div>
               <div style={{ minWidth: 0 }}>
-                <h4 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: '0.2rem' }}>{pt.title}</h4>
-                <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{pt.desc}</p>
+                <h4 style={{ fontSize: '0.94rem', fontWeight: 700, marginBottom: '0.2rem', color: 'var(--text-main)' }}>{pt.title}</h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>{pt.desc}</p>
               </div>
             </div>
           ))}
@@ -186,16 +185,16 @@ export const GuidedFlowSection = () => {
         {/* Celebration State for Last Step */}
         {isLastStep && wizardCompleted && (
           <div style={{
-            background: 'rgba(6, 182, 212, 0.1)',
-            border: '2px solid #06B6D4',
+            background: 'var(--bg-card-secondary)',
+            border: '1px solid #06B6D4',
             borderRadius: 'var(--radius-lg)',
             padding: '1.5rem 1rem',
             textAlign: 'center',
             marginBottom: '1.5rem'
           }}>
-            <Trophy size={42} color="#06B6D4" style={{ margin: '0 auto 0.75rem auto' }} />
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem' }}>You Are Ready for Day 1! 🎉</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem', maxWidth: '500px', margin: '0 auto 1.25rem auto' }}>
+            <Trophy size={40} color="#06B6D4" style={{ margin: '0 auto 0.65rem auto' }} />
+            <h3 style={{ fontSize: '1.3rem', marginBottom: '0.35rem' }}>You Are Certified Ready for Day 1! 🎉</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1.25rem', maxWidth: '480px', margin: '0 auto 1.25rem auto' }}>
               You now have the exact blueprint to conquer your first workout safely and with complete confidence.
             </p>
             <div style={{ display: 'flex', gap: '0.65rem', justifyContent: 'center', flexWrap: 'wrap' }}>

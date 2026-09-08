@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { WORKOUT_ROUTINES } from '../data/workoutsData';
-import { Dumbbell, Clock, Flame, PlusCircle, CheckCircle2, ChevronRight, Sparkles, Timer } from 'lucide-react';
+import { Dumbbell, Clock, PlusCircle, ChevronRight, Sparkles, Timer } from 'lucide-react';
 
 export const WorkoutSection = () => {
   const { addWorkoutLog, navigateTo, openTimer } = useApp();
@@ -23,18 +23,18 @@ export const WorkoutSection = () => {
   };
 
   return (
-    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2rem 1.75rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
-            <Dumbbell size={14} /> Section 7 of 11
+          <span className="badge badge-cyan" style={{ marginBottom: '0.65rem' }}>
+            <Dumbbell size={13} /> Section 8 of 14 — Beginner Routines
           </span>
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
+          <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 800, marginBottom: '0.65rem' }}>
             Beginner Workout Planner
           </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Structured, proven workout routines designed specifically for the beginner nervous system. No 2-hour marathons — just clean, effective 30–45 minute plans with clear sets and reps.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.96rem', lineHeight: 1.6 }}>
+            Structured workout routines designed specifically for the beginner nervous system. Clean, effective 30–45 minute plans with clear sets, reps, and rest intervals.
           </p>
         </div>
       </div>
@@ -50,21 +50,21 @@ export const WorkoutSection = () => {
               className="card card-hover"
               style={{
                 textAlign: 'left',
-                border: isSelected ? '2px solid #06B6D4' : '1px solid var(--border-card)',
+                border: isSelected ? '1px solid #06B6D4' : '1px solid var(--border-card)',
                 background: isSelected ? 'rgba(6, 182, 212, 0.1)' : 'var(--bg-card)',
-                padding: '1.25rem',
+                padding: '1.15rem',
                 cursor: 'pointer'
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
+                <span className="badge badge-cyan" style={{ fontSize: '0.7rem' }}>
                   {routine.tag}
                 </span>
-                <span style={{ fontSize: '1.25rem' }}>{routine.symbol || '🏋️'}</span>
+                <span style={{ fontSize: '1.2rem' }}>{routine.symbol || '🏋️'}</span>
               </div>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.25rem' }}>{routine.title}</h3>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-                <Clock size={13} />
+              <h3 style={{ fontSize: '0.98rem', fontWeight: 700, marginBottom: '0.2rem' }}>{routine.title}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.76rem', color: 'var(--text-muted)' }}>
+                <Clock size={12} />
                 <span>{routine.duration}</span>
               </div>
             </button>
@@ -73,41 +73,41 @@ export const WorkoutSection = () => {
       </div>
 
       {/* Selected Routine Detailed View */}
-      <div className="card" style={{ padding: '2.25rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+      <div className="card" style={{ padding: '1.75rem 1.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div>
-            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', gap: '0.4rem', marginBottom: '0.4rem' }}>
               <span className="badge badge-neutral">{currentRoutine.frequency}</span>
               <span className="badge badge-neutral">{currentRoutine.level}</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <span style={{ fontSize: '1.8rem' }}>{currentRoutine.symbol || '🏋️'}</span>
-              <h2 style={{ fontSize: '1.75rem', fontWeight: 800 }}>{currentRoutine.title}</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1.6rem' }}>{currentRoutine.symbol || '🏋️'}</span>
+              <h2 style={{ fontSize: '1.45rem', fontWeight: 800 }}>{currentRoutine.title}</h2>
             </div>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginTop: '0.25rem' }}>{currentRoutine.description}</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginTop: '0.2rem' }}>{currentRoutine.description}</p>
           </div>
 
           <button
             onClick={() => openTimer(75, 'Workout Rest Interval')}
             className="btn btn-secondary btn-sm"
           >
-            <Timer size={16} color="#06B6D4" />
+            <Timer size={15} color="#06B6D4" />
             <span>Open Rest Timer</span>
           </button>
         </div>
 
         {/* Goal Box */}
-        <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', marginBottom: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Sparkles size={20} color="#06B6D4" style={{ flexShrink: 0 }} />
+        <div style={{ background: 'var(--bg-app)', border: '1px solid var(--border-card)', padding: '0.85rem 1.15rem', borderRadius: 'var(--radius-md)', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          <Sparkles size={18} color="#06B6D4" style={{ flexShrink: 0 }} />
           <div>
-            <strong style={{ color: '#06B6D4', fontSize: '0.85rem', textTransform: 'uppercase' }}>Workout Goal: </strong>
-            <span style={{ fontSize: '0.925rem' }}>{currentRoutine.target}</span>
+            <strong style={{ color: '#06B6D4', fontSize: '0.8rem', textTransform: 'uppercase' }}>Workout Focus: </strong>
+            <span style={{ fontSize: '0.88rem', color: 'var(--text-main)' }}>{currentRoutine.target}</span>
           </div>
         </div>
 
         {/* Exercises List */}
-        <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1rem' }}>Exercises in this Routine:</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.85rem' }}>Exercises in this Routine:</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           {currentRoutine.exercises.map((ex, idx) => (
             <div
               key={idx}
@@ -116,45 +116,46 @@ export const WorkoutSection = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '1.25rem 1.5rem',
+                padding: '1.15rem 1.25rem',
                 flexWrap: 'wrap',
-                gap: '1rem',
+                gap: '0.85rem',
+                background: 'var(--bg-app)',
                 border: '1px solid var(--border-card)'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', flex: 1, minWidth: 'min(100%, 240px)' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem', flex: 1, minWidth: 'min(100%, 240px)' }}>
                 <div style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '12px',
-                  background: 'rgba(6, 182, 212, 0.15)',
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '10px',
+                  background: 'rgba(6, 182, 212, 0.12)',
                   color: '#06B6D4',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '1.3rem',
+                  fontSize: '1.2rem',
                   flexShrink: 0
                 }}>
                   {ex.symbol || '🏋️'}
                 </div>
 
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-                    <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-muted)' }}>#{idx + 1}</span>
-                    <h4 style={{ fontSize: '1.1rem', fontWeight: 700 }}>{ex.name}</h4>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.2rem' }}>
+                    <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--text-muted)' }}>#{idx + 1}</span>
+                    <h4 style={{ fontSize: '1.02rem', fontWeight: 700 }}>{ex.name}</h4>
                   </div>
-                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-                    <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>{ex.symbol} {ex.muscle}</span>
-                    <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{ex.sets} Sets × {ex.reps}</span>
-                    <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>⏱️ Rest: {ex.rest}</span>
+                  <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+                    <span className="badge badge-cyan" style={{ fontSize: '0.7rem' }}>{ex.symbol} {ex.muscle}</span>
+                    <span className="badge badge-neutral" style={{ fontSize: '0.7rem' }}>{ex.sets} Sets × {ex.reps}</span>
+                    <span className="badge badge-neutral" style={{ fontSize: '0.7rem' }}>⏱️ Rest: {ex.rest}</span>
                   </div>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
                     💡 <em>{ex.tip}</em>
                   </p>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                 <button
                   onClick={() => handleLogExercise(ex)}
                   className="btn btn-primary btn-sm"
@@ -168,13 +169,13 @@ export const WorkoutSection = () => {
         </div>
 
         {/* Bottom Shortcut */}
-        <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.25rem', borderTop: '1px solid var(--border-subtle)', flexWrap: 'wrap', gap: '1rem' }}>
-          <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-            Finished this session? Don't forget to track your weights in the Workout Tracker.
+        <div style={{ marginTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '1.15rem', borderTop: '1px solid var(--border-subtle)', flexWrap: 'wrap', gap: '0.85rem' }}>
+          <span style={{ fontSize: '0.86rem', color: 'var(--text-muted)' }}>
+            Finished this session? View and edit all logged sets in the Workout Logger.
           </span>
-          <button onClick={() => navigateTo('tracker')} className="btn btn-secondary">
-            <span>View Full Tracker History</span>
-            <ChevronRight size={16} />
+          <button onClick={() => navigateTo('tracker')} className="btn btn-secondary btn-sm">
+            <span>View Tracker History</span>
+            <ChevronRight size={15} />
           </button>
         </div>
       </div>

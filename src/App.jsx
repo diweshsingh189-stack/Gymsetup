@@ -24,7 +24,7 @@ import { GymPricingSection } from './sections/GymPricingSection';
 import { FeedbackSection } from './sections/FeedbackSection';
 
 // Icons for Mobile Bottom Nav
-import { Home, Sparkles, Dumbbell, ClipboardList, CheckCircle2, Cpu, MessageSquareHeart, Building2 } from 'lucide-react';
+import { Home, Sparkles, Dumbbell, ClipboardList, Cpu } from 'lucide-react';
 
 const MainView = () => {
   const {
@@ -82,7 +82,7 @@ const MainView = () => {
         </main>
       </div>
 
-      {/* Mobile Bottom Quick Bar for phone screens */}
+      {/* Mobile Bottom Quick Navigation */}
       <nav className="mobile-bottom-nav">
         {[
           { id: 'home', label: 'Home', icon: Home },
@@ -99,8 +99,8 @@ const MainView = () => {
               onClick={() => navigateTo(item.id)}
               className={`mobile-nav-btn ${isActive ? 'active' : ''}`}
             >
-              <Icon size={20} color={isActive ? '#06B6D4' : 'var(--text-muted)'} />
-              <span style={{ fontSize: '0.7rem', fontWeight: isActive ? 700 : 500, color: isActive ? '#06B6D4' : 'var(--text-muted)' }}>
+              <Icon size={19} color={isActive ? '#06B6D4' : 'var(--text-subtle)'} />
+              <span style={{ fontSize: '0.68rem', fontWeight: isActive ? 700 : 500, color: isActive ? '#06B6D4' : 'var(--text-muted)' }}>
                 {item.label}
               </span>
             </button>
@@ -124,7 +124,7 @@ const MainView = () => {
           bottom: 0;
           left: 0;
           right: 0;
-          height: calc(60px + env(safe-area-inset-bottom, 0px));
+          height: calc(58px + env(safe-area-inset-bottom, 0px));
           padding-bottom: env(safe-area-inset-bottom, 0px);
           background: var(--bg-sidebar);
           border-top: 1px solid var(--border-subtle);
@@ -133,9 +133,7 @@ const MainView = () => {
           justify-content: space-around;
           padding-left: 0.25rem;
           padding-right: 0.25rem;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+          box-shadow: var(--shadow-md);
         }
 
         .mobile-nav-btn {
@@ -148,15 +146,15 @@ const MainView = () => {
           border: none;
           cursor: pointer;
           padding: 4px 6px;
-          border-radius: 8px;
-          transition: all 0.15s;
+          border-radius: var(--radius-sm);
+          transition: all var(--transition-fast);
           flex: 1;
           min-width: 0;
           touch-action: manipulation;
         }
 
         .mobile-nav-btn.active {
-          background: rgba(6, 182, 212, 0.12);
+          background: rgba(6, 182, 212, 0.1);
         }
 
         @media (max-width: 1024px) {

@@ -7,23 +7,13 @@ import {
   MapPin,
   IndianRupee,
   Star,
-  CheckCircle2,
-  SlidersHorizontal,
-  Sparkles,
   Search,
-  ExternalLink,
-  ShieldCheck,
-  Flame,
   Award,
-  PhoneCall,
-  Clock,
-  Dumbbell,
   X
 } from 'lucide-react';
 import { playClickBeep } from '../utils/soundEffects';
 
 export const GymPricingSection = () => {
-  const { navigateTo } = useApp();
   const [selectedCity, setSelectedCity] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGymModal, setSelectedGymModal] = useState(null);
@@ -31,12 +21,17 @@ export const GymPricingSection = () => {
   useEffect(() => {
     if (selectedGymModal) {
       document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setSelectedGymModal(null);
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [selectedGymModal]);
 
   const cities = ['All', 'Bengaluru', 'Mumbai', 'Delhi', 'Pune', 'Hyderabad'];
@@ -55,60 +50,54 @@ export const GymPricingSection = () => {
   });
 
   return (
-    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
-        <div style={{ maxWidth: '850px' }}>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2rem 1.75rem' }}>
+        <div style={{ maxWidth: '800px' }}>
+          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.65rem' }}>
             <span className="badge badge-cyan">
-              <Building2 size={14} /> Section 13 of 14 — Gym Pricing & Locations
+              <Building2 size={13} /> Section 13 of 14 — Gym Pricing & Locations
             </span>
-            <span className="badge badge-cyan">
-              <IndianRupee size={14} /> 2026 Verified Pricing
-            </span>
-            <span className="badge badge-amber">
-              <Star size={14} /> Real Photos & Amenities
+            <span className="badge badge-neutral">
+              <IndianRupee size={13} /> 2026 Verified Pricing
             </span>
           </div>
 
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
+          <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 800, marginBottom: '0.65rem' }}>
             Popular Gym Chains, Locations & Fee Comparison
           </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            Cult.fit, Gold's Gym, Anytime Fitness, Snap Fitness samet Bharat ke sabse popular gym chains ki fees, photos, amenities aur shehar ki complete list.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.96rem', lineHeight: 1.6 }}>
+            Cult.fit, Gold's Gym, Anytime Fitness, Snap Fitness and top gym chains comparison: fees, locations, amenities, and photo galleries across major Indian cities.
           </p>
         </div>
       </div>
 
       {/* Filter & Search Bar */}
-      <div className="card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="card" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Search Box */}
-          <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 240px)' }}>
-            <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#06B6D4' }} />
+          <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 220px)' }}>
+            <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#06B6D4' }} />
             <input
               type="text"
               placeholder="Search gym by name (e.g. Cult.fit, Gold's Gym) or city..."
               className="input-control"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              style={{ paddingLeft: '44px', height: '46px', fontSize: '0.95rem' }}
+              style={{ paddingLeft: '36px', height: '42px', fontSize: '0.9rem' }}
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
+                style={{ position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}
               >
-                <X size={16} />
+                <X size={15} />
               </button>
             )}
           </div>
 
           {/* City Filter Pills */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-muted)', marginRight: '0.25rem', letterSpacing: '0.04em' }}>
-              FILTER CITY:
-            </span>
+          <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap', alignItems: 'center' }}>
             {cities.map((c) => {
               const isSelected = selectedCity === c;
               const count = c === 'All' ? TOP_GYMS_DATA.length : TOP_GYMS_DATA.filter(g => g.primaryCity === c).length;
@@ -121,19 +110,19 @@ export const GymPricingSection = () => {
                   }}
                   className={`btn btn-sm ${isSelected ? 'btn-primary' : 'btn-secondary'}`}
                   style={{
-                    borderRadius: '9999px',
-                    fontSize: '0.82rem',
-                    padding: '0.35rem 0.85rem',
-                    fontWeight: isSelected ? 800 : 500
+                    borderRadius: 'var(--radius-full)',
+                    fontSize: '0.78rem',
+                    padding: '0.25rem 0.7rem',
+                    fontWeight: isSelected ? 700 : 500
                   }}
                 >
                   <span>{c}</span>
                   <span style={{
-                    fontSize: '0.68rem',
-                    background: isSelected ? 'rgba(255,255,255,0.25)' : 'var(--bg-card)',
-                    padding: '1px 6px',
-                    borderRadius: '9999px',
-                    marginLeft: '4px'
+                    fontSize: '0.66rem',
+                    background: isSelected ? 'rgba(15, 23, 42, 0.25)' : 'var(--bg-card)',
+                    padding: '1px 5px',
+                    borderRadius: 'var(--radius-full)',
+                    marginLeft: '3px'
                   }}>
                     {count}
                   </span>
@@ -143,15 +132,15 @@ export const GymPricingSection = () => {
           </div>
         </div>
 
-        {/* Filter Status Badge */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.75rem', fontSize: '0.82rem', color: 'var(--text-muted)', flexWrap: 'wrap', gap: '0.5rem' }}>
+        {/* Filter Status */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-subtle)', paddingTop: '0.65rem', fontSize: '0.8rem', color: 'var(--text-muted)', flexWrap: 'wrap', gap: '0.5rem' }}>
           <span>
             Showing <strong>{filteredGyms.length}</strong> {selectedCity === 'All' ? 'gyms across India' : `gyms in ${selectedCity}`}
           </span>
           {selectedCity !== 'All' && (
             <button
               onClick={() => setSelectedCity('All')}
-              style={{ background: 'none', border: 'none', color: '#06B6D4', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem' }}
+              style={{ background: 'none', border: 'none', color: '#06B6D4', cursor: 'pointer', fontWeight: 600, fontSize: '0.78rem' }}
             >
               Show All Cities ↺
             </button>
@@ -159,8 +148,8 @@ export const GymPricingSection = () => {
         </div>
       </div>
 
-      {/* Gym Cards Grid with Real Photos */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 290px), 1fr))', gap: '1.5rem' }} className="gym-cards-grid">
+      {/* Gym Cards Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
         {filteredGyms.map((gym) => (
           <div
             key={gym.id}
@@ -168,15 +157,15 @@ export const GymPricingSection = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              padding: '0',
+              padding: 0,
               overflow: 'hidden',
-              borderRadius: '20px',
+              borderRadius: 'var(--radius-lg)',
               border: '1px solid var(--border-card)',
               background: 'var(--bg-card)'
             }}
           >
-            {/* Gym Photo Container */}
-            <div style={{ position: 'relative', height: '210px', width: '100%', overflow: 'hidden' }}>
+            {/* Gym Photo */}
+            <div style={{ position: 'relative', height: '190px', width: '100%', overflow: 'hidden' }}>
               <img
                 src={gym.image}
                 alt={gym.name}
@@ -184,29 +173,25 @@ export const GymPricingSection = () => {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  objectPosition: 'center',
-                  transition: 'transform 0.4s ease'
+                  objectPosition: 'center'
                 }}
-                className="gym-card-img"
               />
-              {/* Gradient Overlay */}
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(9, 13, 22, 0.85) 100%)'
+                background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.88) 100%)'
               }} />
 
               {/* Brand Tag Badge */}
-              <div style={{ position: 'absolute', top: '12px', left: '12px' }}>
+              <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
                 <span
                   style={{
-                    fontSize: '0.72rem',
+                    fontSize: '0.68rem',
                     fontWeight: 800,
-                    padding: '0.25rem 0.65rem',
-                    borderRadius: '8px',
-                    background: gym.badgeColor,
+                    padding: '0.2rem 0.55rem',
+                    borderRadius: '6px',
+                    background: 'var(--primary-cyan)',
                     color: '#ffffff',
-                    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
                     letterSpacing: '0.02em'
                   }}
                 >
@@ -214,106 +199,100 @@ export const GymPricingSection = () => {
                 </span>
               </div>
 
-              {/* Rating on Top Right */}
-              <div style={{ position: 'absolute', top: '12px', right: '12px' }}>
+              {/* Rating Top Right */}
+              <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
                 <span style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.72rem',
                   fontWeight: 800,
-                  padding: '0.25rem 0.55rem',
-                  borderRadius: '8px',
-                  background: 'rgba(0, 0, 0, 0.75)',
+                  padding: '0.2rem 0.5rem',
+                  borderRadius: '6px',
+                  background: 'rgba(15, 23, 42, 0.85)',
                   color: '#06B6D4',
-                  backdropFilter: 'blur(6px)',
+                  backdropFilter: 'blur(4px)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.25rem',
+                  gap: '0.2rem',
                   border: '1px solid rgba(6, 182, 212, 0.3)'
                 }}>
-                  <Star size={13} fill="#06B6D4" color="#06B6D4" />
+                  <Star size={12} fill="#06B6D4" color="#06B6D4" />
                   <span>{gym.rating}</span>
                 </span>
               </div>
 
-              {/* Gym Name & City at Bottom of Photo */}
-              <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px' }}>
-                <h3 style={{ fontSize: '1.45rem', fontWeight: 900, color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,0.8)', marginBottom: '2px' }}>
+              {/* Gym Name & Place */}
+              <div style={{ position: 'absolute', bottom: '10px', left: '12px', right: '12px' }}>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 900, color: '#ffffff', marginBottom: '2px' }}>
                   {gym.name}
                 </h3>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#e2e8f0', fontSize: '0.82rem', fontWeight: 600 }}>
-                  <MapPin size={14} color="#06B6D4" />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#e2e8f0', fontSize: '0.78rem', fontWeight: 600 }}>
+                  <MapPin size={13} color="#06B6D4" />
                   <span>{gym.place}</span>
                 </div>
               </div>
             </div>
 
-            {/* Gym Content Details */}
-            <div style={{ padding: '1.35rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between', gap: '1.15rem' }}>
+            {/* Gym Details */}
+            <div style={{ padding: '1.15rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between', gap: '0.85rem' }}>
               <div>
-                {/* Price Highlight Banner */}
+                {/* Price Banner */}
                 <div style={{
-                  background: 'rgba(6, 182, 212, 0.1)',
-                  border: '1px solid rgba(6, 182, 212, 0.3)',
-                  borderRadius: '12px',
-                  padding: '0.75rem 1rem',
-                  marginBottom: '1rem',
+                  background: 'var(--bg-app)',
+                  border: '1px solid var(--primary-cyan-border)',
+                  borderRadius: 'var(--radius-md)',
+                  padding: '0.65rem 0.85rem',
+                  marginBottom: '0.75rem',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between'
                 }}>
                   <div>
-                    <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#06B6D4', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    <div style={{ fontSize: '0.66rem', fontWeight: 700, color: 'var(--primary-cyan)', textTransform: 'uppercase' }}>
                       APPROX. MONTHLY FEE
                     </div>
-                    <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '1px' }}>
+                    <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '1px' }}>
                       {gym.approxPrice}
                     </div>
                   </div>
-                  <span className="badge badge-cyan" style={{ fontSize: '0.7rem' }}>Verified</span>
+                  <span className="badge badge-cyan" style={{ fontSize: '0.66rem' }}>Verified</span>
                 </div>
 
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '0.85rem' }}>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5, marginBottom: '0.65rem' }}>
                   {gym.intro}
                 </p>
 
                 {/* Best For */}
-                <div style={{ background: 'var(--bg-card-secondary)', padding: '0.65rem 0.85rem', borderRadius: '10px', fontSize: '0.8rem', marginBottom: '1rem' }}>
+                <div style={{ background: 'var(--bg-app)', border: '1px solid var(--border-card)', padding: '0.55rem 0.75rem', borderRadius: '8px', fontSize: '0.76rem', marginBottom: '0.75rem' }}>
                   <strong style={{ color: '#06B6D4' }}>🎯 Best For: </strong>
-                  <span>{gym.bestFor}</span>
+                  <span style={{ color: 'var(--text-secondary)' }}>{gym.bestFor}</span>
                 </div>
 
                 {/* Key Amenities */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-subtle)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    KEY AMENITIES:
-                  </span>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
-                    {gym.amenities.slice(0, 3).map((am, amIdx) => (
-                      <span
-                        key={amIdx}
-                        style={{
-                          fontSize: '0.74rem',
-                          background: 'var(--bg-card-secondary)',
-                          border: '1px solid var(--border-card)',
-                          padding: '0.2rem 0.55rem',
-                          borderRadius: '6px',
-                          color: 'var(--text-main)'
-                        }}
-                      >
-                        ✓ {am}
-                      </span>
-                    ))}
-                  </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+                  {gym.amenities.slice(0, 3).map((am, amIdx) => (
+                    <span
+                      key={amIdx}
+                      style={{
+                        fontSize: '0.7rem',
+                        background: 'var(--bg-app)',
+                        border: '1px solid var(--border-card)',
+                        padding: '0.15rem 0.45rem',
+                        borderRadius: '4px',
+                        color: 'var(--text-secondary)'
+                      }}
+                    >
+                      ✓ {am}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* View Full Amenities Button */}
               <button
                 onClick={() => {
                   setSelectedGymModal(gym);
                   playClickBeep();
                 }}
-                className="btn btn-primary"
-                style={{ width: '100%', borderRadius: '10px', fontSize: '0.88rem' }}
+                className="btn btn-primary btn-sm"
+                style={{ width: '100%', borderRadius: 'var(--radius-sm)' }}
               >
                 <span>View Full Details & Photo Gallery</span>
               </button>
@@ -322,280 +301,137 @@ export const GymPricingSection = () => {
         ))}
       </div>
 
-      {/* Full Comparison Quick Table */}
-      <div className="card" style={{ padding: '1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-          <Award size={22} color="#06B6D4" />
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Quick Comparison (जिम, शहर और फीस सारांश)</h3>
+      {/* Comparison Quick Table */}
+      <div className="card" style={{ padding: '1.25rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+          <Award size={20} color="#06B6D4" />
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800 }}>Quick Comparison Table</h3>
         </div>
 
-        {/* Desktop Table View */}
         <div className="desktop-pricing-table" style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', textAlign: 'left' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.86rem', textAlign: 'left' }}>
             <thead>
-              <tr style={{ background: 'var(--bg-card-secondary)', borderBottom: '2px solid var(--border-card)' }}>
-                <th style={{ padding: '1rem', fontWeight: 800 }}>🏋️ Gym Chain</th>
-                <th style={{ padding: '1rem', fontWeight: 800 }}>📍 Key Place</th>
-                <th style={{ padding: '1rem', fontWeight: 800 }}>💰 Approx. Price</th>
-                <th style={{ padding: '1rem', fontWeight: 800 }}>⭐ Rating</th>
-                <th style={{ padding: '1rem', fontWeight: 800 }}>🎯 Best Known For</th>
+              <tr style={{ background: 'var(--bg-card-secondary)', borderBottom: '1px solid var(--border-card)' }}>
+                <th style={{ padding: '0.85rem 1rem', fontWeight: 800 }}>Gym Chain</th>
+                <th style={{ padding: '0.85rem 1rem', fontWeight: 800 }}>Key Place</th>
+                <th style={{ padding: '0.85rem 1rem', fontWeight: 800 }}>Approx. Price</th>
+                <th style={{ padding: '0.85rem 1rem', fontWeight: 800 }}>Rating</th>
+                <th style={{ padding: '0.85rem 1rem', fontWeight: 800 }}>Best Known For</th>
               </tr>
             </thead>
             <tbody>
-              {TOP_GYMS_DATA.map((gym, idx) => (
+              {TOP_GYMS_DATA.map((gym) => (
                 <tr
                   key={gym.id}
                   style={{
-                    borderBottom: '1px solid var(--border-subtle)',
-                    background: idx % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)'
+                    borderBottom: '1px solid var(--border-subtle)'
                   }}
                 >
-                  <td style={{ padding: '0.95rem 1rem', display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                    <img src={gym.image} alt={gym.name} style={{ width: '36px', height: '36px', borderRadius: '8px', objectFit: 'cover' }} />
-                    <strong>{gym.name}</strong>
+                  <td style={{ padding: '0.85rem 1rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                    {gym.name}
                   </td>
-                  <td style={{ padding: '0.95rem 1rem', color: 'var(--text-muted)' }}>{gym.place}</td>
-                  <td style={{ padding: '0.95rem 1rem', fontWeight: 700, color: '#06B6D4' }}>{gym.approxPrice}</td>
-                  <td style={{ padding: '0.95rem 1rem' }}>
-                    <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>⭐ {gym.rating}</span>
+                  <td style={{ padding: '0.85rem 1rem', color: 'var(--text-muted)' }}>
+                    {gym.place}
                   </td>
-                  <td style={{ padding: '0.95rem 1rem', color: 'var(--text-muted)', fontSize: '0.82rem' }}>{gym.bestFor}</td>
+                  <td style={{ padding: '0.85rem 1rem', fontWeight: 700, color: '#06B6D4' }}>
+                    {gym.approxPrice}
+                  </td>
+                  <td style={{ padding: '0.85rem 1rem' }}>
+                    <span className="badge badge-cyan" style={{ fontSize: '0.7rem' }}>
+                      ★ {gym.rating}
+                    </span>
+                  </td>
+                  <td style={{ padding: '0.85rem 1rem', color: 'var(--text-secondary)' }}>
+                    {gym.bestFor}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-
-        {/* Mobile Comparison Cards for Phones */}
-        <div className="mobile-pricing-cards" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem' }}>
-          {TOP_GYMS_DATA.map((gym) => (
-            <div
-              key={gym.id}
-              onClick={() => {
-                setSelectedGymModal(gym);
-                playClickBeep();
-              }}
-              style={{
-                background: 'var(--bg-card-secondary)',
-                border: '1px solid var(--border-card)',
-                borderRadius: '12px',
-                padding: '0.85rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '0.75rem',
-                cursor: 'pointer'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0 }}>
-                <img src={gym.image} alt={gym.name} style={{ width: '44px', height: '44px', borderRadius: '10px', objectFit: 'cover', flexShrink: 0 }} />
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                    {gym.name}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                    <MapPin size={12} color="#06B6D4" />
-                    <span>{gym.place}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#06B6D4' }}>{gym.approxPrice}</div>
-                <span className="badge badge-neutral" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem', marginTop: '2px' }}>⭐ {gym.rating}</span>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-pricing-table {
-            display: none !important;
-          }
-          .mobile-pricing-cards {
-            display: flex !important;
-          }
-        }
-      `}</style>
-
-      {/* Direct Body Portal Modal: Always 100% Centered on Viewport regardless of page scroll */}
+      {/* Gym Photo Modal */}
       {selectedGymModal && ReactDOM.createPortal(
         <div
           onClick={() => setSelectedGymModal(null)}
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: '100vw',
-            height: '100vh',
-            background: 'rgba(0, 0, 0, 0.85)',
-            backdropFilter: 'blur(12px)',
-            zIndex: 99999,
+            inset: 0,
+            background: 'rgba(11, 17, 32, 0.85)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '1.25rem',
-            boxSizing: 'border-box'
+            zIndex: 999999,
+            padding: '1rem'
           }}
         >
           <div
             onClick={(e) => e.stopPropagation()}
+            className="animate-fade-in card"
             style={{
-              maxWidth: '680px',
-              width: 'min(680px, 94vw)',
-              maxHeight: '90vh',
-              overflowY: 'auto',
-              borderRadius: '20px',
-              padding: '1.5rem 1.25rem',
-              position: 'relative',
-              background: '#0F172A',
-              border: '1.5px solid rgba(6, 182, 212, 0.45)',
-              boxShadow: '0 25px 70px rgba(0,0,0,0.9)',
-              margin: 'auto'
+              maxWidth: '640px',
+              width: 'min(640px, 94vw)',
+              maxHeight: '88vh',
+              display: 'flex',
+              flexDirection: 'column',
+              borderRadius: 'var(--radius-lg)',
+              padding: 0,
+              overflow: 'hidden',
+              background: 'var(--bg-card)',
+              boxShadow: 'var(--shadow-modal)'
             }}
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedGymModal(null)}
-              className="btn btn-secondary btn-icon"
-              style={{ position: 'absolute', top: '1rem', right: '1rem', width: '36px', height: '36px', borderRadius: '10px', zIndex: 10 }}
-              title="Close"
-            >
-              <X size={18} />
-            </button>
-
-            {/* Header: Title & Badges Centered */}
-            <div style={{ textAlign: 'center', marginBottom: '1.25rem', paddingRight: '2rem', paddingLeft: '2rem' }}>
-              <div style={{ display: 'inline-flex', gap: '0.5rem', marginBottom: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <span
-                  style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 800,
-                    padding: '0.2rem 0.65rem',
-                    borderRadius: '8px',
-                    background: '#06B6D4',
-                    color: '#ffffff'
-                  }}
-                >
-                  {selectedGymModal.brandTag}
-                </span>
-                <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>
-                  ⭐ {selectedGymModal.rating} ({selectedGymModal.reviewsCount})
-                </span>
-              </div>
-
-              <h2 style={{ fontSize: 'clamp(1.35rem, 3vw, 2rem)', fontWeight: 900, color: '#f8fafc', marginBottom: '4px' }}>
-                {selectedGymModal.name}
-              </h2>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#06B6D4', fontWeight: 700, fontSize: '0.92rem' }}>
-                <MapPin size={16} />
-                <span>{selectedGymModal.place}</span>
-              </div>
-            </div>
-
-            {/* Centered High-Res Gym Photo */}
-            <div style={{
-              width: '100%',
-              height: 'clamp(180px, 32vh, 260px)',
-              borderRadius: '14px',
-              overflow: 'hidden',
-              marginBottom: '1.5rem',
-              boxShadow: '0 8px 25px rgba(0,0,0,0.5)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              position: 'relative'
-            }}>
+            {/* Modal Photo */}
+            <div style={{ position: 'relative', height: '220px', width: '100%' }}>
               <img
                 src={selectedGymModal.image}
                 alt={selectedGymModal.name}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                  display: 'block'
-                }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
-            </div>
-
-            {/* Price & Overview */}
-            <div style={{
-              background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%)',
-              border: '1px solid rgba(6, 182, 212, 0.3)',
-              borderRadius: '14px',
-              padding: '1rem 1.25rem',
-              marginBottom: '1.25rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}>
-              <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06B6D4', textTransform: 'uppercase' }}>
-                  MONTHLY MEMBERSHIP FEE
-                </div>
-                <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff', marginTop: '2px' }}>
-                  {selectedGymModal.approxPrice}
-                </div>
-              </div>
-              <span className="badge badge-cyan">Verified Branch</span>
-            </div>
-
-            <p style={{ fontSize: '0.95rem', color: '#cbd5e1', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-              {selectedGymModal.intro}
-            </p>
-
-            {/* Amenities List */}
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f8fafc' }}>
-                <CheckCircle2 size={18} color="#06B6D4" />
-                All Facilities & Member Amenities:
-              </h4>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {selectedGymModal.amenities.map((am, idx) => (
-                  <div
-                    key={idx}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.6rem',
-                      fontSize: '0.9rem',
-                      color: '#f8fafc',
-                      background: '#1A243B',
-                      padding: '0.65rem 0.85rem',
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255,255,255,0.08)'
-                    }}
-                  >
-                    <CheckCircle2 size={15} color="#06B6D4" style={{ flexShrink: 0 }} />
-                    <span>{am}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Modal Actions */}
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
-              <button
-                onClick={() => {
-                  setSelectedGymModal(null);
-                  navigateTo('first-day');
-                }}
-                className="btn btn-secondary"
-                style={{ flex: 1 }}
-              >
-                <span>Read First Day Prep</span>
-              </button>
-
               <button
                 onClick={() => setSelectedGymModal(null)}
-                className="btn btn-primary"
-                style={{ flex: 1 }}
+                className="btn btn-secondary btn-icon"
+                style={{ position: 'absolute', top: '10px', right: '10px', width: '34px', height: '34px', background: 'rgba(15, 23, 42, 0.85)' }}
               >
-                <span>Done / Close Window</span>
+                <X size={16} />
               </button>
+            </div>
+
+            {/* Modal Details */}
+            <div style={{ padding: '1.25rem 1.5rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.35rem', fontWeight: 800 }}>{selectedGymModal.name}</h3>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <MapPin size={13} color="#06B6D4" />
+                    <span>{selectedGymModal.place}</span>
+                  </div>
+                </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#06B6D4' }}>{selectedGymModal.approxPrice}</div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Estimated Plan</div>
+                </div>
+              </div>
+
+              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                {selectedGymModal.intro}
+              </p>
+
+              {/* All Amenities */}
+              <div>
+                <h4 style={{ fontSize: '0.88rem', fontWeight: 700, marginBottom: '0.45rem', color: '#06B6D4' }}>Included Amenities:</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.4rem' }}>
+                  {selectedGymModal.amenities.map((am, idx) => (
+                    <div key={idx} style={{ background: 'var(--bg-app)', border: '1px solid var(--border-card)', padding: '0.5rem 0.65rem', borderRadius: '6px', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+                      ✓ {am}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>,

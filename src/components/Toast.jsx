@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext';
-import { CheckCircle, AlertCircle, Info } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Info } from 'lucide-react';
 
 export const Toast = () => {
   const { toast } = useApp();
@@ -14,24 +14,28 @@ export const Toast = () => {
     <div
       style={{
         position: 'fixed',
-        bottom: 'calc(24px + env(safe-area-inset-bottom, 0px))',
-        right: '24px',
+        bottom: 'calc(20px + env(safe-area-inset-bottom, 0px))',
+        right: '20px',
         maxWidth: 'calc(100vw - 32px)',
         zIndex: 110,
         display: 'flex',
         alignItems: 'center',
-        gap: '0.75rem',
-        padding: '0.85rem 1.25rem',
+        gap: '0.65rem',
+        padding: '0.75rem 1.15rem',
         borderRadius: 'var(--radius-md)',
-        background: isSuccess ? '#0891B2' : 'var(--bg-card)',
-        color: '#ffffff',
-        border: '1px solid #06B6D4',
+        background: 'var(--bg-card)',
+        color: 'var(--text-main)',
+        border: '1px solid var(--primary-cyan)',
         boxShadow: 'var(--shadow-lg)',
-        animation: 'fadeIn 0.25s ease-out'
+        animation: 'fadeIn 0.2s ease-out'
       }}
     >
-      {isSuccess ? <CheckCircle size={18} color="#ffffff" /> : <Info size={18} color="#06B6D4" />}
-      <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>{toast.message}</span>
+      {isSuccess ? (
+        <CheckCircle2 size={18} color="var(--primary-cyan)" style={{ flexShrink: 0 }} />
+      ) : (
+        <Info size={18} color="var(--primary-cyan)" style={{ flexShrink: 0 }} />
+      )}
+      <span style={{ fontSize: '0.86rem', fontWeight: 600 }}>{toast.message}</span>
     </div>
   );
 };

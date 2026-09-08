@@ -161,6 +161,8 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     document.documentElement.className = theme;
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.className = theme;
     localStorage.setItem(STORAGE_KEYS.THEME, theme);
   }, [theme]);
 

@@ -9,19 +9,15 @@ import {
   CheckCircle2,
   TrendingUp,
   Search,
-  Filter,
-  Sparkles,
   RotateCcw,
   Timer,
   ChevronDown,
   ChevronUp,
   Zap,
   Volume2,
-  Info,
-  Layers,
   Award
 } from 'lucide-react';
-import { playSuccessChime, playClickBeep, playTimerComplete } from '../utils/soundEffects';
+import { playClickBeep } from '../utils/soundEffects';
 
 // 10 Essential Workout Tracking Points & Golden Principles
 const TRACKING_10_POINTS = [
@@ -126,7 +122,7 @@ export const TrackerSection = () => {
 
   // Form State
   const [showLogForm, setShowLogForm] = useState(false);
-  const [exerciseSymbol, setExerciseSymbol] = useState('🏋️');
+  const [exerciseSymbol, setExerciseSymbol] = useState('🏋️‍♂️');
   const [exerciseName, setExerciseName] = useState('');
   const [muscleCategory, setMuscleCategory] = useState('Chest (Push)');
   const [weight, setWeight] = useState('20');
@@ -173,7 +169,6 @@ export const TrackerSection = () => {
       notes: notes.trim()
     });
 
-    // Reset Form
     setExerciseName('');
     setNotes('');
     setShowLogForm(false);
@@ -189,136 +184,78 @@ export const TrackerSection = () => {
   const totalRepsLogged = workoutLogs.reduce((sum, l) => sum + ((parseInt(l.sets) || 0) * (parseInt(l.reps) || 0)), 0);
 
   return (
-    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
-        <div style={{ maxWidth: '850px' }}>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2rem 1.75rem' }}>
+        <div style={{ maxWidth: '800px' }}>
+          <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.65rem' }}>
             <span className="badge badge-cyan">
-              <ClipboardList size={14} /> Section 10 of 11 — Persistent Storage
+              <ClipboardList size={13} /> Section 11 of 14 — Workout Logging System
             </span>
-            <span className="badge badge-cyan">
-              <Volume2 size={14} /> Sound Enabled & Audio Feedback 🔊
-            </span>
-            <span className="badge badge-amber">
-              <Zap size={14} /> 10 Tracking Principles & Presets
+            <span className="badge badge-neutral">
+              <Zap size={13} /> 10 Principles & Quick Presets
             </span>
           </div>
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
-            Beginner Workout Tracker & 10 Golden Points
+          <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 800, marginBottom: '0.65rem' }}>
+            Beginner Workout Tracker & Logging
           </h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.6 }}>
-            What gets measured gets improved! Log your exercises, sets, reps, and machine seat notes. Includes 10 golden tracking rules and 10 one-click quick exercise presets.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.96rem', lineHeight: 1.6 }}>
+            What gets measured gets improved! Log your exercises, sets, weights, and seat notch notes. Includes 10 scientific principles and 10 one-click exercise presets.
           </p>
         </div>
       </div>
 
-      {/* 10 Essential Workout Tracking Points Section */}
-      <div className="card" style={{ padding: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '1rem' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-              <Award size={22} color="#06B6D4" />
-              <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>10 Golden Workout Tracking Points</h2>
+      {/* Quick Stats Grid */}
+      <div className="grid-3">
+        <div className="card">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+            <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Logged Exercises</span>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.12)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Dumbbell size={16} />
             </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              Master these 10 scientific principles to maximize muscle growth and avoid rookie training mistakes.
-            </p>
           </div>
-
-          <button
-            onClick={() => {
-              setShowAllPoints(!showAllPoints);
-              playClickBeep();
-            }}
-            className="btn btn-secondary btn-sm"
-          >
-            {showAllPoints ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            <span>{showAllPoints ? 'Collapse 10 Points' : 'Show All 10 Points'}</span>
-          </button>
+          <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--text-main)' }}>{workoutLogs.length}</div>
+          <div style={{ fontSize: '0.76rem', color: '#06B6D4', fontWeight: 600, marginTop: '0.2rem' }}>✓ Saved in browser storage</div>
         </div>
 
-        {showAllPoints && (
-          <div className="grid-2 animate-fade-in" style={{ gap: '1rem' }}>
-            {TRACKING_10_POINTS.map((pt, idx) => {
-              const isExpanded = expandedPointIndex === idx;
-              return (
-                <div
-                  key={pt.num}
-                  onClick={() => {
-                    setExpandedPointIndex(isExpanded ? null : idx);
-                    playClickBeep();
-                  }}
-                  className="card card-hover"
-                  style={{
-                    padding: '1.25rem',
-                    background: isExpanded ? 'linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.06) 100%)' : 'var(--bg-card-secondary)',
-                    border: isExpanded ? '1px solid #06B6D4' : '1px solid var(--border-card)',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                    <div style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '10px',
-                      background: 'rgba(6, 182, 212, 0.15)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.25rem',
-                      flexShrink: 0
-                    }}>
-                      {pt.symbol}
-                    </div>
-
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#06B6D4' }}>POINT {pt.num}</span>
-                          <span className="badge badge-cyan" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem' }}>{pt.category}</span>
-                        </div>
-                        {isExpanded ? <ChevronUp size={15} color="#06B6D4" /> : <ChevronDown size={15} color="var(--text-muted)" />}
-                      </div>
-
-                      <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.35rem' }}>
-                        {pt.title}
-                      </h4>
-
-                      <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                        {pt.summary}
-                      </p>
-
-                      {isExpanded && (
-                        <div className="animate-fade-in" style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed var(--border-subtle)', fontSize: '0.825rem', color: 'var(--text-main)', background: 'rgba(0,0,0,0.15)', padding: '0.6rem 0.75rem', borderRadius: '8px' }}>
-                          💡 <strong>Actionable Tip: </strong>{pt.detail}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+        <div className="card">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+            <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Sets Completed</span>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.12)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <TrendingUp size={16} />
+            </div>
           </div>
-        )}
+          <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--text-main)' }}>{totalSetsLogged}</div>
+          <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.2rem' }}>Cumulative training sets</div>
+        </div>
+
+        <div className="card">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.4rem' }}>
+            <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Repetitions</span>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.12)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <CheckCircle2 size={16} />
+            </div>
+          </div>
+          <div style={{ fontSize: '1.85rem', fontWeight: 900, color: 'var(--text-main)' }}>{totalRepsLogged}</div>
+          <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.2rem' }}>Consistent muscle volume</div>
+        </div>
       </div>
 
       {/* 10 Quick-Add Popular Exercises Toolbar */}
-      <div className="card" style={{ padding: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem' }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Zap size={20} color="#06B6D4" />
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>10 Quick-Add Exercise Presets (1-Click Log)</h3>
-            </div>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-              Click any exercise below to instantly log it to your tracker history with verified starting weights & sound confirmation!
-            </p>
+      <div className="card" style={{ padding: '1.75rem 1.5rem' }}>
+        <div style={{ marginBottom: '1.15rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', marginBottom: '0.35rem' }}>
+            <Zap size={22} color="var(--primary-cyan)" />
+            <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              10 Quick-Add Exercise Presets (1-Click Log)
+            </h3>
           </div>
+          <p style={{ fontSize: '0.94rem', color: 'var(--text-secondary)' }}>
+            Click any exercise below to instantly log it to your history with verified starting weights:
+          </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 155px), 1fr))', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 210px), 1fr))', gap: '0.85rem' }}>
           {QUICK_PRESETS.map((p, idx) => (
             <button
               key={idx}
@@ -327,22 +264,24 @@ export const TrackerSection = () => {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.75rem',
-                padding: '0.85rem 1rem',
+                gap: '0.85rem',
+                padding: '0.95rem 1.15rem',
                 textAlign: 'left',
                 border: '1px solid var(--border-card)',
-                background: 'var(--bg-card-secondary)',
-                cursor: 'pointer'
+                background: 'var(--bg-app)',
+                cursor: 'pointer',
+                borderRadius: 'var(--radius-md)',
+                minHeight: '68px'
               }}
               title={`Quick log ${p.name} (${p.weight}${p.unit}, ${p.sets}x${p.reps})`}
             >
-              <span style={{ fontSize: '1.4rem' }}>{p.symbol}</span>
-              <div style={{ overflow: 'hidden', flex: 1 }}>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              <span style={{ fontSize: '1.6rem', flexShrink: 0 }}>{p.symbol}</span>
+              <div style={{ overflow: 'hidden', flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-main)', lineHeight: 1.3, marginBottom: '0.2rem', whiteSpace: 'normal' }}>
                   {p.name}
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#06B6D4', fontWeight: 600 }}>
-                  + Quick Log ({p.weight}kg • {p.sets}x{p.reps})
+                <div style={{ fontSize: '0.82rem', color: 'var(--primary-cyan)', fontWeight: 700 }}>
+                  + Log ({p.weight}kg • {p.sets}×{p.reps})
                 </div>
               </div>
             </button>
@@ -350,63 +289,27 @@ export const TrackerSection = () => {
         </div>
       </div>
 
-      {/* Quick Stats Grid */}
-      <div className="grid-3">
-        <div className="card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Exercises Logged</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.15)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Dumbbell size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>{workoutLogs.length}</div>
-          <div style={{ fontSize: '0.8rem', color: '#06B6D4', fontWeight: 600, marginTop: '0.25rem' }}>✓ Saved locally in browser</div>
-        </div>
-
-        <div className="card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Sets Completed</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.15)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <TrendingUp size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>{totalSetsLogged}</div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.25rem' }}>Great cumulative training volume!</div>
-        </div>
-
-        <div className="card">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Repetitions</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.15)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <CheckCircle2 size={18} />
-            </div>
-          </div>
-          <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>{totalRepsLogged}</div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.25rem' }}>Consistent muscle stimulus</div>
-        </div>
-      </div>
-
       {/* Action Toolbar */}
-      <div className="card" style={{ padding: '1.25rem 1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.85rem' }}>
-        <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 200px)', maxWidth: '400px' }}>
-          <Search size={16} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+      <div className="card" style={{ padding: '1rem 1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+        <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 200px)', maxWidth: '380px' }}>
+          <Search size={15} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
           <input
             type="text"
             placeholder="Search logged exercises, notes..."
             className="input-control"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ paddingLeft: '36px', height: '38px', fontSize: '0.85rem' }}
+            style={{ paddingLeft: '34px', height: '36px', fontSize: '0.84rem' }}
           />
         </div>
 
-        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '0.45rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <button
             onClick={() => openTimer(60, 'Workout Rest Interval')}
             className="btn btn-secondary btn-sm"
           >
-            <Timer size={15} color="#06B6D4" />
-            <span>Rest Timer ⏱️</span>
+            <Timer size={14} color="#06B6D4" />
+            <span>Rest Timer</span>
           </button>
 
           {workoutLogs.length > 0 && (
@@ -419,7 +322,7 @@ export const TrackerSection = () => {
               className="btn btn-secondary btn-sm"
               style={{ color: 'var(--text-muted)' }}
             >
-              <RotateCcw size={14} /> Clear All
+              <RotateCcw size={13} /> Clear
             </button>
           )}
 
@@ -430,7 +333,7 @@ export const TrackerSection = () => {
             }}
             className="btn btn-primary btn-sm"
           >
-            <Plus size={16} />
+            <Plus size={15} />
             <span>{showLogForm ? 'Close Form' : '+ Custom Entry'}</span>
           </button>
         </div>
@@ -438,14 +341,14 @@ export const TrackerSection = () => {
 
       {/* Log Exercise Form */}
       {showLogForm && (
-        <form onSubmit={handleSubmit} className="card card-glow-cyan animate-fade-in" style={{ padding: '2rem', border: '1px solid #06B6D4' }}>
-          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '1.25rem', color: '#06B6D4' }}>
+        <form onSubmit={handleSubmit} className="card animate-fade-in" style={{ padding: '1.5rem', border: '1px solid #06B6D4' }}>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '1rem', color: '#06B6D4' }}>
             Log a Custom Workout Entry
           </h3>
 
-          <div className="grid-3" style={{ gap: '1.25rem', marginBottom: '1.25rem' }}>
+          <div className="grid-3" style={{ gap: '1rem', marginBottom: '1rem' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Exercise Symbol
               </label>
               <select
@@ -465,7 +368,7 @@ export const TrackerSection = () => {
             </div>
 
             <div style={{ gridColumn: 'span 2' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Exercise Name *
               </label>
               <input
@@ -479,9 +382,9 @@ export const TrackerSection = () => {
             </div>
           </div>
 
-          <div className="grid-2" style={{ gap: '1.25rem', marginBottom: '1.25rem' }}>
+          <div className="grid-2" style={{ gap: '1rem', marginBottom: '1rem' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Muscle Group / Category
               </label>
               <select
@@ -500,7 +403,7 @@ export const TrackerSection = () => {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Weight ({unit})
               </label>
               <div style={{ display: 'flex', gap: '0.25rem' }}>
@@ -523,9 +426,9 @@ export const TrackerSection = () => {
             </div>
           </div>
 
-          <div className="grid-3" style={{ gap: '1rem', marginBottom: '1.25rem' }}>
+          <div className="grid-3" style={{ gap: '0.85rem', marginBottom: '1rem' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Sets Completed
               </label>
               <input
@@ -539,7 +442,7 @@ export const TrackerSection = () => {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Reps per Set
               </label>
               <input
@@ -553,7 +456,7 @@ export const TrackerSection = () => {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
                 Effort / RPE
               </label>
               <select
@@ -570,111 +473,111 @@ export const TrackerSection = () => {
             </div>
           </div>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
+          <div style={{ marginBottom: '1.25rem' }}>
+            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, marginBottom: '0.35rem' }}>
               Personal Notes & Machine Settings (Optional)
             </label>
             <input
               type="text"
-              placeholder="e.g. Seat notch #4, pin #5, felt strong on chest stretch..."
+              placeholder="e.g. Seat notch #4, pin #5, smooth chest stretch..."
               className="input-control"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
             />
           </div>
 
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
-            <button type="button" onClick={() => setShowLogForm(false)} className="btn btn-secondary">
+          <div style={{ display: 'flex', gap: '0.65rem', justifyContent: 'flex-end' }}>
+            <button type="button" onClick={() => setShowLogForm(false)} className="btn btn-secondary btn-sm">
               Cancel
             </button>
-            <button type="submit" className="btn btn-primary">
-              <CheckCircle2 size={16} />
-              <span>Save Entry 💾</span>
+            <button type="submit" className="btn btn-primary btn-sm">
+              <CheckCircle2 size={15} />
+              <span>Save Entry</span>
             </button>
           </div>
         </form>
       )}
 
       {/* Workout Logs List */}
-      <div className="card" style={{ padding: '0', overflow: 'hidden' }}>
-        <div style={{ padding: '1.25rem 1.5rem', background: 'var(--bg-card-secondary)', borderBottom: '1px solid var(--border-card)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+        <div style={{ padding: '1rem 1.25rem', background: 'var(--bg-card-secondary)', borderBottom: '1px solid var(--border-card)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <h3 style={{ fontSize: '1.02rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
             <span>🏋️</span>
             <span>Workout History Table ({filteredLogs.length} Entries)</span>
           </h3>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-            Click trash icon to remove any entry
+          <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+            Saved locally in browser
           </span>
         </div>
 
         {filteredLogs.length === 0 ? (
-          <div style={{ padding: '3rem 2rem', textAlign: 'center' }}>
-            <ClipboardList size={40} color="var(--text-muted)" style={{ margin: '0 auto 1rem auto' }} />
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>No workout entries found</h3>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
+          <div style={{ padding: '2.5rem 1.5rem', textAlign: 'center' }}>
+            <ClipboardList size={36} color="var(--text-muted)" style={{ margin: '0 auto 0.75rem auto' }} />
+            <h3 style={{ fontSize: '1.15rem', marginBottom: '0.35rem' }}>No workout entries found</h3>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.86rem', marginBottom: '1rem' }}>
               Click any quick-add preset above or use "+ Custom Entry" to log a workout.
             </p>
             <button onClick={() => setShowLogForm(true)} className="btn btn-primary btn-sm">
-              <Plus size={16} /> Log First Workout
+              <Plus size={15} /> Log First Workout
             </button>
           </div>
         ) : (
           <>
             {/* Desktop Table View */}
             <div className="desktop-logs-table" style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.86rem' }}>
                 <thead>
                   <tr style={{ background: 'var(--bg-card-secondary)', borderBottom: '1px solid var(--border-card)' }}>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Symbol & Exercise</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Category</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Weight</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Sets × Reps</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Effort (RPE)</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Notes / Machine Setup</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Date</th>
-                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700, textAlign: 'center' }}>Action</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Exercise</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Category</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Weight</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Sets × Reps</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Effort (RPE)</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Notes / Machine Setup</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700 }}>Date</th>
+                    <th style={{ padding: '0.85rem 1rem', fontWeight: 700, textAlign: 'center' }}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredLogs.map((log) => (
-                    <tr key={log.id} style={{ borderBottom: '1px solid var(--border-card)', transition: 'background-color 0.15s' }}>
-                      <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                          <span style={{ fontSize: '1.3rem' }}>{log.symbol || '🏋️'}</span>
+                    <tr key={log.id} style={{ borderBottom: '1px solid var(--border-card)' }}>
+                      <td style={{ padding: '0.85rem 1rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                          <span style={{ fontSize: '1.2rem' }}>{log.symbol || '🏋️'}</span>
                           <span>{log.exercise}</span>
                         </div>
                       </td>
-                      <td style={{ padding: '1rem 1.25rem' }}>
-                        <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>
+                      <td style={{ padding: '0.85rem 1rem' }}>
+                        <span className="badge badge-cyan" style={{ fontSize: '0.7rem' }}>
                           {log.category}
                         </span>
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: '#06B6D4' }}>
+                      <td style={{ padding: '0.85rem 1rem', fontWeight: 700, color: '#06B6D4' }}>
                         {log.weight} {log.unit || 'kg'}
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', fontWeight: 600 }}>
+                      <td style={{ padding: '0.85rem 1rem', fontWeight: 600 }}>
                         {log.sets} sets × {log.reps} reps
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.825rem' }}>
+                      <td style={{ padding: '0.85rem 1rem', color: 'var(--text-muted)', fontSize: '0.8rem' }}>
                         {log.rpe}
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.825rem', maxWidth: '240px' }}>
+                      <td style={{ padding: '0.85rem 1rem', color: 'var(--text-muted)', fontSize: '0.8rem', maxWidth: '220px' }}>
                         {log.notes || '—'}
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontSize: '0.825rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                          <Calendar size={13} />
+                      <td style={{ padding: '0.85rem 1rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontSize: '0.8rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                          <Calendar size={12} />
                           <span>{log.date}</span>
                         </div>
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', textAlign: 'center' }}>
+                      <td style={{ padding: '0.85rem 1rem', textAlign: 'center' }}>
                         <button
                           onClick={() => deleteWorkoutLog(log.id)}
                           className="btn btn-secondary btn-icon"
                           title="Delete entry"
-                          style={{ width: '32px', height: '32px', margin: '0 auto', color: 'var(--text-muted)' }}
+                          style={{ width: '30px', height: '30px', margin: '0 auto', color: 'var(--text-muted)' }}
                         >
-                          <Trash2 size={14} />
+                          <Trash2 size={13} />
                         </button>
                       </td>
                     </tr>
@@ -684,32 +587,32 @@ export const TrackerSection = () => {
             </div>
 
             {/* Mobile Cards View for Phone Screens */}
-            <div className="mobile-logs-view" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem', padding: '0.85rem' }}>
+            <div className="mobile-logs-view" style={{ display: 'none', flexDirection: 'column', gap: '0.65rem', padding: '0.75rem' }}>
               {filteredLogs.map((log) => (
                 <div
                   key={log.id}
                   style={{
-                    background: 'var(--bg-card)',
+                    background: 'var(--bg-app)',
                     border: '1px solid var(--border-card)',
-                    borderRadius: '12px',
-                    padding: '0.9rem',
+                    borderRadius: 'var(--radius-md)',
+                    padding: '0.85rem',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.6rem'
+                    gap: '0.5rem'
                   }}
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
-                      <span style={{ fontSize: '1.35rem', flexShrink: 0 }}>{log.symbol || '🏋️'}</span>
+                      <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>{log.symbol || '🏋️'}</span>
                       <div style={{ minWidth: 0 }}>
-                        <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <div style={{ fontWeight: 800, fontSize: '0.92rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {log.exercise}
                         </div>
-                        <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center', marginTop: '2px', flexWrap: 'wrap' }}>
-                          <span className="badge badge-cyan" style={{ fontSize: '0.68rem', padding: '0.1rem 0.45rem' }}>
+                        <div style={{ display: 'flex', gap: '0.3rem', alignItems: 'center', marginTop: '2px', flexWrap: 'wrap' }}>
+                          <span className="badge badge-cyan" style={{ fontSize: '0.66rem', padding: '0.08rem 0.4rem' }}>
                             {log.category}
                           </span>
-                          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                          <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
                             {log.date}
                           </span>
                         </div>
@@ -719,38 +622,38 @@ export const TrackerSection = () => {
                     <button
                       onClick={() => deleteWorkoutLog(log.id)}
                       className="btn btn-secondary btn-icon"
-                      style={{ width: '32px', height: '32px', color: 'var(--text-muted)', flexShrink: 0 }}
+                      style={{ width: '30px', height: '30px', color: 'var(--text-muted)', flexShrink: 0 }}
                       title="Delete entry"
                     >
-                      <Trash2 size={14} />
+                      <Trash2 size={13} />
                     </button>
                   </div>
 
                   <div style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: '0.4rem',
+                    gap: '0.35rem',
                     background: 'var(--bg-card-secondary)',
-                    padding: '0.55rem 0.65rem',
-                    borderRadius: '8px',
+                    padding: '0.5rem 0.6rem',
+                    borderRadius: '6px',
                     textAlign: 'center'
                   }}>
                     <div>
-                      <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Weight</div>
-                      <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#06B6D4' }}>{log.weight} {log.unit || 'kg'}</div>
+                      <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Weight</div>
+                      <div style={{ fontSize: '0.84rem', fontWeight: 800, color: '#06B6D4' }}>{log.weight} {log.unit || 'kg'}</div>
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Sets × Reps</div>
-                      <div style={{ fontSize: '0.88rem', fontWeight: 800 }}>{log.sets} × {log.reps}</div>
+                      <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Sets × Reps</div>
+                      <div style={{ fontSize: '0.84rem', fontWeight: 800 }}>{log.sets} × {log.reps}</div>
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Effort</div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06B6D4', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
+                      <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Effort</div>
+                      <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#06B6D4', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
                     </div>
                   </div>
 
                   {log.notes && (
-                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', background: 'rgba(0,0,0,0.1)', padding: '0.4rem 0.6rem', borderRadius: '6px' }}>
+                    <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', background: 'rgba(0,0,0,0.15)', padding: '0.35rem 0.55rem', borderRadius: '4px' }}>
                       📝 {log.notes}
                     </div>
                   )}
@@ -758,6 +661,104 @@ export const TrackerSection = () => {
               ))}
             </div>
           </>
+        )}
+      </div>
+
+      {/* 10 Essential Workout Tracking Points Section */}
+      <div className="card" style={{ padding: '1.75rem 1.5rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.85rem' }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', marginBottom: '0.3rem' }}>
+              <Award size={22} color="var(--primary-cyan)" />
+              <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-main)' }}>
+                10 Golden Workout Tracking Points & Principles
+              </h2>
+            </div>
+            <p style={{ fontSize: '0.94rem', color: 'var(--text-secondary)' }}>
+              Master these 10 scientific principles to maximize muscle growth and avoid rookie training mistakes.
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              setShowAllPoints(!showAllPoints);
+              playClickBeep();
+            }}
+            className="btn btn-secondary btn-sm"
+          >
+            {showAllPoints ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            <span style={{ fontSize: '0.85rem', fontWeight: 700 }}>{showAllPoints ? 'Collapse Points' : 'Show All 10 Points'}</span>
+          </button>
+        </div>
+
+        {showAllPoints && (
+          <div className="grid-2 animate-fade-in" style={{ gap: '1rem' }}>
+            {TRACKING_10_POINTS.map((pt, idx) => {
+              const isExpanded = expandedPointIndex === idx;
+              return (
+                <div
+                  key={pt.num}
+                  onClick={() => {
+                    setExpandedPointIndex(isExpanded ? null : idx);
+                    playClickBeep();
+                  }}
+                  className="card card-hover"
+                  style={{
+                    padding: '1.25rem 1.35rem',
+                    background: isExpanded ? 'var(--primary-cyan-tint)' : 'var(--bg-app)',
+                    border: isExpanded ? '1px solid var(--primary-cyan)' : '1px solid var(--border-card)',
+                    cursor: 'pointer',
+                    borderRadius: 'var(--radius-md)',
+                    transition: 'all var(--transition-fast)'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
+                    <div style={{
+                      width: '42px',
+                      height: '42px',
+                      borderRadius: '10px',
+                      background: 'var(--primary-cyan-tint)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.35rem',
+                      flexShrink: 0
+                    }}>
+                      {pt.symbol}
+                    </div>
+
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                          <span style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--primary-cyan)', letterSpacing: '0.04em' }}>
+                            POINT {pt.num}
+                          </span>
+                          <span className="badge badge-cyan" style={{ fontSize: '0.72rem', padding: '0.12rem 0.5rem' }}>
+                            {pt.category}
+                          </span>
+                        </div>
+                        {isExpanded ? <ChevronUp size={16} color="var(--primary-cyan)" /> : <ChevronDown size={16} color="var(--text-muted)" />}
+                      </div>
+
+                      <h4 style={{ fontSize: '1.08rem', fontWeight: 800, marginBottom: '0.35rem', color: 'var(--text-main)', lineHeight: 1.35 }}>
+                        {pt.title}
+                      </h4>
+
+                      <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                        {pt.summary}
+                      </p>
+
+                      {isExpanded && (
+                        <div className="animate-fade-in" style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px dashed var(--border-card)', fontSize: '0.88rem', color: 'var(--text-main)', background: 'var(--bg-card-secondary)', padding: '0.75rem 0.95rem', borderRadius: 'var(--radius-sm)', lineHeight: 1.55 }}>
+                          💡 <strong style={{ color: 'var(--primary-cyan)' }}>Actionable Tip: </strong>{pt.detail}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
 

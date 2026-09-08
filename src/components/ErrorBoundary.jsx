@@ -30,100 +30,79 @@ export class ErrorBoundary extends React.Component {
       return (
         <div style={{
           minHeight: '100vh',
-          background: '#0b0f19',
-          color: '#f8fafc',
+          background: '#0F172A',
+          color: '#F8FAFC',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           padding: '1.5rem',
-          fontFamily: 'system-ui, sans-serif'
+          fontFamily: 'var(--font-body, system-ui, sans-serif)'
         }}>
           <div style={{
-            maxWidth: '560px',
+            maxWidth: '540px',
             width: '100%',
-            background: '#131D31',
-            border: '1px solid #1E2E4A',
+            background: '#131E32',
+            border: '1px solid #22324C',
             borderRadius: '16px',
             padding: '2rem',
-            boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
+            boxShadow: 'var(--shadow-modal)',
             textAlign: 'center'
           }}>
             <div style={{
-              width: '52px',
-              height: '52px',
-              borderRadius: '50%',
+              width: '48px',
+              height: '48px',
+              borderRadius: '12px',
               background: 'rgba(6, 182, 212, 0.15)',
               color: '#06B6D4',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 1.25rem auto'
+              margin: '0 auto 1rem auto'
             }}>
-              <AlertTriangle size={28} />
+              <AlertTriangle size={24} />
             </div>
 
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>
+            <h2 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.5rem' }}>
               Something went wrong
             </h2>
-            <p style={{ color: '#94a3b8', fontSize: '0.92rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-              The application encountered a temporary issue.
+            <p style={{ color: '#94A3B8', fontSize: '0.88rem', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+              The application encountered an unexpected issue. You can reload or reset the workspace state.
             </p>
 
             {this.state.error && (
               <pre style={{
-                background: '#0F172A',
+                background: '#0A0F1D',
                 border: '1px solid #1E293B',
-                padding: '0.85rem',
+                padding: '0.75rem',
                 borderRadius: '8px',
-                color: '#94a3b8',
-                fontSize: '0.8rem',
+                color: '#94A3B8',
+                fontSize: '0.78rem',
                 textAlign: 'left',
                 overflowX: 'auto',
-                marginBottom: '1.5rem'
+                marginBottom: '1.25rem',
+                maxHeight: '120px'
               }}>
                 {this.state.error.toString()}
               </pre>
             )}
 
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <button
                 onClick={this.handleReload}
-                style={{
-                  background: '#06B6D4',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '10px',
-                  padding: '0.75rem 1.5rem',
-                  fontWeight: 700,
-                  fontSize: '0.9rem',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
+                className="btn btn-primary"
+                style={{ flex: '1 1 140px' }}
               >
-                <RefreshCw size={16} />
+                <RefreshCw size={15} />
                 <span>Reload Page</span>
               </button>
 
               <button
                 onClick={this.handleClearData}
-                style={{
-                  background: 'rgba(255,255,255,0.08)',
-                  color: '#f8fafc',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: '10px',
-                  padding: '0.75rem 1.5rem',
-                  fontWeight: 700,
-                  fontSize: '0.9rem',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
+                className="btn btn-secondary"
+                style={{ flex: '1 1 140px' }}
               >
-                <Trash2 size={16} />
-                <span>Clear Cache & Reset</span>
+                <Trash2 size={15} />
+                <span>Reset Cache</span>
               </button>
             </div>
           </div>

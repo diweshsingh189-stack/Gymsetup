@@ -11,7 +11,6 @@ import {
   Calendar,
   Zap,
   Heart,
-  Smile,
   Clock,
   Compass,
   Trophy,
@@ -21,7 +20,12 @@ import {
   Award,
   TrendingUp,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Layers,
+  Cpu,
+  Apple,
+  MoonStar,
+  ClipboardList
 } from 'lucide-react';
 
 const MOTIVATIONAL_QUOTES = [
@@ -89,6 +93,22 @@ const HERO_SLIDES = [
   }
 ];
 
+const SECTIONS_CATALOG = [
+  { id: 'guided-flow', num: '02', title: 'Guided Day-1 Flow', icon: Sparkles, badge: 'Wizard', desc: '6-step interactive onboarding to walk you from home to your first workout.' },
+  { id: 'first-day', num: '03', title: 'First Day Gym Guide', icon: Compass, badge: 'Step-by-Step', desc: 'Bag packing, locker rooms, anxiety conquer kit, and reception flow.' },
+  { id: 'roadmap', num: '04', title: '4-Week Beginner Roadmap', icon: Calendar, badge: 'Milestones', desc: 'Week-by-week structured progression timeline with interactive tracking.' },
+  { id: 'safety', num: '05', title: 'Safety & DOs / DON\'Ts', icon: ShieldCheck, badge: 'Crucial Rules', desc: 'Injury prevention, gym etiquette, re-racking rules, and emergency guidelines.' },
+  { id: 'equipment', num: '06', title: 'Equipment & Machines', icon: Cpu, badge: '16+ Machines', desc: 'Seat height adjustments, pin settings, weight guides, and form tips.' },
+  { id: 'warmup', num: '07', title: 'Warm-up & Cool-down', icon: Flame, badge: 'Mobility', desc: 'Dynamic mobility routines, cardio warm-ups, and static recovery stretches.' },
+  { id: 'workout', num: '08', title: 'Beginner Workout Plans', icon: Dumbbell, badge: '4 Routines', desc: 'Tested 30–45 min splits (Full Body, Upper/Lower, PPL) with sets and reps.' },
+  { id: 'nutrition', num: '09', title: 'Nutrition & Hydration', icon: Apple, badge: 'Fuel Science', desc: 'Macro calculations, pre/post workout meals, and supplement guidance.' },
+  { id: 'recovery', num: '10', title: 'Sleep & Muscle Recovery', icon: MoonStar, badge: 'Rest Protocol', desc: 'Managing muscle soreness (DOMS), sleep hygiene, and active recovery days.' },
+  { id: 'tracker', num: '11', title: 'Workout Tracker & Logger', icon: ClipboardList, badge: 'Logging', desc: 'Log exercises, track progressive overload, RPE ratings, and volume stats.' },
+  { id: 'checklist', num: '12', title: 'Daily Beginner Checklist', icon: CheckCircle2, badge: '20 Tasks', desc: 'Interactive preparation checklist for gym bag, nutrition, and mindset.' },
+  { id: 'gym-pricing', num: '13', title: 'Popular Gyms & Pricing', icon: Building2, badge: 'City Guides', desc: 'Cult.fit, Gold’s Gym, Anytime Fitness fees, photos, and comparison.' },
+  { id: 'feedback', num: '14', title: 'Feedback & Member Reviews', icon: MessageSquareHeart, badge: 'Community', desc: 'Share your feedback, rate features, and read beginner testimonials.' }
+];
+
 export const HomeSection = () => {
   const {
     navigateTo,
@@ -96,24 +116,22 @@ export const HomeSection = () => {
     workoutLogs,
     roadmapMilestones,
     wizardCompleted,
-    openTimer,
     openSearchModal
   } = useApp();
 
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
   const [isFlipping, setIsFlipping] = useState(false);
-  const [flipDirection, setFlipDirection] = useState('next'); // 'next' or 'prev'
+  const [flipDirection, setFlipDirection] = useState('next');
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
 
-  // Auto turn pages continuously and briskly like a notebook ("juldi move kro & pura ulet jai")
   useEffect(() => {
     if (isDragging || isFlipping) return;
     const timer = setInterval(() => {
       turnPage('next');
-    }, 2200);
+    }, 2800);
     return () => clearInterval(timer);
   }, [heroSlideIndex, isDragging, isFlipping]);
 
@@ -133,7 +151,7 @@ export const HomeSection = () => {
       });
       setIsFlipping(false);
       setDragOffset(0);
-    }, 480);
+    }, 450);
   };
 
   const nextHeroSlide = (e) => {
@@ -146,7 +164,6 @@ export const HomeSection = () => {
     turnPage('prev');
   };
 
-  // Hand Drag & Touch Handlers (Physical Page Turn with Hand)
   const handleTouchStart = (e) => {
     if (isFlipping) return;
     setIsDragging(true);
@@ -158,7 +175,6 @@ export const HomeSection = () => {
     if (!isDragging || isFlipping) return;
     const currentX = e.touches ? e.touches[0].clientX : e.clientX;
     const diff = currentX - startX;
-    // Limit drag to reasonable range
     if (diff < 120 && diff > -260) {
       setDragOffset(diff);
     }
@@ -168,10 +184,8 @@ export const HomeSection = () => {
     if (!isDragging) return;
     setIsDragging(false);
     if (dragOffset < -50) {
-      // User swiped/turned page to the left (next page)
       turnPage('next');
     } else if (dragOffset > 50) {
-      // User swiped/turned page to the right (previous page)
       turnPage('prev');
     } else {
       setDragOffset(0);
@@ -183,7 +197,6 @@ export const HomeSection = () => {
     playClickBeep();
   };
 
-  // Metrics
   const completedChecklistCount = Object.values(checklist).filter(Boolean).length;
   const checklistPercent = Math.round((completedChecklistCount / 20) * 100);
 
@@ -194,52 +207,49 @@ export const HomeSection = () => {
 
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-      {/* Top Motivational Daily Fuel Ribbon - Clean, Minimalist, 2-Color */}
+      {/* Top Motivational Daily Fuel Ribbon */}
       <div
         onClick={nextQuote}
         className="card card-hover"
         style={{
           background: 'var(--bg-card-secondary)',
           border: '1px solid var(--border-card)',
-          borderRadius: '14px',
+          borderRadius: 'var(--radius-md)',
           padding: '0.65rem 1.15rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           gap: '0.65rem',
-          cursor: 'pointer',
-          overflow: 'hidden'
+          cursor: 'pointer'
         }}
         title="Click to shuffle daily fitness motivation"
       >
-        <span style={{ fontSize: '1.2rem', flexShrink: 0, lineHeight: 1 }}>
+        <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>
           {MOTIVATIONAL_QUOTES[quoteIndex].left}
         </span>
         <span style={{
-          fontSize: '0.9rem',
+          fontSize: '0.88rem',
           fontWeight: 600,
           color: 'var(--text-main)',
           lineHeight: 1.45,
           textAlign: 'center',
-          minWidth: 0,
-          wordBreak: 'break-word'
+          minWidth: 0
         }}>
           "{MOTIVATIONAL_QUOTES[quoteIndex].text}"
         </span>
-        <span style={{ fontSize: '1.2rem', flexShrink: 0, lineHeight: 1 }}>
+        <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>
           {MOTIVATIONAL_QUOTES[quoteIndex].right}
         </span>
       </div>
 
-      {/* Hero Banner with Clean Natural Aesthetics */}
+      {/* Hero Banner with Clean Navy & Cyan Aesthetics */}
       <div
-        className="card"
+        className="card card-glow-cyan"
         style={{
           padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
           position: 'relative',
           overflow: 'hidden',
-          borderRadius: '20px',
-          border: '1px solid var(--border-card)',
+          borderRadius: 'var(--radius-xl)',
           background: 'var(--bg-card)'
         }}
       >
@@ -255,7 +265,7 @@ export const HomeSection = () => {
               </span>
               {wizardCompleted && (
                 <span className="badge badge-cyan">
-                  <Trophy size={13} /> Certified
+                  <Trophy size={13} /> Certified Ready
                 </span>
               )}
             </div>
@@ -264,40 +274,40 @@ export const HomeSection = () => {
               fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
               fontWeight: 800,
               letterSpacing: '-0.02em',
-              marginBottom: '1rem',
+              marginBottom: '0.85rem',
               lineHeight: 1.2
             }}>
-              Welcome to the Gym. <br />
-              <span style={{ color: '#06B6D4' }}>We Made Day 1 Effortless.</span>
+              Master Your First Day at the Gym with <br />
+              <span style={{ color: '#06B6D4' }}>Zero Guesswork & Full Confidence.</span>
             </h1>
 
             <p style={{
-              fontSize: '1rem',
+              fontSize: '0.98rem',
               color: 'var(--text-muted)',
-              marginBottom: '1.5rem',
+              marginBottom: '1.35rem',
               lineHeight: 1.6
             }}>
-              No body-shaming, no complex jargon, and no confusing equipment. GymSetup is your step-by-step pocket coach from packing your bag to mastering safe, confident workouts.
+              No intimidating jargon, no confusion over machines. GymSetup gives you the complete blueprint — from packing your bag and adjusting seat pins to logging your first confident workout.
             </p>
 
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.25rem', width: '100%' }}>
+            <div style={{ display: 'flex', gap: '0.65rem', flexWrap: 'wrap', marginBottom: '1.25rem', width: '100%' }}>
               <button
                 onClick={() => navigateTo('guided-flow')}
                 className="btn btn-primary btn-lg"
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.65rem', flex: '1 1 200px', minWidth: 0 }}
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', flex: '1 1 190px' }}
               >
-                <Sparkles size={18} />
-                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Start My Gym Journey</span>
-                <ArrowRight size={18} />
+                <Sparkles size={17} />
+                <span>Start Guided Journey</span>
+                <ArrowRight size={17} />
               </button>
 
               <button
                 onClick={() => navigateTo('first-day')}
                 className="btn btn-secondary btn-lg"
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', flex: '1 1 180px', minWidth: 0 }}
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', flex: '1 1 170px' }}
               >
-                <Compass size={18} />
-                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>First Day Step-by-Step</span>
+                <Compass size={17} />
+                <span>First Day Guide</span>
               </button>
             </div>
 
@@ -308,12 +318,12 @@ export const HomeSection = () => {
                 cursor: 'pointer',
                 background: 'var(--bg-card-secondary)',
                 border: '1px solid var(--border-card)',
-                borderRadius: '12px',
-                padding: '0.65rem 0.95rem',
+                borderRadius: 'var(--radius-md)',
+                padding: '0.6rem 0.95rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                transition: 'border-color 0.15s ease',
+                transition: 'border-color var(--transition-fast)',
                 gap: '0.65rem',
                 minWidth: 0,
                 width: '100%',
@@ -322,17 +332,17 @@ export const HomeSection = () => {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
                 <Search size={16} color="#06B6D4" style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  Search any gym machine, exercise, or stretch...
+                <span style={{ fontSize: '0.84rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  Search any gym machine, exercise, or routine...
                 </span>
               </div>
-              <span className="badge badge-cyan" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', flexShrink: 0 }}>
-                🔍 Search
+              <span className="badge badge-cyan" style={{ fontSize: '0.7rem', padding: '0.12rem 0.5rem', flexShrink: 0 }}>
+                Explore 🔍
               </span>
             </div>
           </div>
 
-          {/* Right Column: 3D Notebook Page-Turn Effect */}
+          {/* Right Column: 3D Visual Carousel */}
           <div className="hero-photo-wrapper">
             <div
               className="book-perspective hero-photo-card"
@@ -348,7 +358,7 @@ export const HomeSection = () => {
                 cursor: isDragging ? 'grabbing' : 'grab'
               }}
             >
-              {/* Underneath Next Slide (Revealed when current page turns) */}
+              {/* Underneath Next Slide */}
               {(() => {
                 const nextIdx = flipDirection === 'next' 
                   ? (heroSlideIndex + 1) % HERO_SLIDES.length 
@@ -379,11 +389,10 @@ export const HomeSection = () => {
                 );
               })()}
 
-              {/* Active Turning Page: Complete 180-degree Page Turn */}
+              {/* Active Turning Page */}
               {(() => {
                 const currentSlide = HERO_SLIDES[heroSlideIndex];
                 
-                // Dynamic 3D rotation: Full 180-degree page flip
                 let rotateY = 0;
                 let transition = 'none';
 
@@ -392,7 +401,7 @@ export const HomeSection = () => {
                   rotateY = dragPercent * 180;
                 } else if (isFlipping) {
                   rotateY = flipDirection === 'next' ? -180 : 180;
-                  transition = 'transform 0.48s cubic-bezier(0.25, 1, 0.4, 1)';
+                  transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.4, 1)';
                 }
 
                 return (
@@ -406,8 +415,7 @@ export const HomeSection = () => {
                       transform: `rotateY(${rotateY}deg)`,
                       transformStyle: 'preserve-3d',
                       transition: transition,
-                      willChange: 'transform',
-                      boxShadow: isDragging || isFlipping ? '-10px 0 30px rgba(0,0,0,0.8)' : 'none'
+                      willChange: 'transform'
                     }}
                   >
                     {/* Front Face of Page */}
@@ -418,7 +426,7 @@ export const HomeSection = () => {
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
                         overflow: 'hidden',
-                        backgroundColor: '#0B1120'
+                        backgroundColor: 'var(--bg-card)'
                       }}
                     >
                       <img
@@ -434,21 +442,9 @@ export const HomeSection = () => {
                           pointerEvents: 'none'
                         }}
                       />
-
-                      {/* Paper Curl & Crease Dynamic Shadow */}
-                      <div
-                        style={{
-                          position: 'absolute',
-                          inset: 0,
-                          background: 'linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.08) 20%, rgba(255,255,255,0.06) 50%, rgba(0,0,0,0.65) 100%)',
-                          opacity: isDragging ? Math.min(1, Math.abs(dragOffset / 140)) : (isFlipping ? 0.9 : 0),
-                          transition: isDragging ? 'none' : 'opacity 0.48s ease',
-                          pointerEvents: 'none'
-                        }}
-                      />
                     </div>
 
-                    {/* Back Face of Page (Visible during 180deg turn) */}
+                    {/* Back Face of Page */}
                     <div
                       style={{
                         position: 'absolute',
@@ -456,18 +452,18 @@ export const HomeSection = () => {
                         transform: 'rotateY(180deg)',
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
-                        background: 'linear-gradient(135deg, #0B1120 0%, #131D31 50%, #0F172A 100%)',
+                        background: 'var(--bg-app)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: '1.5rem',
-                        color: 'rgba(255,255,255,0.4)',
+                        color: 'var(--text-muted)',
                         overflow: 'hidden'
                       }}
                     >
-                      <Dumbbell size={36} color="#06B6D4" style={{ opacity: 0.6, marginBottom: '0.5rem' }} />
-                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06B6D4', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      <Dumbbell size={32} color="var(--primary-cyan)" style={{ opacity: 0.6, marginBottom: '0.4rem' }} />
+                      <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#06B6D4', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                         GymSetup Guide
                       </span>
                     </div>
@@ -480,13 +476,13 @@ export const HomeSection = () => {
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(180deg, rgba(9, 13, 22, 0.45) 0%, rgba(9, 13, 22, 0.05) 35%, rgba(9, 13, 22, 0.94) 100%)',
+                  background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.05) 40%, rgba(15, 23, 42, 0.92) 100%)',
                   zIndex: 5,
                   pointerEvents: 'none'
                 }}
               />
 
-              {/* Top Dynamic Muscle Badge & Page Number (Clean, No-Cut Layout) */}
+              {/* Top Dynamic Muscle Badge & Page Number */}
               <div
                 style={{
                   position: 'absolute',
@@ -508,8 +504,8 @@ export const HomeSection = () => {
                     alignItems: 'center',
                     gap: '0.3rem',
                     background: 'rgba(15, 23, 42, 0.92)',
-                    padding: '0.25rem 0.55rem',
-                    borderRadius: '9999px',
+                    padding: '0.22rem 0.55rem',
+                    borderRadius: 'var(--radius-full)',
                     border: '1px solid rgba(6, 182, 212, 0.4)',
                     color: '#06B6D4',
                     fontSize: '0.66rem',
@@ -517,8 +513,7 @@ export const HomeSection = () => {
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    maxWidth: '75%',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.4)'
+                    maxWidth: '75%'
                   }}
                 >
                   <Flame size={12} color="#06B6D4" style={{ flexShrink: 0 }} />
@@ -531,9 +526,9 @@ export const HomeSection = () => {
                   style={{
                     background: 'rgba(15, 23, 42, 0.9)',
                     border: '1px solid var(--border-card)',
-                    padding: '0.22rem 0.5rem',
-                    borderRadius: '9999px',
-                    color: '#94a3b8',
+                    padding: '0.2rem 0.5rem',
+                    borderRadius: 'var(--radius-full)',
+                    color: '#94A3B8',
                     fontSize: '0.64rem',
                     fontWeight: 600,
                     whiteSpace: 'nowrap',
@@ -544,11 +539,11 @@ export const HomeSection = () => {
                 </div>
               </div>
 
-              {/* Left / Right Carousel Navigation Buttons */}
+              {/* Navigation Arrows */}
               <button
                 type="button"
                 onClick={prevHeroSlide}
-                aria-label="Previous Page"
+                aria-label="Previous Slide"
                 style={{
                   position: 'absolute',
                   left: '8px',
@@ -557,23 +552,14 @@ export const HomeSection = () => {
                   width: '30px',
                   height: '30px',
                   borderRadius: '50%',
-                  background: 'rgba(15, 23, 42, 0.82)',
+                  background: 'rgba(15, 23, 42, 0.85)',
                   border: '1px solid var(--border-card)',
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  zIndex: 7,
-                  transition: 'background 0.2s ease, color 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#06B6D4';
-                  e.currentTarget.style.color = '#0F172A';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.82)';
-                  e.currentTarget.style.color = '#ffffff';
+                  zIndex: 7
                 }}
               >
                 <ChevronLeft size={16} />
@@ -582,7 +568,7 @@ export const HomeSection = () => {
               <button
                 type="button"
                 onClick={nextHeroSlide}
-                aria-label="Next Page"
+                aria-label="Next Slide"
                 style={{
                   position: 'absolute',
                   right: '8px',
@@ -591,29 +577,20 @@ export const HomeSection = () => {
                   width: '30px',
                   height: '30px',
                   borderRadius: '50%',
-                  background: 'rgba(15, 23, 42, 0.82)',
+                  background: 'rgba(15, 23, 42, 0.85)',
                   border: '1px solid var(--border-card)',
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  zIndex: 7,
-                  transition: 'background 0.2s ease, color 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#06B6D4';
-                  e.currentTarget.style.color = '#0F172A';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.82)';
-                  e.currentTarget.style.color = '#ffffff';
+                  zIndex: 7
                 }}
               >
                 <ChevronRight size={16} />
               </button>
 
-              {/* Bottom Card: Slide Metadata & Dots */}
+              {/* Bottom Slide Metadata */}
               <div
                 style={{
                   position: 'absolute',
@@ -622,11 +599,11 @@ export const HomeSection = () => {
                   right: '8px',
                   background: 'rgba(15, 23, 42, 0.94)',
                   border: '1px solid var(--border-card)',
-                  borderRadius: '12px',
+                  borderRadius: 'var(--radius-md)',
                   padding: '0.55rem 0.75rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.4rem',
+                  gap: '0.35rem',
                   zIndex: 7,
                   backdropFilter: 'blur(8px)',
                   minWidth: 0
@@ -636,10 +613,10 @@ export const HomeSection = () => {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0, flex: 1 }}>
                     <div
                       style={{
-                        width: '28px',
-                        height: '28px',
-                        borderRadius: '8px',
-                        background: 'rgba(6, 182, 212, 0.2)',
+                        width: '26px',
+                        height: '26px',
+                        borderRadius: '6px',
+                        background: 'rgba(6, 182, 212, 0.15)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -650,43 +627,22 @@ export const HomeSection = () => {
                       {React.createElement(HERO_SLIDES[heroSlideIndex].icon, { size: 14 })}
                     </div>
                     <div style={{ minWidth: 0, flex: 1 }}>
-                      <div
-                        style={{
-                          fontSize: '0.78rem',
-                          fontWeight: 700,
-                          color: '#ffffff',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis'
-                        }}
-                      >
+                      <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {HERO_SLIDES[heroSlideIndex].title}
                       </div>
-                      <div
-                        style={{
-                          fontSize: '0.66rem',
-                          color: '#06B6D4',
-                          fontWeight: 600,
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis'
-                        }}
-                      >
+                      <div style={{ fontSize: '0.66rem', color: '#06B6D4', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {HERO_SLIDES[heroSlideIndex].subtitle}
                       </div>
                     </div>
                   </div>
 
-                  <span
-                    className="badge badge-cyan"
-                    style={{ fontSize: '0.62rem', padding: '0.12rem 0.4rem', flexShrink: 0 }}
-                  >
+                  <span className="badge badge-cyan" style={{ fontSize: '0.62rem', padding: '0.1rem 0.4rem', flexShrink: 0 }}>
                     {HERO_SLIDES[heroSlideIndex].tag}
                   </span>
                 </div>
 
-                {/* 6 Dots / Indicator Bars */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', paddingTop: '1px' }}>
+                {/* Indicator Dots */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
                   {HERO_SLIDES.map((_, dotIdx) => {
                     const isDotActive = dotIdx === heroSlideIndex;
                     return (
@@ -697,16 +653,16 @@ export const HomeSection = () => {
                           e.stopPropagation();
                           setHeroSlideIndex(dotIdx);
                         }}
-                        aria-label={`Page ${dotIdx + 1}`}
+                        aria-label={`Slide ${dotIdx + 1}`}
                         style={{
                           height: '4px',
-                          width: isDotActive ? '18px' : '5px',
+                          width: isDotActive ? '16px' : '4px',
                           borderRadius: '9999px',
                           background: isDotActive ? '#06B6D4' : 'rgba(255, 255, 255, 0.25)',
                           border: 'none',
                           padding: 0,
                           cursor: 'pointer',
-                          transition: 'all 0.3s ease'
+                          transition: 'all var(--transition-fast)'
                         }}
                       />
                     );
@@ -720,233 +676,185 @@ export const HomeSection = () => {
 
       {/* Quick Metrics / Dashboard Status */}
       <div className="grid-3">
-        {/* Checklist Card */}
+        {/* Checklist Metric */}
         <div
           onClick={() => navigateTo('checklist')}
           className="card card-hover"
-          style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
         >
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <div style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(6, 182, 212, 0.15)',
+                background: 'rgba(6, 182, 212, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#06B6D4'
               }}>
-                <CheckCircle2 size={22} />
+                <CheckCircle2 size={20} />
               </div>
               <span className="badge badge-cyan">
-                {checklistPercent}% Ready
+                {checklistPercent}% Done
               </span>
             </div>
 
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.35rem' }}>
-              Daily Gym Checklist
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+              Daily Preparation
             </h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              {completedChecklistCount} of 20 items checked for before, during & after your session.
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
+              {completedChecklistCount} of 20 checklist items completed.
             </p>
           </div>
 
-          <div style={{ marginTop: '1.25rem' }}>
-            <div className="progress-container">
-              <div className="progress-bar-emerald" style={{ width: `${checklistPercent}%` }}></div>
-            </div>
+          <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#06B6D4', fontSize: '0.82rem', fontWeight: 700 }}>
+            <span>Review Checklist</span>
+            <ArrowRight size={14} />
           </div>
         </div>
 
-        {/* Roadmap Card */}
+        {/* Roadmap Metric */}
         <div
           onClick={() => navigateTo('roadmap')}
           className="card card-hover"
-          style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
         >
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <div style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(6, 182, 212, 0.15)',
+                background: 'rgba(6, 182, 212, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#06B6D4'
               }}>
-                <Calendar size={22} />
+                <Calendar size={20} />
               </div>
-              <span className="badge badge-neutral">
-                {completedRoadmapCount} Completed
+              <span className="badge badge-cyan">
+                {roadmapPercent}% Milestone
               </span>
             </div>
 
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.35rem' }}>
-              Beginner Roadmap
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+              4-Week Roadmap
             </h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              From Day 1 "Just Show Up" to Month 2+ autonomous progressive habit.
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
+              {completedRoadmapCount} of 20 progression milestones checked.
             </p>
           </div>
 
-          <div style={{ marginTop: '1.25rem' }}>
-            <div className="progress-container">
-              <div className="progress-bar-emerald" style={{ width: `${roadmapPercent}%` }}></div>
-            </div>
+          <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#06B6D4', fontSize: '0.82rem', fontWeight: 700 }}>
+            <span>View 4-Week Plan</span>
+            <ArrowRight size={14} />
           </div>
         </div>
 
-        {/* Workout Tracker Card */}
+        {/* Workout Logger Metric */}
         <div
           onClick={() => navigateTo('tracker')}
           className="card card-hover"
-          style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+          style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
         >
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <div style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(6, 182, 212, 0.15)',
+                background: 'rgba(6, 182, 212, 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#06B6D4'
               }}>
-                <Dumbbell size={22} />
+                <ClipboardList size={20} />
               </div>
-              <span className="badge badge-neutral">
-                {totalLogs} Entries
+              <span className="badge badge-cyan">
+                {totalLogs} Logged Sets
               </span>
             </div>
 
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.35rem' }}>
-              Workout History
+            <h3 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+              Workout Logger
             </h3>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              Logged safely in your browser storage. Track weight, sets, and personal records.
+            <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
+              Track weights, reps, and RPE for progressive overload.
             </p>
           </div>
 
-          <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06B6D4', fontSize: '0.875rem', fontWeight: 600 }}>
+          <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#06B6D4', fontSize: '0.82rem', fontWeight: 700 }}>
             <span>Open Tracker</span>
-            <ArrowRight size={16} />
+            <ArrowRight size={14} />
           </div>
         </div>
       </div>
 
-      {/* Quick 3-Pillar Confidence Primer */}
-      <div className="card" style={{ padding: '2rem' }}>
-        <h2 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <ShieldCheck size={24} color="#06B6D4" />
-          The Beginner's 3 Golden Rules for Day 1
-        </h2>
+      {/* Sections Catalog Directory Grid */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div>
+            <h2 style={{ fontSize: '1.35rem', fontWeight: 800 }}>
+              All 14 Modules & Knowledge Centers
+            </h2>
+            <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)' }}>
+              Everything a beginner needs to know, organized step-by-step.
+            </p>
+          </div>
+        </div>
 
         <div className="grid-3">
-          <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06B6D4', marginBottom: '0.35rem' }}>
-              1. Nobody Is Watching You
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              99% of people in the gym are hyper-focused on their own reps, music, and fatigue. You are in safe company.
-            </p>
-          </div>
-
-          <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06B6D4', marginBottom: '0.35rem' }}>
-              2. Consistency Beats Intensity
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              An easy 25-minute workout 3 times a week beats a grueling 2-hour workout that leaves you unable to walk for 6 days.
-            </p>
-          </div>
-
-          <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06B6D4', marginBottom: '0.35rem' }}>
-              3. Machines Are Your Best Friend
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-              Fixed-track pin machines guide your movement with zero chance of dropping weights. Perfect for your first 30 days!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Quick Launchpad to All Sections */}
-      <div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-          <div>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800 }}>Explore GymSetup Hubs</h2>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Direct access to the beginner pillars</p>
-          </div>
-        </div>
-
-        <div className="grid-4">
-          {[
-            { id: 'first-day', title: 'First Day Guide', desc: 'Before, during & after breakdown', icon: Compass, color: '#06B6D4' },
-            { id: 'roadmap', title: 'Roadmap & Milestones', desc: 'Day 1 to Month 2+ path', icon: Calendar, color: '#06B6D4' },
-            { id: 'safety', title: 'Safety & Form Traps', desc: 'DOs/DON\'Ts and red flags', icon: ShieldCheck, color: '#06B6D4' },
-            { id: 'equipment', title: 'Equipment Explorer', desc: 'Pins, adjustments & how-tos', icon: Zap, color: '#06B6D4' },
-            { id: 'warmup', title: 'Warm-up & Cooldown', desc: 'Dynamic moves + rest timer', icon: Flame, color: '#06B6D4' },
-            { id: 'workout', title: 'Beginner Workouts', desc: 'Full Body & 20-min express', icon: Dumbbell, color: '#06B6D4' },
-            { id: 'nutrition', title: 'Simple Nutrition', desc: 'Macros & protein calculator', icon: Heart, color: '#06B6D4' },
-            { id: 'recovery', title: 'Rest & Recovery', desc: 'DOMS survival & sleep guide', icon: Clock, color: '#06B6D4' },
-            { id: 'gym-pricing', title: 'Top Gyms & Pricing', desc: 'Cult.fit, Gold\'s, Anytime & fees', icon: Building2, color: '#06B6D4' },
-            { id: 'feedback', title: 'Member Feedback', desc: 'Submit reviews, ratings & thoughts', icon: MessageSquareHeart, color: '#06B6D4' }
-          ].map((item) => {
-            const Icon = item.icon;
+          {SECTIONS_CATALOG.map((sec) => {
+            const Icon = sec.icon;
             return (
               <div
-                key={item.id}
-                onClick={() => navigateTo(item.id)}
+                key={sec.id}
+                onClick={() => navigateTo(sec.id)}
                 className="card card-hover"
-                style={{ cursor: 'pointer', padding: '1.35rem' }}
+                style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '1.25rem' }}
               >
-                <div style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '10px',
-                  background: 'rgba(6, 182, 212, 0.15)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#06B6D4',
-                  marginBottom: '1rem'
-                }}>
-                  <Icon size={20} />
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
+                    <div style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '8px',
+                      background: 'var(--bg-card-secondary)',
+                      border: '1px solid var(--border-card)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#06B6D4'
+                    }}>
+                      <Icon size={18} />
+                    </div>
+                    <span className="badge badge-neutral" style={{ fontSize: '0.7rem' }}>
+                      {sec.badge}
+                    </span>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.35rem' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#06B6D4' }}>{sec.num}.</span>
+                    <h3 style={{ fontSize: '1.02rem', fontWeight: 700 }}>{sec.title}</h3>
+                  </div>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
+                    {sec.desc}
+                  </p>
                 </div>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{item.title}</h4>
-                <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{item.desc}</p>
+
+                <div style={{ marginTop: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#06B6D4', fontSize: '0.78rem', fontWeight: 700 }}>
+                  <span>Open Section</span>
+                  <ArrowRight size={13} />
+                </div>
               </div>
             );
           })}
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 992px) {
-          .hero-banner-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1.75rem !important;
-          }
-        }
-        @media (max-width: 640px) {
-          .hero-physique-blink {
-            height: 360px !important;
-            max-width: 100% !important;
-          }
-        }
-        @media (max-width: 420px) {
-          .hero-physique-blink {
-            height: 300px !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };
