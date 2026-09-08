@@ -52,7 +52,7 @@ export const ChecklistSection = () => {
           <div style={{ marginTop: '1.5rem', background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Trophy size={18} color="#f59e0b" />
+                <Trophy size={18} color="#10b981" />
                 <span style={{ fontWeight: 700, fontSize: '0.95rem' }}>Workout Readiness Score</span>
               </div>
               <span style={{ fontWeight: 800, color: '#10b981', fontSize: '1.1rem' }}>
@@ -61,7 +61,7 @@ export const ChecklistSection = () => {
             </div>
 
             <div style={{ width: '100%', height: '10px', background: 'var(--border-card)', borderRadius: '9999px', overflow: 'hidden' }}>
-              <div style={{ width: `${overallPercentage}%`, height: '100%', background: 'linear-gradient(90deg, #10b981, #06b6d4)', transition: 'width 0.3s' }} />
+              <div style={{ width: `${overallPercentage}%`, height: '100%', background: '#10b981', transition: 'width 0.3s' }} />
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@ export const ChecklistSection = () => {
           ))}
         </div>
 
-        <button onClick={resetChecklist} className="btn btn-secondary btn-sm" style={{ color: '#f43f5e' }}>
+        <button onClick={resetChecklist} className="btn btn-secondary btn-sm" style={{ color: 'var(--text-muted)' }}>
           <RotateCcw size={14} />
           <span>Reset Checklist</span>
         </button>
@@ -116,7 +116,7 @@ export const ChecklistSection = () => {
                   </div>
                 </div>
 
-                <span className={`badge ${phaseDoneCount === phase.items.length ? 'badge-emerald' : 'badge-cyan'}`}>
+                <span className={`badge ${phaseDoneCount === phase.items.length ? 'badge-emerald' : 'badge-neutral'}`}>
                   {phaseDoneCount === phase.items.length ? '✓ Phase Complete' : `${phaseDoneCount}/${phase.items.length}`}
                 </span>
               </div>

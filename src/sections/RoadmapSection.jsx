@@ -33,7 +33,7 @@ export const RoadmapSection = () => {
               <span style={{ fontWeight: 700, color: '#10b981' }}>{completedMilestones} / {totalMilestones} Milestones ({overallPercent}%)</span>
             </div>
             <div style={{ width: '100%', height: '8px', background: 'var(--border-card)', borderRadius: '9999px', overflow: 'hidden' }}>
-              <div style={{ width: `${overallPercent}%`, height: '100%', background: 'linear-gradient(90deg, #10b981, #06b6d4)', transition: 'width 0.3s' }} />
+              <div style={{ width: `${overallPercent}%`, height: '100%', background: '#10b981', transition: 'width 0.3s' }} />
             </div>
           </div>
         </div>
@@ -54,13 +54,13 @@ export const RoadmapSection = () => {
               style={{
                 textAlign: 'left',
                 border: isSelected ? '2px solid #10b981' : '1px solid var(--border-card)',
-                background: isSelected ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)' : 'var(--bg-card)',
+                background: isSelected ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-card)',
                 padding: '1.25rem',
                 cursor: 'pointer'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <span className={`badge ${isSelected ? 'badge-emerald' : 'badge-cyan'}`} style={{ fontSize: '0.75rem' }}>
+                <span className={`badge ${isSelected ? 'badge-emerald' : 'badge-neutral'}`} style={{ fontSize: '0.75rem' }}>
                   {phase.badge}
                 </span>
                 {isPhaseFullyDone && <CheckCircle2 size={16} color="#10b981" />}
@@ -145,17 +145,17 @@ export const RoadmapSection = () => {
 
           {/* Golden Rule banner */}
           <div style={{
-            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(249, 115, 22, 0.08) 100%)',
-            border: '1px solid rgba(245, 158, 11, 0.3)',
+            background: 'var(--bg-card-secondary)',
+            border: '1px solid var(--border-card)',
             borderRadius: 'var(--radius-md)',
             padding: '1.25rem',
             display: 'flex',
             alignItems: 'center',
             gap: '1rem'
           }}>
-            <Sparkles size={24} color="#f59e0b" style={{ flexShrink: 0 }} />
+            <Sparkles size={24} color="#10b981" style={{ flexShrink: 0 }} />
             <div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#f59e0b', textTransform: 'uppercase' }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>
                 Key Mindset
               </div>
               <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)' }}>

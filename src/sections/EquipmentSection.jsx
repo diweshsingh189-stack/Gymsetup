@@ -117,10 +117,10 @@ export const EquipmentSection = () => {
               <span className="badge badge-emerald">
                 <Cpu size={14} /> Section 6 of 14 — Complete Knowledge Hub
               </span>
-              <span className="badge badge-cyan">
+              <span className="badge badge-neutral">
                 <Flame size={14} /> 16 Complete Gym Machines
               </span>
-              <span className="badge badge-amber">
+              <span className="badge badge-neutral">
                 <BookOpen size={14} /> 25+ Exercise Directory
               </span>
             </div>
@@ -136,7 +136,7 @@ export const EquipmentSection = () => {
           <button
             onClick={() => openSearchModal()}
             className="btn btn-primary btn-lg"
-            style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}
           >
             <Search size={18} />
             <span>🔍 Live Knowledge Search</span>
@@ -245,7 +245,7 @@ export const EquipmentSection = () => {
                 >
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.85rem' }}>
-                      <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>
+                      <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>
                         {item.difficulty}
                       </span>
                       <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>
@@ -508,7 +508,7 @@ export const EquipmentSection = () => {
               <div>
                 <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.4rem', flexWrap: 'wrap' }}>
                   <span className="badge badge-emerald">{selectedMachine.primaryMuscle}</span>
-                  <span className="badge badge-cyan">{selectedMachine.difficulty}</span>
+                  <span className="badge badge-neutral">{selectedMachine.difficulty}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                   <span style={{ fontSize: '1.8rem' }}>{selectedMachine.symbol || '🏋️'}</span>
@@ -544,7 +544,7 @@ export const EquipmentSection = () => {
               {/* Starting Weight Recommendation */}
               <div
                 style={{
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)',
+                  background: 'rgba(16, 185, 129, 0.08)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
                   borderRadius: 'var(--radius-md)',
                   padding: '1rem 1.25rem'
@@ -560,8 +560,8 @@ export const EquipmentSection = () => {
 
               {/* Machine Adjustment / Seat Setup */}
               {selectedMachine.adjustment && (
-                <div style={{ background: 'rgba(6, 182, 212, 0.08)', border: '1px solid rgba(6, 182, 212, 0.25)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)' }}>
-                  <strong style={{ color: '#06b6d4', fontSize: '0.85rem', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
+                <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)' }}>
+                  <strong style={{ color: '#10b981', fontSize: '0.85rem', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
                     ⚙️ Pin / Seat Height Setup:
                   </strong>
                   <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: 1.5 }}>{selectedMachine.adjustment}</span>
@@ -590,13 +590,13 @@ export const EquipmentSection = () => {
               {/* Safety Tips */}
               {selectedMachine.safetyTips && selectedMachine.safetyTips.length > 0 && (
                 <div>
-                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.75rem', color: '#f59e0b' }}>
+                  <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-main)' }}>
                     Crucial Safety Tips (सावधानियां):
                   </h4>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     {selectedMachine.safetyTips.map((tip, idx) => (
                       <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-muted)' }}>
-                        <Shield size={16} color="#f59e0b" style={{ flexShrink: 0, marginTop: '2px' }} />
+                        <Shield size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }} />
                         <span>{tip}</span>
                       </div>
                     ))}

@@ -144,10 +144,10 @@ export const FeedbackSection = () => {
             <span className="badge badge-emerald">
               <MessageSquareHeart size={14} /> Section 13 of 13 — Member Community
             </span>
-            <span className="badge badge-cyan">
+            <span className="badge badge-neutral">
               <Sparkles size={14} /> 100% Verified Reviews
             </span>
-            <span className="badge badge-amber">
+            <span className="badge badge-neutral">
               <Heart size={14} /> Direct Feedback Channel
             </span>
           </div>
@@ -202,7 +202,7 @@ export const FeedbackSection = () => {
             {/* Email ID */}
             <div>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                <Mail size={15} color="#06b6d4" /> Email Address (ईमेल आईडी) *
+                <Mail size={15} color="#10b981" /> Email Address (ईमेल आईडी) *
               </label>
               <input
                 type="email"
@@ -217,7 +217,7 @@ export const FeedbackSection = () => {
             {/* Address */}
             <div>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                <MapPin size={15} color="#f59e0b" /> Full Address / City / Gym Location (पूरा पता) *
+                <MapPin size={15} color="#10b981" /> Full Address / City / Gym Location (पूरा पता) *
               </label>
               <input
                 type="text"
@@ -233,7 +233,7 @@ export const FeedbackSection = () => {
             <div className="grid-2" style={{ gap: '1rem' }}>
               <div>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                  <Star size={15} color="#f59e0b" /> Star Rating (रेटिंग)
+                  <Star size={15} color="#10b981" /> Star Rating (रेटिंग)
                 </label>
                 <select
                   className="input-control"
@@ -296,9 +296,9 @@ export const FeedbackSection = () => {
         {/* Right Side: Community Highlights & Live Stats */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {/* Feedback Satisfaction Card */}
-          <div className="card card-glow-cyan" style={{ padding: '2rem' }}>
+          <div className="card card-glow-emerald" style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-              <Award size={24} color="#06b6d4" />
+              <Award size={24} color="#10b981" />
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Beginner Satisfaction Rate</h3>
             </div>
 
@@ -329,7 +329,7 @@ export const FeedbackSection = () => {
 
           {/* Quick Help Card */}
           <div className="card" style={{ padding: '1.5rem', background: 'var(--bg-card-secondary)' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f59e0b' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#10b981' }}>
               <Sparkles size={18} /> Need instant guidance?
             </h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
@@ -391,17 +391,17 @@ export const FeedbackSection = () => {
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <MapPin size={13} color="#f59e0b" /> {fb.address}
+                      <MapPin size={13} color="#10b981" /> {fb.address}
                     </span>
                     <span>•</span>
-                    <span className="badge badge-cyan" style={{ fontSize: '0.68rem' }}>{fb.goal}</span>
+                    <span className="badge badge-emerald" style={{ fontSize: '0.68rem' }}>{fb.goal}</span>
                     <span>•</span>
                     <span>{fb.date}</span>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span className="badge badge-amber" style={{ fontSize: '0.75rem', fontWeight: 700 }}>
+                  <span className="badge badge-neutral" style={{ fontSize: '0.75rem', fontWeight: 700 }}>
                     {'⭐'.repeat(fb.rating)} ({fb.rating}/5)
                   </span>
 
@@ -409,7 +409,7 @@ export const FeedbackSection = () => {
                     onClick={() => handleDeleteFeedback(fb.id)}
                     className="btn btn-secondary btn-icon"
                     title="Delete review"
-                    style={{ width: '30px', height: '30px', color: '#f43f5e' }}
+                    style={{ width: '30px', height: '30px', color: 'var(--text-muted)' }}
                   >
                     <Trash2 size={13} />
                   </button>

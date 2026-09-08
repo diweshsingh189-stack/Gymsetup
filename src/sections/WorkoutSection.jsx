@@ -51,7 +51,7 @@ export const WorkoutSection = () => {
               style={{
                 textAlign: 'left',
                 border: isSelected ? '2px solid #10b981' : '1px solid var(--border-card)',
-                background: isSelected ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)' : 'var(--bg-card)',
+                background: isSelected ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-card)',
                 padding: '1.25rem',
                 cursor: 'pointer'
               }}
@@ -77,8 +77,8 @@ export const WorkoutSection = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <span className="badge badge-cyan">{currentRoutine.frequency}</span>
-              <span className="badge badge-amber">{currentRoutine.level}</span>
+              <span className="badge badge-neutral">{currentRoutine.frequency}</span>
+              <span className="badge badge-neutral">{currentRoutine.level}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <span style={{ fontSize: '1.8rem' }}>{currentRoutine.symbol || '🏋️'}</span>
@@ -145,8 +145,8 @@ export const WorkoutSection = () => {
                   </div>
                   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
                     <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>{ex.symbol} {ex.muscle}</span>
-                    <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>{ex.sets} Sets × {ex.reps}</span>
-                    <span className="badge badge-amber" style={{ fontSize: '0.72rem' }}>⏱️ Rest: {ex.rest}</span>
+                    <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{ex.sets} Sets × {ex.reps}</span>
+                    <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>⏱️ Rest: {ex.rest}</span>
                   </div>
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                     💡 <em>{ex.tip}</em>

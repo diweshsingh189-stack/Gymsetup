@@ -10,7 +10,7 @@ export const RecoverySection = () => {
       {/* Header Banner */}
       <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-violet" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
             <MoonStar size={14} /> Section 9 of 11
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -23,9 +23,9 @@ export const RecoverySection = () => {
       </div>
 
       {/* The DOMS Survival Kit */}
-      <div className="card card-glow-cyan" style={{ border: '1px solid rgba(6, 182, 212, 0.35)', padding: '2rem' }}>
+      <div className="card card-glow-emerald" style={{ border: '1px solid var(--border-card)', padding: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-          <Zap size={24} color="#06b6d4" />
+          <Zap size={24} color="#10b981" />
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Understanding DOMS (Delayed Onset Muscle Soreness)</h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Why do my legs feel like jelly 24–48 hours after Day 1?</p>
@@ -34,7 +34,7 @@ export const RecoverySection = () => {
 
         <div className="grid-3" style={{ gap: '1rem', marginTop: '1rem' }}>
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <h4 style={{ color: '#06b6d4', fontSize: '1rem', marginBottom: '0.35rem' }}>What is DOMS?</h4>
+            <h4 style={{ color: '#10b981', fontSize: '1rem', marginBottom: '0.35rem' }}>What is DOMS?</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
               Lifting weights causes microscopic, harmless tears in muscle fibers. Your body repairs them to become stronger and thicker.
             </p>
@@ -48,7 +48,7 @@ export const RecoverySection = () => {
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <h4 style={{ color: '#f59e0b', fontSize: '1rem', marginBottom: '0.35rem' }}>How to Relieve DOMS</h4>
+            <h4 style={{ color: '#10b981', fontSize: '1rem', marginBottom: '0.35rem' }}>How to Relieve DOMS</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
               A brisk 20-minute walk, warm shower or Epsom salt bath, and drinking 3L of water dramatically speed up blood flow and relief.
             </p>
@@ -58,9 +58,9 @@ export const RecoverySection = () => {
 
       {/* Sleep: The Ultimate Anabolic State */}
       <div className="grid-2">
-        <div className="card" style={{ borderTop: '4px solid #8b5cf6' }}>
+        <div className="card" style={{ borderTop: '4px solid #10b981' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-            <Bed size={22} color="#8b5cf6" />
+            <Bed size={22} color="#10b981" />
             <h3 style={{ fontSize: '1.25rem' }}>Sleep Hygiene Blueprint</h3>
           </div>
 
@@ -71,7 +71,7 @@ export const RecoverySection = () => {
               { title: 'No Screens 45 Mins Before Bed', desc: 'Blue light from phones suppresses melatonin. Read a physical book or listen to calming audio instead.' }
             ].map((item, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                <strong style={{ color: '#8b5cf6' }}>{item.title}</strong>
+                <strong style={{ color: '#10b981' }}>{item.title}</strong>
                 <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>{item.desc}</p>
               </div>
             ))}

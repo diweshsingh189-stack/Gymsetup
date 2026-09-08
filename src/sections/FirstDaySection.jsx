@@ -20,9 +20,9 @@ export const FirstDaySection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '750px' }}>
-          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
             <Compass size={14} /> Section 2 of 11
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -61,7 +61,7 @@ export const FirstDaySection = () => {
       {activeTab === 'before' && (
         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="card">
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#06b6d4', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Package size={20} /> What to Pack in Your Gym Bag
             </h3>
             <div className="grid-2">
@@ -76,7 +76,7 @@ export const FirstDaySection = () => {
               </div>
 
               <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#06b6d4' }}>Comfort Boosters:</h4>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#10b981' }}>Comfort Boosters:</h4>
                 <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', fontSize: '0.9rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <li><strong>Headphones / Earbuds</strong> (listening to favorite music cuts anxiety by 70%)</li>
                   <li><strong>Pre-workout snack</strong> (1 banana or 2 dates 45 mins before)</li>
@@ -92,9 +92,9 @@ export const FirstDaySection = () => {
             </div>
           </div>
 
-          <div className="card" style={{ borderLeft: '4px solid #f59e0b' }}>
-            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <HeartHandshake size={20} /> Gym Anxiety Conquer Kit
+          <div className="card" style={{ borderLeft: '4px solid #10b981' }}>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <HeartHandshake size={20} color="#10b981" /> Gym Anxiety Conquer Kit
             </h3>
             <p style={{ fontSize: '0.925rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
               Feeling nervous on Day 1 is completely natural. Remember:
@@ -178,7 +178,7 @@ export const FirstDaySection = () => {
       {activeTab === 'after' && (
         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="card">
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#8b5cf6' }}>
+            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#10b981' }}>
               Post-Workout Routine (The Next 2 Hours)
             </h3>
 
@@ -191,7 +191,7 @@ export const FirstDaySection = () => {
               </div>
 
               <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#06b6d4' }}>Log Your First Session</h4>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#10b981' }}>Log Your First Session</h4>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
                   Open the GymSetup Workout Tracker and log the exercises you tried today. Seeing your first logged workout builds instant habit momentum!
                 </p>

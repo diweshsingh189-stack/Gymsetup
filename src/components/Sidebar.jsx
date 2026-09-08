@@ -23,7 +23,6 @@ const NAV_ITEMS = [
   {
     category: 'Start Here',
     symbol: '🚀',
-    color: '#10b981',
     items: [
       { id: 'home', num: '01', label: '1. Home Dashboard', icon: Home, badge: 'Home' },
       { id: 'guided-flow', num: '02', label: '2. Guided Day-1 Flow', icon: Sparkles, badge: 'Wizard', highlight: true },
@@ -33,7 +32,6 @@ const NAV_ITEMS = [
   {
     category: 'Knowledge & Safety',
     symbol: '🛡️',
-    color: '#06b6d4',
     items: [
       { id: 'roadmap', num: '04', label: '4. Beginner Roadmap', icon: Milestone, badge: 'Milestones' },
       { id: 'safety', num: '05', label: '5. Gym Safety & DOs/DON\'Ts', icon: ShieldCheck, badge: 'Crucial' },
@@ -44,7 +42,6 @@ const NAV_ITEMS = [
   {
     category: 'Workouts & Recovery',
     symbol: '💪',
-    color: '#f59e0b',
     items: [
       { id: 'workout', num: '08', label: '8. Beginner Workouts', icon: Dumbbell, badge: '4 Routines' },
       { id: 'nutrition', num: '09', label: '9. Nutrition & Hydration', icon: Apple, badge: 'Fuel' },
@@ -54,11 +51,10 @@ const NAV_ITEMS = [
   {
     category: 'Tracking & Community',
     symbol: '📊',
-    color: '#8b5cf6',
     items: [
-      { id: 'tracker', num: '11', label: '11. Workout Tracker', icon: ClipboardList, badge: '10 Points' },
-      { id: 'checklist', num: '12', label: '12. Beginner Checklist', icon: CheckCircle2, badge: 'Interactive' },
-      { id: 'gym-pricing', num: '13', label: '13. Popular Gyms & Pricing', icon: Building2, badge: 'Prices & Photos', highlight: true },
+      { id: 'tracker', num: '11', label: '11. Workout Tracker', icon: ClipboardList, badge: 'Tracker' },
+      { id: 'checklist', num: '12', label: '12. Beginner Checklist', icon: CheckCircle2, badge: 'Checklist' },
+      { id: 'gym-pricing', num: '13', label: '13. Popular Gyms & Pricing', icon: Building2, badge: 'Pricing', highlight: true },
       { id: 'feedback', num: '14', label: '14. Feedback & Reviews', icon: MessageSquareHeart, badge: 'Reviews' }
     ]
   }
@@ -106,15 +102,15 @@ export const Sidebar = () => {
           zIndex: 50,
           display: 'flex',
           flexDirection: 'column',
-          transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          transition: 'transform 0.25s ease',
           overflowY: 'auto'
         }}
       >
-        {/* Sidebar Header with Gentle Moving/Floating Logo */}
+        {/* Sidebar Header */}
         <div
           onClick={() => handleNav('home')}
           style={{
-            padding: '1.4rem 1.25rem 1rem 1.25rem',
+            padding: '1.25rem 1.25rem 1rem 1.25rem',
             borderBottom: '1px solid var(--border-subtle)',
             display: 'flex',
             alignItems: 'center',
@@ -123,49 +119,47 @@ export const Sidebar = () => {
           }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            {/* Gentle Floating Animated Logo */}
             <div
-              className="logo-floating"
               style={{
-                width: '38px',
-                height: '38px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+                width: '36px',
+                height: '36px',
+                borderRadius: '10px',
+                background: '#10b981',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#ffffff'
               }}
             >
-              <Dumbbell size={21} strokeWidth={2.5} />
+              <Dumbbell size={20} strokeWidth={2.5} />
             </div>
             <div>
-              <div className="logo-text-shimmer" style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em' }}>
+              <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.02em' }}>
                 Gym<span style={{ color: '#10b981' }}>Setup</span>
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-                Beginner Fitness SaaS
+                Beginner Fitness Companion
               </div>
             </div>
           </div>
         </div>
 
         {/* Quick User Readiness Card */}
-        <div style={{ padding: '1rem 1.25rem 0.5rem 1.25rem' }}>
+        <div style={{ padding: '0.85rem 1rem 0.35rem 1rem' }}>
           <div style={{
-            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.08) 100%)',
-            border: '1px solid rgba(16, 185, 129, 0.25)',
+            background: 'var(--bg-card-secondary)',
+            border: '1px solid var(--border-card)',
             borderRadius: 'var(--radius-md)',
-            padding: '0.875rem 1rem',
+            padding: '0.75rem 0.9rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between'
           }}>
             <div>
-              <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                 DAILY READINESS
               </div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 700, marginTop: '2px' }}>
+              <div style={{ fontSize: '0.88rem', fontWeight: 700, marginTop: '2px' }}>
                 {completedChecks} / 20 Tasks Done
               </div>
             </div>
@@ -176,8 +170,8 @@ export const Sidebar = () => {
                 color: '#fff',
                 border: 'none',
                 borderRadius: '6px',
-                padding: '0.35rem 0.65rem',
-                fontSize: '0.75rem',
+                padding: '0.3rem 0.6rem',
+                fontSize: '0.72rem',
                 fontWeight: 600,
                 cursor: 'pointer'
               }}
@@ -187,44 +181,42 @@ export const Sidebar = () => {
           </div>
         </div>
 
-        {/* Navigation Sections with Clear Numbers and Icons */}
-        <nav style={{ flex: 1, padding: '0.75rem 0.85rem' }}>
+        {/* Navigation Sections */}
+        <nav style={{ flex: 1, padding: '0.65rem 0.75rem' }}>
           {NAV_ITEMS.map((group, gIdx) => (
-            <div key={gIdx} style={{ marginBottom: '1.25rem' }}>
-              {/* Prominent, Dark & Crisp Category Header with Symbol */}
+            <div key={gIdx} style={{ marginBottom: '1rem' }}>
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '0.38rem 0.75rem',
-                marginBottom: '0.45rem',
-                borderRadius: '8px',
+                padding: '0.35rem 0.65rem',
+                marginBottom: '0.35rem',
+                borderRadius: '6px',
                 background: 'var(--bg-card-secondary)',
                 border: '1px solid var(--border-card)'
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <span style={{ fontSize: '0.9rem', lineHeight: 1 }}>{group.symbol}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <span style={{ fontSize: '0.85rem', lineHeight: 1 }}>{group.symbol}</span>
                   <span style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 800,
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
                     textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
+                    letterSpacing: '0.06em',
                     color: 'var(--text-main)'
                   }}>
                     {group.category}
                   </span>
                 </div>
                 <span style={{
-                  width: '6px',
-                  height: '6px',
+                  width: '5px',
+                  height: '5px',
                   borderRadius: '50%',
                   flexShrink: 0,
-                  background: group.color,
-                  boxShadow: `0 0 8px ${group.color}`
+                  background: '#10b981'
                 }} />
               </div>
 
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                 {group.items.map((item) => {
                   const Icon = item.icon;
                   const isActive = currentTab === item.id;
@@ -237,12 +229,12 @@ export const Sidebar = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          padding: '0.58rem 0.75rem',
+                          padding: '0.52rem 0.65rem',
                           borderRadius: 'var(--radius-md)',
                           background: isActive
-                            ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.18) 0%, rgba(6, 182, 212, 0.12) 100%)'
+                            ? 'rgba(16, 185, 129, 0.12)'
                             : item.highlight
-                            ? 'rgba(16, 185, 129, 0.08)'
+                            ? 'rgba(16, 185, 129, 0.05)'
                             : 'transparent',
                           color: isActive
                             ? '#10b981'
@@ -250,40 +242,38 @@ export const Sidebar = () => {
                             ? '#10b981'
                             : 'var(--text-main)',
                           border: isActive
-                            ? '1px solid rgba(16, 185, 129, 0.4)'
-                            : item.highlight
-                            ? '1px dashed rgba(16, 185, 129, 0.35)'
+                            ? '1px solid rgba(16, 185, 129, 0.3)'
                             : '1px solid transparent',
                           fontWeight: isActive ? 700 : 500,
-                          fontSize: '0.85rem',
+                          fontSize: '0.84rem',
                           cursor: 'pointer',
                           textAlign: 'left',
-                          transition: 'all 0.15s ease'
+                          transition: 'background-color 0.15s ease'
                         }}
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                          {/* Number Badge */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
                           <span
                             style={{
-                              fontSize: '0.68rem',
-                              fontWeight: 800,
-                              padding: '0.12rem 0.35rem',
-                              borderRadius: '5px',
+                              fontSize: '0.66rem',
+                              fontWeight: 700,
+                              padding: '0.1rem 0.3rem',
+                              borderRadius: '4px',
                               background: isActive ? '#10b981' : 'var(--bg-card-secondary)',
                               color: isActive ? '#ffffff' : 'var(--text-muted)',
-                              minWidth: '22px',
-                              textAlign: 'center'
+                              minWidth: '20px',
+                              textAlign: 'center',
+                              flexShrink: 0
                             }}
                           >
                             {item.num}
                           </span>
 
                           <Icon
-                            size={18}
-                            color={isActive ? '#10b981' : item.highlight ? '#10b981' : 'var(--text-muted)'}
+                            size={16}
+                            color={isActive ? '#10b981' : 'var(--text-muted)'}
                             style={{ flexShrink: 0 }}
                           />
-                          <span style={{ fontSize: '0.86rem', lineHeight: 1.3 }}>
+                          <span style={{ fontSize: '0.84rem', lineHeight: 1.3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                             {item.label}
                           </span>
                         </div>
@@ -291,8 +281,8 @@ export const Sidebar = () => {
                         {item.badge && (
                           <span
                             style={{
-                              fontSize: '0.6875rem',
-                              padding: '0.125rem 0.45rem',
+                              fontSize: '0.66rem',
+                              padding: '0.1rem 0.4rem',
                               borderRadius: '9999px',
                               background: isActive ? '#10b981' : 'var(--bg-card-secondary)',
                               color: isActive ? '#ffffff' : 'var(--text-muted)',

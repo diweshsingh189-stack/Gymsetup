@@ -35,9 +35,9 @@ export const NutritionSection = () => {
       </div>
 
       {/* Interactive Protein & Hydration Estimator Calculator */}
-      <div className="card card-glow-cyan" style={{ padding: '2rem', border: '1px solid rgba(6, 182, 212, 0.35)' }}>
+      <div className="card card-glow-emerald" style={{ padding: '2rem', border: '1px solid var(--border-card)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-          <Calculator size={24} color="#06b6d4" />
+          <Calculator size={24} color="#10b981" />
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Beginner Daily Nutrition Estimator</h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Get your personalized daily protein & water target in 5 seconds</p>
@@ -99,11 +99,11 @@ export const NutritionSection = () => {
               <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>~{Math.round(estimatedProtein / 3)}g per main meal</div>
             </div>
 
-            <div style={{ background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.3)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#06b6d4' }}>
+            <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#10b981' }}>
                 <Droplet size={28} />
               </div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06b6d4', textTransform: 'uppercase' }}>Daily Water Target</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>Daily Water Target</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)', margin: '0.25rem 0' }}>
                 {estimatedHydration}L
               </div>
@@ -144,14 +144,14 @@ export const NutritionSection = () => {
 
       {/* Pre & Post Workout Fuel Ideas */}
       <div className="grid-2">
-        <div className="card" style={{ borderTop: '4px solid #f59e0b' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#f59e0b' }}>Pre-Workout Energy Fuel</h3>
+        <div className="card" style={{ borderTop: '4px solid #10b981' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#10b981' }}>Pre-Workout Energy Fuel</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {PRE_POST_MEALS.preWorkout.map((meal, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
                   <strong style={{ fontSize: '0.95rem' }}>{meal.title}</strong>
-                  <span className="badge badge-amber" style={{ fontSize: '0.7rem' }}>{meal.timing}</span>
+                  <span className="badge badge-neutral" style={{ fontSize: '0.7rem' }}>{meal.timing}</span>
                 </div>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{meal.benefits}</p>
               </div>
@@ -176,12 +176,12 @@ export const NutritionSection = () => {
       </div>
 
       {/* Fad Diet Myths Debunked */}
-      <div className="card" style={{ borderLeft: '4px solid #f43f5e' }}>
-        <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f43f5e' }}>Fad Diet Myths Debunked</h3>
+      <div className="card" style={{ borderLeft: '4px solid #10b981' }}>
+        <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-main)' }}>Fad Diet Myths Debunked</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {FAD_DIET_MYTHS.map((m, idx) => (
             <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)' }}>
-              <div style={{ color: '#f43f5e', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.35rem' }}>
+              <div style={{ color: 'var(--text-main)', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.35rem' }}>
                 MYTH: {m.myth}
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-main)', lineHeight: 1.5 }}>

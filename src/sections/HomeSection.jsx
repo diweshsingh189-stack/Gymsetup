@@ -58,34 +58,32 @@ export const HomeSection = () => {
   const totalLogs = workoutLogs.length;
 
   return (
-    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.75rem' }}>
-      {/* Top Motivational Daily Fuel Ribbon - Slim, Glassmorphism, Zero Overlap with Emojis */}
+    <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      {/* Top Motivational Daily Fuel Ribbon - Clean, Minimalist, 2-Color */}
       <div
         onClick={nextQuote}
         className="card card-hover"
         style={{
-          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(6, 182, 212, 0.10) 50%, rgba(245, 158, 11, 0.08) 100%)',
-          border: '1px solid rgba(16, 185, 129, 0.4)',
-          borderRadius: '16px',
-          padding: '0.75rem 1.25rem',
+          background: 'var(--bg-card-secondary)',
+          border: '1px solid var(--border-card)',
+          borderRadius: '14px',
+          padding: '0.65rem 1.15rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '0.75rem',
+          gap: '0.65rem',
           cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
           overflow: 'hidden'
         }}
-        title="Click to shuffle daily fitness motivation!"
+        title="Click to shuffle daily fitness motivation"
       >
-        <span style={{ fontSize: '1.35rem', flexShrink: 0, lineHeight: 1 }}>
+        <span style={{ fontSize: '1.2rem', flexShrink: 0, lineHeight: 1 }}>
           {MOTIVATIONAL_QUOTES[quoteIndex].left}
         </span>
         <span style={{
-          fontSize: '0.94rem',
-          fontWeight: 700,
+          fontSize: '0.9rem',
+          fontWeight: 600,
           color: 'var(--text-main)',
-          letterSpacing: '0.015em',
           lineHeight: 1.45,
           textAlign: 'center',
           minWidth: 0,
@@ -93,59 +91,60 @@ export const HomeSection = () => {
         }}>
           "{MOTIVATIONAL_QUOTES[quoteIndex].text}"
         </span>
-        <span style={{ fontSize: '1.35rem', flexShrink: 0, lineHeight: 1 }}>
+        <span style={{ fontSize: '1.2rem', flexShrink: 0, lineHeight: 1 }}>
           {MOTIVATIONAL_QUOTES[quoteIndex].right}
         </span>
       </div>
-      {/* Hero Banner with Modern Gradient & Trending Bodybuilding Image */}
+
+      {/* Hero Banner with Clean Natural Aesthetics */}
       <div
-        className="card card-glow-emerald gradient-hero-bg"
+        className="card"
         style={{
-          padding: '2.75rem 2.5rem',
+          padding: '2.25rem 2rem',
           position: 'relative',
           overflow: 'hidden',
-          borderRadius: '24px',
-          border: '1px solid rgba(16, 185, 129, 0.35)',
-          background: 'radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.18) 0%, transparent 40%), radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.14) 0%, transparent 45%), var(--bg-card)'
+          borderRadius: '20px',
+          border: '1px solid var(--border-card)',
+          background: 'var(--bg-card)'
         }}
       >
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.85fr)',
-          gap: '2.5rem',
+          gap: '2rem',
           alignItems: 'center'
         }} className="hero-banner-grid">
           {/* Left Column: Text & CTAs */}
           <div style={{ position: 'relative', zIndex: 2 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
               <span className="badge badge-emerald">
-                <Sparkles size={14} /> Startup-Quality Gym Companion
+                <Sparkles size={13} /> Day 1 Gym Companion
               </span>
-              <span className="badge badge-cyan">
-                Zero Intimidation Guarantee
+              <span className="badge badge-neutral">
+                Beginner Friendly
               </span>
               {wizardCompleted && (
-                <span className="badge badge-amber">
-                  <Trophy size={14} /> Beginner Certified
+                <span className="badge badge-emerald">
+                  <Trophy size={13} /> Certified
                 </span>
               )}
             </div>
 
             <h1 style={{
-              fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
-              fontWeight: 900,
-              letterSpacing: '-0.03em',
-              marginBottom: '1.25rem',
-              lineHeight: 1.15
+              fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+              fontWeight: 800,
+              letterSpacing: '-0.02em',
+              marginBottom: '1rem',
+              lineHeight: 1.2
             }}>
               Welcome to the Gym. <br />
-              <span className="gradient-text-emerald">We Made Day 1 Effortless.</span>
+              <span style={{ color: '#10b981' }}>We Made Day 1 Effortless.</span>
             </h1>
 
             <p style={{
-              fontSize: '1.1rem',
+              fontSize: '1rem',
               color: 'var(--text-muted)',
-              marginBottom: '1.75rem',
+              marginBottom: '1.5rem',
               lineHeight: 1.6
             }}>
               No body-shaming, no complex jargon, and no confusing equipment. GymSetup is your step-by-step pocket coach from packing your bag to mastering safe, confident workouts.
@@ -155,7 +154,7 @@ export const HomeSection = () => {
               <button
                 onClick={() => navigateTo('guided-flow')}
                 className="btn btn-primary btn-lg"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', flex: '1 1 210px' }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', flex: '1 1 200px' }}
               >
                 <Sparkles size={18} />
                 <span>Start My Gym Journey</span>
@@ -165,7 +164,7 @@ export const HomeSection = () => {
               <button
                 onClick={() => navigateTo('first-day')}
                 className="btn btn-secondary btn-lg"
-                style={{ flex: '1 1 190px' }}
+                style={{ flex: '1 1 180px' }}
               >
                 <Compass size={18} />
                 <span>First Day Step-by-Step</span>
@@ -177,52 +176,47 @@ export const HomeSection = () => {
               onClick={() => openSearchModal()}
               style={{
                 cursor: 'pointer',
-                background: 'rgba(11, 17, 32, 0.75)',
-                border: '1.5px solid rgba(16, 185, 129, 0.45)',
-                borderRadius: '16px',
-                padding: '0.75rem 1rem',
+                background: 'var(--bg-card-secondary)',
+                border: '1px solid var(--border-card)',
+                borderRadius: '12px',
+                padding: '0.65rem 0.95rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                boxShadow: '0 8px 30px rgba(0, 0, 0, 0.35)',
-                backdropFilter: 'blur(8px)',
-                transition: 'all 0.2s ease',
+                transition: 'border-color 0.15s ease',
                 gap: '0.65rem',
                 minWidth: 0
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                <Search size={18} color="#10b981" style={{ flexShrink: 0 }} />
+                <Search size={16} color="#10b981" style={{ flexShrink: 0 }} />
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   Search any gym machine, exercise, or stretch...
                 </span>
               </div>
-              <span className="badge badge-emerald" style={{ fontSize: '0.7rem', padding: '0.18rem 0.55rem', flexShrink: 0 }}>
+              <span className="badge badge-emerald" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', flexShrink: 0 }}>
                 🔍 Search
               </span>
             </div>
           </div>
 
-          {/* Right Column: Trending Full Physique (Biceps, Forearms & Shoulders) Image Frame */}
+          {/* Right Column: Clean Physique Photo Frame */}
           <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div
-              className="hero-physique-blink"
               style={{
                 position: 'relative',
                 width: '100%',
-                maxWidth: '430px',
-                height: '520px',
-                borderRadius: '24px',
+                maxWidth: '400px',
+                height: '460px',
+                borderRadius: '18px',
                 overflow: 'hidden',
-                border: '2px solid rgba(16, 185, 129, 0.55)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
-                transition: 'transform 0.3s ease'
+                border: '1px solid var(--border-card)',
+                boxShadow: 'var(--shadow-md)'
               }}
             >
-              {/* Ultra-HD Shredded Bodybuilder Physique Image */}
               <img
                 src="/hero_physique.jpg"
-                alt="Aesthetic Bodybuilder Physique - Biceps, Forearms and Shoulders"
+                alt="Gym Beginner Form and Muscular Definition"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -236,10 +230,10 @@ export const HomeSection = () => {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 65%, rgba(9, 13, 22, 0.9) 100%)'
+                background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 40%, rgba(9, 13, 22, 0.85) 100%)'
               }} />
 
-              {/* Top Trending Badge - Positioned clearly CENTERED above the head */}
+              {/* Top Badge */}
               <div style={{
                 position: 'absolute',
                 top: '12px',
@@ -247,66 +241,62 @@ export const HomeSection = () => {
                 transform: 'translateX(-50%)',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                background: 'rgba(0, 0, 0, 0.85)',
-                backdropFilter: 'blur(10px)',
-                padding: '0.35rem 0.85rem',
+                gap: '0.35rem',
+                background: 'rgba(15, 23, 42, 0.9)',
+                padding: '0.3rem 0.75rem',
                 borderRadius: '9999px',
-                border: '1px solid rgba(245, 158, 11, 0.6)',
-                color: '#f59e0b',
-                fontSize: '0.75rem',
-                fontWeight: 800,
-                boxShadow: '0 4px 15px rgba(0,0,0,0.5)',
+                border: '1px solid rgba(16, 185, 129, 0.35)',
+                color: '#10b981',
+                fontSize: '0.72rem',
+                fontWeight: 700,
                 whiteSpace: 'nowrap',
                 zIndex: 3
               }}>
-                <Flame size={14} fill="#f59e0b" color="#f59e0b" />
+                <Flame size={13} color="#10b981" />
                 <span>BICEPS • FOREARMS • SHOULDERS</span>
               </div>
 
-              {/* Bottom Stat Card Floating Pill - Positioned lower down so entire torso/chest/arms are visible */}
+              {/* Bottom Stat Card */}
               <div style={{
                 position: 'absolute',
                 bottom: '10px',
                 left: '10px',
                 right: '10px',
                 background: 'rgba(15, 23, 42, 0.92)',
-                backdropFilter: 'blur(14px)',
-                border: '1px solid rgba(16, 185, 129, 0.45)',
-                borderRadius: '14px',
-                padding: '0.65rem 0.85rem',
+                border: '1px solid var(--border-card)',
+                borderRadius: '12px',
+                padding: '0.6rem 0.8rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.7)',
                 zIndex: 3
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
                   <div style={{
-                    width: '32px',
-                    height: '32px',
+                    width: '30px',
+                    height: '30px',
                     borderRadius: '8px',
-                    background: 'rgba(16, 185, 129, 0.25)',
+                    background: 'rgba(16, 185, 129, 0.2)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     color: '#10b981',
                     flexShrink: 0
                   }}>
-                    <Dumbbell size={16} />
+                    <Dumbbell size={15} />
                   </div>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       Full Body Muscular Definition
                     </div>
-                    <div style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      Delts, Biceps & Vascular Forearms
+                    <div style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      Delts, Biceps & Forearms
                     </div>
                   </div>
                 </div>
 
-                <span className="badge badge-emerald" style={{ fontSize: '0.68rem', padding: '0.2rem 0.5rem', flexShrink: 0 }}>
-                  🔥 Peak Form
+                <span className="badge badge-emerald" style={{ fontSize: '0.65rem', padding: '0.15rem 0.45rem', flexShrink: 0 }}>
+                  Form Mastery
                 </span>
               </div>
             </div>

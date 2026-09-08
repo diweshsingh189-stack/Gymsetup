@@ -299,7 +299,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                       width: '38px',
                       height: '38px',
                       borderRadius: '10px',
-                      background: isSelected ? 'rgba(16, 185, 129, 0.28)' : 'var(--bg-card-secondary)',
+                      background: isSelected ? 'rgba(16, 185, 129, 0.2)' : 'var(--bg-card-secondary)',
                       border: isSelected ? '1px solid #10b981' : '1px solid var(--border-card)',
                       display: 'flex',
                       alignItems: 'center',
@@ -328,7 +328,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
                         <span style={{ color: '#10b981', fontWeight: 600 }}>{item.category}</span>
                         <span>•</span>
-                        <span style={{ color: '#06b6d4' }}>{item.equipmentType}</span>
+                        <span>{item.equipmentType}</span>
                       </div>
                     </div>
 
@@ -363,7 +363,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                     width: '52px',
                     height: '52px',
                     borderRadius: '16px',
-                    background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(6, 182, 212, 0.18) 100%)',
+                    background: 'rgba(16, 185, 129, 0.15)',
                     border: '1px solid rgba(16, 185, 129, 0.45)',
                     display: 'flex',
                     alignItems: 'center',
@@ -377,8 +377,8 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                   <div style={{ minWidth: 0 }}>
                     <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '0.35rem' }}>
                       <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>{selectedExercise.category}</span>
-                      <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>{selectedExercise.equipmentType}</span>
-                      <span className="badge badge-amber" style={{ fontSize: '0.72rem' }}>{selectedExercise.difficulty}</span>
+                      <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{selectedExercise.equipmentType}</span>
+                      <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{selectedExercise.difficulty}</span>
                     </div>
                     <h2 style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.65rem)', fontWeight: 800 }}>{selectedExercise.name}</h2>
                     <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '0.2rem', lineHeight: 1.5 }}>{selectedExercise.shortDesc}</p>
@@ -418,8 +418,8 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                   </div>
                 </div>
 
-                <div style={{ background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(6, 182, 212, 0.09) 100%)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#06b6d4', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
+                <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
                     ⚖️ RECOMMENDED STARTING WEIGHT
                   </div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#10b981' }}>
@@ -429,8 +429,8 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
               </div>
 
               {/* Machine Seat & Pin Setup */}
-              <div style={{ background: 'rgba(6, 182, 212, 0.09)', border: '1px solid rgba(6, 182, 212, 0.3)', padding: '1.15rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#06b6d4', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1.15rem', borderRadius: 'var(--radius-md)' }}>
+                <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#10b981', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                   <Layers size={18} /> Machine / Seat & Pin Setup (सीट व पिन सेटिंग):
                 </h4>
                 <p style={{ fontSize: '0.88rem', color: 'var(--text-main)', lineHeight: 1.55 }}>
@@ -482,9 +482,9 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
 
               {/* Safety Rules & Common Mistakes */}
               <div className="grid-2" style={{ gap: '1rem' }}>
-                <div style={{ background: 'rgba(244, 63, 94, 0.08)', border: '1px solid rgba(244, 63, 94, 0.25)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                  <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#f43f5e', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Shield size={16} /> Safety DOs & DON'Ts:
+                <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
+                  <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <Shield size={16} color="#10b981" /> Safety DOs & DON'Ts:
                   </h5>
                   <ul style={{ listStyle: 'disc', paddingLeft: '1.15rem', fontSize: '0.84rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.3rem', lineHeight: 1.45 }}>
                     {selectedExercise.safetyTips.map((st, stIdx) => (
@@ -493,9 +493,9 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                   </ul>
                 </div>
 
-                <div style={{ background: 'rgba(245, 158, 11, 0.08)', border: '1px solid rgba(245, 158, 11, 0.25)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                  <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: '#f59e0b', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <AlertTriangle size={16} /> Common Rookie Mistakes:
+                <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
+                  <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <AlertTriangle size={16} color="#10b981" /> Common Rookie Mistakes:
                   </h5>
                   <p style={{ fontSize: '0.84rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
                     {selectedExercise.commonMistakes}
