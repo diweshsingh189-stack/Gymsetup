@@ -25,9 +25,9 @@ export const WorkoutSection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Dumbbell size={14} /> Section 7 of 11
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -50,14 +50,14 @@ export const WorkoutSection = () => {
               className="card card-hover"
               style={{
                 textAlign: 'left',
-                border: isSelected ? '2px solid #FF3B30' : '1px solid var(--border-card)',
-                background: isSelected ? 'rgba(255, 59, 48, 0.1)' : 'var(--bg-card)',
+                border: isSelected ? '2px solid #06B6D4' : '1px solid var(--border-card)',
+                background: isSelected ? 'rgba(6, 182, 212, 0.1)' : 'var(--bg-card)',
                 padding: '1.25rem',
                 cursor: 'pointer'
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>
+                <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>
                   {routine.tag}
                 </span>
                 <span style={{ fontSize: '1.25rem' }}>{routine.symbol || '🏋️'}</span>
@@ -91,16 +91,16 @@ export const WorkoutSection = () => {
             onClick={() => openTimer(75, 'Workout Rest Interval')}
             className="btn btn-secondary btn-sm"
           >
-            <Timer size={16} color="#FF3B30" />
+            <Timer size={16} color="#06B6D4" />
             <span>Open Rest Timer</span>
           </button>
         </div>
 
         {/* Goal Box */}
         <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', marginBottom: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Sparkles size={20} color="#FF3B30" style={{ flexShrink: 0 }} />
+          <Sparkles size={20} color="#06B6D4" style={{ flexShrink: 0 }} />
           <div>
-            <strong style={{ color: '#FF3B30', fontSize: '0.85rem', textTransform: 'uppercase' }}>Workout Goal: </strong>
+            <strong style={{ color: '#06B6D4', fontSize: '0.85rem', textTransform: 'uppercase' }}>Workout Goal: </strong>
             <span style={{ fontSize: '0.925rem' }}>{currentRoutine.target}</span>
           </div>
         </div>
@@ -127,8 +127,8 @@ export const WorkoutSection = () => {
                   width: '42px',
                   height: '42px',
                   borderRadius: '12px',
-                  background: 'rgba(255, 59, 48, 0.15)',
-                  color: '#FF3B30',
+                  background: 'rgba(6, 182, 212, 0.15)',
+                  color: '#06B6D4',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -144,7 +144,7 @@ export const WorkoutSection = () => {
                     <h4 style={{ fontSize: '1.1rem', fontWeight: 700 }}>{ex.name}</h4>
                   </div>
                   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
-                    <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>{ex.symbol} {ex.muscle}</span>
+                    <span className="badge badge-cyan" style={{ fontSize: '0.72rem' }}>{ex.symbol} {ex.muscle}</span>
                     <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>{ex.sets} Sets × {ex.reps}</span>
                     <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>⏱️ Rest: {ex.rest}</span>
                   </div>

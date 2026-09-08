@@ -51,8 +51,8 @@ export const GuidedFlowSection = () => {
   return (
     <div className="animate-fade-in" style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '1.75rem 1.25rem', textAlign: 'center', background: 'var(--bg-card)' }}>
-        <span className="badge badge-emerald" style={{ marginBottom: '0.65rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '1.75rem 1.25rem', textAlign: 'center', background: 'var(--bg-card)' }}>
+        <span className="badge badge-cyan" style={{ marginBottom: '0.65rem' }}>
           <Sparkles size={14} /> Guided Onboarding Wizard
         </span>
         <h1 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.2rem)', fontWeight: 800, marginBottom: '0.45rem' }}>
@@ -78,12 +78,12 @@ export const GuidedFlowSection = () => {
                   padding: '0.35rem 0.65rem',
                   borderRadius: '9999px',
                   background: isCurrent
-                    ? '#FF3B30'
+                    ? '#06B6D4'
                     : isDone
-                    ? 'rgba(255, 59, 48, 0.2)'
+                    ? 'rgba(6, 182, 212, 0.2)'
                     : 'var(--bg-card-secondary)',
-                  color: isCurrent ? '#ffffff' : isDone ? '#FF3B30' : 'var(--text-muted)',
-                  border: isCurrent ? '1px solid #FF3B30' : '1px solid var(--border-subtle)',
+                  color: isCurrent ? '#ffffff' : isDone ? '#06B6D4' : 'var(--text-muted)',
+                  border: isCurrent ? '1px solid #06B6D4' : '1px solid var(--border-subtle)',
                   cursor: 'pointer',
                   fontSize: '0.76rem',
                   fontWeight: 700,
@@ -109,7 +109,7 @@ export const GuidedFlowSection = () => {
               width: '46px',
               height: '46px',
               borderRadius: '14px',
-              background: '#FF3B30',
+              background: '#06B6D4',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -119,7 +119,7 @@ export const GuidedFlowSection = () => {
               <StepIcon size={24} />
             </div>
             <div style={{ minWidth: 0 }}>
-              <span className="badge badge-emerald" style={{ marginBottom: '0.2rem', fontSize: '0.7rem' }}>
+              <span className="badge badge-cyan" style={{ marginBottom: '0.2rem', fontSize: '0.7rem' }}>
                 {step.tagline}
               </span>
               <h2 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.55rem)', fontWeight: 800, wordBreak: 'break-word' }}>{step.title}</h2>
@@ -139,7 +139,7 @@ export const GuidedFlowSection = () => {
           marginBottom: '1.5rem',
           fontSize: '0.94rem',
           color: 'var(--text-main)',
-          borderLeft: '4px solid #FF3B30',
+          borderLeft: '4px solid #06B6D4',
           lineHeight: 1.55
         }}>
           {step.summary}
@@ -164,8 +164,8 @@ export const GuidedFlowSection = () => {
                 width: '32px',
                 height: '32px',
                 borderRadius: '8px',
-                background: 'rgba(255, 59, 48, 0.15)',
-                color: '#FF3B30',
+                background: 'rgba(6, 182, 212, 0.15)',
+                color: '#06B6D4',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -186,14 +186,14 @@ export const GuidedFlowSection = () => {
         {/* Celebration State for Last Step */}
         {isLastStep && wizardCompleted && (
           <div style={{
-            background: 'rgba(255, 59, 48, 0.1)',
-            border: '2px solid #FF3B30',
+            background: 'rgba(6, 182, 212, 0.1)',
+            border: '2px solid #06B6D4',
             borderRadius: 'var(--radius-lg)',
             padding: '1.5rem 1rem',
             textAlign: 'center',
             marginBottom: '1.5rem'
           }}>
-            <Trophy size={42} color="#FF3B30" style={{ margin: '0 auto 0.75rem auto' }} />
+            <Trophy size={42} color="#06B6D4" style={{ margin: '0 auto 0.75rem auto' }} />
             <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem' }}>You Are Ready for Day 1! 🎉</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem', maxWidth: '500px', margin: '0 auto 1.25rem auto' }}>
               You now have the exact blueprint to conquer your first workout safely and with complete confidence.

@@ -4,7 +4,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'cult-fit',
     name: 'Cult.fit',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: 'Cultpass Elite / Pro',
     primaryCity: 'Bengaluru',
     place: 'Bengaluru (HQ)',
@@ -20,7 +20,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'golds-gym',
     name: "Gold's Gym",
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: 'Iconic Global Gym',
     primaryCity: 'Mumbai',
     place: 'Mumbai (Flagship)',
@@ -36,7 +36,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'anytime-fitness',
     name: 'Anytime Fitness',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: '24/7 Global Access',
     primaryCity: 'Delhi',
     place: 'Delhi (NCR)',
@@ -52,7 +52,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'snap-fitness',
     name: 'Snap Fitness',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: '24/7 Compact Modern',
     primaryCity: 'Bengaluru',
     place: 'Bengaluru',
@@ -68,7 +68,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'fitness-first',
     name: 'Fitness First',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: 'Luxury Executive Club',
     primaryCity: 'Mumbai',
     place: 'Mumbai',
@@ -84,7 +84,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'chisel-fitness',
     name: 'Chisel Fitness',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: 'Virat Kohli Backed',
     primaryCity: 'Bengaluru',
     place: 'Bengaluru',
@@ -100,7 +100,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'talwalkars',
     name: 'Talwalkars',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: 'Indian Heritage Fitness',
     primaryCity: 'Pune',
     place: 'Pune',
@@ -116,7 +116,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'ironhill-gym',
     name: 'Ironhill Gym',
-    badgeColor: '#FF3B30',
+    badgeColor: '#06B6D4',
     brandTag: 'Hardcore & Aesthetic Strength',
     primaryCity: 'Hyderabad',
     place: 'Hyderabad',

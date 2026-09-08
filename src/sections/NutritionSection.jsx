@@ -20,9 +20,9 @@ export const NutritionSection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Apple size={14} /> Section 8 of 11
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -35,9 +35,9 @@ export const NutritionSection = () => {
       </div>
 
       {/* Interactive Protein & Hydration Estimator Calculator */}
-      <div className="card card-glow-emerald" style={{ padding: '2rem', border: '1px solid var(--border-card)' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2rem', border: '1px solid var(--border-card)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-          <Calculator size={24} color="#FF3B30" />
+          <Calculator size={24} color="#06B6D4" />
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Beginner Daily Nutrition Estimator</h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Get your personalized daily protein & water target in 5 seconds</p>
@@ -88,11 +88,11 @@ export const NutritionSection = () => {
 
           {/* Results Display */}
           <div className="grid-2" style={{ gap: '1rem' }}>
-            <div style={{ background: 'rgba(255, 59, 48, 0.12)', border: '1px solid rgba(255, 59, 48, 0.3)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#FF3B30' }}>
+            <div style={{ background: 'rgba(6, 182, 212, 0.12)', border: '1px solid rgba(6, 182, 212, 0.3)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#06B6D4' }}>
                 <Apple size={28} />
               </div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>Daily Protein Target</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06B6D4', textTransform: 'uppercase' }}>Daily Protein Target</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)', margin: '0.25rem 0' }}>
                 {estimatedProtein}g
               </div>
@@ -100,10 +100,10 @@ export const NutritionSection = () => {
             </div>
 
             <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#FF3B30' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#06B6D4' }}>
                 <Droplet size={28} />
               </div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>Daily Water Target</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06B6D4', textTransform: 'uppercase' }}>Daily Water Target</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)', margin: '0.25rem 0' }}>
                 {estimatedHydration}L
               </div>
@@ -120,9 +120,9 @@ export const NutritionSection = () => {
           {NUTRITION_MACROS.map((macro, idx) => (
             <div key={idx} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <span className="badge badge-emerald" style={{ marginBottom: '0.5rem' }}>{macro.role}</span>
+                <span className="badge badge-cyan" style={{ marginBottom: '0.5rem' }}>{macro.role}</span>
                 <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.25rem' }}>{macro.name}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#FF3B30', fontWeight: 600, marginBottom: '1rem' }}>{macro.tagline}</p>
+                <p style={{ fontSize: '0.85rem', color: '#06B6D4', fontWeight: 600, marginBottom: '1rem' }}>{macro.tagline}</p>
 
                 <div style={{ fontSize: '0.875rem', marginBottom: '1rem' }}>
                   <strong>Great Sources:</strong>
@@ -144,8 +144,8 @@ export const NutritionSection = () => {
 
       {/* Pre & Post Workout Fuel Ideas */}
       <div className="grid-2">
-        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#FF3B30' }}>Pre-Workout Energy Fuel</h3>
+        <div className="card" style={{ borderTop: '4px solid #06B6D4' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#06B6D4' }}>Pre-Workout Energy Fuel</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {PRE_POST_MEALS.preWorkout.map((meal, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
@@ -159,14 +159,14 @@ export const NutritionSection = () => {
           </div>
         </div>
 
-        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#FF3B30' }}>Post-Workout Muscle Recovery</h3>
+        <div className="card" style={{ borderTop: '4px solid #06B6D4' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#06B6D4' }}>Post-Workout Muscle Recovery</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {PRE_POST_MEALS.postWorkout.map((meal, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
                   <strong style={{ fontSize: '0.95rem' }}>{meal.title}</strong>
-                  <span className="badge badge-emerald" style={{ fontSize: '0.7rem' }}>{meal.timing}</span>
+                  <span className="badge badge-cyan" style={{ fontSize: '0.7rem' }}>{meal.timing}</span>
                 </div>
                 <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>{meal.benefits}</p>
               </div>
@@ -176,7 +176,7 @@ export const NutritionSection = () => {
       </div>
 
       {/* Fad Diet Myths Debunked */}
-      <div className="card" style={{ borderLeft: '4px solid #FF3B30' }}>
+      <div className="card" style={{ borderLeft: '4px solid #06B6D4' }}>
         <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-main)' }}>Fad Diet Myths Debunked</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {FAD_DIET_MYTHS.map((m, idx) => (
@@ -185,7 +185,7 @@ export const NutritionSection = () => {
                 MYTH: {m.myth}
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
-                <strong style={{ color: '#FF3B30' }}>REALITY: </strong>{m.reality}
+                <strong style={{ color: '#06B6D4' }}>REALITY: </strong>{m.reality}
               </p>
             </div>
           ))}

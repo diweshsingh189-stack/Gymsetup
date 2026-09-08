@@ -247,14 +247,14 @@ export const HomeSection = () => {
           {/* Left Column: Text & CTAs */}
           <div style={{ position: 'relative', zIndex: 2 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>
-              <span className="badge badge-emerald">
+              <span className="badge badge-cyan">
                 <Sparkles size={13} /> Day 1 Gym Companion
               </span>
               <span className="badge badge-neutral">
                 Beginner Friendly
               </span>
               {wizardCompleted && (
-                <span className="badge badge-emerald">
+                <span className="badge badge-cyan">
                   <Trophy size={13} /> Certified
                 </span>
               )}
@@ -268,7 +268,7 @@ export const HomeSection = () => {
               lineHeight: 1.2
             }}>
               Welcome to the Gym. <br />
-              <span style={{ color: '#FF3B30' }}>We Made Day 1 Effortless.</span>
+              <span style={{ color: '#06B6D4' }}>We Made Day 1 Effortless.</span>
             </h1>
 
             <p style={{
@@ -321,12 +321,12 @@ export const HomeSection = () => {
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
-                <Search size={16} color="#FF3B30" style={{ flexShrink: 0 }} />
+                <Search size={16} color="#06B6D4" style={{ flexShrink: 0 }} />
                 <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   Search any gym machine, exercise, or stretch...
                 </span>
               </div>
-              <span className="badge badge-emerald" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', flexShrink: 0 }}>
+              <span className="badge badge-cyan" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', flexShrink: 0 }}>
                 🔍 Search
               </span>
             </div>
@@ -418,7 +418,7 @@ export const HomeSection = () => {
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
                         overflow: 'hidden',
-                        backgroundColor: '#050505'
+                        backgroundColor: '#0B1120'
                       }}
                     >
                       <img
@@ -456,7 +456,7 @@ export const HomeSection = () => {
                         transform: 'rotateY(180deg)',
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
-                        background: 'linear-gradient(135deg, #050505 0%, #141414 50%, #0B0B0B 100%)',
+                        background: 'linear-gradient(135deg, #0B1120 0%, #131D31 50%, #0F172A 100%)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -466,8 +466,8 @@ export const HomeSection = () => {
                         overflow: 'hidden'
                       }}
                     >
-                      <Dumbbell size={36} color="#FF3B30" style={{ opacity: 0.6, marginBottom: '0.5rem' }} />
-                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                      <Dumbbell size={36} color="#06B6D4" style={{ opacity: 0.6, marginBottom: '0.5rem' }} />
+                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06B6D4', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                         GymSetup Guide
                       </span>
                     </div>
@@ -507,11 +507,11 @@ export const HomeSection = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.3rem',
-                    background: 'rgba(11, 11, 11, 0.92)',
+                    background: 'rgba(15, 23, 42, 0.92)',
                     padding: '0.25rem 0.55rem',
                     borderRadius: '9999px',
-                    border: '1px solid rgba(255, 59, 48, 0.4)',
-                    color: '#FF3B30',
+                    border: '1px solid rgba(6, 182, 212, 0.4)',
+                    color: '#06B6D4',
                     fontSize: '0.66rem',
                     fontWeight: 700,
                     whiteSpace: 'nowrap',
@@ -521,7 +521,7 @@ export const HomeSection = () => {
                     boxShadow: '0 2px 6px rgba(0,0,0,0.4)'
                   }}
                 >
-                  <Flame size={12} color="#FF3B30" style={{ flexShrink: 0 }} />
+                  <Flame size={12} color="#06B6D4" style={{ flexShrink: 0 }} />
                   <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {HERO_SLIDES[heroSlideIndex].topBadge}
                   </span>
@@ -529,7 +529,7 @@ export const HomeSection = () => {
 
                 <div
                   style={{
-                    background: 'rgba(11, 11, 11, 0.9)',
+                    background: 'rgba(15, 23, 42, 0.9)',
                     border: '1px solid var(--border-card)',
                     padding: '0.22rem 0.5rem',
                     borderRadius: '9999px',
@@ -557,7 +557,7 @@ export const HomeSection = () => {
                   width: '30px',
                   height: '30px',
                   borderRadius: '50%',
-                  background: 'rgba(11, 11, 11, 0.82)',
+                  background: 'rgba(15, 23, 42, 0.82)',
                   border: '1px solid var(--border-card)',
                   color: '#ffffff',
                   display: 'flex',
@@ -568,11 +568,11 @@ export const HomeSection = () => {
                   transition: 'background 0.2s ease, color 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#FF3B30';
-                  e.currentTarget.style.color = '#0B0B0B';
+                  e.currentTarget.style.background = '#06B6D4';
+                  e.currentTarget.style.color = '#0F172A';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(11, 11, 11, 0.82)';
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.82)';
                   e.currentTarget.style.color = '#ffffff';
                 }}
               >
@@ -591,7 +591,7 @@ export const HomeSection = () => {
                   width: '30px',
                   height: '30px',
                   borderRadius: '50%',
-                  background: 'rgba(11, 11, 11, 0.82)',
+                  background: 'rgba(15, 23, 42, 0.82)',
                   border: '1px solid var(--border-card)',
                   color: '#ffffff',
                   display: 'flex',
@@ -602,11 +602,11 @@ export const HomeSection = () => {
                   transition: 'background 0.2s ease, color 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#FF3B30';
-                  e.currentTarget.style.color = '#0B0B0B';
+                  e.currentTarget.style.background = '#06B6D4';
+                  e.currentTarget.style.color = '#0F172A';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(11, 11, 11, 0.82)';
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.82)';
                   e.currentTarget.style.color = '#ffffff';
                 }}
               >
@@ -620,7 +620,7 @@ export const HomeSection = () => {
                   bottom: '8px',
                   left: '8px',
                   right: '8px',
-                  background: 'rgba(11, 11, 11, 0.94)',
+                  background: 'rgba(15, 23, 42, 0.94)',
                   border: '1px solid var(--border-card)',
                   borderRadius: '12px',
                   padding: '0.55rem 0.75rem',
@@ -639,11 +639,11 @@ export const HomeSection = () => {
                         width: '28px',
                         height: '28px',
                         borderRadius: '8px',
-                        background: 'rgba(255, 59, 48, 0.2)',
+                        background: 'rgba(6, 182, 212, 0.2)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#FF3B30',
+                        color: '#06B6D4',
                         flexShrink: 0
                       }}
                     >
@@ -665,7 +665,7 @@ export const HomeSection = () => {
                       <div
                         style={{
                           fontSize: '0.66rem',
-                          color: '#FF3B30',
+                          color: '#06B6D4',
                           fontWeight: 600,
                           whiteSpace: 'nowrap',
                           overflow: 'hidden',
@@ -678,7 +678,7 @@ export const HomeSection = () => {
                   </div>
 
                   <span
-                    className="badge badge-emerald"
+                    className="badge badge-cyan"
                     style={{ fontSize: '0.62rem', padding: '0.12rem 0.4rem', flexShrink: 0 }}
                   >
                     {HERO_SLIDES[heroSlideIndex].tag}
@@ -702,7 +702,7 @@ export const HomeSection = () => {
                           height: '4px',
                           width: isDotActive ? '18px' : '5px',
                           borderRadius: '9999px',
-                          background: isDotActive ? '#FF3B30' : 'rgba(255, 255, 255, 0.25)',
+                          background: isDotActive ? '#06B6D4' : 'rgba(255, 255, 255, 0.25)',
                           border: 'none',
                           padding: 0,
                           cursor: 'pointer',
@@ -732,15 +732,15 @@ export const HomeSection = () => {
                 width: '42px',
                 height: '42px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(255, 59, 48, 0.15)',
+                background: 'rgba(6, 182, 212, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FF3B30'
+                color: '#06B6D4'
               }}>
                 <CheckCircle2 size={22} />
               </div>
-              <span className="badge badge-emerald">
+              <span className="badge badge-cyan">
                 {checklistPercent}% Ready
               </span>
             </div>
@@ -772,11 +772,11 @@ export const HomeSection = () => {
                 width: '42px',
                 height: '42px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(255, 59, 48, 0.15)',
+                background: 'rgba(6, 182, 212, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FF3B30'
+                color: '#06B6D4'
               }}>
                 <Calendar size={22} />
               </div>
@@ -812,11 +812,11 @@ export const HomeSection = () => {
                 width: '42px',
                 height: '42px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(255, 59, 48, 0.15)',
+                background: 'rgba(6, 182, 212, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FF3B30'
+                color: '#06B6D4'
               }}>
                 <Dumbbell size={22} />
               </div>
@@ -833,7 +833,7 @@ export const HomeSection = () => {
             </p>
           </div>
 
-          <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FF3B30', fontSize: '0.875rem', fontWeight: 600 }}>
+          <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06B6D4', fontSize: '0.875rem', fontWeight: 600 }}>
             <span>Open Tracker</span>
             <ArrowRight size={16} />
           </div>
@@ -843,13 +843,13 @@ export const HomeSection = () => {
       {/* Quick 3-Pillar Confidence Primer */}
       <div className="card" style={{ padding: '2rem' }}>
         <h2 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <ShieldCheck size={24} color="#FF3B30" />
+          <ShieldCheck size={24} color="#06B6D4" />
           The Beginner's 3 Golden Rules for Day 1
         </h2>
 
         <div className="grid-3">
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#FF3B30', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06B6D4', marginBottom: '0.35rem' }}>
               1. Nobody Is Watching You
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
@@ -858,7 +858,7 @@ export const HomeSection = () => {
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#FF3B30', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06B6D4', marginBottom: '0.35rem' }}>
               2. Consistency Beats Intensity
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
@@ -867,7 +867,7 @@ export const HomeSection = () => {
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#FF3B30', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06B6D4', marginBottom: '0.35rem' }}>
               3. Machines Are Your Best Friend
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
@@ -888,16 +888,16 @@ export const HomeSection = () => {
 
         <div className="grid-4">
           {[
-            { id: 'first-day', title: 'First Day Guide', desc: 'Before, during & after breakdown', icon: Compass, color: '#FF3B30' },
-            { id: 'roadmap', title: 'Roadmap & Milestones', desc: 'Day 1 to Month 2+ path', icon: Calendar, color: '#FF3B30' },
-            { id: 'safety', title: 'Safety & Form Traps', desc: 'DOs/DON\'Ts and red flags', icon: ShieldCheck, color: '#FF3B30' },
-            { id: 'equipment', title: 'Equipment Explorer', desc: 'Pins, adjustments & how-tos', icon: Zap, color: '#FF3B30' },
-            { id: 'warmup', title: 'Warm-up & Cooldown', desc: 'Dynamic moves + rest timer', icon: Flame, color: '#FF3B30' },
-            { id: 'workout', title: 'Beginner Workouts', desc: 'Full Body & 20-min express', icon: Dumbbell, color: '#FF3B30' },
-            { id: 'nutrition', title: 'Simple Nutrition', desc: 'Macros & protein calculator', icon: Heart, color: '#FF3B30' },
-            { id: 'recovery', title: 'Rest & Recovery', desc: 'DOMS survival & sleep guide', icon: Clock, color: '#FF3B30' },
-            { id: 'gym-pricing', title: 'Top Gyms & Pricing', desc: 'Cult.fit, Gold\'s, Anytime & fees', icon: Building2, color: '#FF3B30' },
-            { id: 'feedback', title: 'Member Feedback', desc: 'Submit reviews, ratings & thoughts', icon: MessageSquareHeart, color: '#FF3B30' }
+            { id: 'first-day', title: 'First Day Guide', desc: 'Before, during & after breakdown', icon: Compass, color: '#06B6D4' },
+            { id: 'roadmap', title: 'Roadmap & Milestones', desc: 'Day 1 to Month 2+ path', icon: Calendar, color: '#06B6D4' },
+            { id: 'safety', title: 'Safety & Form Traps', desc: 'DOs/DON\'Ts and red flags', icon: ShieldCheck, color: '#06B6D4' },
+            { id: 'equipment', title: 'Equipment Explorer', desc: 'Pins, adjustments & how-tos', icon: Zap, color: '#06B6D4' },
+            { id: 'warmup', title: 'Warm-up & Cooldown', desc: 'Dynamic moves + rest timer', icon: Flame, color: '#06B6D4' },
+            { id: 'workout', title: 'Beginner Workouts', desc: 'Full Body & 20-min express', icon: Dumbbell, color: '#06B6D4' },
+            { id: 'nutrition', title: 'Simple Nutrition', desc: 'Macros & protein calculator', icon: Heart, color: '#06B6D4' },
+            { id: 'recovery', title: 'Rest & Recovery', desc: 'DOMS survival & sleep guide', icon: Clock, color: '#06B6D4' },
+            { id: 'gym-pricing', title: 'Top Gyms & Pricing', desc: 'Cult.fit, Gold\'s, Anytime & fees', icon: Building2, color: '#06B6D4' },
+            { id: 'feedback', title: 'Member Feedback', desc: 'Submit reviews, ratings & thoughts', icon: MessageSquareHeart, color: '#06B6D4' }
           ].map((item) => {
             const Icon = item.icon;
             return (
@@ -911,11 +911,11 @@ export const HomeSection = () => {
                   width: '38px',
                   height: '38px',
                   borderRadius: '10px',
-                  background: 'rgba(255, 59, 48, 0.15)',
+                  background: 'rgba(6, 182, 212, 0.15)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FF3B30',
+                  color: '#06B6D4',
                   marginBottom: '1rem'
                 }}>
                   <Icon size={20} />

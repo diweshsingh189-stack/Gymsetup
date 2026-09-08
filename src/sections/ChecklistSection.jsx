@@ -36,9 +36,9 @@ export const ChecklistSection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <CheckCircle2 size={14} /> Section 11 of 11 — Interactive
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -52,16 +52,16 @@ export const ChecklistSection = () => {
           <div style={{ marginTop: '1.5rem', background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Trophy size={18} color="#FF3B30" />
+                <Trophy size={18} color="#06B6D4" />
                 <span style={{ fontWeight: 700, fontSize: '0.95rem' }}>Workout Readiness Score</span>
               </div>
-              <span style={{ fontWeight: 800, color: '#FF3B30', fontSize: '1.1rem' }}>
+              <span style={{ fontWeight: 800, color: '#06B6D4', fontSize: '1.1rem' }}>
                 {completedItems} / {totalItems} Done ({overallPercentage}%)
               </span>
             </div>
 
             <div style={{ width: '100%', height: '10px', background: 'var(--border-card)', borderRadius: '9999px', overflow: 'hidden' }}>
-              <div style={{ width: `${overallPercentage}%`, height: '100%', background: '#FF3B30', transition: 'width 0.3s' }} />
+              <div style={{ width: `${overallPercentage}%`, height: '100%', background: '#06B6D4', transition: 'width 0.3s' }} />
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export const ChecklistSection = () => {
             <div key={phase.id} className="card" style={{ padding: 'clamp(1rem, 3.5vw, 1.75rem)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(255, 59, 48, 0.15)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(6, 182, 212, 0.15)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <PhaseIcon size={20} />
                   </div>
                   <div style={{ minWidth: 0 }}>
@@ -116,7 +116,7 @@ export const ChecklistSection = () => {
                   </div>
                 </div>
 
-                <span className={`badge ${phaseDoneCount === phase.items.length ? 'badge-emerald' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>
+                <span className={`badge ${phaseDoneCount === phase.items.length ? 'badge-cyan' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>
                   {phaseDoneCount === phase.items.length ? '✓ Complete' : `${phaseDoneCount}/${phase.items.length}`}
                 </span>
               </div>
@@ -135,8 +135,8 @@ export const ChecklistSection = () => {
                         justifyContent: 'space-between',
                         padding: '0.75rem 0.95rem',
                         borderRadius: 'var(--radius-md)',
-                        background: isChecked ? 'rgba(255, 59, 48, 0.08)' : 'var(--bg-card-secondary)',
-                        border: `1px solid ${isChecked ? 'rgba(255, 59, 48, 0.3)' : 'var(--border-card)'}`,
+                        background: isChecked ? 'rgba(6, 182, 212, 0.08)' : 'var(--bg-card-secondary)',
+                        border: `1px solid ${isChecked ? 'rgba(6, 182, 212, 0.3)' : 'var(--border-card)'}`,
                         cursor: 'pointer',
                         transition: 'all 0.15s',
                         gap: '0.65rem'
@@ -150,8 +150,8 @@ export const ChecklistSection = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          background: isChecked ? '#FF3B30' : 'transparent',
-                          border: `2px solid ${isChecked ? '#FF3B30' : 'var(--text-muted)'}`,
+                          background: isChecked ? '#06B6D4' : 'transparent',
+                          border: `2px solid ${isChecked ? '#06B6D4' : 'var(--text-muted)'}`,
                           color: '#fff',
                           flexShrink: 0
                         }}>
@@ -171,7 +171,7 @@ export const ChecklistSection = () => {
                       </div>
 
                       {item.essential && (
-                        <span className="badge badge-emerald" style={{ fontSize: '0.68rem', flexShrink: 0 }}>
+                        <span className="badge badge-cyan" style={{ fontSize: '0.68rem', flexShrink: 0 }}>
                           Essential
                         </span>
                       )}

@@ -23,14 +23,14 @@ export const Toast = () => {
         gap: '0.75rem',
         padding: '0.85rem 1.25rem',
         borderRadius: 'var(--radius-md)',
-        background: isSuccess ? '#E02D22' : 'var(--bg-card)',
+        background: isSuccess ? '#0891B2' : 'var(--bg-card)',
         color: '#ffffff',
-        border: '1px solid #FF3B30',
+        border: '1px solid #06B6D4',
         boxShadow: 'var(--shadow-lg)',
         animation: 'fadeIn 0.25s ease-out'
       }}
     >
-      {isSuccess ? <CheckCircle size={18} color="#ffffff" /> : <Info size={18} color="#FF3B30" />}
+      {isSuccess ? <CheckCircle size={18} color="#ffffff" /> : <Info size={18} color="#06B6D4" />}
       <span style={{ fontSize: '0.875rem', fontWeight: 600 }}>{toast.message}</span>
     </div>
   );

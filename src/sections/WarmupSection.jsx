@@ -10,9 +10,9 @@ export const WarmupSection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <Flame size={14} /> Section 6 of 11
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -51,7 +51,7 @@ export const WarmupSection = () => {
           <div className="card" style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#FF3B30', marginBottom: '0.25rem' }}>Dynamic Warm-up Philosophy</h3>
+                <h3 style={{ fontSize: '1.25rem', color: '#06B6D4', marginBottom: '0.25rem' }}>Dynamic Warm-up Philosophy</h3>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Move through active ranges of motion — avoid holding motionless stretches before lifting.</p>
               </div>
               <button
@@ -69,7 +69,7 @@ export const WarmupSection = () => {
               <div key={item.id} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 59, 48, 0.12)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(6, 182, 212, 0.12)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
                       {item.symbol || '🤸‍♂️'}
                     </div>
                     <div>
@@ -79,14 +79,14 @@ export const WarmupSection = () => {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span className="badge badge-emerald">{item.duration}</span>
+                    <span className="badge badge-cyan">{item.duration}</span>
                     <button
                       onClick={() => openTimer(45, `${item.name} (45s)`)}
                       className="btn btn-secondary btn-icon"
                       title="Start 45s timer for this exercise"
                       style={{ width: '34px', height: '34px' }}
                     >
-                      <Play size={14} color="#FF3B30" />
+                      <Play size={14} color="#06B6D4" />
                     </button>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export const WarmupSection = () => {
           <div className="card" style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#FF3B30', marginBottom: '0.25rem' }}>Static Stretch Philosophy</h3>
+                <h3 style={{ fontSize: '1.25rem', color: '#06B6D4', marginBottom: '0.25rem' }}>Static Stretch Philosophy</h3>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Hold comfortable stretches for 30–60 seconds without bouncing to release muscle tension.</p>
               </div>
               <button
@@ -125,7 +125,7 @@ export const WarmupSection = () => {
               <div key={item.id} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 59, 48, 0.12)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(6, 182, 212, 0.12)', color: '#06B6D4', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
                       {item.symbol || '🧘'}
                     </div>
                     <div>
@@ -135,14 +135,14 @@ export const WarmupSection = () => {
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span className="badge badge-emerald">{item.duration}</span>
+                    <span className="badge badge-cyan">{item.duration}</span>
                     <button
                       onClick={() => openTimer(45, `${item.name} (45s)`)}
                       className="btn btn-secondary btn-icon"
                       title="Start 45s timer for this stretch"
                       style={{ width: '34px', height: '34px' }}
                     >
-                      <Play size={14} color="#FF3B30" />
+                      <Play size={14} color="#06B6D4" />
                     </button>
                   </div>
                 </div>

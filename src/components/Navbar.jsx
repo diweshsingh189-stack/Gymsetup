@@ -74,7 +74,7 @@ export const Navbar = () => {
               width: '38px',
               height: '38px',
               borderRadius: '12px',
-              background: '#FF3B30',
+              background: '#06B6D4',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -93,9 +93,9 @@ export const Navbar = () => {
                 color: 'var(--text-main)',
                 whiteSpace: 'nowrap'
               }}>
-                Gym<span style={{ color: '#FF3B30' }}>Setup</span>
+                Gym<span style={{ color: '#06B6D4' }}>Setup</span>
               </span>
-              <span className="badge badge-emerald nav-badge-edition" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', whiteSpace: 'nowrap' }}>
+              <span className="badge badge-cyan nav-badge-edition" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', whiteSpace: 'nowrap' }}>
                 Beginner
               </span>
             </div>
@@ -123,7 +123,7 @@ export const Navbar = () => {
             left: '14px',
             top: '50%',
             transform: 'translateY(-50%)',
-            color: '#FF3B30'
+            color: '#06B6D4'
           }} />
           <div
             className="input-control nav-search-input"
@@ -159,13 +159,13 @@ export const Navbar = () => {
           aria-label="Search"
           style={{ display: 'none' }}
         >
-          <Search size={18} color="#FF3B30" />
+          <Search size={18} color="#06B6D4" />
         </button>
 
         {/* Onboarding Quick Jump */}
         <button
           onClick={() => navigateTo('guided-flow')}
-          className="btn btn-outline-emerald btn-sm nav-start-btn"
+          className="btn btn-outline-cyan btn-sm nav-start-btn"
           style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', borderRadius: '9999px', fontSize: '0.8rem', padding: '0.35rem 0.65rem' }}
         >
           <Sparkles size={14} />
@@ -179,7 +179,7 @@ export const Navbar = () => {
           title="Open Rest / Interval Timer"
           aria-label="Open Timer"
         >
-          <Timer size={18} color="#FF3B30" />
+          <Timer size={18} color="#06B6D4" />
         </button>
 
         {/* Theme Toggle */}
@@ -189,7 +189,7 @@ export const Navbar = () => {
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           aria-label="Toggle Theme"
         >
-          {theme === 'dark' ? <Sun size={18} color="#FF3B30" /> : <Moon size={18} color="#64748b" />}
+          {theme === 'dark' ? <Sun size={18} color="#06B6D4" /> : <Moon size={18} color="#64748b" />}
         </button>
       </div>
 

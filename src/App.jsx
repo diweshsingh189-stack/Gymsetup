@@ -99,8 +99,8 @@ const MainView = () => {
               onClick={() => navigateTo(item.id)}
               className={`mobile-nav-btn ${isActive ? 'active' : ''}`}
             >
-              <Icon size={20} color={isActive ? '#FF3B30' : 'var(--text-muted)'} />
-              <span style={{ fontSize: '0.7rem', fontWeight: isActive ? 700 : 500, color: isActive ? '#FF3B30' : 'var(--text-muted)' }}>
+              <Icon size={20} color={isActive ? '#06B6D4' : 'var(--text-muted)'} />
+              <span style={{ fontSize: '0.7rem', fontWeight: isActive ? 700 : 500, color: isActive ? '#06B6D4' : 'var(--text-muted)' }}>
                 {item.label}
               </span>
             </button>
@@ -156,7 +156,7 @@ const MainView = () => {
         }
 
         .mobile-nav-btn.active {
-          background: rgba(255, 59, 48, 0.12);
+          background: rgba(6, 182, 212, 0.12);
         }
 
         @media (max-width: 1024px) {

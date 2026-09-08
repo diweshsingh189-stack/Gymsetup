@@ -138,10 +138,10 @@ export const FeedbackSection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '850px' }}>
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-            <span className="badge badge-emerald">
+            <span className="badge badge-cyan">
               <MessageSquareHeart size={14} /> Section 13 of 13 — Member Community
             </span>
             <span className="badge badge-neutral">
@@ -163,14 +163,14 @@ export const FeedbackSection = () => {
       {/* Main Grid: Feedback Form + Highlight Box */}
       <div className="grid-2" style={{ gap: '1.5rem', alignItems: 'start' }}>
         {/* Left Side: Feedback Form */}
-        <div className="card card-glow-emerald" style={{ padding: '2rem', border: '1px solid rgba(255, 59, 48, 0.3)' }}>
+        <div className="card card-glow-cyan" style={{ padding: '2rem', border: '1px solid rgba(6, 182, 212, 0.3)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
             <div style={{
               width: '40px',
               height: '40px',
               borderRadius: '12px',
-              background: 'rgba(255, 59, 48, 0.15)',
-              color: '#FF3B30',
+              background: 'rgba(6, 182, 212, 0.15)',
+              color: '#06B6D4',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
@@ -187,7 +187,7 @@ export const FeedbackSection = () => {
             {/* Full Name */}
             <div>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                <User size={15} color="#FF3B30" /> Full Name (पूरा नाम) *
+                <User size={15} color="#06B6D4" /> Full Name (पूरा नाम) *
               </label>
               <input
                 type="text"
@@ -202,7 +202,7 @@ export const FeedbackSection = () => {
             {/* Email ID */}
             <div>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                <Mail size={15} color="#FF3B30" /> Email Address (ईमेल आईडी) *
+                <Mail size={15} color="#06B6D4" /> Email Address (ईमेल आईडी) *
               </label>
               <input
                 type="email"
@@ -217,7 +217,7 @@ export const FeedbackSection = () => {
             {/* Address */}
             <div>
               <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                <MapPin size={15} color="#FF3B30" /> Full Address / City / Gym Location (पूरा पता) *
+                <MapPin size={15} color="#06B6D4" /> Full Address / City / Gym Location (पूरा पता) *
               </label>
               <input
                 type="text"
@@ -233,7 +233,7 @@ export const FeedbackSection = () => {
             <div className="grid-2" style={{ gap: '1rem' }}>
               <div>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.4rem' }}>
-                  <Star size={15} color="#FF3B30" /> Star Rating (रेटिंग)
+                  <Star size={15} color="#06B6D4" /> Star Rating (रेटिंग)
                 </label>
                 <select
                   className="input-control"
@@ -296,14 +296,14 @@ export const FeedbackSection = () => {
         {/* Right Side: Community Highlights & Live Stats */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {/* Feedback Satisfaction Card */}
-          <div className="card card-glow-emerald" style={{ padding: '2rem' }}>
+          <div className="card card-glow-cyan" style={{ padding: '2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1rem' }}>
-              <Award size={24} color="#FF3B30" />
+              <Award size={24} color="#06B6D4" />
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Beginner Satisfaction Rate</h3>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <span style={{ fontSize: '3rem', fontWeight: 900, color: '#FF3B30', lineHeight: 1 }}>98.6%</span>
+              <span style={{ fontSize: '3rem', fontWeight: 900, color: '#06B6D4', lineHeight: 1 }}>98.6%</span>
               <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 600 }}>Positive Experience</span>
             </div>
 
@@ -313,15 +313,15 @@ export const FeedbackSection = () => {
 
             <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.85rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={16} color="#FF3B30" />
+                <CheckCircle2 size={16} color="#06B6D4" />
                 <span>Zero spam guarantee — emails used solely for account updates</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={16} color="#FF3B30" />
+                <CheckCircle2 size={16} color="#06B6D4" />
                 <span>Instant local storage backup of your submitted reviews</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle2 size={16} color="#FF3B30" />
+                <CheckCircle2 size={16} color="#06B6D4" />
                 <span>Direct product improvements based on beginner feedback</span>
               </div>
             </div>
@@ -329,7 +329,7 @@ export const FeedbackSection = () => {
 
           {/* Quick Help Card */}
           <div className="card" style={{ padding: '1.5rem', background: 'var(--bg-card-secondary)' }}>
-            <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FF3B30' }}>
+            <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06B6D4' }}>
               <Sparkles size={18} /> Need instant guidance?
             </h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
@@ -344,7 +344,7 @@ export const FeedbackSection = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <ThumbsUp size={20} color="#FF3B30" />
+              <ThumbsUp size={20} color="#06B6D4" />
               <h3 style={{ fontSize: '1.35rem', fontWeight: 800 }}>Recent Member Reviews ({feedbacks.length})</h3>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -371,8 +371,8 @@ export const FeedbackSection = () => {
                       width: '32px',
                       height: '32px',
                       borderRadius: '50%',
-                      background: 'rgba(255, 59, 48, 0.2)',
-                      color: '#FF3B30',
+                      background: 'rgba(6, 182, 212, 0.2)',
+                      color: '#06B6D4',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -391,10 +391,10 @@ export const FeedbackSection = () => {
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
                     <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <MapPin size={13} color="#FF3B30" /> {fb.address}
+                      <MapPin size={13} color="#06B6D4" /> {fb.address}
                     </span>
                     <span>•</span>
-                    <span className="badge badge-emerald" style={{ fontSize: '0.68rem' }}>{fb.goal}</span>
+                    <span className="badge badge-cyan" style={{ fontSize: '0.68rem' }}>{fb.goal}</span>
                     <span>•</span>
                     <span>{fb.date}</span>
                   </div>

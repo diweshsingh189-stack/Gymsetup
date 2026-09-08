@@ -124,7 +124,7 @@ export const Sidebar = () => {
                 width: '36px',
                 height: '36px',
                 borderRadius: '10px',
-                background: '#FF3B30',
+                background: '#06B6D4',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -135,7 +135,7 @@ export const Sidebar = () => {
             </div>
             <div>
               <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.15rem', letterSpacing: '-0.02em' }}>
-                Gym<span style={{ color: '#FF3B30' }}>Setup</span>
+                Gym<span style={{ color: '#06B6D4' }}>Setup</span>
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                 Beginner Fitness Companion
@@ -156,7 +156,7 @@ export const Sidebar = () => {
             justifyContent: 'space-between'
           }}>
             <div>
-              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#06B6D4', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                 DAILY READINESS
               </div>
               <div style={{ fontSize: '0.88rem', fontWeight: 700, marginTop: '2px' }}>
@@ -166,7 +166,7 @@ export const Sidebar = () => {
             <button
               onClick={() => handleNav('checklist')}
               style={{
-                background: '#FF3B30',
+                background: '#06B6D4',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '6px',
@@ -212,7 +212,7 @@ export const Sidebar = () => {
                   height: '5px',
                   borderRadius: '50%',
                   flexShrink: 0,
-                  background: '#FF3B30'
+                  background: '#06B6D4'
                 }} />
               </div>
 
@@ -232,17 +232,17 @@ export const Sidebar = () => {
                           padding: '0.52rem 0.65rem',
                           borderRadius: 'var(--radius-md)',
                           background: isActive
-                            ? 'rgba(255, 59, 48, 0.12)'
+                            ? 'rgba(6, 182, 212, 0.12)'
                             : item.highlight
-                            ? 'rgba(255, 59, 48, 0.05)'
+                            ? 'rgba(6, 182, 212, 0.05)'
                             : 'transparent',
                           color: isActive
-                            ? '#FF3B30'
+                            ? '#06B6D4'
                             : item.highlight
-                            ? '#FF3B30'
+                            ? '#06B6D4'
                             : 'var(--text-main)',
                           border: isActive
-                            ? '1px solid rgba(255, 59, 48, 0.3)'
+                            ? '1px solid rgba(6, 182, 212, 0.3)'
                             : '1px solid transparent',
                           fontWeight: isActive ? 700 : 500,
                           fontSize: '0.84rem',
@@ -258,7 +258,7 @@ export const Sidebar = () => {
                               fontWeight: 700,
                               padding: '0.1rem 0.3rem',
                               borderRadius: '4px',
-                              background: isActive ? '#FF3B30' : 'var(--bg-card-secondary)',
+                              background: isActive ? '#06B6D4' : 'var(--bg-card-secondary)',
                               color: isActive ? '#ffffff' : 'var(--text-muted)',
                               minWidth: '20px',
                               textAlign: 'center',
@@ -270,7 +270,7 @@ export const Sidebar = () => {
 
                           <Icon
                             size={16}
-                            color={isActive ? '#FF3B30' : 'var(--text-muted)'}
+                            color={isActive ? '#06B6D4' : 'var(--text-muted)'}
                             style={{ flexShrink: 0 }}
                           />
                           <span style={{ fontSize: '0.84rem', lineHeight: 1.3, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
@@ -284,7 +284,7 @@ export const Sidebar = () => {
                               fontSize: '0.66rem',
                               padding: '0.1rem 0.4rem',
                               borderRadius: '9999px',
-                              background: isActive ? '#FF3B30' : 'var(--bg-card-secondary)',
+                              background: isActive ? '#06B6D4' : 'var(--bg-card-secondary)',
                               color: isActive ? '#ffffff' : 'var(--text-muted)',
                               fontWeight: 600,
                               flexShrink: 0
@@ -312,7 +312,7 @@ export const Sidebar = () => {
           alignItems: 'center',
           gap: '0.5rem'
         }}>
-          <Info size={15} color="#FF3B30" />
+          <Info size={15} color="#06B6D4" />
           <span>Zero pressure. 100% Beginner safe.</span>
         </div>
       </aside>

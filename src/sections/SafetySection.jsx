@@ -8,9 +8,9 @@ export const SafetySection = () => {
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       {/* Header Banner */}
-      <div className="card card-glow-emerald" style={{ padding: '2.5rem 2rem' }}>
+      <div className="card card-glow-cyan" style={{ padding: '2.5rem 2rem' }}>
         <div style={{ maxWidth: '800px' }}>
-          <span className="badge badge-emerald" style={{ marginBottom: '0.75rem' }}>
+          <span className="badge badge-cyan" style={{ marginBottom: '0.75rem' }}>
             <ShieldCheck size={14} /> Section 4 of 11 — Crucial
           </span>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 800, marginBottom: '0.75rem' }}>
@@ -25,7 +25,7 @@ export const SafetySection = () => {
       {/* Red Flags / When to Stop Alert Bar */}
       <div className="card" style={{ border: '1px solid var(--border-card)', background: 'var(--bg-card-secondary)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-          <AlertOctagon size={24} color="#FF3B30" />
+          <AlertOctagon size={24} color="#06B6D4" />
           <h2 style={{ fontSize: '1.35rem', color: 'var(--text-main)' }}>When to Stop: Physical Red Flags</h2>
         </div>
 
@@ -45,10 +45,10 @@ export const SafetySection = () => {
       {/* DOs and DON'Ts Dual Grid */}
       <div className="grid-2">
         {/* DOs Card */}
-        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
+        <div className="card" style={{ borderTop: '4px solid #06B6D4' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
-            <CheckCircle size={22} color="#FF3B30" />
-            <h3 style={{ fontSize: '1.3rem', color: '#FF3B30' }}>The Golden DOs</h3>
+            <CheckCircle size={22} color="#06B6D4" />
+            <h3 style={{ fontSize: '1.3rem', color: '#06B6D4' }}>The Golden DOs</h3>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -116,7 +116,7 @@ export const SafetySection = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
               <div>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 800 }}>{trap.exercise}</h3>
-                <div style={{ color: '#FF3B30', fontWeight: 600, fontSize: '0.95rem' }}>Trap: {trap.trapName}</div>
+                <div style={{ color: '#06B6D4', fontWeight: 600, fontSize: '0.95rem' }}>Trap: {trap.trapName}</div>
               </div>
               <span className="badge badge-neutral" style={{ padding: '0.35rem 0.75rem' }}>
                 Risk: {trap.danger}
@@ -131,8 +131,8 @@ export const SafetySection = () => {
                 <p style={{ fontSize: '0.925rem', color: 'var(--text-main)', lineHeight: 1.6 }}>{trap.wrongWay}</p>
               </div>
 
-              <div style={{ background: 'rgba(255, 59, 48, 0.08)', border: '1px solid rgba(255, 59, 48, 0.3)', padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#FF3B30', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.5rem' }}>
+              <div style={{ background: 'rgba(6, 182, 212, 0.08)', border: '1px solid rgba(6, 182, 212, 0.3)', padding: '1.5rem', borderRadius: 'var(--radius-md)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#06B6D4', fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.5rem' }}>
                   <CheckCircle size={20} /> The Fix (DO)
                 </div>
                 <p style={{ fontSize: '0.925rem', color: 'var(--text-main)', lineHeight: 1.6 }}>{trap.rightWay}</p>
@@ -141,7 +141,7 @@ export const SafetySection = () => {
 
             {/* Mental Coaching Cue */}
             <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ fontWeight: 700, color: '#FF3B30', fontSize: '0.875rem' }}>🧠 PRO CUE:</span>
+              <span style={{ fontWeight: 700, color: '#06B6D4', fontSize: '0.875rem' }}>🧠 PRO CUE:</span>
               <span style={{ fontSize: '0.925rem', fontStyle: 'italic' }}>"{trap.cue}"</span>
             </div>
           </div>

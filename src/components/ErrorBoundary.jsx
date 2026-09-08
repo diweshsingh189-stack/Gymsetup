@@ -41,8 +41,8 @@ export class ErrorBoundary extends React.Component {
           <div style={{
             maxWidth: '560px',
             width: '100%',
-            background: '#141414',
-            border: '1px solid #3A3A3C',
+            background: '#131D31',
+            border: '1px solid #1E2E4A',
             borderRadius: '16px',
             padding: '2rem',
             boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
@@ -52,8 +52,8 @@ export class ErrorBoundary extends React.Component {
               width: '52px',
               height: '52px',
               borderRadius: '50%',
-              background: 'rgba(255, 59, 48, 0.15)',
-              color: '#FF3B30',
+              background: 'rgba(6, 182, 212, 0.15)',
+              color: '#06B6D4',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -71,8 +71,8 @@ export class ErrorBoundary extends React.Component {
 
             {this.state.error && (
               <pre style={{
-                background: '#0B0B0B',
-                border: '1px solid #2C2C2E',
+                background: '#0F172A',
+                border: '1px solid #1E293B',
                 padding: '0.85rem',
                 borderRadius: '8px',
                 color: '#94a3b8',
@@ -89,7 +89,7 @@ export class ErrorBoundary extends React.Component {
               <button
                 onClick={this.handleReload}
                 style={{
-                  background: '#FF3B30',
+                  background: '#06B6D4',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '10px',
