@@ -453,23 +453,12 @@ button, input, select, textarea {
   }
 }
 
-/* Realistic 3D Book & Notebook Page-Flip System */
+/* Realistic 3D Book Page-Flip System */
 .book-perspective {
   perspective: 1400px;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
 }
 
-.notebook-spine {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 14px;
-  background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(255,255,255,0.06) 40%, rgba(0,0,0,0.4) 100%);
-  border-right: 1px dashed rgba(16, 185, 129, 0.3);
-  z-index: 10;
-  pointer-events: none;
-}
 
 

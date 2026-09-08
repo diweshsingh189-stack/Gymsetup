@@ -335,8 +335,8 @@ export const HomeSection = () => {
             </div>
           </div>
 
-          {/* Right Column: 3D Notebook / Copy Page-Turn Effect */}
-          <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          {/* Right Column: 3D Notebook Page-Turn Effect */}
+          <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
             <div
               className="book-perspective"
               onTouchStart={handleTouchStart}
@@ -349,8 +349,8 @@ export const HomeSection = () => {
               style={{
                 position: 'relative',
                 width: '100%',
-                maxWidth: '400px',
-                height: '460px',
+                maxWidth: '380px',
+                height: 'clamp(360px, 72vw, 440px)',
                 borderRadius: '18px',
                 overflow: 'hidden',
                 border: '1px solid var(--border-card)',
@@ -361,9 +361,6 @@ export const HomeSection = () => {
                 touchAction: 'pan-y'
               }}
             >
-              {/* Notebook Left Spine Stitching */}
-              <div className="notebook-spine" />
-
               {/* Underneath Next Slide (Revealed when current page turns) */}
               {(() => {
                 const nextIdx = flipDirection === 'next' 
@@ -395,7 +392,7 @@ export const HomeSection = () => {
                 );
               })()}
 
-              {/* Active Turning Page: Complete 180-degree Page Turn ("Pura Ulet Jai") */}
+              {/* Active Turning Page: Complete 180-degree Page Turn */}
               {(() => {
                 const currentSlide = HERO_SLIDES[heroSlideIndex];
                 
@@ -464,7 +461,7 @@ export const HomeSection = () => {
                       />
                     </div>
 
-                    {/* Back Face of Page (Visible after 90deg turn) */}
+                    {/* Back Face of Page (Visible during 180deg turn) */}
                     <div
                       style={{
                         position: 'absolute',
@@ -473,7 +470,6 @@ export const HomeSection = () => {
                         backfaceVisibility: 'hidden',
                         WebkitBackfaceVisibility: 'hidden',
                         background: 'linear-gradient(135deg, #090d16 0%, #131d31 50%, #0f172a 100%)',
-                        borderRight: '2px solid rgba(16, 185, 129, 0.4)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -483,18 +479,9 @@ export const HomeSection = () => {
                         overflow: 'hidden'
                       }}
                     >
-                      {/* Notebook Page Back Texture */}
-                      <div
-                        style={{
-                          position: 'absolute',
-                          inset: 0,
-                          background: 'radial-gradient(circle at center, rgba(16, 185, 129, 0.08) 0%, transparent 70%)',
-                          pointerEvents: 'none'
-                        }}
-                      />
                       <Dumbbell size={36} color="#10b981" style={{ opacity: 0.6, marginBottom: '0.5rem' }} />
                       <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        GharSetu Guide
+                        GymSetup Guide
                       </span>
                     </div>
                   </div>
@@ -512,53 +499,61 @@ export const HomeSection = () => {
                 }}
               />
 
-              {/* Top Dynamic Muscle Badge & Page Number */}
+              {/* Top Dynamic Muscle Badge & Page Number (Clean, No-Cut Layout) */}
               <div
                 style={{
                   position: 'absolute',
-                  top: '12px',
-                  left: '20px',
-                  right: '20px',
+                  top: '10px',
+                  left: '10px',
+                  right: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  gap: '0.35rem',
                   zIndex: 6,
-                  pointerEvents: 'none'
+                  pointerEvents: 'none',
+                  minWidth: 0
                 }}
               >
                 <div
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
+                    gap: '0.3rem',
                     background: 'rgba(15, 23, 42, 0.92)',
-                    padding: '0.35rem 0.75rem',
+                    padding: '0.25rem 0.55rem',
                     borderRadius: '9999px',
                     border: '1px solid rgba(16, 185, 129, 0.4)',
                     color: '#10b981',
-                    fontSize: '0.7rem',
+                    fontSize: '0.66rem',
                     fontWeight: 700,
                     whiteSpace: 'nowrap',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.4)'
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    maxWidth: '75%',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.4)'
                   }}
                 >
-                  <Flame size={13} color="#10b981" />
-                  <span>{HERO_SLIDES[heroSlideIndex].topBadge}</span>
+                  <Flame size={12} color="#10b981" style={{ flexShrink: 0 }} />
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {HERO_SLIDES[heroSlideIndex].topBadge}
+                  </span>
                 </div>
 
                 <div
                   style={{
                     background: 'rgba(15, 23, 42, 0.9)',
                     border: '1px solid var(--border-card)',
-                    padding: '0.25rem 0.6rem',
+                    padding: '0.22rem 0.5rem',
                     borderRadius: '9999px',
                     color: '#94a3b8',
-                    fontSize: '0.68rem',
+                    fontSize: '0.64rem',
                     fontWeight: 600,
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0
                   }}
                 >
-                  📖 Page {heroSlideIndex + 1}/6
+                  {heroSlideIndex + 1}/6
                 </div>
               </div>
 
@@ -569,11 +564,11 @@ export const HomeSection = () => {
                 aria-label="Previous Page"
                 style={{
                   position: 'absolute',
-                  left: '12px',
+                  left: '8px',
                   top: '48%',
                   transform: 'translateY(-50%)',
-                  width: '32px',
-                  height: '32px',
+                  width: '30px',
+                  height: '30px',
                   borderRadius: '50%',
                   background: 'rgba(15, 23, 42, 0.82)',
                   border: '1px solid var(--border-card)',
@@ -594,7 +589,7 @@ export const HomeSection = () => {
                   e.currentTarget.style.color = '#ffffff';
                 }}
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={16} />
               </button>
 
               <button
@@ -603,11 +598,11 @@ export const HomeSection = () => {
                 aria-label="Next Page"
                 style={{
                   position: 'absolute',
-                  right: '12px',
+                  right: '8px',
                   top: '48%',
                   transform: 'translateY(-50%)',
-                  width: '32px',
-                  height: '32px',
+                  width: '30px',
+                  height: '30px',
                   borderRadius: '50%',
                   background: 'rgba(15, 23, 42, 0.82)',
                   border: '1px solid var(--border-card)',
@@ -628,33 +623,34 @@ export const HomeSection = () => {
                   e.currentTarget.style.color = '#ffffff';
                 }}
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={16} />
               </button>
 
               {/* Bottom Card: Slide Metadata & Dots */}
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '10px',
-                  left: '10px',
-                  right: '10px',
+                  bottom: '8px',
+                  left: '8px',
+                  right: '8px',
                   background: 'rgba(15, 23, 42, 0.94)',
                   border: '1px solid var(--border-card)',
                   borderRadius: '12px',
-                  padding: '0.65rem 0.8rem',
+                  padding: '0.55rem 0.75rem',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.45rem',
+                  gap: '0.4rem',
                   zIndex: 7,
-                  backdropFilter: 'blur(8px)'
+                  backdropFilter: 'blur(8px)',
+                  minWidth: 0
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem', minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0, flex: 1 }}>
                     <div
                       style={{
-                        width: '30px',
-                        height: '30px',
+                        width: '28px',
+                        height: '28px',
                         borderRadius: '8px',
                         background: 'rgba(16, 185, 129, 0.2)',
                         display: 'flex',
@@ -664,12 +660,12 @@ export const HomeSection = () => {
                         flexShrink: 0
                       }}
                     >
-                      {React.createElement(HERO_SLIDES[heroSlideIndex].icon, { size: 15 })}
+                      {React.createElement(HERO_SLIDES[heroSlideIndex].icon, { size: 14 })}
                     </div>
-                    <div style={{ minWidth: 0 }}>
+                    <div style={{ minWidth: 0, flex: 1 }}>
                       <div
                         style={{
-                          fontSize: '0.8rem',
+                          fontSize: '0.78rem',
                           fontWeight: 700,
                           color: '#ffffff',
                           whiteSpace: 'nowrap',
@@ -681,7 +677,7 @@ export const HomeSection = () => {
                       </div>
                       <div
                         style={{
-                          fontSize: '0.68rem',
+                          fontSize: '0.66rem',
                           color: '#10b981',
                           fontWeight: 600,
                           whiteSpace: 'nowrap',
@@ -696,14 +692,14 @@ export const HomeSection = () => {
 
                   <span
                     className="badge badge-emerald"
-                    style={{ fontSize: '0.65rem', padding: '0.15rem 0.45rem', flexShrink: 0 }}
+                    style={{ fontSize: '0.62rem', padding: '0.12rem 0.4rem', flexShrink: 0 }}
                   >
                     {HERO_SLIDES[heroSlideIndex].tag}
                   </span>
                 </div>
 
                 {/* 6 Dots / Indicator Bars */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', paddingTop: '2px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', paddingTop: '1px' }}>
                   {HERO_SLIDES.map((_, dotIdx) => {
                     const isDotActive = dotIdx === heroSlideIndex;
                     return (
@@ -713,12 +709,11 @@ export const HomeSection = () => {
                         onClick={(e) => {
                           e.stopPropagation();
                           setHeroSlideIndex(dotIdx);
-                          playClickBeep();
                         }}
                         aria-label={`Page ${dotIdx + 1}`}
                         style={{
                           height: '4px',
-                          width: isDotActive ? '20px' : '6px',
+                          width: isDotActive ? '18px' : '5px',
                           borderRadius: '9999px',
                           background: isDotActive ? '#10b981' : 'rgba(255, 255, 255, 0.25)',
                           border: 'none',
