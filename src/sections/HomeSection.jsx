@@ -235,7 +235,7 @@ export const HomeSection = () => {
       <div
         className="card"
         style={{
-          padding: '2.25rem 2rem',
+          padding: 'clamp(1.25rem, 3.5vw, 2.25rem)',
           position: 'relative',
           overflow: 'hidden',
           borderRadius: '20px',
@@ -243,12 +243,7 @@ export const HomeSection = () => {
           background: 'var(--bg-card)'
         }}
       >
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 0.85fr)',
-          gap: '2rem',
-          alignItems: 'center'
-        }} className="hero-banner-grid">
+        <div className="hero-banner-grid">
           {/* Left Column: Text & CTAs */}
           <div style={{ position: 'relative', zIndex: 2 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.85rem', flexWrap: 'wrap' }}>

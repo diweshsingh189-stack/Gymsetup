@@ -460,5 +460,21 @@ button, input, select, textarea {
   transform-style: preserve-3d;
 }
 
+/* Hero Banner Grid Responsive Stacking */
+.hero-banner-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .hero-banner-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+
 
 

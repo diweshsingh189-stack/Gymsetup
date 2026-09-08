@@ -102,22 +102,22 @@ export const ChecklistSection = () => {
           const phaseDoneCount = phase.items.filter(i => checklist[i.id]).length;
 
           return (
-            <div key={phase.id} className="card" style={{ padding: '2rem' }}>
+            <div key={phase.id} className="card" style={{ padding: 'clamp(1rem, 3.5vw, 1.75rem)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <PhaseIcon size={20} />
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: '1.3rem', fontWeight: 800 }}>{phase.name}</h3>
+                  <div style={{ minWidth: 0 }}>
+                    <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.3rem)', fontWeight: 800, wordBreak: 'break-word' }}>{phase.name}</h3>
                     <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                       {phaseDoneCount} of {phase.items.length} items checked
                     </div>
                   </div>
                 </div>
 
-                <span className={`badge ${phaseDoneCount === phase.items.length ? 'badge-emerald' : 'badge-neutral'}`}>
-                  {phaseDoneCount === phase.items.length ? '✓ Phase Complete' : `${phaseDoneCount}/${phase.items.length}`}
+                <span className={`badge ${phaseDoneCount === phase.items.length ? 'badge-emerald' : 'badge-neutral'}`} style={{ flexShrink: 0 }}>
+                  {phaseDoneCount === phase.items.length ? '✓ Complete' : `${phaseDoneCount}/${phase.items.length}`}
                 </span>
               </div>
 
@@ -133,15 +133,16 @@ export const ChecklistSection = () => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        padding: '0.9rem 1.15rem',
+                        padding: '0.75rem 0.95rem',
                         borderRadius: 'var(--radius-md)',
                         background: isChecked ? 'rgba(16, 185, 129, 0.08)' : 'var(--bg-card-secondary)',
                         border: `1px solid ${isChecked ? 'rgba(16, 185, 129, 0.3)' : 'var(--border-card)'}`,
                         cursor: 'pointer',
-                        transition: 'all 0.15s'
+                        transition: 'all 0.15s',
+                        gap: '0.65rem'
                       }}
                     >
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0, flex: 1 }}>
                         <div style={{
                           width: '22px',
                           height: '22px',
@@ -158,17 +159,19 @@ export const ChecklistSection = () => {
                         </div>
 
                         <span style={{
-                          fontSize: '0.925rem',
+                          fontSize: '0.9rem',
                           fontWeight: isChecked ? 600 : 500,
                           color: isChecked ? 'var(--text-main)' : 'var(--text-muted)',
-                          textDecoration: isChecked ? 'line-through' : 'none'
+                          textDecoration: isChecked ? 'line-through' : 'none',
+                          wordBreak: 'break-word',
+                          lineHeight: 1.45
                         }}>
                           {item.label}
                         </span>
                       </div>
 
                       {item.essential && (
-                        <span className="badge badge-amber" style={{ fontSize: '0.68rem' }}>
+                        <span className="badge badge-amber" style={{ fontSize: '0.68rem', flexShrink: 0 }}>
                           Essential
                         </span>
                       )}
