@@ -30,53 +30,53 @@ export class ErrorBoundary extends React.Component {
       return (
         <div style={{
           minHeight: '100vh',
-          background: '#090d16',
+          background: '#0b0f19',
           color: '#f8fafc',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '2rem',
+          padding: '1.5rem',
           fontFamily: 'system-ui, sans-serif'
         }}>
           <div style={{
-            maxWidth: '600px',
+            maxWidth: '560px',
             width: '100%',
             background: '#131d31',
-            border: '1px solid #e11d48',
-            borderRadius: '20px',
-            padding: '2.5rem',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
+            border: '1px solid #1e2e4a',
+            borderRadius: '16px',
+            padding: '2rem',
+            boxShadow: '0 10px 25px rgba(0,0,0,0.5)',
             textAlign: 'center'
           }}>
             <div style={{
-              width: '60px',
-              height: '60px',
+              width: '52px',
+              height: '52px',
               borderRadius: '50%',
-              background: 'rgba(225, 29, 72, 0.15)',
-              color: '#f43f5e',
+              background: 'rgba(16, 185, 129, 0.15)',
+              color: '#10b981',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 1.25rem auto'
             }}>
-              <AlertTriangle size={32} />
+              <AlertTriangle size={28} />
             </div>
 
-            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem' }}>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>
               Something went wrong
             </h2>
-            <p style={{ color: '#94a3b8', fontSize: '0.95rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-              The application encountered a temporary render issue.
+            <p style={{ color: '#94a3b8', fontSize: '0.92rem', marginBottom: '1.5rem', lineHeight: 1.5 }}>
+              The application encountered a temporary issue.
             </p>
 
             {this.state.error && (
               <pre style={{
                 background: '#0b1120',
                 border: '1px solid #1e293b',
-                padding: '1rem',
-                borderRadius: '10px',
-                color: '#fb7185',
-                fontSize: '0.85rem',
+                padding: '0.85rem',
+                borderRadius: '8px',
+                color: '#94a3b8',
+                fontSize: '0.8rem',
                 textAlign: 'left',
                 overflowX: 'auto',
                 marginBottom: '1.5rem'

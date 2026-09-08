@@ -109,12 +109,11 @@ export const GuidedFlowSection = () => {
               width: '46px',
               height: '46px',
               borderRadius: '14px',
-              background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+              background: '#10b981',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              boxShadow: '0 6px 16px rgba(16, 185, 129, 0.3)',
               flexShrink: 0
             }}>
               <StepIcon size={24} />
@@ -187,14 +186,14 @@ export const GuidedFlowSection = () => {
         {/* Celebration State for Last Step */}
         {isLastStep && wizardCompleted && (
           <div style={{
-            background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%)',
+            background: 'rgba(16, 185, 129, 0.1)',
             border: '2px solid #10b981',
             borderRadius: 'var(--radius-lg)',
             padding: '1.5rem 1rem',
             textAlign: 'center',
             marginBottom: '1.5rem'
           }}>
-            <Trophy size={42} color="#f59e0b" style={{ margin: '0 auto 0.75rem auto' }} />
+            <Trophy size={42} color="#10b981" style={{ margin: '0 auto 0.75rem auto' }} />
             <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem' }}>You Are Ready for Day 1! 🎉</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem', maxWidth: '500px', margin: '0 auto 1.25rem auto' }}>
               You now have the exact blueprint to conquer your first workout safely and with complete confidence.

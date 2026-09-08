@@ -309,7 +309,7 @@ export const TrackerSection = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Zap size={20} color="#06b6d4" />
+              <Zap size={20} color="#10b981" />
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>10 Quick-Add Exercise Presets (1-Click Log)</h3>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -366,23 +366,23 @@ export const TrackerSection = () => {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Sets Completed</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(6, 182, 212, 0.15)', color: '#06b6d4', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <TrendingUp size={18} />
             </div>
           </div>
           <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>{totalSetsLogged}</div>
-          <div style={{ fontSize: '0.8rem', color: '#06b6d4', fontWeight: 600, marginTop: '0.25rem' }}>Great cumulative training volume!</div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.25rem' }}>Great cumulative training volume!</div>
         </div>
 
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Repetitions</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(245, 158, 11, 0.15)', color: '#f59e0b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CheckCircle2 size={18} />
             </div>
           </div>
           <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>{totalRepsLogged}</div>
-          <div style={{ fontSize: '0.8rem', color: '#f59e0b', fontWeight: 600, marginTop: '0.25rem' }}>Consistent muscle stimulus</div>
+          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '0.25rem' }}>Consistent muscle stimulus</div>
         </div>
       </div>
 
@@ -417,7 +417,7 @@ export const TrackerSection = () => {
                 }
               }}
               className="btn btn-secondary btn-sm"
-              style={{ color: '#f43f5e' }}
+              style={{ color: 'var(--text-muted)' }}
             >
               <RotateCcw size={14} /> Clear All
             </button>
@@ -672,7 +672,7 @@ export const TrackerSection = () => {
                           onClick={() => deleteWorkoutLog(log.id)}
                           className="btn btn-secondary btn-icon"
                           title="Delete entry"
-                          style={{ width: '32px', height: '32px', margin: '0 auto', color: '#f43f5e' }}
+                          style={{ width: '32px', height: '32px', margin: '0 auto', color: 'var(--text-muted)' }}
                         >
                           <Trash2 size={14} />
                         </button>
@@ -719,7 +719,7 @@ export const TrackerSection = () => {
                     <button
                       onClick={() => deleteWorkoutLog(log.id)}
                       className="btn btn-secondary btn-icon"
-                      style={{ width: '32px', height: '32px', color: '#f43f5e', flexShrink: 0 }}
+                      style={{ width: '32px', height: '32px', color: 'var(--text-muted)', flexShrink: 0 }}
                       title="Delete entry"
                     >
                       <Trash2 size={14} />
@@ -745,7 +745,7 @@ export const TrackerSection = () => {
                     </div>
                     <div>
                       <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Effort</div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06b6d4', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
                     </div>
                   </div>
 

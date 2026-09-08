@@ -74,7 +74,7 @@ export const Navbar = () => {
               width: '38px',
               height: '38px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)',
+              background: '#10b981',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -189,7 +189,7 @@ export const Navbar = () => {
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           aria-label="Toggle Theme"
         >
-          {theme === 'dark' ? <Sun size={18} color="#f59e0b" /> : <Moon size={18} color="#64748b" />}
+          {theme === 'dark' ? <Sun size={18} color="#10b981" /> : <Moon size={18} color="#64748b" />}
         </button>
       </div>
 

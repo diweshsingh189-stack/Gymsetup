@@ -222,14 +222,14 @@ export const GymPricingSection = () => {
                   padding: '0.25rem 0.55rem',
                   borderRadius: '8px',
                   background: 'rgba(0, 0, 0, 0.75)',
-                  color: '#f59e0b',
+                  color: '#10b981',
                   backdropFilter: 'blur(6px)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.25rem',
-                  border: '1px solid rgba(245, 158, 11, 0.3)'
+                  border: '1px solid rgba(16, 185, 129, 0.3)'
                 }}>
-                  <Star size={13} fill="#f59e0b" color="#f59e0b" />
+                  <Star size={13} fill="#10b981" color="#10b981" />
                   <span>{gym.rating}</span>
                 </span>
               </div>
@@ -251,7 +251,7 @@ export const GymPricingSection = () => {
               <div>
                 {/* Price Highlight Banner */}
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(6, 182, 212, 0.08) 100%)',
+                  background: 'rgba(16, 185, 129, 0.1)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
                   borderRadius: '12px',
                   padding: '0.75rem 1rem',
@@ -277,7 +277,7 @@ export const GymPricingSection = () => {
 
                 {/* Best For */}
                 <div style={{ background: 'var(--bg-card-secondary)', padding: '0.65rem 0.85rem', borderRadius: '10px', fontSize: '0.8rem', marginBottom: '1rem' }}>
-                  <strong style={{ color: '#06b6d4' }}>🎯 Best For: </strong>
+                  <strong style={{ color: '#10b981' }}>🎯 Best For: </strong>
                   <span>{gym.bestFor}</span>
                 </div>
 
@@ -357,7 +357,7 @@ export const GymPricingSection = () => {
                   <td style={{ padding: '0.95rem 1rem', color: 'var(--text-muted)' }}>{gym.place}</td>
                   <td style={{ padding: '0.95rem 1rem', fontWeight: 700, color: '#10b981' }}>{gym.approxPrice}</td>
                   <td style={{ padding: '0.95rem 1rem' }}>
-                    <span className="badge badge-amber" style={{ fontSize: '0.72rem' }}>⭐ {gym.rating}</span>
+                    <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>⭐ {gym.rating}</span>
                   </td>
                   <td style={{ padding: '0.95rem 1rem', color: 'var(--text-muted)', fontSize: '0.82rem' }}>{gym.bestFor}</td>
                 </tr>
@@ -402,7 +402,7 @@ export const GymPricingSection = () => {
 
               <div style={{ textAlign: 'right', flexShrink: 0 }}>
                 <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#10b981' }}>{gym.approxPrice}</div>
-                <span className="badge badge-amber" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem', marginTop: '2px' }}>⭐ {gym.rating}</span>
+                <span className="badge badge-neutral" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem', marginTop: '2px' }}>⭐ {gym.rating}</span>
               </div>
             </div>
           ))}
@@ -477,13 +477,13 @@ export const GymPricingSection = () => {
                     fontWeight: 800,
                     padding: '0.2rem 0.65rem',
                     borderRadius: '8px',
-                    background: selectedGymModal.badgeColor,
+                    background: '#10b981',
                     color: '#ffffff'
                   }}
                 >
                   {selectedGymModal.brandTag}
                 </span>
-                <span className="badge badge-amber" style={{ fontSize: '0.72rem' }}>
+                <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>
                   ⭐ {selectedGymModal.rating} ({selectedGymModal.reviewsCount})
                 </span>
               </div>

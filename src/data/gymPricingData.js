@@ -4,7 +4,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'cult-fit',
     name: 'Cult.fit',
-    badgeColor: '#f97316',
+    badgeColor: '#10b981',
     brandTag: 'Cultpass Elite / Pro',
     primaryCity: 'Bengaluru',
     place: 'Bengaluru (HQ)',
@@ -20,7 +20,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'golds-gym',
     name: "Gold's Gym",
-    badgeColor: '#0284c7',
+    badgeColor: '#10b981',
     brandTag: 'Iconic Global Gym',
     primaryCity: 'Mumbai',
     place: 'Mumbai (Flagship)',
@@ -52,7 +52,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'snap-fitness',
     name: 'Snap Fitness',
-    badgeColor: '#ef4444',
+    badgeColor: '#10b981',
     brandTag: '24/7 Compact Modern',
     primaryCity: 'Bengaluru',
     place: 'Bengaluru',
@@ -68,7 +68,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'fitness-first',
     name: 'Fitness First',
-    badgeColor: '#8b5cf6',
+    badgeColor: '#10b981',
     brandTag: 'Luxury Executive Club',
     primaryCity: 'Mumbai',
     place: 'Mumbai',
@@ -84,7 +84,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'chisel-fitness',
     name: 'Chisel Fitness',
-    badgeColor: '#eab308',
+    badgeColor: '#10b981',
     brandTag: 'Virat Kohli Backed',
     primaryCity: 'Bengaluru',
     place: 'Bengaluru',
@@ -100,7 +100,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'talwalkars',
     name: 'Talwalkars',
-    badgeColor: '#64748b',
+    badgeColor: '#10b981',
     brandTag: 'Indian Heritage Fitness',
     primaryCity: 'Pune',
     place: 'Pune',
@@ -116,7 +116,7 @@ export const TOP_GYMS_DATA = [
   {
     id: 'ironhill-gym',
     name: 'Ironhill Gym',
-    badgeColor: '#a16207',
+    badgeColor: '#10b981',
     brandTag: 'Hardcore & Aesthetic Strength',
     primaryCity: 'Hyderabad',
     place: 'Hyderabad',

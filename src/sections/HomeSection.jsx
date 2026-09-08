@@ -358,15 +358,15 @@ export const HomeSection = () => {
                 width: '42px',
                 height: '42px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(6, 182, 212, 0.15)',
+                background: 'rgba(16, 185, 129, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#06b6d4'
+                color: '#10b981'
               }}>
                 <Calendar size={22} />
               </div>
-              <span className="badge badge-cyan">
+              <span className="badge badge-neutral">
                 {completedRoadmapCount} Completed
               </span>
             </div>
@@ -381,7 +381,7 @@ export const HomeSection = () => {
 
           <div style={{ marginTop: '1.25rem' }}>
             <div className="progress-container">
-              <div className="progress-bar-cyan" style={{ width: `${roadmapPercent}%` }}></div>
+              <div className="progress-bar-emerald" style={{ width: `${roadmapPercent}%` }}></div>
             </div>
           </div>
         </div>
@@ -398,15 +398,15 @@ export const HomeSection = () => {
                 width: '42px',
                 height: '42px',
                 borderRadius: 'var(--radius-md)',
-                background: 'rgba(245, 158, 11, 0.15)',
+                background: 'rgba(16, 185, 129, 0.15)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#f59e0b'
+                color: '#10b981'
               }}>
                 <Dumbbell size={22} />
               </div>
-              <span className="badge badge-amber">
+              <span className="badge badge-neutral">
                 {totalLogs} Entries
               </span>
             </div>
@@ -419,7 +419,7 @@ export const HomeSection = () => {
             </p>
           </div>
 
-          <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f59e0b', fontSize: '0.875rem', fontWeight: 600 }}>
+          <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#10b981', fontSize: '0.875rem', fontWeight: 600 }}>
             <span>Open Tracker</span>
             <ArrowRight size={16} />
           </div>
@@ -444,7 +444,7 @@ export const HomeSection = () => {
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#06b6d4', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#10b981', marginBottom: '0.35rem' }}>
               2. Consistency Beats Intensity
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
@@ -453,7 +453,7 @@ export const HomeSection = () => {
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#f59e0b', marginBottom: '0.35rem' }}>
+            <div style={{ fontWeight: 700, fontSize: '1rem', color: '#10b981', marginBottom: '0.35rem' }}>
               3. Machines Are Your Best Friend
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
@@ -475,15 +475,15 @@ export const HomeSection = () => {
         <div className="grid-4">
           {[
             { id: 'first-day', title: 'First Day Guide', desc: 'Before, during & after breakdown', icon: Compass, color: '#10b981' },
-            { id: 'roadmap', title: 'Roadmap & Milestones', desc: 'Day 1 to Month 2+ path', icon: Calendar, color: '#06b6d4' },
-            { id: 'safety', title: 'Safety & Form Traps', desc: 'DOs/DON\'Ts and red flags', icon: ShieldCheck, color: '#f43f5e' },
-            { id: 'equipment', title: 'Equipment Explorer', desc: 'Pins, adjustments & how-tos', icon: Zap, color: '#8b5cf6' },
-            { id: 'warmup', title: 'Warm-up & Cooldown', desc: 'Dynamic moves + rest timer', icon: Flame, color: '#f59e0b' },
+            { id: 'roadmap', title: 'Roadmap & Milestones', desc: 'Day 1 to Month 2+ path', icon: Calendar, color: '#10b981' },
+            { id: 'safety', title: 'Safety & Form Traps', desc: 'DOs/DON\'Ts and red flags', icon: ShieldCheck, color: '#10b981' },
+            { id: 'equipment', title: 'Equipment Explorer', desc: 'Pins, adjustments & how-tos', icon: Zap, color: '#10b981' },
+            { id: 'warmup', title: 'Warm-up & Cooldown', desc: 'Dynamic moves + rest timer', icon: Flame, color: '#10b981' },
             { id: 'workout', title: 'Beginner Workouts', desc: 'Full Body & 20-min express', icon: Dumbbell, color: '#10b981' },
-            { id: 'nutrition', title: 'Simple Nutrition', desc: 'Macros & protein calculator', icon: Heart, color: '#06b6d4' },
-            { id: 'recovery', title: 'Rest & Recovery', desc: 'DOMS survival & sleep guide', icon: Clock, color: '#8b5cf6' },
+            { id: 'nutrition', title: 'Simple Nutrition', desc: 'Macros & protein calculator', icon: Heart, color: '#10b981' },
+            { id: 'recovery', title: 'Rest & Recovery', desc: 'DOMS survival & sleep guide', icon: Clock, color: '#10b981' },
             { id: 'gym-pricing', title: 'Top Gyms & Pricing', desc: 'Cult.fit, Gold\'s, Anytime & fees', icon: Building2, color: '#10b981' },
-            { id: 'feedback', title: 'Member Feedback', desc: 'Submit reviews, ratings & thoughts', icon: MessageSquareHeart, color: '#f43f5e' }
+            { id: 'feedback', title: 'Member Feedback', desc: 'Submit reviews, ratings & thoughts', icon: MessageSquareHeart, color: '#10b981' }
           ].map((item) => {
             const Icon = item.icon;
             return (
@@ -497,11 +497,11 @@ export const HomeSection = () => {
                   width: '38px',
                   height: '38px',
                   borderRadius: '10px',
-                  background: `${item.color}15`,
+                  background: 'rgba(16, 185, 129, 0.15)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: item.color,
+                  color: '#10b981',
                   marginBottom: '1rem'
                 }}>
                   <Icon size={20} />
