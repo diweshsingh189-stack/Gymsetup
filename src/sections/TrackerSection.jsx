@@ -612,76 +612,165 @@ export const TrackerSection = () => {
             <ClipboardList size={40} color="var(--text-muted)" style={{ margin: '0 auto 1rem auto' }} />
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>No workout entries found</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.25rem' }}>
-              Click any quick-add preset above or use "+ Custom Exercise Entry" to log a workout.
+              Click any quick-add preset above or use "+ Custom Entry" to log a workout.
             </p>
             <button onClick={() => setShowLogForm(true)} className="btn btn-primary btn-sm">
               <Plus size={16} /> Log First Workout
             </button>
           </div>
         ) : (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
-              <thead>
-                <tr style={{ background: 'var(--bg-card-secondary)', borderBottom: '1px solid var(--border-card)' }}>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Symbol & Exercise</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Category</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Weight</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Sets × Reps</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Effort (RPE)</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Notes / Machine Setup</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Date</th>
-                  <th style={{ padding: '1rem 1.25rem', fontWeight: 700, textAlign: 'center' }}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredLogs.map((log) => (
-                  <tr key={log.id} style={{ borderBottom: '1px solid var(--border-card)', transition: 'background-color 0.15s' }}>
-                    <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                        <span style={{ fontSize: '1.3rem' }}>{log.symbol || '🏋️'}</span>
-                        <span>{log.exercise}</span>
-                      </div>
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem' }}>
-                      <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>
-                        {log.category}
-                      </span>
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: '#10b981' }}>
-                      {log.weight} {log.unit || 'kg'}
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem', fontWeight: 600 }}>
-                      {log.sets} sets × {log.reps} reps
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.825rem' }}>
-                      {log.rpe}
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.825rem', maxWidth: '240px' }}>
-                      {log.notes || '—'}
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontSize: '0.825rem' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                        <Calendar size={13} />
-                        <span>{log.date}</span>
-                      </div>
-                    </td>
-                    <td style={{ padding: '1rem 1.25rem', textAlign: 'center' }}>
-                      <button
-                        onClick={() => deleteWorkoutLog(log.id)}
-                        className="btn btn-secondary btn-icon"
-                        title="Delete entry"
-                        style={{ width: '32px', height: '32px', margin: '0 auto', color: '#f43f5e' }}
-                      >
-                        <Trash2 size={14} />
-                      </button>
-                    </td>
+          <>
+            {/* Desktop Table View */}
+            <div className="desktop-logs-table" style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.9rem' }}>
+                <thead>
+                  <tr style={{ background: 'var(--bg-card-secondary)', borderBottom: '1px solid var(--border-card)' }}>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Symbol & Exercise</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Category</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Weight</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Sets × Reps</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Effort (RPE)</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Notes / Machine Setup</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700 }}>Date</th>
+                    <th style={{ padding: '1rem 1.25rem', fontWeight: 700, textAlign: 'center' }}>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {filteredLogs.map((log) => (
+                    <tr key={log.id} style={{ borderBottom: '1px solid var(--border-card)', transition: 'background-color 0.15s' }}>
+                      <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                          <span style={{ fontSize: '1.3rem' }}>{log.symbol || '🏋️'}</span>
+                          <span>{log.exercise}</span>
+                        </div>
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem' }}>
+                        <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>
+                          {log.category}
+                        </span>
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: '#10b981' }}>
+                        {log.weight} {log.unit || 'kg'}
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem', fontWeight: 600 }}>
+                        {log.sets} sets × {log.reps} reps
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.825rem' }}>
+                        {log.rpe}
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', fontSize: '0.825rem', maxWidth: '240px' }}>
+                        {log.notes || '—'}
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', fontSize: '0.825rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                          <Calendar size={13} />
+                          <span>{log.date}</span>
+                        </div>
+                      </td>
+                      <td style={{ padding: '1rem 1.25rem', textAlign: 'center' }}>
+                        <button
+                          onClick={() => deleteWorkoutLog(log.id)}
+                          className="btn btn-secondary btn-icon"
+                          title="Delete entry"
+                          style={{ width: '32px', height: '32px', margin: '0 auto', color: '#f43f5e' }}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile Cards View for Phone Screens */}
+            <div className="mobile-logs-view" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem', padding: '0.85rem' }}>
+              {filteredLogs.map((log) => (
+                <div
+                  key={log.id}
+                  style={{
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border-card)',
+                    borderRadius: '12px',
+                    padding: '0.9rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.6rem'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
+                      <span style={{ fontSize: '1.35rem', flexShrink: 0 }}>{log.symbol || '🏋️'}</span>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {log.exercise}
+                        </div>
+                        <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center', marginTop: '2px', flexWrap: 'wrap' }}>
+                          <span className="badge badge-emerald" style={{ fontSize: '0.68rem', padding: '0.1rem 0.45rem' }}>
+                            {log.category}
+                          </span>
+                          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                            {log.date}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => deleteWorkoutLog(log.id)}
+                      className="btn btn-secondary btn-icon"
+                      style={{ width: '32px', height: '32px', color: '#f43f5e', flexShrink: 0 }}
+                      title="Delete entry"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '0.4rem',
+                    background: 'var(--bg-card-secondary)',
+                    padding: '0.55rem 0.65rem',
+                    borderRadius: '8px',
+                    textAlign: 'center'
+                  }}>
+                    <div>
+                      <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Weight</div>
+                      <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#10b981' }}>{log.weight} {log.unit || 'kg'}</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Sets × Reps</div>
+                      <div style={{ fontSize: '0.88rem', fontWeight: 800 }}>{log.sets} × {log.reps}</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Effort</div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#06b6d4', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
+                    </div>
+                  </div>
+
+                  {log.notes && (
+                    <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', background: 'rgba(0,0,0,0.1)', padding: '0.4rem 0.6rem', borderRadius: '6px' }}>
+                      📝 {log.notes}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-logs-table {
+            display: none !important;
+          }
+          .mobile-logs-view {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

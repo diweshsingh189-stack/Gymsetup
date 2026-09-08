@@ -220,23 +220,27 @@ export const Navbar = () => {
           }
         }
         @media (max-width: 640px) {
-          .desktop-only-text {
+          .nav-start-btn {
+            display: none !important;
+          }
+          .nav-badge-edition {
             display: none !important;
           }
           .navbar-container {
-            padding: 0 0.75rem !important;
+            padding: 0 0.85rem !important;
           }
           .btn-icon {
             width: 36px !important;
             height: 36px !important;
           }
         }
-        @media (max-width: 480px) {
-          .nav-badge-edition {
-            display: none !important;
+        @media (max-width: 380px) {
+          .navbar-container {
+            padding: 0 0.5rem !important;
           }
-          .nav-start-btn {
-            padding: 0.35rem 0.5rem !important;
+          .btn-icon {
+            width: 34px !important;
+            height: 34px !important;
           }
         }
       `}</style>

@@ -323,13 +323,14 @@ export const GymPricingSection = () => {
       </div>
 
       {/* Full Comparison Quick Table */}
-      <div className="card" style={{ padding: '2rem' }}>
+      <div className="card" style={{ padding: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
           <Award size={22} color="#10b981" />
-          <h3 style={{ fontSize: '1.35rem', fontWeight: 800 }}>Quick Comparison Table (जिम, शहर और फीस सारांश)</h3>
+          <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Quick Comparison (जिम, शहर और फीस सारांश)</h3>
         </div>
 
-        <div style={{ overflowX: 'auto' }}>
+        {/* Desktop Table View */}
+        <div className="desktop-pricing-table" style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', textAlign: 'left' }}>
             <thead>
               <tr style={{ background: 'var(--bg-card-secondary)', borderBottom: '2px solid var(--border-card)' }}>
@@ -364,7 +365,60 @@ export const GymPricingSection = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Mobile Comparison Cards for Phones */}
+        <div className="mobile-pricing-cards" style={{ display: 'none', flexDirection: 'column', gap: '0.75rem' }}>
+          {TOP_GYMS_DATA.map((gym) => (
+            <div
+              key={gym.id}
+              onClick={() => {
+                setSelectedGymModal(gym);
+                playClickBeep();
+              }}
+              style={{
+                background: 'var(--bg-card-secondary)',
+                border: '1px solid var(--border-card)',
+                borderRadius: '12px',
+                padding: '0.85rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '0.75rem',
+                cursor: 'pointer'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0 }}>
+                <img src={gym.image} alt={gym.name} style={{ width: '44px', height: '44px', borderRadius: '10px', objectFit: 'cover', flexShrink: 0 }} />
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontWeight: 800, fontSize: '0.95rem', color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {gym.name}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <MapPin size={12} color="#10b981" />
+                    <span>{gym.place}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#10b981' }}>{gym.approxPrice}</div>
+                <span className="badge badge-amber" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem', marginTop: '2px' }}>⭐ {gym.rating}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-pricing-table {
+            display: none !important;
+          }
+          .mobile-pricing-cards {
+            display: flex !important;
+          }
+        }
+      `}</style>
 
       {/* Direct Body Portal Modal: Always 100% Centered on Viewport regardless of page scroll */}
       {selectedGymModal && ReactDOM.createPortal(

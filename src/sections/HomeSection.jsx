@@ -151,13 +151,13 @@ export const HomeSection = () => {
               No body-shaming, no complex jargon, and no confusing equipment. GymSetup is your step-by-step pocket coach from packing your bag to mastering safe, confident workouts.
             </p>
 
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
               <button
                 onClick={() => navigateTo('guided-flow')}
                 className="btn btn-primary btn-lg"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem' }}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', flex: '1 1 210px' }}
               >
-                <Sparkles size={20} />
+                <Sparkles size={18} />
                 <span>Start My Gym Journey</span>
                 <ArrowRight size={18} />
               </button>
@@ -165,6 +165,7 @@ export const HomeSection = () => {
               <button
                 onClick={() => navigateTo('first-day')}
                 className="btn btn-secondary btn-lg"
+                style={{ flex: '1 1 190px' }}
               >
                 <Compass size={18} />
                 <span>First Day Step-by-Step</span>
@@ -179,25 +180,25 @@ export const HomeSection = () => {
                 background: 'rgba(11, 17, 32, 0.75)',
                 border: '1.5px solid rgba(16, 185, 129, 0.45)',
                 borderRadius: '16px',
-                padding: '0.85rem 1.25rem',
+                padding: '0.75rem 1rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 boxShadow: '0 8px 30px rgba(0, 0, 0, 0.35)',
                 backdropFilter: 'blur(8px)',
                 transition: 'all 0.2s ease',
-                gap: '0.75rem',
+                gap: '0.65rem',
                 minWidth: 0
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0, flex: 1 }}>
-                <Search size={20} color="#10b981" style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  Search any gym machine, dumbbell exercise, or stretch...
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
+                <Search size={18} color="#10b981" style={{ flexShrink: 0 }} />
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  Search any gym machine, exercise, or stretch...
                 </span>
               </div>
-              <span className="badge badge-emerald" style={{ fontSize: '0.72rem', padding: '0.2rem 0.6rem', flexShrink: 0 }}>
-                🔍 All Exercises
+              <span className="badge badge-emerald" style={{ fontSize: '0.7rem', padding: '0.18rem 0.55rem', flexShrink: 0 }}>
+                🔍 Search
               </span>
             </div>
           </div>
