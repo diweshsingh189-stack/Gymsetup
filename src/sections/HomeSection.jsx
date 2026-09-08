@@ -102,25 +102,80 @@ export const HomeSection = () => {
 
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [flipDirection, setFlipDirection] = useState('next'); // 'next' or 'prev'
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
 
-  // Auto slide hero movie carousel
+  // Auto turn pages continuously like a notebook ("apne se move krta rhe")
   useEffect(() => {
+    if (isDragging || isFlipping) return;
     const timer = setInterval(() => {
-      setHeroSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 3500);
+      turnPage('next');
+    }, 3800);
     return () => clearInterval(timer);
-  }, []);
+  }, [heroSlideIndex, isDragging, isFlipping]);
+
+  const turnPage = (direction = 'next') => {
+    if (isFlipping) return;
+    setIsFlipping(true);
+    setFlipDirection(direction);
+    playClickBeep();
+
+    setTimeout(() => {
+      setHeroSlideIndex((prev) => {
+        if (direction === 'next') {
+          return (prev + 1) % HERO_SLIDES.length;
+        } else {
+          return (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
+        }
+      });
+      setIsFlipping(false);
+      setDragOffset(0);
+    }, 650);
+  };
 
   const nextHeroSlide = (e) => {
     if (e) e.stopPropagation();
-    setHeroSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
-    playClickBeep();
+    turnPage('next');
   };
 
   const prevHeroSlide = (e) => {
     if (e) e.stopPropagation();
-    setHeroSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-    playClickBeep();
+    turnPage('prev');
+  };
+
+  // Hand Drag & Touch Handlers (Physical Page Turn with Hand)
+  const handleTouchStart = (e) => {
+    if (isFlipping) return;
+    setIsDragging(true);
+    setStartX(e.touches ? e.touches[0].clientX : e.clientX);
+    setDragOffset(0);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isDragging || isFlipping) return;
+    const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+    const diff = currentX - startX;
+    // Limit drag to reasonable range
+    if (diff < 120 && diff > -260) {
+      setDragOffset(diff);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    if (dragOffset < -50) {
+      // User swiped/turned page to the left (next page)
+      turnPage('next');
+    } else if (dragOffset > 50) {
+      // User swiped/turned page to the right (previous page)
+      turnPage('prev');
+    } else {
+      setDragOffset(0);
+    }
   };
 
   const nextQuote = () => {
@@ -280,9 +335,17 @@ export const HomeSection = () => {
             </div>
           </div>
 
-          {/* Right Column: Dynamic 6-Photo Movie Carousel */}
+          {/* Right Column: 3D Notebook / Copy Page-Turn Effect */}
           <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div
+              className="book-perspective"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleTouchStart}
+              onMouseMove={handleTouchMove}
+              onMouseUp={handleTouchEnd}
+              onMouseLeave={handleTouchEnd}
               style={{
                 position: 'relative',
                 width: '100%',
@@ -291,29 +354,34 @@ export const HomeSection = () => {
                 borderRadius: '18px',
                 overflow: 'hidden',
                 border: '1px solid var(--border-card)',
-                boxShadow: 'var(--shadow-md)',
-                backgroundColor: '#090d16'
+                boxShadow: isDragging ? '0 12px 30px rgba(0,0,0,0.5)' : 'var(--shadow-md)',
+                backgroundColor: '#090d16',
+                cursor: isDragging ? 'grabbing' : 'grab',
+                userSelect: 'none',
+                touchAction: 'pan-y'
               }}
             >
-              {/* Slides: Smooth Movie Crossfade */}
-              {HERO_SLIDES.map((slide, index) => {
-                const isActive = index === heroSlideIndex;
+              {/* Notebook Left Spine Stitching */}
+              <div className="notebook-spine" />
+
+              {/* Underneath Next Slide (Revealed when current page turns) */}
+              {(() => {
+                const nextIdx = flipDirection === 'next' 
+                  ? (heroSlideIndex + 1) % HERO_SLIDES.length 
+                  : (heroSlideIndex - 1 + HERO_SLIDES.length) % HERO_SLIDES.length;
+                const nextSlide = HERO_SLIDES[nextIdx];
                 return (
                   <div
-                    key={slide.id}
+                    key={`under-${nextSlide.id}`}
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      opacity: isActive ? 1 : 0,
-                      transform: isActive ? 'scale(1)' : 'scale(1.04)',
-                      transition: 'opacity 0.7s ease-in-out, transform 0.7s ease-in-out',
-                      pointerEvents: isActive ? 'auto' : 'none',
-                      zIndex: isActive ? 1 : 0
+                      zIndex: 1
                     }}
                   >
                     <img
-                      src={slide.image}
-                      alt={slide.title}
+                      src={nextSlide.image}
+                      alt={nextSlide.title}
                       loading="lazy"
                       style={{
                         width: '100%',
@@ -325,75 +393,162 @@ export const HomeSection = () => {
                     />
                   </div>
                 );
-              })}
+              })()}
 
-              {/* Gradient Vignette for Text Contrast */}
+              {/* Active Turning Page (Turns from right to left like a notebook copy page) */}
+              {(() => {
+                const currentSlide = HERO_SLIDES[heroSlideIndex];
+                
+                // Calculate dynamic 3D rotation based on drag or auto-flip
+                let rotateY = 0;
+                let opacity = 1;
+                let transition = 'none';
+
+                if (isDragging) {
+                  const dragPercent = Math.max(-1, Math.min(0.5, dragOffset / 300));
+                  rotateY = dragPercent * 105;
+                  opacity = 1 - Math.abs(dragPercent) * 0.4;
+                } else if (isFlipping) {
+                  rotateY = flipDirection === 'next' ? -115 : 45;
+                  opacity = 0;
+                  transition = 'transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.65s ease';
+                }
+
+                return (
+                  <div
+                    key={`active-${currentSlide.id}`}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      zIndex: 3,
+                      transformOrigin: 'left center',
+                      transform: `rotateY(${rotateY}deg)`,
+                      opacity: opacity,
+                      transition: transition,
+                      backfaceVisibility: 'hidden',
+                      willChange: 'transform, opacity',
+                      boxShadow: isDragging || isFlipping ? '-8px 0 25px rgba(0,0,0,0.6)' : 'none'
+                    }}
+                  >
+                    <img
+                      src={currentSlide.image}
+                      alt={currentSlide.title}
+                      loading="eager"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center 20%',
+                        display: 'block',
+                        pointerEvents: 'none'
+                      }}
+                    />
+
+                    {/* Realistic Page Fold Crease & Curve Lighting Shadow */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 15%, rgba(255,255,255,0.05) 45%, rgba(0,0,0,0.5) 100%)',
+                        opacity: isDragging ? Math.abs(dragOffset / 200) : (isFlipping ? 0.8 : 0),
+                        transition: isDragging ? 'none' : 'opacity 0.65s ease',
+                        pointerEvents: 'none'
+                      }}
+                    />
+                  </div>
+                );
+              })()}
+
+              {/* Gradient Vignette for UI Text Contrast */}
               <div
                 style={{
                   position: 'absolute',
                   inset: 0,
-                  background: 'linear-gradient(180deg, rgba(9, 13, 22, 0.45) 0%, rgba(9, 13, 22, 0.1) 40%, rgba(9, 13, 22, 0.92) 100%)',
-                  zIndex: 2,
+                  background: 'linear-gradient(180deg, rgba(9, 13, 22, 0.45) 0%, rgba(9, 13, 22, 0.05) 35%, rgba(9, 13, 22, 0.94) 100%)',
+                  zIndex: 5,
                   pointerEvents: 'none'
                 }}
               />
 
-              {/* Top Dynamic Muscle Badge */}
+              {/* Top Dynamic Muscle Badge & Page Number */}
               <div
                 style={{
                   position: 'absolute',
                   top: '12px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
+                  left: '20px',
+                  right: '20px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
-                  background: 'rgba(15, 23, 42, 0.92)',
-                  padding: '0.35rem 0.8rem',
-                  borderRadius: '9999px',
-                  border: '1px solid rgba(16, 185, 129, 0.4)',
-                  color: '#10b981',
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  whiteSpace: 'nowrap',
-                  zIndex: 4,
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
-                  transition: 'all 0.3s ease'
+                  justifyContent: 'space-between',
+                  zIndex: 6,
+                  pointerEvents: 'none'
                 }}
               >
-                <Flame size={13} color="#10b981" />
-                <span>{HERO_SLIDES[heroSlideIndex].topBadge}</span>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    background: 'rgba(15, 23, 42, 0.92)',
+                    padding: '0.35rem 0.75rem',
+                    borderRadius: '9999px',
+                    border: '1px solid rgba(16, 185, 129, 0.4)',
+                    color: '#10b981',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    whiteSpace: 'nowrap',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.4)'
+                  }}
+                >
+                  <Flame size={13} color="#10b981" />
+                  <span>{HERO_SLIDES[heroSlideIndex].topBadge}</span>
+                </div>
+
+                <div
+                  style={{
+                    background: 'rgba(15, 23, 42, 0.9)',
+                    border: '1px solid var(--border-card)',
+                    padding: '0.25rem 0.6rem',
+                    borderRadius: '9999px',
+                    color: '#94a3b8',
+                    fontSize: '0.68rem',
+                    fontWeight: 600,
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  📖 Page {heroSlideIndex + 1}/6
+                </div>
               </div>
 
               {/* Left / Right Carousel Navigation Buttons */}
               <button
                 type="button"
                 onClick={prevHeroSlide}
-                aria-label="Previous Slide"
+                aria-label="Previous Page"
                 style={{
                   position: 'absolute',
-                  left: '8px',
+                  left: '12px',
                   top: '48%',
                   transform: 'translateY(-50%)',
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: 'rgba(15, 23, 42, 0.8)',
+                  background: 'rgba(15, 23, 42, 0.82)',
                   border: '1px solid var(--border-card)',
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  zIndex: 4,
-                  transition: 'background 0.2s ease, border-color 0.2s ease'
+                  zIndex: 7,
+                  transition: 'background 0.2s ease, color 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#10b981';
                   e.currentTarget.style.color = '#0f172a';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.8)';
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.82)';
                   e.currentTarget.style.color = '#ffffff';
                 }}
               >
@@ -403,31 +558,31 @@ export const HomeSection = () => {
               <button
                 type="button"
                 onClick={nextHeroSlide}
-                aria-label="Next Slide"
+                aria-label="Next Page"
                 style={{
                   position: 'absolute',
-                  right: '8px',
+                  right: '12px',
                   top: '48%',
                   transform: 'translateY(-50%)',
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: 'rgba(15, 23, 42, 0.8)',
+                  background: 'rgba(15, 23, 42, 0.82)',
                   border: '1px solid var(--border-card)',
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  zIndex: 4,
-                  transition: 'background 0.2s ease, border-color 0.2s ease'
+                  zIndex: 7,
+                  transition: 'background 0.2s ease, color 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#10b981';
                   e.currentTarget.style.color = '#0f172a';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.8)';
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.82)';
                   e.currentTarget.style.color = '#ffffff';
                 }}
               >
@@ -448,7 +603,7 @@ export const HomeSection = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '0.45rem',
-                  zIndex: 4,
+                  zIndex: 7,
                   backdropFilter: 'blur(8px)'
                 }}
               >
@@ -518,7 +673,7 @@ export const HomeSection = () => {
                           setHeroSlideIndex(dotIdx);
                           playClickBeep();
                         }}
-                        aria-label={`Slide ${dotIdx + 1}`}
+                        aria-label={`Page ${dotIdx + 1}`}
                         style={{
                           height: '4px',
                           width: isDotActive ? '20px' : '6px',
