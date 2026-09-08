@@ -74,7 +74,7 @@ export const Navbar = () => {
               width: '38px',
               height: '38px',
               borderRadius: '12px',
-              background: '#10b981',
+              background: '#FF3B30',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -93,7 +93,7 @@ export const Navbar = () => {
                 color: 'var(--text-main)',
                 whiteSpace: 'nowrap'
               }}>
-                Gym<span style={{ color: '#10b981' }}>Setup</span>
+                Gym<span style={{ color: '#FF3B30' }}>Setup</span>
               </span>
               <span className="badge badge-emerald nav-badge-edition" style={{ fontSize: '0.7rem', padding: '0.15rem 0.5rem', whiteSpace: 'nowrap' }}>
                 Beginner
@@ -123,7 +123,7 @@ export const Navbar = () => {
             left: '14px',
             top: '50%',
             transform: 'translateY(-50%)',
-            color: '#10b981'
+            color: '#FF3B30'
           }} />
           <div
             className="input-control nav-search-input"
@@ -159,7 +159,7 @@ export const Navbar = () => {
           aria-label="Search"
           style={{ display: 'none' }}
         >
-          <Search size={18} color="#10b981" />
+          <Search size={18} color="#FF3B30" />
         </button>
 
         {/* Onboarding Quick Jump */}
@@ -179,7 +179,7 @@ export const Navbar = () => {
           title="Open Rest / Interval Timer"
           aria-label="Open Timer"
         >
-          <Timer size={18} color="#10b981" />
+          <Timer size={18} color="#FF3B30" />
         </button>
 
         {/* Theme Toggle */}
@@ -189,7 +189,7 @@ export const Navbar = () => {
           title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
           aria-label="Toggle Theme"
         >
-          {theme === 'dark' ? <Sun size={18} color="#10b981" /> : <Moon size={18} color="#64748b" />}
+          {theme === 'dark' ? <Sun size={18} color="#FF3B30" /> : <Moon size={18} color="#64748b" />}
         </button>
       </div>
 

@@ -37,7 +37,7 @@ export const NutritionSection = () => {
       {/* Interactive Protein & Hydration Estimator Calculator */}
       <div className="card card-glow-emerald" style={{ padding: '2rem', border: '1px solid var(--border-card)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-          <Calculator size={24} color="#10b981" />
+          <Calculator size={24} color="#FF3B30" />
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Beginner Daily Nutrition Estimator</h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Get your personalized daily protein & water target in 5 seconds</p>
@@ -88,11 +88,11 @@ export const NutritionSection = () => {
 
           {/* Results Display */}
           <div className="grid-2" style={{ gap: '1rem' }}>
-            <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#10b981' }}>
+            <div style={{ background: 'rgba(255, 59, 48, 0.12)', border: '1px solid rgba(255, 59, 48, 0.3)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#FF3B30' }}>
                 <Apple size={28} />
               </div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>Daily Protein Target</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>Daily Protein Target</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)', margin: '0.25rem 0' }}>
                 {estimatedProtein}g
               </div>
@@ -100,10 +100,10 @@ export const NutritionSection = () => {
             </div>
 
             <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1.25rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#10b981' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', color: '#FF3B30' }}>
                 <Droplet size={28} />
               </div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>Daily Water Target</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>Daily Water Target</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)', margin: '0.25rem 0' }}>
                 {estimatedHydration}L
               </div>
@@ -122,7 +122,7 @@ export const NutritionSection = () => {
               <div>
                 <span className="badge badge-emerald" style={{ marginBottom: '0.5rem' }}>{macro.role}</span>
                 <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.25rem' }}>{macro.name}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#10b981', fontWeight: 600, marginBottom: '1rem' }}>{macro.tagline}</p>
+                <p style={{ fontSize: '0.85rem', color: '#FF3B30', fontWeight: 600, marginBottom: '1rem' }}>{macro.tagline}</p>
 
                 <div style={{ fontSize: '0.875rem', marginBottom: '1rem' }}>
                   <strong>Great Sources:</strong>
@@ -144,8 +144,8 @@ export const NutritionSection = () => {
 
       {/* Pre & Post Workout Fuel Ideas */}
       <div className="grid-2">
-        <div className="card" style={{ borderTop: '4px solid #10b981' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#10b981' }}>Pre-Workout Energy Fuel</h3>
+        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#FF3B30' }}>Pre-Workout Energy Fuel</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {PRE_POST_MEALS.preWorkout.map((meal, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
@@ -159,8 +159,8 @@ export const NutritionSection = () => {
           </div>
         </div>
 
-        <div className="card" style={{ borderTop: '4px solid #10b981' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#10b981' }}>Post-Workout Muscle Recovery</h3>
+        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#FF3B30' }}>Post-Workout Muscle Recovery</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {PRE_POST_MEALS.postWorkout.map((meal, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
@@ -176,7 +176,7 @@ export const NutritionSection = () => {
       </div>
 
       {/* Fad Diet Myths Debunked */}
-      <div className="card" style={{ borderLeft: '4px solid #10b981' }}>
+      <div className="card" style={{ borderLeft: '4px solid #FF3B30' }}>
         <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--text-main)' }}>Fad Diet Myths Debunked</h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {FAD_DIET_MYTHS.map((m, idx) => (
@@ -185,7 +185,7 @@ export const NutritionSection = () => {
                 MYTH: {m.myth}
               </div>
               <p style={{ fontSize: '0.875rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
-                <strong style={{ color: '#10b981' }}>REALITY: </strong>{m.reality}
+                <strong style={{ color: '#FF3B30' }}>REALITY: </strong>{m.reality}
               </p>
             </div>
           ))}

@@ -52,16 +52,16 @@ export const ChecklistSection = () => {
           <div style={{ marginTop: '1.5rem', background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Trophy size={18} color="#10b981" />
+                <Trophy size={18} color="#FF3B30" />
                 <span style={{ fontWeight: 700, fontSize: '0.95rem' }}>Workout Readiness Score</span>
               </div>
-              <span style={{ fontWeight: 800, color: '#10b981', fontSize: '1.1rem' }}>
+              <span style={{ fontWeight: 800, color: '#FF3B30', fontSize: '1.1rem' }}>
                 {completedItems} / {totalItems} Done ({overallPercentage}%)
               </span>
             </div>
 
             <div style={{ width: '100%', height: '10px', background: 'var(--border-card)', borderRadius: '9999px', overflow: 'hidden' }}>
-              <div style={{ width: `${overallPercentage}%`, height: '100%', background: '#10b981', transition: 'width 0.3s' }} />
+              <div style={{ width: `${overallPercentage}%`, height: '100%', background: '#FF3B30', transition: 'width 0.3s' }} />
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export const ChecklistSection = () => {
             <div key={phase.id} className="card" style={{ padding: 'clamp(1rem, 3.5vw, 1.75rem)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'rgba(255, 59, 48, 0.15)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     <PhaseIcon size={20} />
                   </div>
                   <div style={{ minWidth: 0 }}>
@@ -135,8 +135,8 @@ export const ChecklistSection = () => {
                         justifyContent: 'space-between',
                         padding: '0.75rem 0.95rem',
                         borderRadius: 'var(--radius-md)',
-                        background: isChecked ? 'rgba(16, 185, 129, 0.08)' : 'var(--bg-card-secondary)',
-                        border: `1px solid ${isChecked ? 'rgba(16, 185, 129, 0.3)' : 'var(--border-card)'}`,
+                        background: isChecked ? 'rgba(255, 59, 48, 0.08)' : 'var(--bg-card-secondary)',
+                        border: `1px solid ${isChecked ? 'rgba(255, 59, 48, 0.3)' : 'var(--border-card)'}`,
                         cursor: 'pointer',
                         transition: 'all 0.15s',
                         gap: '0.65rem'
@@ -150,8 +150,8 @@ export const ChecklistSection = () => {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          background: isChecked ? '#10b981' : 'transparent',
-                          border: `2px solid ${isChecked ? '#10b981' : 'var(--text-muted)'}`,
+                          background: isChecked ? '#FF3B30' : 'transparent',
+                          border: `2px solid ${isChecked ? '#FF3B30' : 'var(--text-muted)'}`,
                           color: '#fff',
                           flexShrink: 0
                         }}>

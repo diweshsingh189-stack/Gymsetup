@@ -1,29 +1,29 @@
 /* ==========================================================================
    GymSetup — Strict 2-Color Design System
-   Color 1: Deep Navy (#0F172A) [Main Background & Primary UI Base]
-   Color 2: Emerald Green (#10B981) [Buttons, Highlights, Active States & Accents]
+   Color 1: Deep Navy (#0B0B0B) [Main Background & Primary UI Base]
+   Color 2: Emerald Green (#FF3B30) [Buttons, Highlights, Active States & Accents]
    ========================================================================== */
 
 :root {
-  /* Strict 2-Color Theme Palette (Deep Navy #0F172A & Emerald #10B981) */
-  --bg-app: #0f172a;
-  --bg-sidebar: #0b1120;
-  --bg-card: #131d31;
-  --bg-card-hover: #1a2742;
-  --bg-card-secondary: #1a243b;
-  --bg-input: #0b1120;
+  /* Strict 2-Color Theme Palette (Deep Navy #0B0B0B & Emerald #FF3B30) */
+  --bg-app: #0B0B0B;
+  --bg-sidebar: #0B0B0B;
+  --bg-card: #141414;
+  --bg-card-hover: #242426;
+  --bg-card-secondary: #1C1C1E;
+  --bg-input: #0B0B0B;
   
-  --border-subtle: #1e293b;
-  --border-card: #1e2e4a;
-  --border-focus: #10b981;
+  --border-subtle: #2C2C2E;
+  --border-card: #3A3A3C;
+  --border-focus: #FF3B30;
 
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-subtle: #64748b;
   
-  --primary-emerald: #10b981;
-  --primary-emerald-hover: #059669;
-  --primary-emerald-glow: rgba(16, 185, 129, 0.15);
+  --primary-emerald: #FF3B30;
+  --primary-emerald-hover: #E02D22;
+  --primary-emerald-glow: rgba(255, 59, 48, 0.15);
 
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.35);
@@ -41,24 +41,24 @@
 }
 
 .dark {
-  --bg-app: #0f172a;
-  --bg-sidebar: #0b1120;
-  --bg-card: #131d31;
-  --bg-card-hover: #1a2742;
-  --bg-card-secondary: #1a243b;
-  --bg-input: #0b1120;
+  --bg-app: #0B0B0B;
+  --bg-sidebar: #0B0B0B;
+  --bg-card: #141414;
+  --bg-card-hover: #242426;
+  --bg-card-secondary: #1C1C1E;
+  --bg-input: #0B0B0B;
   
-  --border-subtle: #1e293b;
-  --border-card: #1e2e4a;
-  --border-focus: #10b981;
+  --border-subtle: #2C2C2E;
+  --border-card: #3A3A3C;
+  --border-focus: #FF3B30;
 
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-subtle: #64748b;
   
-  --primary-emerald: #10b981;
-  --primary-emerald-hover: #059669;
-  --primary-emerald-glow: rgba(16, 185, 129, 0.15);
+  --primary-emerald: #FF3B30;
+  --primary-emerald-hover: #E02D22;
+  --primary-emerald-glow: rgba(255, 59, 48, 0.15);
 }
 
 /* Base Styles */
@@ -213,18 +213,18 @@ button, input, select, textarea {
 }
 
 .card-hover:hover {
-  border-color: rgba(16, 185, 129, 0.4);
+  border-color: rgba(255, 59, 48, 0.4);
   transform: translateY(-2px);
 }
 
 .card-glow-emerald,
 .card-glow-cyan {
-  border-color: rgba(16, 185, 129, 0.35);
+  border-color: rgba(255, 59, 48, 0.35);
 }
 
 /* Subtle Clean Text Accent (Natural 2-color) */
 .gradient-text-emerald {
-  color: #10b981;
+  color: #FF3B30;
 }
 
 .gradient-hero-bg {
@@ -245,9 +245,9 @@ button, input, select, textarea {
 
 .badge-emerald,
 .badge-cyan {
-  background: rgba(16, 185, 129, 0.12);
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.28);
+  background: rgba(255, 59, 48, 0.12);
+  color: #FF3B30;
+  border: 1px solid rgba(255, 59, 48, 0.28);
 }
 
 .badge-amber,
@@ -282,14 +282,14 @@ button, input, select, textarea {
 }
 
 .btn-primary {
-  background: #10b981;
+  background: #FF3B30;
   color: #ffffff;
-  border: 1px solid #10b981;
+  border: 1px solid #FF3B30;
 }
 
 .btn-primary:hover {
-  background: #059669;
-  border-color: #059669;
+  background: #E02D22;
+  border-color: #E02D22;
 }
 
 .btn-secondary {
@@ -305,13 +305,13 @@ button, input, select, textarea {
 
 .btn-outline-emerald {
   background: transparent;
-  color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #FF3B30;
+  border: 1px solid rgba(255, 59, 48, 0.4);
 }
 
 .btn-outline-emerald:hover {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: #10b981;
+  background: rgba(255, 59, 48, 0.08);
+  border-color: #FF3B30;
 }
 
 .btn-sm {
@@ -351,7 +351,7 @@ button, input, select, textarea {
 }
 
 .input-control:focus {
-  border-color: #10b981;
+  border-color: #FF3B30;
 }
 
 /* Clean Fade Animation */
@@ -484,7 +484,7 @@ button, input, select, textarea {
   border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border-card);
-  background-color: #090d16;
+  background-color: #050505;
   user-select: none;
   touch-action: pan-y;
   margin: 0 auto;

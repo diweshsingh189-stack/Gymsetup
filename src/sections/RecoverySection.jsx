@@ -25,7 +25,7 @@ export const RecoverySection = () => {
       {/* The DOMS Survival Kit */}
       <div className="card card-glow-emerald" style={{ border: '1px solid var(--border-card)', padding: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-          <Zap size={24} color="#10b981" />
+          <Zap size={24} color="#FF3B30" />
           <div>
             <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>Understanding DOMS (Delayed Onset Muscle Soreness)</h2>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Why do my legs feel like jelly 24–48 hours after Day 1?</p>
@@ -34,21 +34,21 @@ export const RecoverySection = () => {
 
         <div className="grid-3" style={{ gap: '1rem', marginTop: '1rem' }}>
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <h4 style={{ color: '#10b981', fontSize: '1rem', marginBottom: '0.35rem' }}>What is DOMS?</h4>
+            <h4 style={{ color: '#FF3B30', fontSize: '1rem', marginBottom: '0.35rem' }}>What is DOMS?</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
               Lifting weights causes microscopic, harmless tears in muscle fibers. Your body repairs them to become stronger and thicker.
             </p>
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <h4 style={{ color: '#10b981', fontSize: '1rem', marginBottom: '0.35rem' }}>The Peak Soreness Window</h4>
+            <h4 style={{ color: '#FF3B30', fontSize: '1rem', marginBottom: '0.35rem' }}>The Peak Soreness Window</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
               Soreness peaks around 36 to 48 hours after your session. It gradually subsides as your body adapts over 2–3 weeks.
             </p>
           </div>
 
           <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-            <h4 style={{ color: '#10b981', fontSize: '1rem', marginBottom: '0.35rem' }}>How to Relieve DOMS</h4>
+            <h4 style={{ color: '#FF3B30', fontSize: '1rem', marginBottom: '0.35rem' }}>How to Relieve DOMS</h4>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
               A brisk 20-minute walk, warm shower or Epsom salt bath, and drinking 3L of water dramatically speed up blood flow and relief.
             </p>
@@ -58,9 +58,9 @@ export const RecoverySection = () => {
 
       {/* Sleep: The Ultimate Anabolic State */}
       <div className="grid-2">
-        <div className="card" style={{ borderTop: '4px solid #10b981' }}>
+        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-            <Bed size={22} color="#10b981" />
+            <Bed size={22} color="#FF3B30" />
             <h3 style={{ fontSize: '1.25rem' }}>Sleep Hygiene Blueprint</h3>
           </div>
 
@@ -71,7 +71,7 @@ export const RecoverySection = () => {
               { title: 'No Screens 45 Mins Before Bed', desc: 'Blue light from phones suppresses melatonin. Read a physical book or listen to calming audio instead.' }
             ].map((item, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                <strong style={{ color: '#10b981' }}>{item.title}</strong>
+                <strong style={{ color: '#FF3B30' }}>{item.title}</strong>
                 <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>{item.desc}</p>
               </div>
             ))}
@@ -79,9 +79,9 @@ export const RecoverySection = () => {
         </div>
 
         {/* Active Rest Day Ideas */}
-        <div className="card" style={{ borderTop: '4px solid #10b981' }}>
+        <div className="card" style={{ borderTop: '4px solid #FF3B30' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-            <Heart size={22} color="#10b981" />
+            <Heart size={22} color="#FF3B30" />
             <h3 style={{ fontSize: '1.25rem' }}>What to Do on Rest Days</h3>
           </div>
 
@@ -92,7 +92,7 @@ export const RecoverySection = () => {
               { title: 'Proper Nutrition Consistency', desc: 'Keep protein and water intake high even on days you do not go to the gym.' }
             ].map((item, idx) => (
               <div key={idx} style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-                <strong style={{ color: '#10b981' }}>{item.title}</strong>
+                <strong style={{ color: '#FF3B30' }}>{item.title}</strong>
                 <p style={{ fontSize: '0.825rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>{item.desc}</p>
               </div>
             ))}

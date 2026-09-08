@@ -123,7 +123,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
           padding: '0',
           overflow: 'hidden',
           background: 'var(--bg-sidebar)',
-          border: '1px solid rgba(16, 185, 129, 0.4)',
+          border: '1px solid rgba(255, 59, 48, 0.4)',
           boxShadow: '0 25px 70px rgba(0, 0, 0, 0.75)'
         }}
       >
@@ -138,7 +138,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
           flexShrink: 0
         }}>
           <div style={{ position: 'relative', flex: 1, minWidth: 0 }}>
-            <Search size={20} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#10b981' }} />
+            <Search size={20} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#FF3B30' }} />
             <input
               type="text"
               autoFocus
@@ -255,10 +255,10 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
               flexShrink: 0
             }}>
               <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                <BookOpen size={14} color="#10b981" />
+                <BookOpen size={14} color="#FF3B30" />
                 EXERCISES ({filteredList.length})
               </span>
-              <span style={{ fontSize: '0.74rem', color: '#10b981', fontWeight: 700 }}>
+              <span style={{ fontSize: '0.74rem', color: '#FF3B30', fontWeight: 700 }}>
                 Tap to view
               </span>
             </div>
@@ -286,10 +286,10 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                       borderRadius: '12px',
                       cursor: 'pointer',
                       background: isSelected
-                        ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(6, 182, 212, 0.14) 100%)'
+                        ? 'linear-gradient(135deg, rgba(255, 59, 48, 0.22) 0%, rgba(255, 59, 48, 0.14) 100%)'
                         : 'var(--bg-card)',
-                      border: isSelected ? '1.5px solid #10b981' : '1px solid var(--border-card)',
-                      boxShadow: isSelected ? '0 4px 18px rgba(16, 185, 129, 0.25)' : 'none',
+                      border: isSelected ? '1.5px solid #FF3B30' : '1px solid var(--border-card)',
+                      boxShadow: isSelected ? '0 4px 18px rgba(255, 59, 48, 0.25)' : 'none',
                       transition: 'all 0.15s ease',
                       boxSizing: 'border-box'
                     }}
@@ -299,8 +299,8 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                       width: '38px',
                       height: '38px',
                       borderRadius: '10px',
-                      background: isSelected ? 'rgba(16, 185, 129, 0.2)' : 'var(--bg-card-secondary)',
-                      border: isSelected ? '1px solid #10b981' : '1px solid var(--border-card)',
+                      background: isSelected ? 'rgba(255, 59, 48, 0.2)' : 'var(--bg-card-secondary)',
+                      border: isSelected ? '1px solid #FF3B30' : '1px solid var(--border-card)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -316,7 +316,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                         fontSize: '0.88rem',
                         fontWeight: 700,
                         lineHeight: 1.35,
-                        color: isSelected ? '#10b981' : 'var(--text-main)',
+                        color: isSelected ? '#FF3B30' : 'var(--text-main)',
                         marginBottom: '2px',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
@@ -326,13 +326,13 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.72rem', color: 'var(--text-muted)', flexWrap: 'wrap' }}>
-                        <span style={{ color: '#10b981', fontWeight: 600 }}>{item.category}</span>
+                        <span style={{ color: '#FF3B30', fontWeight: 600 }}>{item.category}</span>
                         <span>•</span>
                         <span>{item.equipmentType}</span>
                       </div>
                     </div>
 
-                    <ChevronRight size={16} color={isSelected ? '#10b981' : 'var(--text-muted)'} style={{ flexShrink: 0 }} />
+                    <ChevronRight size={16} color={isSelected ? '#FF3B30' : 'var(--text-muted)'} style={{ flexShrink: 0 }} />
                   </div>
                 );
               })
@@ -363,8 +363,8 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                     width: '52px',
                     height: '52px',
                     borderRadius: '16px',
-                    background: 'rgba(16, 185, 129, 0.15)',
-                    border: '1px solid rgba(16, 185, 129, 0.45)',
+                    background: 'rgba(255, 59, 48, 0.15)',
+                    border: '1px solid rgba(255, 59, 48, 0.45)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -392,7 +392,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                     className="btn btn-secondary btn-sm"
                     style={{ flex: 1, minWidth: '130px' }}
                   >
-                    <Timer size={15} color="#10b981" />
+                    <Timer size={15} color="#FF3B30" />
                     <span>Rest Timer (60s)</span>
                   </button>
 
@@ -410,7 +410,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
               {/* Starting Weight & Muscle Target Banner */}
               <div className="grid-2" style={{ gap: '1rem' }}>
                 <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#FF3B30', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
                     🎯 PRIMARY TARGET MUSCLE
                   </div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 700 }}>
@@ -419,10 +419,10 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                 </div>
 
                 <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
-                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
+                  <div style={{ fontSize: '0.72rem', fontWeight: 800, color: '#FF3B30', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '0.25rem' }}>
                     ⚖️ RECOMMENDED STARTING WEIGHT
                   </div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#10b981' }}>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#FF3B30' }}>
                     {selectedExercise.startingWeight}
                   </div>
                 </div>
@@ -430,7 +430,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
 
               {/* Machine Seat & Pin Setup */}
               <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1.15rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#10b981', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <h4 style={{ fontSize: '0.98rem', fontWeight: 800, color: '#FF3B30', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                   <Layers size={18} /> Machine / Seat & Pin Setup (सीट व पिन सेटिंग):
                 </h4>
                 <p style={{ fontSize: '0.88rem', color: 'var(--text-main)', lineHeight: 1.55 }}>
@@ -441,7 +441,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
               {/* Step-by-Step Execution Guide */}
               <div>
                 <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <CheckCircle2 size={18} color="#10b981" /> How to Perform with Perfect Form (सही तरीका):
+                  <CheckCircle2 size={18} color="#FF3B30" /> How to Perform with Perfect Form (सही तरीका):
                 </h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                   {selectedExercise.steps.map((step, sIdx) => (
@@ -462,7 +462,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
                         width: '24px',
                         height: '24px',
                         borderRadius: '50%',
-                        background: '#10b981',
+                        background: '#FF3B30',
                         color: '#fff',
                         display: 'flex',
                         alignItems: 'center',
@@ -484,7 +484,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
               <div className="grid-2" style={{ gap: '1rem' }}>
                 <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
                   <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Shield size={16} color="#10b981" /> Safety DOs & DON'Ts:
+                    <Shield size={16} color="#FF3B30" /> Safety DOs & DON'Ts:
                   </h5>
                   <ul style={{ listStyle: 'disc', paddingLeft: '1.15rem', fontSize: '0.84rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.3rem', lineHeight: 1.45 }}>
                     {selectedExercise.safetyTips.map((st, stIdx) => (
@@ -495,7 +495,7 @@ export const ExerciseSearchModal = ({ isOpen, onClose, initialQuery = '' }) => {
 
                 <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
                   <h5 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '0.45rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <AlertTriangle size={16} color="#10b981" /> Common Rookie Mistakes:
+                    <AlertTriangle size={16} color="#FF3B30" /> Common Rookie Mistakes:
                   </h5>
                   <p style={{ fontSize: '0.84rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
                     {selectedExercise.commonMistakes}

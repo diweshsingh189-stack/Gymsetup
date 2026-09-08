@@ -61,12 +61,12 @@ export const FirstDaySection = () => {
       {activeTab === 'before' && (
         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="card">
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#10b981', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#FF3B30', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Package size={20} /> What to Pack in Your Gym Bag
             </h3>
             <div className="grid-2">
               <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#10b981' }}>Must-Haves:</h4>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#FF3B30' }}>Must-Haves:</h4>
                 <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', fontSize: '0.9rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <li><strong>Clean pair of athletic sneakers</strong> (keep outdoors mud off the gym floor)</li>
                   <li><strong>Water bottle (750ml - 1L)</strong> to sip between sets</li>
@@ -76,7 +76,7 @@ export const FirstDaySection = () => {
               </div>
 
               <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#10b981' }}>Comfort Boosters:</h4>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#FF3B30' }}>Comfort Boosters:</h4>
                 <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', fontSize: '0.9rem', color: 'var(--text-main)', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   <li><strong>Headphones / Earbuds</strong> (listening to favorite music cuts anxiety by 70%)</li>
                   <li><strong>Pre-workout snack</strong> (1 banana or 2 dates 45 mins before)</li>
@@ -92,9 +92,9 @@ export const FirstDaySection = () => {
             </div>
           </div>
 
-          <div className="card" style={{ borderLeft: '4px solid #10b981' }}>
+          <div className="card" style={{ borderLeft: '4px solid #FF3B30' }}>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <HeartHandshake size={20} color="#10b981" /> Gym Anxiety Conquer Kit
+              <HeartHandshake size={20} color="#FF3B30" /> Gym Anxiety Conquer Kit
             </h3>
             <p style={{ fontSize: '0.925rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
               Feeling nervous on Day 1 is completely natural. Remember:
@@ -127,7 +127,7 @@ export const FirstDaySection = () => {
       {activeTab === 'during' && (
         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="card">
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#10b981' }}>
+            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#FF3B30' }}>
               Step-by-Step Gym Floor Protocol
             </h3>
 
@@ -151,7 +151,7 @@ export const FirstDaySection = () => {
                 }
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '1rem', background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flexShrink: 0 }}>
+                  <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#FF3B30', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, flexShrink: 0 }}>
                     {idx + 1}
                   </div>
                   <div>
@@ -178,20 +178,20 @@ export const FirstDaySection = () => {
       {activeTab === 'after' && (
         <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="card">
-            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#10b981' }}>
+            <h3 style={{ fontSize: '1.35rem', marginBottom: '1rem', color: '#FF3B30' }}>
               Post-Workout Routine (The Next 2 Hours)
             </h3>
 
             <div className="grid-2">
               <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#10b981' }}>Hydrate & Refuel</h4>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#FF3B30' }}>Hydrate & Refuel</h4>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
                   Drink 500ml of fresh water. Have a balanced meal with protein and complex carbs (like eggs on toast, chicken rice bowl, or Greek yogurt) to feed your recovering muscles.
                 </p>
               </div>
 
               <div style={{ background: 'var(--bg-card-secondary)', padding: '1.25rem', borderRadius: 'var(--radius-md)' }}>
-                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#10b981' }}>Log Your First Session</h4>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#FF3B30' }}>Log Your First Session</h4>
                 <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
                   Open the GymSetup Workout Tracker and log the exercises you tried today. Seeing your first logged workout builds instant habit momentum!
                 </p>

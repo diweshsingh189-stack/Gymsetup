@@ -30,10 +30,10 @@ export const RoadmapSection = () => {
           <div style={{ marginTop: '1.5rem', background: 'var(--bg-card-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.875rem' }}>
               <span style={{ fontWeight: 600 }}>Overall Roadmap Completion</span>
-              <span style={{ fontWeight: 700, color: '#10b981' }}>{completedMilestones} / {totalMilestones} Milestones ({overallPercent}%)</span>
+              <span style={{ fontWeight: 700, color: '#FF3B30' }}>{completedMilestones} / {totalMilestones} Milestones ({overallPercent}%)</span>
             </div>
             <div style={{ width: '100%', height: '8px', background: 'var(--border-card)', borderRadius: '9999px', overflow: 'hidden' }}>
-              <div style={{ width: `${overallPercent}%`, height: '100%', background: '#10b981', transition: 'width 0.3s' }} />
+              <div style={{ width: `${overallPercent}%`, height: '100%', background: '#FF3B30', transition: 'width 0.3s' }} />
             </div>
           </div>
         </div>
@@ -53,8 +53,8 @@ export const RoadmapSection = () => {
               className="card card-hover"
               style={{
                 textAlign: 'left',
-                border: isSelected ? '2px solid #10b981' : '1px solid var(--border-card)',
-                background: isSelected ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-card)',
+                border: isSelected ? '2px solid #FF3B30' : '1px solid var(--border-card)',
+                background: isSelected ? 'rgba(255, 59, 48, 0.1)' : 'var(--bg-card)',
                 padding: '1.25rem',
                 cursor: 'pointer'
               }}
@@ -63,7 +63,7 @@ export const RoadmapSection = () => {
                 <span className={`badge ${isSelected ? 'badge-emerald' : 'badge-neutral'}`} style={{ fontSize: '0.75rem' }}>
                   {phase.badge}
                 </span>
-                {isPhaseFullyDone && <CheckCircle2 size={16} color="#10b981" />}
+                {isPhaseFullyDone && <CheckCircle2 size={16} color="#FF3B30" />}
               </div>
               <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.25rem' }}>{phase.title}</h3>
               <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{phaseDoneCount} of {phase.milestones.length} Done</p>
@@ -81,7 +81,7 @@ export const RoadmapSection = () => {
                 {phase.badge} Deep Dive
               </span>
               <h2 style={{ fontSize: '1.65rem', fontWeight: 800 }}>{phase.title}</h2>
-              <p style={{ fontSize: '1rem', color: '#10b981', fontWeight: 600, marginTop: '0.25rem' }}>
+              <p style={{ fontSize: '1rem', color: '#FF3B30', fontWeight: 600, marginTop: '0.25rem' }}>
                 Focus: {phase.focus}
               </p>
             </div>
@@ -109,8 +109,8 @@ export const RoadmapSection = () => {
                     gap: '1rem',
                     padding: '1rem 1.25rem',
                     borderRadius: 'var(--radius-md)',
-                    background: isChecked ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-card)',
-                    border: `1px solid ${isChecked ? 'rgba(16, 185, 129, 0.35)' : 'var(--border-card)'}`,
+                    background: isChecked ? 'rgba(255, 59, 48, 0.1)' : 'var(--bg-card)',
+                    border: `1px solid ${isChecked ? 'rgba(255, 59, 48, 0.35)' : 'var(--border-card)'}`,
                     cursor: 'pointer',
                     transition: 'all 0.15s ease'
                   }}
@@ -122,8 +122,8 @@ export const RoadmapSection = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: isChecked ? '#10b981' : 'transparent',
-                    border: `2px solid ${isChecked ? '#10b981' : 'var(--text-muted)'}`,
+                    background: isChecked ? '#FF3B30' : 'transparent',
+                    border: `2px solid ${isChecked ? '#FF3B30' : 'var(--text-muted)'}`,
                     color: '#ffffff',
                     flexShrink: 0
                   }}>
@@ -153,9 +153,9 @@ export const RoadmapSection = () => {
             alignItems: 'center',
             gap: '1rem'
           }}>
-            <Sparkles size={24} color="#10b981" style={{ flexShrink: 0 }} />
+            <Sparkles size={24} color="#FF3B30" style={{ flexShrink: 0 }} />
             <div>
-              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>
                 Key Mindset
               </div>
               <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-main)' }}>

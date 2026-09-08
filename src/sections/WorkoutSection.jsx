@@ -50,8 +50,8 @@ export const WorkoutSection = () => {
               className="card card-hover"
               style={{
                 textAlign: 'left',
-                border: isSelected ? '2px solid #10b981' : '1px solid var(--border-card)',
-                background: isSelected ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-card)',
+                border: isSelected ? '2px solid #FF3B30' : '1px solid var(--border-card)',
+                background: isSelected ? 'rgba(255, 59, 48, 0.1)' : 'var(--bg-card)',
                 padding: '1.25rem',
                 cursor: 'pointer'
               }}
@@ -91,16 +91,16 @@ export const WorkoutSection = () => {
             onClick={() => openTimer(75, 'Workout Rest Interval')}
             className="btn btn-secondary btn-sm"
           >
-            <Timer size={16} color="#10b981" />
+            <Timer size={16} color="#FF3B30" />
             <span>Open Rest Timer</span>
           </button>
         </div>
 
         {/* Goal Box */}
         <div style={{ background: 'var(--bg-card-secondary)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)', marginBottom: '1.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Sparkles size={20} color="#10b981" style={{ flexShrink: 0 }} />
+          <Sparkles size={20} color="#FF3B30" style={{ flexShrink: 0 }} />
           <div>
-            <strong style={{ color: '#10b981', fontSize: '0.85rem', textTransform: 'uppercase' }}>Workout Goal: </strong>
+            <strong style={{ color: '#FF3B30', fontSize: '0.85rem', textTransform: 'uppercase' }}>Workout Goal: </strong>
             <span style={{ fontSize: '0.925rem' }}>{currentRoutine.target}</span>
           </div>
         </div>
@@ -127,8 +127,8 @@ export const WorkoutSection = () => {
                   width: '42px',
                   height: '42px',
                   borderRadius: '12px',
-                  background: 'rgba(16, 185, 129, 0.15)',
-                  color: '#10b981',
+                  background: 'rgba(255, 59, 48, 0.15)',
+                  color: '#FF3B30',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',

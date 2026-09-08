@@ -85,7 +85,7 @@ export const GymPricingSection = () => {
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Search Box */}
           <div style={{ position: 'relative', flex: 1, minWidth: 'min(100%, 240px)' }}>
-            <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#10b981' }} />
+            <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#FF3B30' }} />
             <input
               type="text"
               placeholder="Search gym by name (e.g. Cult.fit, Gold's Gym) or city..."
@@ -151,7 +151,7 @@ export const GymPricingSection = () => {
           {selectedCity !== 'All' && (
             <button
               onClick={() => setSelectedCity('All')}
-              style={{ background: 'none', border: 'none', color: '#10b981', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem' }}
+              style={{ background: 'none', border: 'none', color: '#FF3B30', cursor: 'pointer', fontWeight: 600, fontSize: '0.8rem' }}
             >
               Show All Cities ↺
             </button>
@@ -222,14 +222,14 @@ export const GymPricingSection = () => {
                   padding: '0.25rem 0.55rem',
                   borderRadius: '8px',
                   background: 'rgba(0, 0, 0, 0.75)',
-                  color: '#10b981',
+                  color: '#FF3B30',
                   backdropFilter: 'blur(6px)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.25rem',
-                  border: '1px solid rgba(16, 185, 129, 0.3)'
+                  border: '1px solid rgba(255, 59, 48, 0.3)'
                 }}>
-                  <Star size={13} fill="#10b981" color="#10b981" />
+                  <Star size={13} fill="#FF3B30" color="#FF3B30" />
                   <span>{gym.rating}</span>
                 </span>
               </div>
@@ -240,7 +240,7 @@ export const GymPricingSection = () => {
                   {gym.name}
                 </h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#e2e8f0', fontSize: '0.82rem', fontWeight: 600 }}>
-                  <MapPin size={14} color="#10b981" />
+                  <MapPin size={14} color="#FF3B30" />
                   <span>{gym.place}</span>
                 </div>
               </div>
@@ -251,8 +251,8 @@ export const GymPricingSection = () => {
               <div>
                 {/* Price Highlight Banner */}
                 <div style={{
-                  background: 'rgba(16, 185, 129, 0.1)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  background: 'rgba(255, 59, 48, 0.1)',
+                  border: '1px solid rgba(255, 59, 48, 0.3)',
                   borderRadius: '12px',
                   padding: '0.75rem 1rem',
                   marginBottom: '1rem',
@@ -261,7 +261,7 @@ export const GymPricingSection = () => {
                   justifyContent: 'space-between'
                 }}>
                   <div>
-                    <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    <div style={{ fontSize: '0.7rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                       APPROX. MONTHLY FEE
                     </div>
                     <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '1px' }}>
@@ -277,7 +277,7 @@ export const GymPricingSection = () => {
 
                 {/* Best For */}
                 <div style={{ background: 'var(--bg-card-secondary)', padding: '0.65rem 0.85rem', borderRadius: '10px', fontSize: '0.8rem', marginBottom: '1rem' }}>
-                  <strong style={{ color: '#10b981' }}>🎯 Best For: </strong>
+                  <strong style={{ color: '#FF3B30' }}>🎯 Best For: </strong>
                   <span>{gym.bestFor}</span>
                 </div>
 
@@ -325,7 +325,7 @@ export const GymPricingSection = () => {
       {/* Full Comparison Quick Table */}
       <div className="card" style={{ padding: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
-          <Award size={22} color="#10b981" />
+          <Award size={22} color="#FF3B30" />
           <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Quick Comparison (जिम, शहर और फीस सारांश)</h3>
         </div>
 
@@ -355,7 +355,7 @@ export const GymPricingSection = () => {
                     <strong>{gym.name}</strong>
                   </td>
                   <td style={{ padding: '0.95rem 1rem', color: 'var(--text-muted)' }}>{gym.place}</td>
-                  <td style={{ padding: '0.95rem 1rem', fontWeight: 700, color: '#10b981' }}>{gym.approxPrice}</td>
+                  <td style={{ padding: '0.95rem 1rem', fontWeight: 700, color: '#FF3B30' }}>{gym.approxPrice}</td>
                   <td style={{ padding: '0.95rem 1rem' }}>
                     <span className="badge badge-neutral" style={{ fontSize: '0.72rem' }}>⭐ {gym.rating}</span>
                   </td>
@@ -394,14 +394,14 @@ export const GymPricingSection = () => {
                     {gym.name}
                   </div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                    <MapPin size={12} color="#10b981" />
+                    <MapPin size={12} color="#FF3B30" />
                     <span>{gym.place}</span>
                   </div>
                 </div>
               </div>
 
               <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#10b981' }}>{gym.approxPrice}</div>
+                <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#FF3B30' }}>{gym.approxPrice}</div>
                 <span className="badge badge-neutral" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem', marginTop: '2px' }}>⭐ {gym.rating}</span>
               </div>
             </div>
@@ -452,8 +452,8 @@ export const GymPricingSection = () => {
               borderRadius: '20px',
               padding: '1.5rem 1.25rem',
               position: 'relative',
-              background: '#0f172a',
-              border: '1.5px solid rgba(16, 185, 129, 0.45)',
+              background: '#0B0B0B',
+              border: '1.5px solid rgba(255, 59, 48, 0.45)',
               boxShadow: '0 25px 70px rgba(0,0,0,0.9)',
               margin: 'auto'
             }}
@@ -477,7 +477,7 @@ export const GymPricingSection = () => {
                     fontWeight: 800,
                     padding: '0.2rem 0.65rem',
                     borderRadius: '8px',
-                    background: '#10b981',
+                    background: '#FF3B30',
                     color: '#ffffff'
                   }}
                 >
@@ -491,7 +491,7 @@ export const GymPricingSection = () => {
               <h2 style={{ fontSize: 'clamp(1.35rem, 3vw, 2rem)', fontWeight: 900, color: '#f8fafc', marginBottom: '4px' }}>
                 {selectedGymModal.name}
               </h2>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#10b981', fontWeight: 700, fontSize: '0.92rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: '#FF3B30', fontWeight: 700, fontSize: '0.92rem' }}>
                 <MapPin size={16} />
                 <span>{selectedGymModal.place}</span>
               </div>
@@ -523,8 +523,8 @@ export const GymPricingSection = () => {
 
             {/* Price & Overview */}
             <div style={{
-              background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%)',
-              border: '1px solid rgba(16, 185, 129, 0.3)',
+              background: 'linear-gradient(135deg, rgba(255, 59, 48, 0.15) 0%, rgba(255, 59, 48, 0.1) 100%)',
+              border: '1px solid rgba(255, 59, 48, 0.3)',
               borderRadius: '14px',
               padding: '1rem 1.25rem',
               marginBottom: '1.25rem',
@@ -533,7 +533,7 @@ export const GymPricingSection = () => {
               justifyContent: 'space-between'
             }}>
               <div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>
                   MONTHLY MEMBERSHIP FEE
                 </div>
                 <div style={{ fontSize: '1.35rem', fontWeight: 900, color: '#ffffff', marginTop: '2px' }}>
@@ -550,7 +550,7 @@ export const GymPricingSection = () => {
             {/* Amenities List */}
             <div style={{ marginBottom: '1.5rem' }}>
               <h4 style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#f8fafc' }}>
-                <CheckCircle2 size={18} color="#10b981" />
+                <CheckCircle2 size={18} color="#FF3B30" />
                 All Facilities & Member Amenities:
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -563,13 +563,13 @@ export const GymPricingSection = () => {
                       gap: '0.6rem',
                       fontSize: '0.9rem',
                       color: '#f8fafc',
-                      background: '#1a243b',
+                      background: '#1C1C1E',
                       padding: '0.65rem 0.85rem',
                       borderRadius: '8px',
                       border: '1px solid rgba(255,255,255,0.08)'
                     }}
                   >
-                    <CheckCircle2 size={15} color="#10b981" style={{ flexShrink: 0 }} />
+                    <CheckCircle2 size={15} color="#FF3B30" style={{ flexShrink: 0 }} />
                     <span>{am}</span>
                   </div>
                 ))}

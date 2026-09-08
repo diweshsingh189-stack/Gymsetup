@@ -147,7 +147,7 @@ export const EquipmentSection = () => {
       {/* Search & Filter Controls */}
       <div className="card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
         <div style={{ position: 'relative' }}>
-          <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#10b981' }} />
+          <Search size={18} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#FF3B30' }} />
           <input
             type="text"
             placeholder="Search by machine name (e.g. Chest Press, Lat Pulldown, Leg Press, Dumbbells) or target muscle..."
@@ -201,7 +201,7 @@ export const EquipmentSection = () => {
                     padding: '1px 7px',
                     borderRadius: '9999px',
                     fontWeight: 800,
-                    color: isSelected ? '#ffffff' : '#10b981'
+                    color: isSelected ? '#ffffff' : '#FF3B30'
                   }}
                 >
                   {count}
@@ -218,7 +218,7 @@ export const EquipmentSection = () => {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Cpu size={20} color="#10b981" />
+              <Cpu size={20} color="#FF3B30" />
               <span>Gym Machines & Stations</span>
             </h2>
             <span className="badge badge-emerald" style={{ fontSize: '0.8rem', fontWeight: 700 }}>
@@ -262,7 +262,7 @@ export const EquipmentSection = () => {
                     </p>
 
                     <div style={{ background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)', marginBottom: '1.25rem', fontSize: '0.825rem' }}>
-                      <strong style={{ color: '#10b981' }}>Pin/Seat Setup: </strong>
+                      <strong style={{ color: '#FF3B30' }}>Pin/Seat Setup: </strong>
                       <span>{item.adjustment}</span>
                     </div>
                   </div>
@@ -282,7 +282,7 @@ export const EquipmentSection = () => {
                       className="btn btn-secondary btn-sm"
                       title="Quick Log to Workout Tracker"
                     >
-                      <PlusCircle size={15} color="#10b981" />
+                      <PlusCircle size={15} color="#FF3B30" />
                       <span>Log</span>
                     </button>
                   </div>
@@ -308,7 +308,7 @@ export const EquipmentSection = () => {
           {/* Header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <BookOpen size={20} color="#10b981" />
+              <BookOpen size={20} color="#FF3B30" />
               <h3 style={{ fontSize: '1.1rem', fontWeight: 800 }}>All Exercises Directory</h3>
             </div>
             <span className="badge badge-emerald" style={{ fontSize: '0.72rem' }}>
@@ -438,7 +438,7 @@ export const EquipmentSection = () => {
                         flexWrap: 'wrap'
                       }}
                     >
-                      <span style={{ color: '#10b981', fontWeight: 600 }}>{ex.category}</span>
+                      <span style={{ color: '#FF3B30', fontWeight: 600 }}>{ex.category}</span>
                       <span>•</span>
                       <span>{ex.startingWeight.split('|')[0].trim()}</span>
                     </div>
@@ -487,7 +487,7 @@ export const EquipmentSection = () => {
               padding: 0,
               overflow: 'hidden',
               background: 'var(--bg-card)',
-              border: '1px solid rgba(16, 185, 129, 0.4)',
+              border: '1px solid rgba(255, 59, 48, 0.4)',
               boxShadow: '0 25px 70px rgba(0, 0, 0, 0.85)',
               margin: 'auto'
             }}
@@ -544,13 +544,13 @@ export const EquipmentSection = () => {
               {/* Starting Weight Recommendation */}
               <div
                 style={{
-                  background: 'rgba(16, 185, 129, 0.08)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  background: 'rgba(255, 59, 48, 0.08)',
+                  border: '1px solid rgba(255, 59, 48, 0.3)',
                   borderRadius: 'var(--radius-md)',
                   padding: '1rem 1.25rem'
                 }}
               >
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', textTransform: 'uppercase' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', textTransform: 'uppercase' }}>
                   Recommended Starting Weight (शुरुआती वजन)
                 </div>
                 <div style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-main)', marginTop: '2px' }}>
@@ -561,7 +561,7 @@ export const EquipmentSection = () => {
               {/* Machine Adjustment / Seat Setup */}
               {selectedMachine.adjustment && (
                 <div style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-md)' }}>
-                  <strong style={{ color: '#10b981', fontSize: '0.85rem', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
+                  <strong style={{ color: '#FF3B30', fontSize: '0.85rem', textTransform: 'uppercase', display: 'block', marginBottom: '0.25rem' }}>
                     ⚙️ Pin / Seat Height Setup:
                   </strong>
                   <span style={{ fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: 1.5 }}>{selectedMachine.adjustment}</span>
@@ -577,7 +577,7 @@ export const EquipmentSection = () => {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                     {selectedMachine.steps.map((stepText, idx) => (
                       <div key={idx} style={{ display: 'flex', gap: '0.75rem', background: 'var(--bg-card-secondary)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)', fontSize: '0.88rem' }}>
-                        <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#10b981', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
+                        <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#FF3B30', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', fontWeight: 800, flexShrink: 0 }}>
                           {idx + 1}
                         </div>
                         <span style={{ color: 'var(--text-main)', lineHeight: 1.5 }}>{stepText}</span>
@@ -596,7 +596,7 @@ export const EquipmentSection = () => {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     {selectedMachine.safetyTips.map((tip, idx) => (
                       <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.86rem', color: 'var(--text-muted)' }}>
-                        <Shield size={16} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                        <Shield size={16} color="#FF3B30" style={{ flexShrink: 0, marginTop: '2px' }} />
                         <span>{tip}</span>
                       </div>
                     ))}
@@ -624,7 +624,7 @@ export const EquipmentSection = () => {
                 className="btn btn-secondary"
                 style={{ fontSize: '0.85rem' }}
               >
-                <Timer size={16} color="#10b981" />
+                <Timer size={16} color="#FF3B30" />
                 <span>Rest Timer (60s)</span>
               </button>
 

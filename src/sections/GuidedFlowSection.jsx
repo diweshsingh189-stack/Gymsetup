@@ -78,12 +78,12 @@ export const GuidedFlowSection = () => {
                   padding: '0.35rem 0.65rem',
                   borderRadius: '9999px',
                   background: isCurrent
-                    ? '#10b981'
+                    ? '#FF3B30'
                     : isDone
-                    ? 'rgba(16, 185, 129, 0.2)'
+                    ? 'rgba(255, 59, 48, 0.2)'
                     : 'var(--bg-card-secondary)',
-                  color: isCurrent ? '#ffffff' : isDone ? '#10b981' : 'var(--text-muted)',
-                  border: isCurrent ? '1px solid #10b981' : '1px solid var(--border-subtle)',
+                  color: isCurrent ? '#ffffff' : isDone ? '#FF3B30' : 'var(--text-muted)',
+                  border: isCurrent ? '1px solid #FF3B30' : '1px solid var(--border-subtle)',
                   cursor: 'pointer',
                   fontSize: '0.76rem',
                   fontWeight: 700,
@@ -109,7 +109,7 @@ export const GuidedFlowSection = () => {
               width: '46px',
               height: '46px',
               borderRadius: '14px',
-              background: '#10b981',
+              background: '#FF3B30',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -139,7 +139,7 @@ export const GuidedFlowSection = () => {
           marginBottom: '1.5rem',
           fontSize: '0.94rem',
           color: 'var(--text-main)',
-          borderLeft: '4px solid #10b981',
+          borderLeft: '4px solid #FF3B30',
           lineHeight: 1.55
         }}>
           {step.summary}
@@ -164,8 +164,8 @@ export const GuidedFlowSection = () => {
                 width: '32px',
                 height: '32px',
                 borderRadius: '8px',
-                background: 'rgba(16, 185, 129, 0.15)',
-                color: '#10b981',
+                background: 'rgba(255, 59, 48, 0.15)',
+                color: '#FF3B30',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -186,14 +186,14 @@ export const GuidedFlowSection = () => {
         {/* Celebration State for Last Step */}
         {isLastStep && wizardCompleted && (
           <div style={{
-            background: 'rgba(16, 185, 129, 0.1)',
-            border: '2px solid #10b981',
+            background: 'rgba(255, 59, 48, 0.1)',
+            border: '2px solid #FF3B30',
             borderRadius: 'var(--radius-lg)',
             padding: '1.5rem 1rem',
             textAlign: 'center',
             marginBottom: '1.5rem'
           }}>
-            <Trophy size={42} color="#10b981" style={{ margin: '0 auto 0.75rem auto' }} />
+            <Trophy size={42} color="#FF3B30" style={{ margin: '0 auto 0.75rem auto' }} />
             <h3 style={{ fontSize: '1.35rem', marginBottom: '0.35rem' }}>You Are Ready for Day 1! 🎉</h3>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '1.25rem', maxWidth: '500px', margin: '0 auto 1.25rem auto' }}>
               You now have the exact blueprint to conquer your first workout safely and with complete confidence.

@@ -110,7 +110,7 @@ export const TimerModal = () => {
 
         {/* Title & Sound toggle */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.25rem', paddingRight: '2rem', paddingLeft: '2rem' }}>
-          <Flame size={20} color="#10b981" />
+          <Flame size={20} color="#FF3B30" />
           <h3 style={{ fontSize: '1.2rem', wordBreak: 'break-word' }}>{timerTitle}</h3>
         </div>
         <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '1.25rem' }}>
@@ -134,7 +134,7 @@ export const TimerModal = () => {
               cx="95"
               cy="95"
               r={radius}
-              stroke="#10b981"
+              stroke="#FF3B30"
               strokeWidth="10"
               fill="transparent"
               strokeDasharray={circumference}
@@ -158,7 +158,7 @@ export const TimerModal = () => {
               fontSize: '2.5rem',
               fontWeight: 800,
               letterSpacing: '-0.03em',
-              color: timeLeft === 0 ? '#10b981' : 'var(--text-main)'
+              color: timeLeft === 0 ? '#FF3B30' : 'var(--text-main)'
             }}>
               {timeLeft === 0 ? 'Done!' : formattedTime}
             </span>
@@ -199,7 +199,7 @@ export const TimerModal = () => {
             className="btn btn-secondary btn-icon"
             title={soundEnabled ? 'Mute Audio Cues' : 'Unmute Audio Cues'}
           >
-            {soundEnabled ? <Volume2 size={18} color="#10b981" /> : <VolumeX size={18} color="#64748b" />}
+            {soundEnabled ? <Volume2 size={18} color="#FF3B30" /> : <VolumeX size={18} color="#64748b" />}
           </button>
         </div>
 
@@ -224,7 +224,7 @@ export const TimerModal = () => {
                 setVoiceEnabled(e.target.checked);
                 if (e.target.checked) speakVoiceCue('Voice guidance enabled');
               }}
-              style={{ accentColor: '#10b981' }}
+              style={{ accentColor: '#FF3B30' }}
             />
             <span>Voice Cues 🗣️</span>
           </label>

@@ -218,7 +218,7 @@ export const TrackerSection = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-              <Award size={22} color="#10b981" />
+              <Award size={22} color="#FF3B30" />
               <h2 style={{ fontSize: '1.4rem', fontWeight: 800 }}>10 Golden Workout Tracking Points</h2>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
@@ -252,8 +252,8 @@ export const TrackerSection = () => {
                   className="card card-hover"
                   style={{
                     padding: '1.25rem',
-                    background: isExpanded ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(6, 182, 212, 0.06) 100%)' : 'var(--bg-card-secondary)',
-                    border: isExpanded ? '1px solid #10b981' : '1px solid var(--border-card)',
+                    background: isExpanded ? 'linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, rgba(255, 59, 48, 0.06) 100%)' : 'var(--bg-card-secondary)',
+                    border: isExpanded ? '1px solid #FF3B30' : '1px solid var(--border-card)',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease'
                   }}
@@ -263,7 +263,7 @@ export const TrackerSection = () => {
                       width: '38px',
                       height: '38px',
                       borderRadius: '10px',
-                      background: 'rgba(16, 185, 129, 0.15)',
+                      background: 'rgba(255, 59, 48, 0.15)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -276,10 +276,10 @@ export const TrackerSection = () => {
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.25rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                          <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#10b981' }}>POINT {pt.num}</span>
+                          <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#FF3B30' }}>POINT {pt.num}</span>
                           <span className="badge badge-cyan" style={{ fontSize: '0.68rem', padding: '0.1rem 0.4rem' }}>{pt.category}</span>
                         </div>
-                        {isExpanded ? <ChevronUp size={15} color="#10b981" /> : <ChevronDown size={15} color="var(--text-muted)" />}
+                        {isExpanded ? <ChevronUp size={15} color="#FF3B30" /> : <ChevronDown size={15} color="var(--text-muted)" />}
                       </div>
 
                       <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.35rem' }}>
@@ -309,7 +309,7 @@ export const TrackerSection = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.75rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Zap size={20} color="#10b981" />
+              <Zap size={20} color="#FF3B30" />
               <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>10 Quick-Add Exercise Presets (1-Click Log)</h3>
             </div>
             <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
@@ -341,7 +341,7 @@ export const TrackerSection = () => {
                 <div style={{ fontSize: '0.85rem', fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {p.name}
                 </div>
-                <div style={{ fontSize: '0.72rem', color: '#10b981', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.72rem', color: '#FF3B30', fontWeight: 600 }}>
                   + Quick Log ({p.weight}kg • {p.sets}x{p.reps})
                 </div>
               </div>
@@ -355,18 +355,18 @@ export const TrackerSection = () => {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Exercises Logged</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(255, 59, 48, 0.15)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Dumbbell size={18} />
             </div>
           </div>
           <div style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-main)' }}>{workoutLogs.length}</div>
-          <div style={{ fontSize: '0.8rem', color: '#10b981', fontWeight: 600, marginTop: '0.25rem' }}>✓ Saved locally in browser</div>
+          <div style={{ fontSize: '0.8rem', color: '#FF3B30', fontWeight: 600, marginTop: '0.25rem' }}>✓ Saved locally in browser</div>
         </div>
 
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Sets Completed</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(255, 59, 48, 0.15)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <TrendingUp size={18} />
             </div>
           </div>
@@ -377,7 +377,7 @@ export const TrackerSection = () => {
         <div className="card">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>Total Repetitions</span>
-            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(16, 185, 129, 0.15)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(255, 59, 48, 0.15)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <CheckCircle2 size={18} />
             </div>
           </div>
@@ -405,7 +405,7 @@ export const TrackerSection = () => {
             onClick={() => openTimer(60, 'Workout Rest Interval')}
             className="btn btn-secondary btn-sm"
           >
-            <Timer size={15} color="#10b981" />
+            <Timer size={15} color="#FF3B30" />
             <span>Rest Timer ⏱️</span>
           </button>
 
@@ -438,8 +438,8 @@ export const TrackerSection = () => {
 
       {/* Log Exercise Form */}
       {showLogForm && (
-        <form onSubmit={handleSubmit} className="card card-glow-emerald animate-fade-in" style={{ padding: '2rem', border: '1px solid #10b981' }}>
-          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '1.25rem', color: '#10b981' }}>
+        <form onSubmit={handleSubmit} className="card card-glow-emerald animate-fade-in" style={{ padding: '2rem', border: '1px solid #FF3B30' }}>
+          <h3 style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '1.25rem', color: '#FF3B30' }}>
             Log a Custom Workout Entry
           </h3>
 
@@ -649,7 +649,7 @@ export const TrackerSection = () => {
                           {log.category}
                         </span>
                       </td>
-                      <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: '#10b981' }}>
+                      <td style={{ padding: '1rem 1.25rem', fontWeight: 700, color: '#FF3B30' }}>
                         {log.weight} {log.unit || 'kg'}
                       </td>
                       <td style={{ padding: '1rem 1.25rem', fontWeight: 600 }}>
@@ -737,7 +737,7 @@ export const TrackerSection = () => {
                   }}>
                     <div>
                       <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Weight</div>
-                      <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#10b981' }}>{log.weight} {log.unit || 'kg'}</div>
+                      <div style={{ fontSize: '0.88rem', fontWeight: 800, color: '#FF3B30' }}>{log.weight} {log.unit || 'kg'}</div>
                     </div>
                     <div>
                       <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Sets × Reps</div>
@@ -745,7 +745,7 @@ export const TrackerSection = () => {
                     </div>
                     <div>
                       <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Effort</div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 700, color: '#FF3B30', marginTop: '2px' }}>{log.rpe?.split(' ')[0] || log.rpe}</div>
                     </div>
                   </div>
 

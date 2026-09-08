@@ -51,7 +51,7 @@ export const WarmupSection = () => {
           <div className="card" style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#10b981', marginBottom: '0.25rem' }}>Dynamic Warm-up Philosophy</h3>
+                <h3 style={{ fontSize: '1.25rem', color: '#FF3B30', marginBottom: '0.25rem' }}>Dynamic Warm-up Philosophy</h3>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Move through active ranges of motion — avoid holding motionless stretches before lifting.</p>
               </div>
               <button
@@ -69,7 +69,7 @@ export const WarmupSection = () => {
               <div key={item.id} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.12)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 59, 48, 0.12)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
                       {item.symbol || '🤸‍♂️'}
                     </div>
                     <div>
@@ -86,7 +86,7 @@ export const WarmupSection = () => {
                       title="Start 45s timer for this exercise"
                       style={{ width: '34px', height: '34px' }}
                     >
-                      <Play size={14} color="#10b981" />
+                      <Play size={14} color="#FF3B30" />
                     </button>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export const WarmupSection = () => {
           <div className="card" style={{ background: 'var(--bg-card-secondary)', border: '1px solid var(--border-card)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#10b981', marginBottom: '0.25rem' }}>Static Stretch Philosophy</h3>
+                <h3 style={{ fontSize: '1.25rem', color: '#FF3B30', marginBottom: '0.25rem' }}>Static Stretch Philosophy</h3>
                 <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>Hold comfortable stretches for 30–60 seconds without bouncing to release muscle tension.</p>
               </div>
               <button
@@ -125,7 +125,7 @@ export const WarmupSection = () => {
               <div key={item.id} className="card card-hover" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: '1.5rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.12)', color: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
+                    <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(255, 59, 48, 0.12)', color: '#FF3B30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.25rem', flexShrink: 0 }}>
                       {item.symbol || '🧘'}
                     </div>
                     <div>
@@ -142,7 +142,7 @@ export const WarmupSection = () => {
                       title="Start 45s timer for this stretch"
                       style={{ width: '34px', height: '34px' }}
                     >
-                      <Play size={14} color="#10b981" />
+                      <Play size={14} color="#FF3B30" />
                     </button>
                   </div>
                 </div>
