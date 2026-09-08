@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
 import { playClickBeep } from '../utils/soundEffects';
 import {
@@ -19,7 +19,9 @@ import {
   Search,
   Building2,
   Award,
-  TrendingUp
+  TrendingUp,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 
 const MOTIVATIONAL_QUOTES = [
@@ -28,6 +30,63 @@ const MOTIVATIONAL_QUOTES = [
   { left: '🌟', text: 'Your only competition is who you were yesterday. Keep building, champion!', right: '🚀' },
   { left: '🎯', text: 'Small daily disciplines repeated over time lead to monumental fitness transformations.', right: '🔥' },
   { left: '🛡️', text: 'Form first, ego never. Train smart, stay safe, and enjoy every rep!', right: '⚡' }
+];
+
+const HERO_SLIDES = [
+  {
+    id: 1,
+    image: '/hero_physique.jpg',
+    topBadge: 'BICEPS • FOREARMS • SHOULDERS',
+    title: 'Full Body Muscular Definition',
+    subtitle: 'Delts, Biceps & Forearms',
+    tag: 'Form Mastery',
+    icon: Dumbbell
+  },
+  {
+    id: 2,
+    image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80',
+    topBadge: 'CHEST • TRICEPS • PUSH DAY',
+    title: 'Chest & Incline Power',
+    subtitle: 'Dumbbell Press, Flyes & Pushups',
+    tag: 'Upper Body',
+    icon: Flame
+  },
+  {
+    id: 3,
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80',
+    topBadge: 'LATS • RHOMBOIDS • PULL DAY',
+    title: 'Back Width & V-Taper Shape',
+    subtitle: 'Lat Pulldowns, Rows & Deadlifts',
+    tag: 'Core & Posture',
+    icon: Zap
+  },
+  {
+    id: 4,
+    image: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=800&q=80',
+    topBadge: 'QUADS • HAMSTRINGS • LEG DAY',
+    title: 'Leg Strength & Quad Power',
+    subtitle: 'Squats, Leg Press & Lunges',
+    tag: 'Lower Body',
+    icon: TrendingUp
+  },
+  {
+    id: 5,
+    image: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80',
+    topBadge: 'DELTOIDS • TRAPS • OVERHEAD',
+    title: 'Boulder Shoulders & Traps',
+    subtitle: 'Overhead Press & Lateral Raises',
+    tag: 'Strength',
+    icon: Award
+  },
+  {
+    id: 6,
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80',
+    topBadge: 'CARDIO • ENDURANCE • HIIT',
+    title: 'Athletic Stamina & Conditioning',
+    subtitle: 'Battle Ropes, Sprints & Mobility',
+    tag: 'Conditioning',
+    icon: Heart
+  }
 ];
 
 export const HomeSection = () => {
@@ -42,6 +101,27 @@ export const HomeSection = () => {
   } = useApp();
 
   const [quoteIndex, setQuoteIndex] = useState(0);
+  const [heroSlideIndex, setHeroSlideIndex] = useState(0);
+
+  // Auto slide hero movie carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextHeroSlide = (e) => {
+    if (e) e.stopPropagation();
+    setHeroSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    playClickBeep();
+  };
+
+  const prevHeroSlide = (e) => {
+    if (e) e.stopPropagation();
+    setHeroSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    playClickBeep();
+  };
 
   const nextQuote = () => {
     setQuoteIndex((prev) => (prev + 1) % MOTIVATIONAL_QUOTES.length);
@@ -200,7 +280,7 @@ export const HomeSection = () => {
             </div>
           </div>
 
-          {/* Right Column: Clean Physique Photo Frame */}
+          {/* Right Column: Dynamic 6-Photo Movie Carousel */}
           <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div
               style={{
@@ -211,93 +291,248 @@ export const HomeSection = () => {
                 borderRadius: '18px',
                 overflow: 'hidden',
                 border: '1px solid var(--border-card)',
-                boxShadow: 'var(--shadow-md)'
+                boxShadow: 'var(--shadow-md)',
+                backgroundColor: '#090d16'
               }}
             >
-              <img
-                src="/hero_physique.jpg"
-                alt="Gym Beginner Form and Muscular Definition"
+              {/* Slides: Smooth Movie Crossfade */}
+              {HERO_SLIDES.map((slide, index) => {
+                const isActive = index === heroSlideIndex;
+                return (
+                  <div
+                    key={slide.id}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      opacity: isActive ? 1 : 0,
+                      transform: isActive ? 'scale(1)' : 'scale(1.04)',
+                      transition: 'opacity 0.7s ease-in-out, transform 0.7s ease-in-out',
+                      pointerEvents: isActive ? 'auto' : 'none',
+                      zIndex: isActive ? 1 : 0
+                    }}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      loading="lazy"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center 20%',
+                        display: 'block'
+                      }}
+                    />
+                  </div>
+                );
+              })}
+
+              {/* Gradient Vignette for Text Contrast */}
+              <div
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'center 16%',
-                  display: 'block'
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(180deg, rgba(9, 13, 22, 0.45) 0%, rgba(9, 13, 22, 0.1) 40%, rgba(9, 13, 22, 0.92) 100%)',
+                  zIndex: 2,
+                  pointerEvents: 'none'
                 }}
               />
 
-              {/* Gradient Vignette for Text Contrast */}
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 40%, rgba(9, 13, 22, 0.85) 100%)'
-              }} />
-
-              {/* Top Badge */}
-              <div style={{
-                position: 'absolute',
-                top: '12px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                background: 'rgba(15, 23, 42, 0.9)',
-                padding: '0.3rem 0.75rem',
-                borderRadius: '9999px',
-                border: '1px solid rgba(16, 185, 129, 0.35)',
-                color: '#10b981',
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                whiteSpace: 'nowrap',
-                zIndex: 3
-              }}>
+              {/* Top Dynamic Muscle Badge */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '12px',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  background: 'rgba(15, 23, 42, 0.92)',
+                  padding: '0.35rem 0.8rem',
+                  borderRadius: '9999px',
+                  border: '1px solid rgba(16, 185, 129, 0.4)',
+                  color: '#10b981',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  whiteSpace: 'nowrap',
+                  zIndex: 4,
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.4)',
+                  transition: 'all 0.3s ease'
+                }}
+              >
                 <Flame size={13} color="#10b981" />
-                <span>BICEPS • FOREARMS • SHOULDERS</span>
+                <span>{HERO_SLIDES[heroSlideIndex].topBadge}</span>
               </div>
 
-              {/* Bottom Stat Card */}
-              <div style={{
-                position: 'absolute',
-                bottom: '10px',
-                left: '10px',
-                right: '10px',
-                background: 'rgba(15, 23, 42, 0.92)',
-                border: '1px solid var(--border-card)',
-                borderRadius: '12px',
-                padding: '0.6rem 0.8rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                zIndex: 3
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
-                  <div style={{
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '8px',
-                    background: 'rgba(16, 185, 129, 0.2)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#10b981',
-                    flexShrink: 0
-                  }}>
-                    <Dumbbell size={15} />
-                  </div>
-                  <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      Full Body Muscular Definition
+              {/* Left / Right Carousel Navigation Buttons */}
+              <button
+                type="button"
+                onClick={prevHeroSlide}
+                aria-label="Previous Slide"
+                style={{
+                  position: 'absolute',
+                  left: '8px',
+                  top: '48%',
+                  transform: 'translateY(-50%)',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'rgba(15, 23, 42, 0.8)',
+                  border: '1px solid var(--border-card)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  zIndex: 4,
+                  transition: 'background 0.2s ease, border-color 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#10b981';
+                  e.currentTarget.style.color = '#0f172a';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.8)';
+                  e.currentTarget.style.color = '#ffffff';
+                }}
+              >
+                <ChevronLeft size={18} />
+              </button>
+
+              <button
+                type="button"
+                onClick={nextHeroSlide}
+                aria-label="Next Slide"
+                style={{
+                  position: 'absolute',
+                  right: '8px',
+                  top: '48%',
+                  transform: 'translateY(-50%)',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'rgba(15, 23, 42, 0.8)',
+                  border: '1px solid var(--border-card)',
+                  color: '#ffffff',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  zIndex: 4,
+                  transition: 'background 0.2s ease, border-color 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = '#10b981';
+                  e.currentTarget.style.color = '#0f172a';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(15, 23, 42, 0.8)';
+                  e.currentTarget.style.color = '#ffffff';
+                }}
+              >
+                <ChevronRight size={18} />
+              </button>
+
+              {/* Bottom Card: Slide Metadata & Dots */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '10px',
+                  left: '10px',
+                  right: '10px',
+                  background: 'rgba(15, 23, 42, 0.94)',
+                  border: '1px solid var(--border-card)',
+                  borderRadius: '12px',
+                  padding: '0.65rem 0.8rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.45rem',
+                  zIndex: 4,
+                  backdropFilter: 'blur(8px)'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
+                    <div
+                      style={{
+                        width: '30px',
+                        height: '30px',
+                        borderRadius: '8px',
+                        background: 'rgba(16, 185, 129, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#10b981',
+                        flexShrink: 0
+                      }}
+                    >
+                      {React.createElement(HERO_SLIDES[heroSlideIndex].icon, { size: 15 })}
                     </div>
-                    <div style={{ fontSize: '0.68rem', color: '#10b981', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      Delts, Biceps & Forearms
+                    <div style={{ minWidth: 0 }}>
+                      <div
+                        style={{
+                          fontSize: '0.8rem',
+                          fontWeight: 700,
+                          color: '#ffffff',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
+                        }}
+                      >
+                        {HERO_SLIDES[heroSlideIndex].title}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: '0.68rem',
+                          color: '#10b981',
+                          fontWeight: 600,
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
+                        }}
+                      >
+                        {HERO_SLIDES[heroSlideIndex].subtitle}
+                      </div>
                     </div>
                   </div>
+
+                  <span
+                    className="badge badge-emerald"
+                    style={{ fontSize: '0.65rem', padding: '0.15rem 0.45rem', flexShrink: 0 }}
+                  >
+                    {HERO_SLIDES[heroSlideIndex].tag}
+                  </span>
                 </div>
 
-                <span className="badge badge-emerald" style={{ fontSize: '0.65rem', padding: '0.15rem 0.45rem', flexShrink: 0 }}>
-                  Form Mastery
-                </span>
+                {/* 6 Dots / Indicator Bars */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', paddingTop: '2px' }}>
+                  {HERO_SLIDES.map((_, dotIdx) => {
+                    const isDotActive = dotIdx === heroSlideIndex;
+                    return (
+                      <button
+                        key={dotIdx}
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setHeroSlideIndex(dotIdx);
+                          playClickBeep();
+                        }}
+                        aria-label={`Slide ${dotIdx + 1}`}
+                        style={{
+                          height: '4px',
+                          width: isDotActive ? '20px' : '6px',
+                          borderRadius: '9999px',
+                          background: isDotActive ? '#10b981' : 'rgba(255, 255, 255, 0.25)',
+                          border: 'none',
+                          padding: 0,
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease'
+                        }}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
