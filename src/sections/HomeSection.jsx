@@ -108,12 +108,12 @@ export const HomeSection = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
 
-  // Auto turn pages continuously like a notebook ("apne se move krta rhe")
+  // Auto turn pages continuously and briskly like a notebook ("juldi move kro & pura ulet jai")
   useEffect(() => {
     if (isDragging || isFlipping) return;
     const timer = setInterval(() => {
       turnPage('next');
-    }, 3800);
+    }, 2200);
     return () => clearInterval(timer);
   }, [heroSlideIndex, isDragging, isFlipping]);
 
@@ -133,7 +133,7 @@ export const HomeSection = () => {
       });
       setIsFlipping(false);
       setDragOffset(0);
-    }, 650);
+    }, 480);
   };
 
   const nextHeroSlide = (e) => {
@@ -395,23 +395,20 @@ export const HomeSection = () => {
                 );
               })()}
 
-              {/* Active Turning Page (Turns from right to left like a notebook copy page) */}
+              {/* Active Turning Page: Complete 180-degree Page Turn ("Pura Ulet Jai") */}
               {(() => {
                 const currentSlide = HERO_SLIDES[heroSlideIndex];
                 
-                // Calculate dynamic 3D rotation based on drag or auto-flip
+                // Dynamic 3D rotation: Full 180-degree page flip
                 let rotateY = 0;
-                let opacity = 1;
                 let transition = 'none';
 
                 if (isDragging) {
-                  const dragPercent = Math.max(-1, Math.min(0.5, dragOffset / 300));
-                  rotateY = dragPercent * 105;
-                  opacity = 1 - Math.abs(dragPercent) * 0.4;
+                  const dragPercent = Math.max(-1, Math.min(0.5, dragOffset / 260));
+                  rotateY = dragPercent * 180;
                 } else if (isFlipping) {
-                  rotateY = flipDirection === 'next' ? -115 : 45;
-                  opacity = 0;
-                  transition = 'transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.65s ease';
+                  rotateY = flipDirection === 'next' ? -180 : 180;
+                  transition = 'transform 0.48s cubic-bezier(0.25, 1, 0.4, 1)';
                 }
 
                 return (
@@ -423,38 +420,83 @@ export const HomeSection = () => {
                       zIndex: 3,
                       transformOrigin: 'left center',
                       transform: `rotateY(${rotateY}deg)`,
-                      opacity: opacity,
+                      transformStyle: 'preserve-3d',
                       transition: transition,
-                      backfaceVisibility: 'hidden',
-                      willChange: 'transform, opacity',
-                      boxShadow: isDragging || isFlipping ? '-8px 0 25px rgba(0,0,0,0.6)' : 'none'
+                      willChange: 'transform',
+                      boxShadow: isDragging || isFlipping ? '-10px 0 30px rgba(0,0,0,0.8)' : 'none'
                     }}
                   >
-                    <img
-                      src={currentSlide.image}
-                      alt={currentSlide.title}
-                      loading="eager"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center 20%',
-                        display: 'block',
-                        pointerEvents: 'none'
-                      }}
-                    />
-
-                    {/* Realistic Page Fold Crease & Curve Lighting Shadow */}
+                    {/* Front Face of Page */}
                     <div
                       style={{
                         position: 'absolute',
                         inset: 0,
-                        background: 'linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 15%, rgba(255,255,255,0.05) 45%, rgba(0,0,0,0.5) 100%)',
-                        opacity: isDragging ? Math.abs(dragOffset / 200) : (isFlipping ? 0.8 : 0),
-                        transition: isDragging ? 'none' : 'opacity 0.65s ease',
-                        pointerEvents: 'none'
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        overflow: 'hidden',
+                        backgroundColor: '#090d16'
                       }}
-                    />
+                    >
+                      <img
+                        src={currentSlide.image}
+                        alt={currentSlide.title}
+                        loading="eager"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'center 20%',
+                          display: 'block',
+                          pointerEvents: 'none'
+                        }}
+                      />
+
+                      {/* Paper Curl & Crease Dynamic Shadow */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          background: 'linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.08) 20%, rgba(255,255,255,0.06) 50%, rgba(0,0,0,0.65) 100%)',
+                          opacity: isDragging ? Math.min(1, Math.abs(dragOffset / 140)) : (isFlipping ? 0.9 : 0),
+                          transition: isDragging ? 'none' : 'opacity 0.48s ease',
+                          pointerEvents: 'none'
+                        }}
+                      />
+                    </div>
+
+                    {/* Back Face of Page (Visible after 90deg turn) */}
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        transform: 'rotateY(180deg)',
+                        backfaceVisibility: 'hidden',
+                        WebkitBackfaceVisibility: 'hidden',
+                        background: 'linear-gradient(135deg, #090d16 0%, #131d31 50%, #0f172a 100%)',
+                        borderRight: '2px solid rgba(16, 185, 129, 0.4)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '1.5rem',
+                        color: 'rgba(255,255,255,0.4)',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      {/* Notebook Page Back Texture */}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          background: 'radial-gradient(circle at center, rgba(16, 185, 129, 0.08) 0%, transparent 70%)',
+                          pointerEvents: 'none'
+                        }}
+                      />
+                      <Dumbbell size={36} color="#10b981" style={{ opacity: 0.6, marginBottom: '0.5rem' }} />
+                      <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#10b981', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                        GharSetu Guide
+                      </span>
+                    </div>
                   </div>
                 );
               })()}
