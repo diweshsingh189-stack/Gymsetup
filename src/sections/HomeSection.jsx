@@ -280,24 +280,24 @@ export const HomeSection = () => {
               No body-shaming, no complex jargon, and no confusing equipment. GymSetup is your step-by-step pocket coach from packing your bag to mastering safe, confident workouts.
             </p>
 
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1.25rem', width: '100%' }}>
               <button
                 onClick={() => navigateTo('guided-flow')}
                 className="btn btn-primary btn-lg"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', flex: '1 1 200px' }}
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.65rem', flex: '1 1 200px', minWidth: 0 }}
               >
                 <Sparkles size={18} />
-                <span>Start My Gym Journey</span>
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Start My Gym Journey</span>
                 <ArrowRight size={18} />
               </button>
 
               <button
                 onClick={() => navigateTo('first-day')}
                 className="btn btn-secondary btn-lg"
-                style={{ flex: '1 1 180px' }}
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', flex: '1 1 180px', minWidth: 0 }}
               >
                 <Compass size={18} />
-                <span>First Day Step-by-Step</span>
+                <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>First Day Step-by-Step</span>
               </button>
             </div>
 
@@ -315,7 +315,9 @@ export const HomeSection = () => {
                 justifyContent: 'space-between',
                 transition: 'border-color 0.15s ease',
                 gap: '0.65rem',
-                minWidth: 0
+                minWidth: 0,
+                width: '100%',
+                boxSizing: 'border-box'
               }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', minWidth: 0, flex: 1 }}>
@@ -331,9 +333,9 @@ export const HomeSection = () => {
           </div>
 
           {/* Right Column: 3D Notebook Page-Turn Effect */}
-          <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+          <div className="hero-photo-wrapper">
             <div
-              className="book-perspective"
+              className="book-perspective hero-photo-card"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -342,18 +344,8 @@ export const HomeSection = () => {
               onMouseUp={handleTouchEnd}
               onMouseLeave={handleTouchEnd}
               style={{
-                position: 'relative',
-                width: '100%',
-                maxWidth: '380px',
-                height: 'clamp(360px, 72vw, 440px)',
-                borderRadius: '18px',
-                overflow: 'hidden',
-                border: '1px solid var(--border-card)',
                 boxShadow: isDragging ? '0 12px 30px rgba(0,0,0,0.5)' : 'var(--shadow-md)',
-                backgroundColor: '#090d16',
-                cursor: isDragging ? 'grabbing' : 'grab',
-                userSelect: 'none',
-                touchAction: 'pan-y'
+                cursor: isDragging ? 'grabbing' : 'grab'
               }}
             >
               {/* Underneath Next Slide (Revealed when current page turns) */}
